@@ -1,0 +1,3 @@
+@echo off
+echo Starting Frontend Server...
+start powershell -NoExit -Command "cd '%~dp0'; npm run dev"

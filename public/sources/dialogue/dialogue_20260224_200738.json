@@ -1,0 +1,314 @@
+{
+    "dialogues": [
+        {
+            "name": "旁白",
+            "dialogue_content": "深夜，林小雅跟随守店老人。"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "他们踏入了藏铃阁地下室。"
+        },
+        {
+            "name": "林小雅",
+            "dialogue_content": "这里…就是藏铃阁？"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "是的。"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "每一只铃，都有一个故事。"
+        },
+        {
+            "name": "林小雅",
+            "dialogue_content": "它们好像在看着我。"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "不是看你。"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "是在听你的心音。"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "老人缓步走向乌木案几。"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "烛光映亮他深刻的皱纹。"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "你祖父嘱托的铃。"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "在最里面。"
+        },
+        {
+            "name": "林小雅",
+            "dialogue_content": "爷爷为什么一定要我来取？"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "因为契约。"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "林家的血脉，才能唤醒它。"
+        },
+        {
+            "name": "林小雅",
+            "dialogue_content": "唤醒？这太奇怪了。"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "她目光扫过满室铃铛。"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "感到一丝不安。"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "铃不单是器物。"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "它镇魂，亦通灵。"
+        },
+        {
+            "name": "林小雅",
+            "dialogue_content": "我不信这些。"
+        },
+        {
+            "name": "林小雅",
+            "dialogue_content": "我只想完成遗愿。"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "那就过去吧。"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "第三排，第七格。"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "林小雅依言寻去。"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "格中静静躺着一只青铜小铃。"
+        },
+        {
+            "name": "林小雅",
+            "dialogue_content": "就是它？看起来很普通。"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "别摇！"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "警告已迟。"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "林小雅的手无意间晃动。"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "铃舌轻撞。"
+        },
+        {
+            "name": "青铜铃",
+            "dialogue_content": "嗡——"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "发出悠长空灵的一声。"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "刹那间，室内所有铃铛轻响。"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "它们无风自动，共鸣起来。"
+        },
+        {
+            "name": "林小雅",
+            "dialogue_content": "怎么回事？！"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "它听见你了。"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "契约开始了。"
+        },
+        {
+            "name": "林小雅",
+            "dialogue_content": "什么契约？"
+        },
+        {
+            "name": "林小雅",
+            "dialogue_content": "爷爷没说过！"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "守护与倾听的契约。"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "从此，你能听见它们。"
+        },
+        {
+            "name": "林小雅",
+            "dialogue_content": "谁的声音？"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "逝者未尽的执念。"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "与往事回响。"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "无数细微铃音涌入脑海。"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "如絮语般。"
+        },
+        {
+            "name": "林小雅",
+            "dialogue_content": "不…好多声音…"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "这是林家的宿命。"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "你祖父也曾守护一生。"
+        },
+        {
+            "name": "林小雅",
+            "dialogue_content": "所以…爷爷他…"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "他选择让你平凡长大。"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "但铃，选择了你回归。"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "青铜铃在她掌心微温。"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "共鸣渐息。"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "地下室重归寂静。"
+        },
+        {
+            "name": "林小雅",
+            "dialogue_content": "我该怎么做？"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "学习倾听，学习辨别。"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "然后决定是否传承。"
+        },
+        {
+            "name": "林小雅",
+            "dialogue_content": "如果我拒绝呢？"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "铃会沉默。"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "直到下一个血脉到来。"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "但你已听见，无法忘却。"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "烛火摇曳。"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "林小雅凝视青铜铃。"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "仿佛看到爷爷的笑容。"
+        },
+        {
+            "name": "林小雅",
+            "dialogue_content": "我…需要时间。"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "当然。"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "铃与时间，是熟悉伙伴。"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "她将铃小心收起。"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "转身时，满架铃铛静默。"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "似在注目。"
+        },
+        {
+            "name": "林小雅",
+            "dialogue_content": "明天我还能再来吗？"
+        },
+        {
+            "name": "守店人",
+            "dialogue_content": "藏铃阁的门永远敞开。"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "一老一少缓缓走上阶梯。"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "地下室里唯余烛光。"
+        },
+        {
+            "name": "旁白",
+            "dialogue_content": "与无数沉睡的故事。"
+        }
+    ],
+    "chapter_name": "藏铃阁",
+    "site": "名称：藏铃阁地下室。地点：隐匿于现代都市老街深处的传统古董店地下。装饰与场景：空间狭长低矮，由几盏暖黄色老式壁灯照亮。两侧是顶到天花板的深色木质百宝格。格内摆满各种铜铃、风铃和铎铃。材质涵盖青铜、白玉与陶土。器物皆蒙着薄尘。空气中有淡淡的樟木与旧金属味。地下室尽头有一张斑驳乌木案几。案上仅有一盏青瓷烛台，烛火如豆。空间静谧异常。唯一的动态是零星清脆的铃音。"
+}
