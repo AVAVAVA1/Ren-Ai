@@ -16,6 +16,7 @@
    ```
 ### 3.powershell -ExecutionPolicy Bypass -File start-backend.ps1 （启动后端）
 ###   powershell -ExecutionPolicy Bypass -File start-frontend.ps1（启动前端）
+### 使用时设置中的workflowId不能为空，建议填：2037082428853981185
 ## 一、问题背景
 视觉小说（Visual Novel）作为一种融合文字、图像、音频的互动叙事形式，拥有广泛的创作需求，但传统开发模式存在显著门槛：
 1. **技术壁垒高**：主流工具（如 Ren'Py）需掌握代码编写、脚本语法，非技术创作者难以入门；
