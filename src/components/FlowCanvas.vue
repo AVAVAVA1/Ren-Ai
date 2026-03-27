@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, onMounted, onUnmounted, computed, markRaw, provide } from 'vue'
+import { ref, watch, onMounted, onUnmounted, computed, markRaw, provide, nextTick } from 'vue'
 import { VueFlow, useVueFlow, ConnectionMode } from '@vue-flow/core'
 import { Background } from '@vue-flow/background'
 import { Controls } from '@vue-flow/controls'
@@ -17,6 +17,22 @@ import '@vue-flow/minimap/dist/style.css'
 const emit = defineEmits(['export-data'])
 
 const API_BASE_URL = 'http://localhost:8000'
+
+const FLOW_DRAFT_STORAGE_KEY = 'renai_flow_canvas_v1'
+
+function readFlowDraftFromStorage() {
+  try {
+    const raw = localStorage.getItem(FLOW_DRAFT_STORAGE_KEY)
+    if (!raw) return null
+    const s = JSON.parse(raw)
+    if (s?.v !== 1 || !Array.isArray(s.nodes) || !Array.isArray(s.edges)) return null
+    return s
+  } catch {
+    return null
+  }
+}
+
+const _flowDraft = readFlowDraftFromStorage()
 
 const DEFAULT_BG_WORKFLOW_ID = '2037179226444533762'
 const isGeneratingFlowBg = ref(false)
@@ -44,15 +60,22 @@ const {
   vueFlowRef,
   screenToFlowCoordinate,
   onConnectStart,
-  onConnectEnd
+  onConnectEnd,
+  getViewport,
+  setViewport,
+  onMoveEnd
 } = useVueFlow()
 
-const nodes = ref([])
-const edges = ref([])
+const fitViewOnInit = ref(!_flowDraft)
+
+const nodes = ref(_flowDraft?.nodes ?? [])
+const edges = ref(_flowDraft?.edges ?? [])
 const selectedNode = ref(null)
 const showModal = ref(false)
 const mousePosition = ref({ x: 0, y: 0 })
-const nodeIdCounter = ref(0)
+const nodeIdCounter = ref(
+  typeof _flowDraft?.nodeIdCounter === 'number' ? _flowDraft.nodeIdCounter : 0
+)
 const dragStartInfo = ref(null)
 const connectionMade = ref(false)
 const isUpdating = ref(false)
@@ -77,9 +100,11 @@ const BLOCK_GAP_X = 56
 const COLLAPSED_BLOCK_H = 52
 const COLLAPSED_BLOCK_W = 280
 
-const flowGroups = ref([])
+const flowGroups = ref(Array.isArray(_flowDraft?.flowGroups) ? _flowDraft.flowGroups : [])
 /** 新建节点 / 粘贴默认落入的区块 */
-const activeGroupIndex = ref(0)
+const activeGroupIndex = ref(
+  typeof _flowDraft?.activeGroupIndex === 'number' ? _flowDraft.activeGroupIndex : 0
+)
 
 /** 跨区块引用：g{组索引}:{该块内 originalId}，与同块内仅用 originalId 相对 */
 const CROSS_BLOCK_REF = /^g(\d+):(.+)$/
@@ -1618,6 +1643,44 @@ onConnect((params) => {
   dragStartInfo.value = null
 })
 
+let flowDraftPersistTimer = null
+function persistFlowDraft() {
+  if (flowDraftPersistTimer) clearTimeout(flowDraftPersistTimer)
+  flowDraftPersistTimer = setTimeout(() => {
+    flowDraftPersistTimer = null
+    let vp = { x: 0, y: 0, zoom: 1 }
+    try {
+      vp = getViewport()
+    } catch {
+      /* store 未就绪 */
+    }
+    try {
+      localStorage.setItem(
+        FLOW_DRAFT_STORAGE_KEY,
+        JSON.stringify({
+          v: 1,
+          nodes: JSON.parse(JSON.stringify(nodes.value)),
+          edges: JSON.parse(JSON.stringify(edges.value)),
+          viewport: vp,
+          flowGroups: JSON.parse(JSON.stringify(flowGroups.value)),
+          nodeIdCounter: nodeIdCounter.value,
+          activeGroupIndex: activeGroupIndex.value
+        })
+      )
+    } catch (e) {
+      console.warn('无法保存流程图草稿（可能超出浏览器存储配额）', e)
+    }
+  }, 400)
+}
+
+watch(
+  [nodes, edges, flowGroups, nodeIdCounter, activeGroupIndex],
+  () => persistFlowDraft(),
+  { deep: true }
+)
+
+onMoveEnd(() => persistFlowDraft())
+
 function onCharacterStorageEvent() {
   bumpFlowCardSync()
 }
@@ -1627,7 +1690,18 @@ function onWindowStorage(e) {
 }
 
 onMounted(() => {
-  loadDefaultData()
+  if (_flowDraft) {
+    updateNodeDataFromEdges()
+    syncBlockTitlesToNodes()
+    syncBlockGroupNodesMeta()
+    syncEdgesFromHiddenNodes()
+    const vp = _flowDraft.viewport
+    if (vp && typeof vp.x === 'number' && typeof vp.y === 'number' && typeof vp.zoom === 'number') {
+      nextTick(() => setViewport(vp))
+    }
+  } else {
+    loadDefaultData()
+  }
   document.addEventListener('keydown', handleKeyDown)
   document.addEventListener('mousemove', handleMouseMove)
   window.addEventListener('renai-characters-storage', onCharacterStorageEvent)
@@ -1740,7 +1814,7 @@ defineExpose({
       :nodes-connectable="true"
       :nodes-draggable="true"
       :edges-updatable="true"
-      fit-view-on-init
+      :fit-view-on-init="fitViewOnInit"
       class="vue-flow-wrapper"
       @edge-double-click="handleEdgeDoubleClick"
     >

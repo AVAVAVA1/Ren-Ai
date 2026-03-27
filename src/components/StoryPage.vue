@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, nextTick } from 'vue'
+import { ref, computed, watch, onMounted, nextTick } from 'vue'
 
 const emit = defineEmits(['open-flow'])
 
@@ -52,6 +52,8 @@ const savedCharacters = ref([])
 
 const API_BASE_URL = 'http://localhost:8000'
 
+const STORY_DRAFT_STORAGE_KEY = 'renai_story_draft_v1'
+
 /** 一键生成完成后，后端 SSE 下发的原始对话列表，用于导出流程图 JSON */
 const lastDialogueResults = ref(null)
 const isExportingFlow = ref(false)
@@ -99,8 +101,53 @@ function setStoryFromApiPlainText(text) {
   })
 }
 
+function loadStoryDraft() {
+  try {
+    const raw = localStorage.getItem(STORY_DRAFT_STORAGE_KEY)
+    if (!raw) return
+    const s = JSON.parse(raw)
+    if (s?.v !== 1) return
+    if (Array.isArray(s.storySegments) && s.storySegments.length > 0) {
+      storySegments.value = s.storySegments
+    }
+    if (typeof s.strictModel === 'boolean') strictModel.value = s.strictModel
+    if (Object.prototype.hasOwnProperty.call(s, 'lastDialogueResults')) {
+      lastDialogueResults.value = s.lastDialogueResults
+    }
+  } catch (e) {
+    console.warn('恢复故事草稿失败:', e)
+  }
+}
+
+let storyDraftPersistTimer = null
+function persistStoryDraft() {
+  if (storyDraftPersistTimer) clearTimeout(storyDraftPersistTimer)
+  storyDraftPersistTimer = setTimeout(() => {
+    storyDraftPersistTimer = null
+    try {
+      localStorage.setItem(
+        STORY_DRAFT_STORAGE_KEY,
+        JSON.stringify({
+          v: 1,
+          storySegments: JSON.parse(JSON.stringify(storySegments.value)),
+          strictModel: strictModel.value,
+          lastDialogueResults: lastDialogueResults.value
+        })
+      )
+    } catch (e) {
+      console.warn('无法保存故事草稿（可能超出浏览器存储配额）', e)
+    }
+  }, 400)
+}
+
+watch([storySegments, strictModel, lastDialogueResults], () => persistStoryDraft(), { deep: true })
+
 onMounted(() => {
   loadSavedCharacters()
+  loadStoryDraft()
+  nextTick(() => {
+    document.querySelectorAll('.story-seg-text').forEach((el) => autoGrowTextarea(el))
+  })
 })
 
 function loadSavedCharacters() {

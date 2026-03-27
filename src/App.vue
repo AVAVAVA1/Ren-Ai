@@ -1,12 +1,33 @@
 <script setup>
-import { ref, nextTick } from 'vue'
+import { ref, watch, nextTick } from 'vue'
 import NavBar from './components/NavBar.vue'
 import FlowCanvas from './components/FlowCanvas.vue'
 import CharacterPage from './components/CharacterPage.vue'
 import StoryPage from './components/StoryPage.vue'
 import SettingsPage from './components/SettingsPage.vue'
 
-const currentTab = ref('flow')
+const TAB_STORAGE_KEY = 'renai_app_current_tab_v1'
+const VALID_TABS = new Set(['character', 'flow', 'story', 'settings'])
+
+function readStoredTab() {
+  try {
+    const t = localStorage.getItem(TAB_STORAGE_KEY)
+    if (t && VALID_TABS.has(t)) return t
+  } catch {
+    /* ignore */
+  }
+  return 'flow'
+}
+
+const currentTab = ref(readStoredTab())
+
+watch(currentTab, (v) => {
+  try {
+    localStorage.setItem(TAB_STORAGE_KEY, v)
+  } catch {
+    /* ignore */
+  }
+})
 const flowCanvasRef = ref(null)
 const fileInputRef = ref(null)
 
@@ -42,6 +63,7 @@ async function handleStoryOpenFlow(publicUrl) {
 <template>
   <div class="app-container">
     <NavBar
+      :active-tab="currentTab"
       @navigate="handleNavigate"
       @import="handleImport"
       @export="handleExport"

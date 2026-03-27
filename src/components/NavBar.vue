@@ -1,9 +1,12 @@
 <script setup>
-import { ref } from 'vue'
+defineProps({
+  activeTab: {
+    type: String,
+    default: 'flow'
+  }
+})
 
 const emit = defineEmits(['navigate', 'import', 'export'])
-
-const activeTab = ref('flow')
 
 const navItems = [
   { id: 'character', label: '人物卡' },
@@ -13,7 +16,6 @@ const navItems = [
 ]
 
 function handleNavClick(id) {
-  activeTab.value = id
   emit('navigate', id)
 }
 
