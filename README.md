@@ -1,38 +1,58 @@
-# web_renai
+# Vue 3
 
-This template should help get you started developing with Vue 3 in Vite.
+Vue 3 是一个用于构建用户界面的渐进式 JavaScript 框架。它具备以下几个特点：
 
-## Recommended IDE Setup
+- **高性能**：Vue 3 使用 Proxy 实现了更快的数据响应。
+- **Composition API**：提供了新的组织和组合逻辑的方式。
+- **更小的体积**：Vue 3 的核心库比 Vue 2 更小，加载更快。
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 安装
+你可以通过 npm 安装 Vue 3：
 
-## Recommended Browser Setup
-
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+```bash
+npm install vue@next
 ```
 
-### Compile and Hot-Reload for Development
+---
 
-```sh
-npm run dev
+# Vite
+
+Vite 是一个新一代的前端构建工具，具有极速的冷启动和热更新功能。主要优势包括：
+
+- **即时启动**：基于原生 ES 模块，Vite 可以在几乎没有打包的情况下启动应用。
+- **快速热更新**：文件更新后，Vite 使用热模块替换进行快速更新。
+
+## 安装
+通过 npm 安装 Vite：
+
+```bash
+npm install vite
 ```
 
-### Compile and Minify for Production
+---
 
-```sh
-npm run build
+# Vue Flow
+
+Vue Flow 是一个用于创建流程图或图表的库。它提供了简单的 API，易于使用。
+
+## 安装
+通过 npm 安装 Vue Flow：
+
+```bash
+npm install @vue-flow/vue-flow
 ```
+
+## 使用示例
+
+```javascript
+import { createApp } from 'vue';
+import VueFlow from '@vue-flow/vue-flow';
+
+const app = createApp({});
+app.use(VueFlow);
+app.mount('#app');
+```
+
+---
+
+可以访问 [Vue 3 官方文档](https://v3.vuejs.org/) 以及 [Vite 官方文档](https://vitejs.dev/) 了解更多信息。
