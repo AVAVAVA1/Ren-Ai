@@ -1,38 +1,44 @@
-# web_renai
+# 项目概述
+本项目是 Ren-Ai，一个旨在...（项目的具体描述）。
 
-This template should help get you started developing with Vue 3 in Vite.
+# 特性
+- 特性 1
+- 特性 2
 
-## Recommended IDE Setup
+# 技术栈
+- 技术 1
+- 技术 2
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Recommended Browser Setup
-
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+# 目录结构
+```
+├── 目录 /
+│   ├── 文件 1
+│   └── 文件 2
 ```
 
-### Compile and Hot-Reload for Development
+# 安装
+1. 步骤 1
+2. 步骤 2
 
-```sh
-npm run dev
+# 开发环境设置
+请参考...
+
+# 构建过程
+你可以使用以���命令构建项目：
+```bash
+命令
 ```
 
-### Compile and Minify for Production
+# 项目结构详细说明
+- 目录 /：这是...
 
-```sh
-npm run build
-```
+# 脚本
+说明如何运行脚本和它们的用途。
+
+# 故障排除
+- 常见问题 1
+- 常见问题 2
+
+# 贡献指南
+欢迎贡献！请参考...
+
