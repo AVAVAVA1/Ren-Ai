@@ -1,5 +1,21 @@
 # Ren'Ai 视觉小说零代码开发平台项目说明书
-##演示视频：https://www.bilibili.com/video/BV1edXTBCEYL
+## 演示视频：https://www.bilibili.com/video/BV1edXTBCEYL
+## 如何部署：
+## 架构说明：
+
+- **前端**：Vue 3 + Vite，。
+- **后端**：FastAPI，在 **`server/`** 目录下用 Uvicorn 启动。
+- 当前前端部分请求里 **API 基地址写为 `http://localhost:8000`**
+### 1.下载仓库到你的文件夹
+### 2.**准备 Python 环境**（在 `server/`）  
+   ```bash
+   python -m venv venv
+   # Windows: venv\Scripts\activate
+   # Linux/macOS: source venv/bin/activate
+   pip install -r requirements.txt
+   ```
+### 3.powershell -ExecutionPolicy Bypass -File start-backend.ps1 （启动后端）
+###   powershell -ExecutionPolicy Bypass -File start-frontend.ps1（启动前端）
 ## 一、问题背景
 视觉小说（Visual Novel）作为一种融合文字、图像、音频的互动叙事形式，拥有广泛的创作需求，但传统开发模式存在显著门槛：
 1. **技术壁垒高**：主流工具（如 Ren'Py）需掌握代码编写、脚本语法，非技术创作者难以入门；
