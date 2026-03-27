@@ -28,6 +28,13 @@ class ExportStructuredRequest(BaseModel):
     dialogue_results: List[Dict[str, Any]]
 
 
+class ImportDialogueForFlowRequest(BaseModel):
+    """与 public/sources/dialogue 下 dialogue_*.json 相同：每项 chapter_name、site、dialogues[]。"""
+
+    dialogue_results: List[Dict[str, Any]]
+    persist: bool = False
+
+
 def format_dialogue_output(result) -> str:
     formattedContent = ''
     for item in result:
@@ -134,7 +141,41 @@ async def export_structured(request: ExportStructuredRequest):
     if not request.dialogue_results:
         raise HTTPException(status_code=400, detail="dialogue_results 不能为空")
 
-    _, save_path = structured_json(request.dialogue_results)
+    _, save_path = structured_json(request.dialogue_results, persist=True)
     file_name = Path(save_path).name
     public_url = f"/sources/strctured_json/{file_name}"
     return {"public_url": public_url, "file_name": file_name, "save_path": save_path}
+
+
+@router.post("/import-dialogue-for-flow")
+async def import_dialogue_for_flow(request: ImportDialogueForFlowRequest):
+    """
+    将 dialogue 阶段 JSON（chapter_name / site / dialogues）经 structured_json 转为流程图用结构，
+    供前端直接导入画布；默认不写盘，与文件选择导入配合。
+    """
+    if not request.dialogue_results:
+        raise HTTPException(status_code=400, detail="dialogue_results 不能为空")
+
+    for i, item in enumerate(request.dialogue_results):
+        if not isinstance(item, dict):
+            raise HTTPException(status_code=400, detail=f"dialogue_results[{i}] 必须为对象")
+        if "chapter_name" not in item:
+            raise HTTPException(
+                status_code=400,
+                detail=f"dialogue_results[{i}] 缺少 chapter_name（应为对话剧本 JSON：chapter_name、site、dialogues）",
+            )
+        if "dialogues" not in item or not isinstance(item.get("dialogues"), list):
+            raise HTTPException(
+                status_code=400,
+                detail=f"dialogue_results[{i}] 缺少 dialogues 数组（对话剧本 JSON 格式）",
+            )
+
+    renai_data, save_path = structured_json(
+        request.dialogue_results,
+        persist=request.persist,
+    )
+    out: Dict[str, Any] = {"dialogues": renai_data}
+    if save_path:
+        out["save_path"] = save_path
+        out["public_url"] = f"/sources/strctured_json/{Path(save_path).name}"
+    return out

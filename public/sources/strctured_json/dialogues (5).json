@@ -1,0 +1,5165 @@
+[
+  {
+    "dialogue_name": "第一幕",
+    "site_description": "深夜的办公室，灯光昏暗，只有一盏台灯亮着。窗外偶尔传来汽车驶过的声音。",
+    "dialogue_content": [
+      {
+        "id": "0",
+        "name": "旁白",
+        "content": "深夜的办公室，灯光昏暗。",
+        "background": "/pic_bg/20260327_071921/地点1.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "1": ""
+        },
+        "branch_num": 1,
+        "parent_id": "",
+        "children": [
+          "1"
+        ]
+      },
+      {
+        "id": "1",
+        "name": "旁白",
+        "content": "只有一盏台灯亮着。",
+        "background": "/pic_bg/20260327_071921/地点1.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "2": ""
+        },
+        "branch_num": 1,
+        "parent_id": "0",
+        "children": [
+          "2"
+        ]
+      },
+      {
+        "id": "2",
+        "name": "旁白",
+        "content": "李伟坐在电脑前。",
+        "background": "/pic_bg/20260327_071921/地点1.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "3": ""
+        },
+        "branch_num": 1,
+        "parent_id": "1",
+        "children": [
+          "3"
+        ]
+      },
+      {
+        "id": "3",
+        "name": "旁白",
+        "content": "手指在键盘上快速敲击。",
+        "background": "/pic_bg/20260327_071921/地点1.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "b = 3",
+        "checkFlag": {
+          "4": "b = 3",
+          "g1:n1774570034083_258": "b=  1"
+        },
+        "branch_num": 2,
+        "parent_id": "2",
+        "children": [
+          "4",
+          "g1:n1774570034083_258"
+        ]
+      },
+      {
+        "id": "4",
+        "name": "旁白",
+        "content": "窗外偶尔传来汽车驶过的声音。",
+        "background": "/pic_bg/20260327_071921/地点1.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "5": ""
+        },
+        "branch_num": 1,
+        "parent_id": "3",
+        "children": [
+          "5"
+        ]
+      },
+      {
+        "id": "5",
+        "name": "李伟",
+        "content": "终于快完成了。",
+        "background": "/pic_bg/20260327_071921/地点1.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "6": ""
+        },
+        "branch_num": 1,
+        "parent_id": "4",
+        "children": [
+          "6"
+        ]
+      },
+      {
+        "id": "6",
+        "name": "李伟",
+        "content": "这个方案明天必须交。",
+        "background": "/pic_bg/20260327_071921/地点1.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [
+          {
+            "content": "jjjj",
+            "flag": "a = 1"
+          },
+          {
+            "content": "kkk",
+            "flag": "a = 2"
+          },
+          {
+            "content": "lll",
+            "flag": "a = 3"
+          }
+        ],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "7": "a = 1",
+          "g1:n1774569960525_257": " a= 2"
+        },
+        "branch_num": 2,
+        "parent_id": "5",
+        "children": [
+          "7",
+          "g1:n1774569960525_257"
+        ]
+      },
+      {
+        "id": "7",
+        "name": "旁白",
+        "content": "他揉了揉太阳穴。",
+        "background": "/pic_bg/20260327_071921/地点1.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "8": ""
+        },
+        "branch_num": 1,
+        "parent_id": "6",
+        "children": [
+          "8"
+        ]
+      },
+      {
+        "id": "8",
+        "name": "旁白",
+        "content": "瞥了一眼墙上的钟。",
+        "background": "/pic_bg/20260327_071921/地点1.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "9": ""
+        },
+        "branch_num": 1,
+        "parent_id": "7",
+        "children": [
+          "9"
+        ]
+      },
+      {
+        "id": "9",
+        "name": "旁白",
+        "content": "凌晨两点。",
+        "background": "/pic_bg/20260327_071921/地点1.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "10": ""
+        },
+        "branch_num": 1,
+        "parent_id": "8",
+        "children": [
+          "10"
+        ]
+      },
+      {
+        "id": "10",
+        "name": "旁白",
+        "content": "手机屏幕突然亮起。",
+        "background": "/pic_bg/20260327_071921/地点1.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "11": ""
+        },
+        "branch_num": 1,
+        "parent_id": "9",
+        "children": [
+          "11"
+        ]
+      },
+      {
+        "id": "11",
+        "name": "旁白",
+        "content": "显示一条新消息。",
+        "background": "/pic_bg/20260327_071921/地点1.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "12": ""
+        },
+        "branch_num": 1,
+        "parent_id": "10",
+        "children": [
+          "12"
+        ]
+      },
+      {
+        "id": "12",
+        "name": "李伟",
+        "content": "这时候谁还发消息？",
+        "background": "/pic_bg/20260327_071921/地点1.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "13": ""
+        },
+        "branch_num": 1,
+        "parent_id": "11",
+        "children": [
+          "13"
+        ]
+      },
+      {
+        "id": "13",
+        "name": "旁白",
+        "content": "他解锁手机，阅读消息。",
+        "background": "/pic_bg/20260327_071921/地点1.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "14": ""
+        },
+        "branch_num": 1,
+        "parent_id": "12",
+        "children": [
+          "14"
+        ]
+      },
+      {
+        "id": "14",
+        "name": "旁白",
+        "content": "脸色逐渐变得凝重。",
+        "background": "/pic_bg/20260327_071921/地点1.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "15": ""
+        },
+        "branch_num": 1,
+        "parent_id": "13",
+        "children": [
+          "15"
+        ]
+      },
+      {
+        "id": "15",
+        "name": "旁白",
+        "content": "长时间沉默后。",
+        "background": "/pic_bg/20260327_071921/地点1.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "16": ""
+        },
+        "branch_num": 1,
+        "parent_id": "14",
+        "children": [
+          "16"
+        ]
+      },
+      {
+        "id": "16",
+        "name": "旁白",
+        "content": "他缓缓放下手机。",
+        "background": "/pic_bg/20260327_071921/地点1.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "17": ""
+        },
+        "branch_num": 1,
+        "parent_id": "15",
+        "children": [
+          "17"
+        ]
+      },
+      {
+        "id": "17",
+        "name": "旁白",
+        "content": "望向窗外漆黑的夜空。",
+        "background": "/pic_bg/20260327_071921/地点1.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "18": ""
+        },
+        "branch_num": 1,
+        "parent_id": "16",
+        "children": [
+          "18"
+        ]
+      },
+      {
+        "id": "18",
+        "name": "李伟",
+        "content": "是该做出改变了。",
+        "background": "/pic_bg/20260327_071921/地点1.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "19": ""
+        },
+        "branch_num": 1,
+        "parent_id": "17",
+        "children": [
+          "19"
+        ]
+      },
+      {
+        "id": "19",
+        "name": "旁白",
+        "content": "灯光渐暗。",
+        "background": "/pic_bg/20260327_071921/地点1.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "g1:20": ""
+        },
+        "branch_num": 1,
+        "parent_id": "18",
+        "children": [
+          "g1:20"
+        ]
+      }
+    ]
+  },
+  {
+    "dialogue_name": "第一幕",
+    "site_description": "一间昏暗的办公室，深夜。只有电脑屏幕发出微光，映出李伟疲惫的脸。窗外偶尔有车灯闪过，照亮室内一瞬又重归黑暗。桌上散乱着文件，一个咖啡杯被打翻，深色液体正漫过纸张。寂静中，键盘敲击声和电话铃声格外刺耳。",
+    "dialogue_content": [
+      {
+        "id": "20",
+        "name": "旁白",
+        "content": "昏暗的办公室，深夜。李伟独自坐在电脑前。",
+        "background": "/pic_bg/20260327_071921/地点2.png",
+        "character": "沮丧",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "21": ""
+        },
+        "branch_num": 1,
+        "parent_id": "g0:19",
+        "children": [
+          "21"
+        ]
+      },
+      {
+        "id": "21",
+        "name": "李伟",
+        "content": "数据对不上……一定漏了什么。",
+        "background": "/pic_bg/20260327_071921/地点2.png",
+        "character": "沮丧",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "22": ""
+        },
+        "branch_num": 1,
+        "parent_id": "20",
+        "children": [
+          "22"
+        ]
+      },
+      {
+        "id": "22",
+        "name": "旁白",
+        "content": "他拿起冷咖啡喝了一口，皱眉。",
+        "background": "/pic_bg/20260327_071921/地点2.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "23": ""
+        },
+        "branch_num": 1,
+        "parent_id": "21",
+        "children": [
+          "23"
+        ]
+      },
+      {
+        "id": "23",
+        "name": "旁白",
+        "content": "电话响起，李伟迟疑后接起。",
+        "background": "/pic_bg/20260327_071921/地点2.png",
+        "character": "沮丧",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "24": ""
+        },
+        "branch_num": 1,
+        "parent_id": "22",
+        "children": [
+          "24"
+        ]
+      },
+      {
+        "id": "24",
+        "name": "李伟",
+        "content": "喂？",
+        "background": "/pic_bg/20260327_071921/地点2.png",
+        "character": "沮丧",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "25": ""
+        },
+        "branch_num": 1,
+        "parent_id": "23",
+        "children": [
+          "25"
+        ]
+      },
+      {
+        "id": "25",
+        "name": "旁白",
+        "content": "电话那头传来急促的说话声。",
+        "background": "/pic_bg/20260327_071921/地点2.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "26": ""
+        },
+        "branch_num": 1,
+        "parent_id": "24",
+        "children": [
+          "26"
+        ]
+      },
+      {
+        "id": "26",
+        "name": "李伟",
+        "content": "什么时候的事？",
+        "background": "/pic_bg/20260327_071921/地点2.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "27": ""
+        },
+        "branch_num": 1,
+        "parent_id": "25",
+        "children": [
+          "27"
+        ]
+      },
+      {
+        "id": "27",
+        "name": "旁白",
+        "content": "他猛地站起，碰倒了咖啡杯。",
+        "background": "/pic_bg/20260327_071921/地点2.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "g2:28": ""
+        },
+        "branch_num": 1,
+        "parent_id": "26",
+        "children": [
+          "g2:28"
+        ]
+      },
+      {
+        "id": "n1774569960525_257",
+        "name": "新角色",
+        "content": "新对话内容",
+        "background": "",
+        "character": "",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {},
+        "branch_num": 0,
+        "parent_id": "g0:6",
+        "children": []
+      },
+      {
+        "id": "n1774570034083_258",
+        "name": "新角色",
+        "content": "新对话内容",
+        "background": "",
+        "character": "",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {},
+        "branch_num": 0,
+        "parent_id": "g0:3",
+        "children": []
+      }
+    ]
+  },
+  {
+    "dialogue_name": "星语咖啡厅的约定",
+    "site_description": "名称：星语咖啡厅。地点：市中心商业街转角处。装饰：原木色地板与暖黄色墙面；落地窗悬挂米白色亚麻窗帘；墙面上挂着复古烘焙主题黑板画；角落摆放绿植与旧书堆；空气中残留咖啡豆与肉桂卷香气。场景：打烊后的安静空间，仅留一盏吊灯照亮窗边桌，窗外街灯昏黄。",
+    "dialogue_content": [
+      {
+        "id": "28",
+        "name": "旁白",
+        "content": "晚上八点，咖啡厅已打烊。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "29": ""
+        },
+        "branch_num": 1,
+        "parent_id": "g1:27",
+        "children": [
+          "29"
+        ]
+      },
+      {
+        "id": "29",
+        "name": "旁白",
+        "content": "Emily换下制服，穿着米色针织衫。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "30": ""
+        },
+        "branch_num": 1,
+        "parent_id": "28",
+        "children": [
+          "30"
+        ]
+      },
+      {
+        "id": "30",
+        "name": "旁白",
+        "content": "她和用户坐在窗边桌，中间摊开笔记本。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "31": ""
+        },
+        "branch_num": 1,
+        "parent_id": "29",
+        "children": [
+          "31"
+        ]
+      },
+      {
+        "id": "31",
+        "name": "Emily",
+        "content": "现在开始基础信息交换。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "32": ""
+        },
+        "branch_num": 1,
+        "parent_id": "30",
+        "children": [
+          "32"
+        ]
+      },
+      {
+        "id": "32",
+        "name": "Emily",
+        "content": "我叫Emily Clarke，今年21岁。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "33": ""
+        },
+        "branch_num": 1,
+        "parent_id": "31",
+        "children": [
+          "33"
+        ]
+      },
+      {
+        "id": "33",
+        "name": "Emily",
+        "content": "在这里工作两年啦。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "34": ""
+        },
+        "branch_num": 1,
+        "parent_id": "32",
+        "children": [
+          "34"
+        ]
+      },
+      {
+        "id": "34",
+        "name": "Emily",
+        "content": "喜欢烘焙和读古典爱情小说。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "咧嘴笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "35": ""
+        },
+        "branch_num": 1,
+        "parent_id": "33",
+        "children": [
+          "35"
+        ]
+      },
+      {
+        "id": "35",
+        "name": "Emily",
+        "content": "特别喜欢简·奥斯汀的作品。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "36": ""
+        },
+        "branch_num": 1,
+        "parent_id": "34",
+        "children": [
+          "36"
+        ]
+      },
+      {
+        "id": "36",
+        "name": "Emily",
+        "content": "梦想是开自己的烘焙坊。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "37": ""
+        },
+        "branch_num": 1,
+        "parent_id": "35",
+        "children": [
+          "37"
+        ]
+      },
+      {
+        "id": "37",
+        "name": "Emily",
+        "content": "卖手作面包和蛋糕。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "38": ""
+        },
+        "branch_num": 1,
+        "parent_id": "36",
+        "children": [
+          "38"
+        ]
+      },
+      {
+        "id": "38",
+        "name": "Emily",
+        "content": "该你介绍自己了。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "39": ""
+        },
+        "branch_num": 1,
+        "parent_id": "37",
+        "children": [
+          "39"
+        ]
+      },
+      {
+        "id": "39",
+        "name": "用户",
+        "content": "我叫Alex，25岁。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "40": ""
+        },
+        "branch_num": 1,
+        "parent_id": "38",
+        "children": [
+          "40"
+        ]
+      },
+      {
+        "id": "40",
+        "name": "用户",
+        "content": "是附近书店的经理。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "41": ""
+        },
+        "branch_num": 1,
+        "parent_id": "39",
+        "children": [
+          "41"
+        ]
+      },
+      {
+        "id": "41",
+        "name": "用户",
+        "content": "喜欢收集旧书和徒步旅行。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "咧嘴笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "42": ""
+        },
+        "branch_num": 1,
+        "parent_id": "40",
+        "children": [
+          "42"
+        ]
+      },
+      {
+        "id": "42",
+        "name": "Emily",
+        "content": "我会记下关键词的。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "43": ""
+        },
+        "branch_num": 1,
+        "parent_id": "41",
+        "children": [
+          "43"
+        ]
+      },
+      {
+        "id": "43",
+        "name": "Emily",
+        "content": "现在编我们的相遇故事吧。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "44": ""
+        },
+        "branch_num": 1,
+        "parent_id": "42",
+        "children": [
+          "44"
+        ]
+      },
+      {
+        "id": "44",
+        "name": "Emily",
+        "content": "就说你常来喝咖啡。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "傲娇",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "45": ""
+        },
+        "branch_num": 1,
+        "parent_id": "43",
+        "children": [
+          "45"
+        ]
+      },
+      {
+        "id": "45",
+        "name": "Emily",
+        "content": "我们慢慢聊起来了。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "46": ""
+        },
+        "branch_num": 1,
+        "parent_id": "44",
+        "children": [
+          "46"
+        ]
+      },
+      {
+        "id": "46",
+        "name": "Emily",
+        "content": "从讨论拿铁味道开始。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "47": ""
+        },
+        "branch_num": 1,
+        "parent_id": "45",
+        "children": [
+          "47"
+        ]
+      },
+      {
+        "id": "47",
+        "name": "Emily",
+        "content": "再到分享喜欢的书。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "咧嘴笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "48": ""
+        },
+        "branch_num": 1,
+        "parent_id": "46",
+        "children": [
+          "48"
+        ]
+      },
+      {
+        "id": "48",
+        "name": "Emily",
+        "content": "后来约着去周末市集。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "49": ""
+        },
+        "branch_num": 1,
+        "parent_id": "47",
+        "children": [
+          "49"
+        ]
+      },
+      {
+        "id": "49",
+        "name": "Emily",
+        "content": "三个月前正式在一起。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "沮丧",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "50": ""
+        },
+        "branch_num": 1,
+        "parent_id": "48",
+        "children": [
+          "50"
+        ]
+      },
+      {
+        "id": "50",
+        "name": "Emily",
+        "content": "这样听起来自然吗？",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "51": ""
+        },
+        "branch_num": 1,
+        "parent_id": "49",
+        "children": [
+          "51"
+        ]
+      },
+      {
+        "id": "51",
+        "name": "Emily",
+        "content": "我有点担心太老套。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "52": ""
+        },
+        "branch_num": 1,
+        "parent_id": "50",
+        "children": [
+          "52"
+        ]
+      },
+      {
+        "id": "52",
+        "name": "用户",
+        "content": "我觉得很真实。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "53": ""
+        },
+        "branch_num": 1,
+        "parent_id": "51",
+        "children": [
+          "53"
+        ]
+      },
+      {
+        "id": "53",
+        "name": "用户",
+        "content": "就像真的会发生一样。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "咧嘴笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "54": ""
+        },
+        "branch_num": 1,
+        "parent_id": "52",
+        "children": [
+          "54"
+        ]
+      },
+      {
+        "id": "54",
+        "name": "Emily",
+        "content": "谢谢，我练习了好多次。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "流泪",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "55": ""
+        },
+        "branch_num": 1,
+        "parent_id": "53",
+        "children": [
+          "55"
+        ]
+      },
+      {
+        "id": "55",
+        "name": "Emily",
+        "content": "我们再多补充些细节吧。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "56": ""
+        },
+        "branch_num": 1,
+        "parent_id": "54",
+        "children": [
+          "56"
+        ]
+      },
+      {
+        "id": "56",
+        "name": "Emily",
+        "content": "比如你第一次夸我的拉花。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "57": ""
+        },
+        "branch_num": 1,
+        "parent_id": "55",
+        "children": [
+          "57"
+        ]
+      },
+      {
+        "id": "57",
+        "name": "旁白",
+        "content": "她低头认真书写，灯光柔和。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "58": ""
+        },
+        "branch_num": 1,
+        "parent_id": "56",
+        "children": [
+          "58"
+        ]
+      },
+      {
+        "id": "58",
+        "name": "旁白",
+        "content": "咖啡机静静反射着微光。",
+        "background": "/pic_bg/20260327_071921/地点3.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "g3:59": ""
+        },
+        "branch_num": 1,
+        "parent_id": "57",
+        "children": [
+          "g3:59"
+        ]
+      }
+    ]
+  },
+  {
+    "dialogue_name": "滨河公园长椅区",
+    "site_description": "滨河公园长椅区位于城市中心沿河景观带中段。这里有一张深棕色木质长椅，表面有细微划痕。长椅后方种植着修剪整齐的冬青丛，左侧立着一盏复古欧式路灯，灯罩已亮起暖黄光晕。地面铺着不规则形状的灰石板，缝隙间冒出青草。前方可见蜿蜒的浅灰色河道，水面泛着夕阳金鳞。远处有儿童游乐区，传来模糊欢笑声。长椅旁散落着几片梧桐落叶，边缘微卷。",
+    "dialogue_content": [
+      {
+        "id": "59",
+        "name": "旁白",
+        "content": "夕阳将天空染成蜜桃色。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "60": ""
+        },
+        "branch_num": 1,
+        "parent_id": "g2:58",
+        "children": [
+          "60"
+        ]
+      },
+      {
+        "id": "60",
+        "name": "旁白",
+        "content": "Emily和用户并排坐在公园长椅上。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "61": ""
+        },
+        "branch_num": 1,
+        "parent_id": "59",
+        "children": [
+          "61"
+        ]
+      },
+      {
+        "id": "61",
+        "name": "旁白",
+        "content": "中间隔着礼貌的距离。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "62": ""
+        },
+        "branch_num": 1,
+        "parent_id": "60",
+        "children": [
+          "62"
+        ]
+      },
+      {
+        "id": "62",
+        "name": "Emily",
+        "content": "练习自然互动。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "63": ""
+        },
+        "branch_num": 1,
+        "parent_id": "61",
+        "children": [
+          "63"
+        ]
+      },
+      {
+        "id": "63",
+        "name": "Emily",
+        "content": "比如……挽手。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "64": ""
+        },
+        "branch_num": 1,
+        "parent_id": "62",
+        "children": [
+          "64"
+        ]
+      },
+      {
+        "id": "64",
+        "name": "旁白",
+        "content": "她犹豫地伸出手。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "65": ""
+        },
+        "branch_num": 1,
+        "parent_id": "63",
+        "children": [
+          "65"
+        ]
+      },
+      {
+        "id": "65",
+        "name": "旁白",
+        "content": "轻轻挽住用户的手臂。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "66": ""
+        },
+        "branch_num": 1,
+        "parent_id": "64",
+        "children": [
+          "66"
+        ]
+      },
+      {
+        "id": "66",
+        "name": "旁白",
+        "content": "动作僵硬得像搬运易碎品。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "67": ""
+        },
+        "branch_num": 1,
+        "parent_id": "65",
+        "children": [
+          "67"
+        ]
+      },
+      {
+        "id": "67",
+        "name": "Emily",
+        "content": "太不自然了。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "沮丧",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "68": ""
+        },
+        "branch_num": 1,
+        "parent_id": "66",
+        "children": [
+          "68"
+        ]
+      },
+      {
+        "id": "68",
+        "name": "Emily",
+        "content": "我们得看起来像真的情侣。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "沮丧",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "69": ""
+        },
+        "branch_num": 1,
+        "parent_id": "67",
+        "children": [
+          "69"
+        ]
+      },
+      {
+        "id": "69",
+        "name": "Emily",
+        "content": "再来一次吧。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "沮丧",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "70": ""
+        },
+        "branch_num": 1,
+        "parent_id": "68",
+        "children": [
+          "70"
+        ]
+      },
+      {
+        "id": "70",
+        "name": "旁白",
+        "content": "第二次稍好一些。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "71": ""
+        },
+        "branch_num": 1,
+        "parent_id": "69",
+        "children": [
+          "71"
+        ]
+      },
+      {
+        "id": "71",
+        "name": "旁白",
+        "content": "但她的手指仍然紧绷。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "72": ""
+        },
+        "branch_num": 1,
+        "parent_id": "70",
+        "children": [
+          "72"
+        ]
+      },
+      {
+        "id": "72",
+        "name": "Emily",
+        "content": "称呼呢？",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "73": ""
+        },
+        "branch_num": 1,
+        "parent_id": "71",
+        "children": [
+          "73"
+        ]
+      },
+      {
+        "id": "73",
+        "name": "Emily",
+        "content": "我叫你……亲爱的？",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "74": ""
+        },
+        "branch_num": 1,
+        "parent_id": "72",
+        "children": [
+          "74"
+        ]
+      },
+      {
+        "id": "74",
+        "name": "Emily",
+        "content": "不行，太肉麻。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "75": ""
+        },
+        "branch_num": 1,
+        "parent_id": "73",
+        "children": [
+          "75"
+        ]
+      },
+      {
+        "id": "75",
+        "name": "Emily",
+        "content": "叫名字？",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "76": ""
+        },
+        "branch_num": 1,
+        "parent_id": "74",
+        "children": [
+          "76"
+        ]
+      },
+      {
+        "id": "76",
+        "name": "Emily",
+        "content": "但热恋中的人该有昵称吧？",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "77": ""
+        },
+        "branch_num": 1,
+        "parent_id": "75",
+        "children": [
+          "77"
+        ]
+      },
+      {
+        "id": "77",
+        "name": "Emily",
+        "content": "我在分析这个的样子。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "咧嘴笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "78": ""
+        },
+        "branch_num": 1,
+        "parent_id": "76",
+        "children": [
+          "78"
+        ]
+      },
+      {
+        "id": "78",
+        "name": "Emily",
+        "content": "好像在做实验报告。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "咧嘴笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "79": ""
+        },
+        "branch_num": 1,
+        "parent_id": "77",
+        "children": [
+          "79"
+        ]
+      },
+      {
+        "id": "79",
+        "name": "旁白",
+        "content": "笑声缓解了尴尬。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "80": ""
+        },
+        "branch_num": 1,
+        "parent_id": "78",
+        "children": [
+          "80"
+        ]
+      },
+      {
+        "id": "80",
+        "name": "旁白",
+        "content": "她第三次挽住手臂时。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "81": ""
+        },
+        "branch_num": 1,
+        "parent_id": "79",
+        "children": [
+          "81"
+        ]
+      },
+      {
+        "id": "81",
+        "name": "旁白",
+        "content": "稍微放松了些。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "82": ""
+        },
+        "branch_num": 1,
+        "parent_id": "80",
+        "children": [
+          "82"
+        ]
+      },
+      {
+        "id": "82",
+        "name": "用户",
+        "content": "你妹妹的未婚夫是怎样的人？",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "83": ""
+        },
+        "branch_num": 1,
+        "parent_id": "81",
+        "children": [
+          "83"
+        ]
+      },
+      {
+        "id": "83",
+        "name": "Emily",
+        "content": "Mark是投行精英。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "84": ""
+        },
+        "branch_num": 1,
+        "parent_id": "82",
+        "children": [
+          "84"
+        ]
+      },
+      {
+        "id": "84",
+        "name": "Emily",
+        "content": "他家境好。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "85": ""
+        },
+        "branch_num": 1,
+        "parent_id": "83",
+        "children": [
+          "85"
+        ]
+      },
+      {
+        "id": "85",
+        "name": "Emily",
+        "content": "父母喜欢得不得了。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "86": ""
+        },
+        "branch_num": 1,
+        "parent_id": "84",
+        "children": [
+          "86"
+        ]
+      },
+      {
+        "id": "86",
+        "name": "Emily",
+        "content": "他对我妹妹很好。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "87": ""
+        },
+        "branch_num": 1,
+        "parent_id": "85",
+        "children": [
+          "87"
+        ]
+      },
+      {
+        "id": "87",
+        "name": "Emily",
+        "content": "只是每次他们在一起。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "88": ""
+        },
+        "branch_num": 1,
+        "parent_id": "86",
+        "children": [
+          "88"
+        ]
+      },
+      {
+        "id": "88",
+        "name": "Emily",
+        "content": "妈妈就会看我一眼。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "89": ""
+        },
+        "branch_num": 1,
+        "parent_id": "87",
+        "children": [
+          "89"
+        ]
+      },
+      {
+        "id": "89",
+        "name": "Emily",
+        "content": "那眼神在说“你看看别人”。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "90": ""
+        },
+        "branch_num": 1,
+        "parent_id": "88",
+        "children": [
+          "90"
+        ]
+      },
+      {
+        "id": "90",
+        "name": "用户",
+        "content": "你妈妈最在意什么？",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "91": ""
+        },
+        "branch_num": 1,
+        "parent_id": "89",
+        "children": [
+          "91"
+        ]
+      },
+      {
+        "id": "91",
+        "name": "Emily",
+        "content": "体面。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "傲娇",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "92": ""
+        },
+        "branch_num": 1,
+        "parent_id": "90",
+        "children": [
+          "92"
+        ]
+      },
+      {
+        "id": "92",
+        "name": "Emily",
+        "content": "稳定的工作很重要。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "傲娇",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "93": ""
+        },
+        "branch_num": 1,
+        "parent_id": "91",
+        "children": [
+          "93"
+        ]
+      },
+      {
+        "id": "93",
+        "name": "Emily",
+        "content": "良好的教养也重要。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "傲娇",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "94": ""
+        },
+        "branch_num": 1,
+        "parent_id": "92",
+        "children": [
+          "94"
+        ]
+      },
+      {
+        "id": "94",
+        "name": "Emily",
+        "content": "明确的未来规划更重要。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "傲娇",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "95": ""
+        },
+        "branch_num": 1,
+        "parent_id": "93",
+        "children": [
+          "95"
+        ]
+      },
+      {
+        "id": "95",
+        "name": "Emily",
+        "content": "她总说婚姻是女人最重要的选择。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "傲娇",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "96": ""
+        },
+        "branch_num": 1,
+        "parent_id": "94",
+        "children": [
+          "96"
+        ]
+      },
+      {
+        "id": "96",
+        "name": "Emily",
+        "content": "但我觉得她觉得婚姻是成就。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "傲娇",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "97": ""
+        },
+        "branch_num": 1,
+        "parent_id": "95",
+        "children": [
+          "97"
+        ]
+      },
+      {
+        "id": "97",
+        "name": "旁白",
+        "content": "沉默片刻。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "98": ""
+        },
+        "branch_num": 1,
+        "parent_id": "96",
+        "children": [
+          "98"
+        ]
+      },
+      {
+        "id": "98",
+        "name": "Emily",
+        "content": "有时候我觉得。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "流泪",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "99": ""
+        },
+        "branch_num": 1,
+        "parent_id": "97",
+        "children": [
+          "99"
+        ]
+      },
+      {
+        "id": "99",
+        "name": "Emily",
+        "content": "在他们眼里我永远不够好。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "流泪",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "100": ""
+        },
+        "branch_num": 1,
+        "parent_id": "98",
+        "children": [
+          "100"
+        ]
+      },
+      {
+        "id": "100",
+        "name": "Emily",
+        "content": "Lily成绩好、嫁得好。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "流泪",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "101": ""
+        },
+        "branch_num": 1,
+        "parent_id": "99",
+        "children": [
+          "101"
+        ]
+      },
+      {
+        "id": "101",
+        "name": "Emily",
+        "content": "我却是咖啡厅工作的女儿。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "流泪",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "102": ""
+        },
+        "branch_num": 1,
+        "parent_id": "100",
+        "children": [
+          "102"
+        ]
+      },
+      {
+        "id": "102",
+        "name": "Emily",
+        "content": "连我喜欢烘焙都被说。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "流泪",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "103": ""
+        },
+        "branch_num": 1,
+        "parent_id": "101",
+        "children": [
+          "103"
+        ]
+      },
+      {
+        "id": "103",
+        "name": "Emily",
+        "content": "妈妈说那不算正经事业。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "流泪",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "104": ""
+        },
+        "branch_num": 1,
+        "parent_id": "102",
+        "children": [
+          "104"
+        ]
+      },
+      {
+        "id": "104",
+        "name": "Emily",
+        "content": "抱歉。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "105": ""
+        },
+        "branch_num": 1,
+        "parent_id": "103",
+        "children": [
+          "105"
+        ]
+      },
+      {
+        "id": "105",
+        "name": "Emily",
+        "content": "我不该说这些。",
+        "background": "/pic_bg/20260327_071921/地点4.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "g4:106": ""
+        },
+        "branch_num": 1,
+        "parent_id": "104",
+        "children": [
+          "g4:106"
+        ]
+      }
+    ]
+  },
+  {
+    "dialogue_name": "深夜的邀约",
+    "site_description": "名称：Emily的卧室。地点：城市公寓楼内的独立卧室。装饰：米白色墙壁上挂着几幅小幅水彩画；靠窗摆放着一张原木色书桌，桌面整齐堆放着书籍和笔记本；单人床铺着浅蓝色格纹床单，床头靠垫略显蓬松；床头柜上有一盏暖黄色台灯，正散发出柔和光线；角落有一个白色衣柜，柜门半掩露出挂着的衣物；地板铺着浅灰色短绒地毯，一双拖鞋随意搁在床边。场景：深夜十一点，卧室仅靠台灯照明。Emily侧躺在床上，手机紧贴耳边。窗帘未完全拉拢，窗外透入零星城市灯光。房间安静，只有隐约传来的电话电流声。",
+    "dialogue_content": [
+      {
+        "id": "106",
+        "name": "旁白",
+        "content": "深夜十一点，Emily躺在床上，手机贴在耳边。",
+        "background": "/pic_bg/20260327_071921/地点5.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "107": ""
+        },
+        "branch_num": 1,
+        "parent_id": "g3:105",
+        "children": [
+          "107"
+        ]
+      },
+      {
+        "id": "107",
+        "name": "Emily",
+        "content": "我在想西装的事。",
+        "background": "/pic_bg/20260327_071921/地点5.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "108": ""
+        },
+        "branch_num": 1,
+        "parent_id": "106",
+        "children": [
+          "108"
+        ]
+      },
+      {
+        "id": "108",
+        "name": "Emily",
+        "content": "婚礼比较正式。",
+        "background": "/pic_bg/20260327_071921/地点5.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "109": ""
+        },
+        "branch_num": 1,
+        "parent_id": "107",
+        "children": [
+          "109"
+        ]
+      },
+      {
+        "id": "109",
+        "name": "Emily",
+        "content": "你需要西装吗？",
+        "background": "/pic_bg/20260327_071921/地点5.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "110": ""
+        },
+        "branch_num": 1,
+        "parent_id": "108",
+        "children": [
+          "110"
+        ]
+      },
+      {
+        "id": "110",
+        "name": "Emily",
+        "content": "我可以借我爸爸的。",
+        "background": "/pic_bg/20260327_071921/地点5.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "111": ""
+        },
+        "branch_num": 1,
+        "parent_id": "109",
+        "children": [
+          "111"
+        ]
+      },
+      {
+        "id": "111",
+        "name": "Emily",
+        "content": "他和你身材差不多。",
+        "background": "/pic_bg/20260327_071921/地点5.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "112": ""
+        },
+        "branch_num": 1,
+        "parent_id": "110",
+        "children": [
+          "112"
+        ]
+      },
+      {
+        "id": "112",
+        "name": "Emily",
+        "content": "或者……领带？",
+        "background": "/pic_bg/20260327_071921/地点5.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "113": ""
+        },
+        "branch_num": 1,
+        "parent_id": "111",
+        "children": [
+          "113"
+        ]
+      },
+      {
+        "id": "113",
+        "name": "Emily",
+        "content": "我有一条深蓝色的。",
+        "background": "/pic_bg/20260327_071921/地点5.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "114": ""
+        },
+        "branch_num": 1,
+        "parent_id": "112",
+        "children": [
+          "114"
+        ]
+      },
+      {
+        "id": "114",
+        "name": "Emily",
+        "content": "可能配你的衬衫。",
+        "background": "/pic_bg/20260327_071921/地点5.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "115": ""
+        },
+        "branch_num": 1,
+        "parent_id": "113",
+        "children": [
+          "115"
+        ]
+      },
+      {
+        "id": "115",
+        "name": "旁白",
+        "content": "她停顿，声音更轻了。",
+        "background": "/pic_bg/20260327_071921/地点5.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "116": ""
+        },
+        "branch_num": 1,
+        "parent_id": "114",
+        "children": [
+          "116"
+        ]
+      },
+      {
+        "id": "116",
+        "name": "Emily",
+        "content": "我今天路过西装店。",
+        "background": "/pic_bg/20260327_071921/地点5.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "117": ""
+        },
+        "branch_num": 1,
+        "parent_id": "115",
+        "children": [
+          "117"
+        ]
+      },
+      {
+        "id": "117",
+        "name": "Emily",
+        "content": "想象你穿正装的样子。",
+        "background": "/pic_bg/20260327_071921/地点5.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "118": ""
+        },
+        "branch_num": 1,
+        "parent_id": "116",
+        "children": [
+          "118"
+        ]
+      },
+      {
+        "id": "118",
+        "name": "Emily",
+        "content": "应该……会很好看。",
+        "background": "/pic_bg/20260327_071921/地点5.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "119": ""
+        },
+        "branch_num": 1,
+        "parent_id": "117",
+        "children": [
+          "119"
+        ]
+      },
+      {
+        "id": "119",
+        "name": "旁白",
+        "content": "电话那头安静了几秒。",
+        "background": "/pic_bg/20260327_071921/地点5.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "120": ""
+        },
+        "branch_num": 1,
+        "parent_id": "118",
+        "children": [
+          "120"
+        ]
+      },
+      {
+        "id": "120",
+        "name": "Emily",
+        "content": "我是不是说得太多了？",
+        "background": "/pic_bg/20260327_071921/地点5.png",
+        "character": "沮丧",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "121": ""
+        },
+        "branch_num": 1,
+        "parent_id": "119",
+        "children": [
+          "121"
+        ]
+      },
+      {
+        "id": "121",
+        "name": "Emily",
+        "content": "明天见。",
+        "background": "/pic_bg/20260327_071921/地点5.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "122": ""
+        },
+        "branch_num": 1,
+        "parent_id": "120",
+        "children": [
+          "122"
+        ]
+      },
+      {
+        "id": "122",
+        "name": "Emily",
+        "content": "八点，咖啡厅门口。",
+        "background": "/pic_bg/20260327_071921/地点5.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "123": ""
+        },
+        "branch_num": 1,
+        "parent_id": "121",
+        "children": [
+          "123"
+        ]
+      },
+      {
+        "id": "123",
+        "name": "Emily",
+        "content": "谢谢你……",
+        "background": "/pic_bg/20260327_071921/地点5.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "124": ""
+        },
+        "branch_num": 1,
+        "parent_id": "122",
+        "children": [
+          "124"
+        ]
+      },
+      {
+        "id": "124",
+        "name": "Emily",
+        "content": "真的。",
+        "background": "/pic_bg/20260327_071921/地点5.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "g5:125": ""
+        },
+        "branch_num": 1,
+        "parent_id": "123",
+        "children": [
+          "g5:125"
+        ]
+      }
+    ]
+  },
+  {
+    "dialogue_name": "橡树庄园婚礼草坪",
+    "site_description": "名称：橡树庄园婚礼草坪\n位置：庄园主建筑前庭的中央草坪区\n装饰：\n- 环绕草坪的百年橡树悬挂水晶灯串\n- 仪式区以纯白帷幔搭建拱形花廊\n- 廊柱缠绕香槟玫瑰与常春藤\n- 宾客座椅系浅紫纱缎蝴蝶结\n- 碎花瓣铺就的中央步道延伸至庄园台阶\n\n场景特征：\n- 草坪经修剪呈现丝绒质感\n- 东侧设弦乐演奏台，乐手着白色礼服\n- 西侧排列长桌，铺亚麻桌布与银器\n- 树荫下散落复古雕花铁艺座椅\n- 庄园建筑石墙上爬满蔷薇花枝\n- 阳光透过橡树叶投下斑驳光晕\n\n氛围：典雅浪漫中隐含仪式性的庄重，自然花香与乐器音色交织，视觉层次丰富而有序。",
+    "dialogue_content": [
+      {
+        "id": "125",
+        "name": "旁白",
+        "content": "橡树庄园入口，周六上午十点。",
+        "background": "/pic_bg/20260327_071921/地点6.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "126": ""
+        },
+        "branch_num": 1,
+        "parent_id": "g4:124",
+        "children": [
+          "126"
+        ]
+      },
+      {
+        "id": "126",
+        "name": "旁白",
+        "content": "婚礼场地奢华得令人屏息。",
+        "background": "/pic_bg/20260327_071921/地点6.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "127": ""
+        },
+        "branch_num": 1,
+        "parent_id": "125",
+        "children": [
+          "127"
+        ]
+      },
+      {
+        "id": "127",
+        "name": "旁白",
+        "content": "百年橡树环绕着宽阔草坪。",
+        "background": "/pic_bg/20260327_071921/地点6.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "128": ""
+        },
+        "branch_num": 1,
+        "parent_id": "126",
+        "children": [
+          "128"
+        ]
+      },
+      {
+        "id": "128",
+        "name": "旁白",
+        "content": "白色帷幔装饰着仪式区。",
+        "background": "/pic_bg/20260327_071921/地点6.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "129": ""
+        },
+        "branch_num": 1,
+        "parent_id": "127",
+        "children": [
+          "129"
+        ]
+      },
+      {
+        "id": "129",
+        "name": "旁白",
+        "content": "远处矗立古典风格庄园建筑。",
+        "background": "/pic_bg/20260327_071921/地点6.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "130": ""
+        },
+        "branch_num": 1,
+        "parent_id": "128",
+        "children": [
+          "130"
+        ]
+      },
+      {
+        "id": "130",
+        "name": "旁白",
+        "content": "空气中弥漫玫瑰花香。",
+        "background": "/pic_bg/20260327_071921/地点6.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "131": ""
+        },
+        "branch_num": 1,
+        "parent_id": "129",
+        "children": [
+          "131"
+        ]
+      },
+      {
+        "id": "131",
+        "name": "旁白",
+        "content": "弦乐四重奏旋律轻柔流淌。",
+        "background": "/pic_bg/20260327_071921/地点6.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "132": ""
+        },
+        "branch_num": 1,
+        "parent_id": "130",
+        "children": [
+          "132"
+        ]
+      },
+      {
+        "id": "132",
+        "name": "Emily",
+        "content": "我……准备好了吗？",
+        "background": "/pic_bg/20260327_071921/地点6.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "133": ""
+        },
+        "branch_num": 1,
+        "parent_id": "131",
+        "children": [
+          "133"
+        ]
+      },
+      {
+        "id": "133",
+        "name": "Emily",
+        "content": "不知是在问你还是问自己。",
+        "background": "/pic_bg/20260327_071921/地点6.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "134": ""
+        },
+        "branch_num": 1,
+        "parent_id": "132",
+        "children": [
+          "134"
+        ]
+      },
+      {
+        "id": "134",
+        "name": "Emily",
+        "content": "她深呼吸三次，整理裙摆。",
+        "background": "/pic_bg/20260327_071921/地点6.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "135": ""
+        },
+        "branch_num": 1,
+        "parent_id": "133",
+        "children": [
+          "135"
+        ]
+      },
+      {
+        "id": "135",
+        "name": "Emily",
+        "content": "浅丁香色连衣裙随风轻扬。",
+        "background": "/pic_bg/20260327_071921/地点6.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "136": ""
+        },
+        "branch_num": 1,
+        "parent_id": "134",
+        "children": [
+          "136"
+        ]
+      },
+      {
+        "id": "136",
+        "name": "Emily",
+        "content": "头发精心打理，发丝别耳后。",
+        "background": "/pic_bg/20260327_071921/地点6.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "137": ""
+        },
+        "branch_num": 1,
+        "parent_id": "135",
+        "children": [
+          "137"
+        ]
+      },
+      {
+        "id": "137",
+        "name": "Emily",
+        "content": "然后她挽住你的手臂。",
+        "background": "/pic_bg/20260327_071921/地点6.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "138": ""
+        },
+        "branch_num": 1,
+        "parent_id": "136",
+        "children": [
+          "138"
+        ]
+      },
+      {
+        "id": "138",
+        "name": "Emily",
+        "content": "这一次，动作自然了许多。",
+        "background": "/pic_bg/20260327_071921/地点6.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "g6:139": ""
+        },
+        "branch_num": 1,
+        "parent_id": "137",
+        "children": [
+          "g6:139"
+        ]
+      }
+    ]
+  },
+  {
+    "dialogue_name": "婚礼迎宾区",
+    "site_description": "酒店宴会厅前厅。浅金色墙面，水晶吊灯洒下柔和光线；入口处立着鲜花拱门（白玫瑰与香槟色桔梗交织），两侧摆放宾客签到台与礼金箱。地面铺深红绒毯，墙侧悬挂新婚纱照油画框。上午十点半，阳光透过高窗形成光斑，侍者托香槟盘穿梭，宾客低语声隐约可闻。",
+    "dialogue_content": [
+      {
+        "id": "139",
+        "name": "旁白",
+        "content": "迎宾区，上午十点半。",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "140": ""
+        },
+        "branch_num": 1,
+        "parent_id": "g5:138",
+        "children": [
+          "140"
+        ]
+      },
+      {
+        "id": "140",
+        "name": "Angel",
+        "content": "目光如扫描仪，从用户的鞋尖缓缓上移。",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "141": ""
+        },
+        "branch_num": 1,
+        "parent_id": "139",
+        "children": [
+          "141"
+        ]
+      },
+      {
+        "id": "141",
+        "name": "Angel",
+        "content": "最终定格在脸上。",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "142": ""
+        },
+        "branch_num": 1,
+        "parent_id": "140",
+        "children": [
+          "142"
+        ]
+      },
+      {
+        "id": "142",
+        "name": "Emily",
+        "content": "妈妈，这是……",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "143": ""
+        },
+        "branch_num": 1,
+        "parent_id": "141",
+        "children": [
+          "143"
+        ]
+      },
+      {
+        "id": "143",
+        "name": "Angel",
+        "content": "我知道，你电话里说过了。",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "144": ""
+        },
+        "branch_num": 1,
+        "parent_id": "142",
+        "children": [
+          "144"
+        ]
+      },
+      {
+        "id": "144",
+        "name": "Angel",
+        "content": "伸手相握，眼神仍评估着。",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "145": ""
+        },
+        "branch_num": 1,
+        "parent_id": "143",
+        "children": [
+          "145"
+        ]
+      },
+      {
+        "id": "145",
+        "name": "Angel",
+        "content": "欢迎。Emily终于带人回家了。",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "146": ""
+        },
+        "branch_num": 1,
+        "parent_id": "144",
+        "children": [
+          "146"
+        ]
+      },
+      {
+        "id": "146",
+        "name": "旁白",
+        "content": "握手有力而短暂。",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "147": ""
+        },
+        "branch_num": 1,
+        "parent_id": "145",
+        "children": [
+          "147"
+        ]
+      },
+      {
+        "id": "147",
+        "name": "Angel",
+        "content": "Andrew，过来。",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "咧嘴笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "148": ""
+        },
+        "branch_num": 1,
+        "parent_id": "146",
+        "children": [
+          "148"
+        ]
+      },
+      {
+        "id": "148",
+        "name": "Andrew",
+        "content": "沉默走近，向用户点头握手。",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "149": ""
+        },
+        "branch_num": 1,
+        "parent_id": "147",
+        "children": [
+          "149"
+        ]
+      },
+      {
+        "id": "149",
+        "name": "旁白",
+        "content": "他的打量隐蔽却仔细。",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "150": ""
+        },
+        "branch_num": 1,
+        "parent_id": "148",
+        "children": [
+          "150"
+        ]
+      },
+      {
+        "id": "150",
+        "name": "Angel",
+        "content": "做什么工作的？",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "咧嘴笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "151": ""
+        },
+        "branch_num": 1,
+        "parent_id": "149",
+        "children": [
+          "151"
+        ]
+      },
+      {
+        "id": "151",
+        "name": "旁白",
+        "content": "用户回答时，Emily紧张地捏了捏他的手臂。",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "152": ""
+        },
+        "branch_num": 1,
+        "parent_id": "150",
+        "children": [
+          "152"
+        ]
+      },
+      {
+        "id": "152",
+        "name": "Angel",
+        "content": "听起来很稳定。",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "153": ""
+        },
+        "branch_num": 1,
+        "parent_id": "151",
+        "children": [
+          "153"
+        ]
+      },
+      {
+        "id": "153",
+        "name": "Angel",
+        "content": "家庭呢？父母做什么的？",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "咧嘴笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "154": ""
+        },
+        "branch_num": 1,
+        "parent_id": "152",
+        "children": [
+          "154"
+        ]
+      },
+      {
+        "id": "154",
+        "name": "Emily",
+        "content": "妈妈——",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "沮丧",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "155": ""
+        },
+        "branch_num": 1,
+        "parent_id": "153",
+        "children": [
+          "155"
+        ]
+      },
+      {
+        "id": "155",
+        "name": "Angel",
+        "content": "只是正常了解。",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "傲娇",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "156": ""
+        },
+        "branch_num": 1,
+        "parent_id": "154",
+        "children": [
+          "156"
+        ]
+      },
+      {
+        "id": "156",
+        "name": "Angel",
+        "content": "难道我不该关心女儿男朋友的情况？",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "傲娇",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "157": ""
+        },
+        "branch_num": 1,
+        "parent_id": "155",
+        "children": [
+          "157"
+        ]
+      },
+      {
+        "id": "157",
+        "name": "旁白",
+        "content": "新娘Lily飘然而至，晨袍精致，容光焕发。",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "158": ""
+        },
+        "branch_num": 1,
+        "parent_id": "156",
+        "children": [
+          "158"
+        ]
+      },
+      {
+        "id": "158",
+        "name": "Lily",
+        "content": "目光在用户身上停留片刻。",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "咧嘴笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "159": ""
+        },
+        "branch_num": 1,
+        "parent_id": "157",
+        "children": [
+          "159"
+        ]
+      },
+      {
+        "id": "159",
+        "name": "Lily",
+        "content": "露出惊讶微笑。",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "咧嘴笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "160": ""
+        },
+        "branch_num": 1,
+        "parent_id": "158",
+        "children": [
+          "160"
+        ]
+      },
+      {
+        "id": "160",
+        "name": "Lily",
+        "content": "姐姐居然能找到这么体面的男朋友？",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "咧嘴笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "161": ""
+        },
+        "branch_num": 1,
+        "parent_id": "159",
+        "children": [
+          "161"
+        ]
+      },
+      {
+        "id": "161",
+        "name": "Lily",
+        "content": "拥抱Emily，声音甜美。",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "咧嘴笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "162": ""
+        },
+        "branch_num": 1,
+        "parent_id": "160",
+        "children": [
+          "162"
+        ]
+      },
+      {
+        "id": "162",
+        "name": "Lily",
+        "content": "我真为你高兴。",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "咧嘴笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "163": ""
+        },
+        "branch_num": 1,
+        "parent_id": "161",
+        "children": [
+          "163"
+        ]
+      },
+      {
+        "id": "163",
+        "name": "Lily",
+        "content": "终于有人能忍受你那挑剔的品味了。",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "咧嘴笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "164": ""
+        },
+        "branch_num": 1,
+        "parent_id": "162",
+        "children": [
+          "164"
+        ]
+      },
+      {
+        "id": "164",
+        "name": "旁白",
+        "content": "笑声清脆，但Emily的笑容有些僵硬。",
+        "background": "/pic_bg/20260327_071921/地点7.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "g7:165": ""
+        },
+        "branch_num": 1,
+        "parent_id": "163",
+        "children": [
+          "g7:165"
+        ]
+      }
+    ]
+  },
+  {
+    "dialogue_name": "圣光教堂婚礼殿堂",
+    "site_description": "教堂主厅内部。整体为古典欧式白色石砌建筑，高耸的穹顶悬挂着水晶吊灯，阳光透过彩色玻璃窗洒下斑斓光影。通道铺满新鲜白玫瑰花瓣，两侧每张长椅椅背系有香槟色绸带与铃兰小花束。祭坛以百合与绿藤缠绕成拱门，前方放置雕花木质讲台，台面搁置一本烫金封皮《圣经》。家庭区座椅套着米白色绒布坐垫，第二排左侧扶手处放有印着新人烫金姓名的婚礼流程册。正午阳光透过窗户形成光柱，空气中漂浮细微尘埃，宾客席低声絮语与管风琴演奏的婚礼进行曲交织，弥漫着温馨而庄重的氛围。",
+    "dialogue_content": [
+      {
+        "id": "165",
+        "name": "旁白",
+        "content": "宾客陆续落座，管风琴声如溪流般漫过教堂石壁。",
+        "background": "/pic_bg/20260327_071921/地点8.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "166": ""
+        },
+        "branch_num": 1,
+        "parent_id": "g6:164",
+        "children": [
+          "166"
+        ]
+      },
+      {
+        "id": "166",
+        "name": "旁白",
+        "content": "Emily与用户并肩坐在家庭区第二排，她望向铺满白花瓣的通道。",
+        "background": "/pic_bg/20260327_071921/地点8.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "167": ""
+        },
+        "branch_num": 1,
+        "parent_id": "165",
+        "children": [
+          "167"
+        ]
+      },
+      {
+        "id": "167",
+        "name": "旁白",
+        "content": "Lily挽着父亲缓步走过时，Emily眼眶渐渐泛起水光。",
+        "background": "/pic_bg/20260327_071921/地点8.png",
+        "character": "流泪",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "168": ""
+        },
+        "branch_num": 1,
+        "parent_id": "166",
+        "children": [
+          "168"
+        ]
+      },
+      {
+        "id": "168",
+        "name": "Emily",
+        "content": "我其实为她高兴。",
+        "background": "/pic_bg/20260327_071921/地点8.png",
+        "character": "流泪",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "169": ""
+        },
+        "branch_num": 1,
+        "parent_id": "167",
+        "children": [
+          "169"
+        ]
+      },
+      {
+        "id": "169",
+        "name": "Emily",
+        "content": "只是……有点累。",
+        "background": "/pic_bg/20260327_071921/地点8.png",
+        "character": "流泪",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "170": ""
+        },
+        "branch_num": 1,
+        "parent_id": "168",
+        "children": [
+          "170"
+        ]
+      },
+      {
+        "id": "170",
+        "name": "Emily",
+        "content": "这一切太完美了。",
+        "background": "/pic_bg/20260327_071921/地点8.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "171": ""
+        },
+        "branch_num": 1,
+        "parent_id": "169",
+        "children": [
+          "171"
+        ]
+      },
+      {
+        "id": "171",
+        "name": "Emily",
+        "content": "完美得让我喘不过气。",
+        "background": "/pic_bg/20260327_071921/地点8.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "172": ""
+        },
+        "branch_num": 1,
+        "parent_id": "170",
+        "children": [
+          "172"
+        ]
+      },
+      {
+        "id": "172",
+        "name": "旁白",
+        "content": "牧师立于祭坛前，双手轻抚《圣经》。",
+        "background": "/pic_bg/20260327_071921/地点8.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "173": ""
+        },
+        "branch_num": 1,
+        "parent_id": "171",
+        "children": [
+          "173"
+        ]
+      },
+      {
+        "id": "173",
+        "name": "牧师",
+        "content": "无论富有或贫穷。",
+        "background": "/pic_bg/20260327_071921/地点8.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "174": ""
+        },
+        "branch_num": 1,
+        "parent_id": "172",
+        "children": [
+          "174"
+        ]
+      },
+      {
+        "id": "174",
+        "name": "牧师",
+        "content": "健康或疾病。",
+        "background": "/pic_bg/20260327_071921/地点8.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "175": ""
+        },
+        "branch_num": 1,
+        "parent_id": "173",
+        "children": [
+          "175"
+        ]
+      },
+      {
+        "id": "175",
+        "name": "旁白",
+        "content": "当誓言回荡时，Emily手指无意轻触用户的手。",
+        "background": "/pic_bg/20260327_071921/地点8.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "176": ""
+        },
+        "branch_num": 1,
+        "parent_id": "174",
+        "children": [
+          "176"
+        ]
+      },
+      {
+        "id": "176",
+        "name": "旁白",
+        "content": "她没有移开，指尖传来温暖的颤动。",
+        "background": "/pic_bg/20260327_071921/地点8.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "g8:177": ""
+        },
+        "branch_num": 1,
+        "parent_id": "175",
+        "children": [
+          "g8:177"
+        ]
+      }
+    ]
+  },
+  {
+    "dialogue_name": "水晶宫宴会厅",
+    "site_description": "地点位于五星级酒店三层。挑高七米的穹顶悬挂着三千颗施华洛世奇水晶灯，墙面覆盖香槟色丝绸软包，镶嵌古典主义鎏金浮雕。十二张铺着象牙白提花桌布的长桌呈扇形排列，每桌中央摆放由白玫瑰与满天星组成的花艺球。舞台背景是六米宽的动态光幕，实时流淌着银河系星云影像。场景是午宴进行至甜点环节，宾客们手持香槟杯穿梭交谈。西侧落地窗外可见城市天际线，阳光透过蕾丝纱帘在波斯地毯上投下菱形光斑。",
+    "dialogue_content": [
+      {
+        "id": "177",
+        "name": "旁白",
+        "content": "鸡尾酒会与午宴交织成社交战场。",
+        "background": "/pic_bg/20260327_071921/地点9.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "178": ""
+        },
+        "branch_num": 1,
+        "parent_id": "g7:176",
+        "children": [
+          "178"
+        ]
+      },
+      {
+        "id": "178",
+        "name": "Susan",
+        "content": "Emily亲爱的，什么时候轮到你们啊？",
+        "background": "/pic_bg/20260327_071921/地点9.png",
+        "character": "咧嘴笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "179": ""
+        },
+        "branch_num": 1,
+        "parent_id": "177",
+        "children": [
+          "179"
+        ]
+      },
+      {
+        "id": "179",
+        "name": "用户",
+        "content": "我们在享受现在的阶段。",
+        "background": "/pic_bg/20260327_071921/地点9.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "180": ""
+        },
+        "branch_num": 1,
+        "parent_id": "178",
+        "children": [
+          "180"
+        ]
+      },
+      {
+        "id": "180",
+        "name": "Grace",
+        "content": "你们怎么认识的？哦，咖啡厅？",
+        "background": "/pic_bg/20260327_071921/地点9.png",
+        "character": "傲娇",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "181": ""
+        },
+        "branch_num": 1,
+        "parent_id": "179",
+        "children": [
+          "181"
+        ]
+      },
+      {
+        "id": "181",
+        "name": "Grace",
+        "content": "真浪漫……不过Emily，你还在那里工作吗？",
+        "background": "/pic_bg/20260327_071921/地点9.png",
+        "character": "傲娇",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "182": ""
+        },
+        "branch_num": 1,
+        "parent_id": "180",
+        "children": [
+          "182"
+        ]
+      },
+      {
+        "id": "182",
+        "name": "用户",
+        "content": "Emily的烘焙手艺很棒。",
+        "background": "/pic_bg/20260327_071921/地点9.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "183": ""
+        },
+        "branch_num": 1,
+        "parent_id": "181",
+        "children": [
+          "183"
+        ]
+      },
+      {
+        "id": "183",
+        "name": "用户",
+        "content": "她在研发自己的配方。",
+        "background": "/pic_bg/20260327_071921/地点9.png",
+        "character": "咧嘴笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "184": ""
+        },
+        "branch_num": 1,
+        "parent_id": "182",
+        "children": [
+          "184"
+        ]
+      },
+      {
+        "id": "184",
+        "name": "Robert",
+        "content": "打算什么时候买房？现在利率不错。",
+        "background": "/pic_bg/20260327_071921/地点9.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "185": ""
+        },
+        "branch_num": 1,
+        "parent_id": "183",
+        "children": [
+          "185"
+        ]
+      },
+      {
+        "id": "185",
+        "name": "用户",
+        "content": "今天该先为新人举杯。",
+        "background": "/pic_bg/20260327_071921/地点9.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "186": ""
+        },
+        "branch_num": 1,
+        "parent_id": "184",
+        "children": [
+          "186"
+        ]
+      },
+      {
+        "id": "186",
+        "name": "旁白",
+        "content": "香槟塔折射出彩虹光晕。",
+        "background": "/pic_bg/20260327_071921/地点9.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "187": ""
+        },
+        "branch_num": 1,
+        "parent_id": "185",
+        "children": [
+          "187"
+        ]
+      },
+      {
+        "id": "187",
+        "name": "侍应生",
+        "content": "抱歉！",
+        "background": "/pic_bg/20260327_071921/地点9.png",
+        "character": "沮丧",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "188": ""
+        },
+        "branch_num": 1,
+        "parent_id": "186",
+        "children": [
+          "188"
+        ]
+      },
+      {
+        "id": "188",
+        "name": "用户",
+        "content": "小心。",
+        "background": "/pic_bg/20260327_071921/地点9.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "189": ""
+        },
+        "branch_num": 1,
+        "parent_id": "187",
+        "children": [
+          "189"
+        ]
+      },
+      {
+        "id": "189",
+        "name": "Emily",
+        "content": "谢谢。",
+        "background": "/pic_bg/20260327_071921/地点9.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "190": ""
+        },
+        "branch_num": 1,
+        "parent_id": "188",
+        "children": [
+          "190"
+        ]
+      },
+      {
+        "id": "190",
+        "name": "Emily",
+        "content": "其实……",
+        "background": "/pic_bg/20260327_071921/地点9.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "191": ""
+        },
+        "branch_num": 1,
+        "parent_id": "189",
+        "children": [
+          "191"
+        ]
+      },
+      {
+        "id": "191",
+        "name": "Emily",
+        "content": "杏仁酥里加了橙花蜜。",
+        "background": "/pic_bg/20260327_071921/地点9.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "192": ""
+        },
+        "branch_num": 1,
+        "parent_id": "190",
+        "children": [
+          "192"
+        ]
+      },
+      {
+        "id": "192",
+        "name": "旁白",
+        "content": "水晶灯忽然格外璀璨。",
+        "background": "/pic_bg/20260327_071921/地点9.png",
+        "character": "咧嘴笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "g9:193": ""
+        },
+        "branch_num": 1,
+        "parent_id": "191",
+        "children": [
+          "g9:193"
+        ]
+      }
+    ]
+  },
+  {
+    "dialogue_name": "月光下的舞步",
+    "site_description": "名称：格兰德宴会厅舞池区\n地点：位于格兰德酒店主楼三层，是宴会厅的核心区域。\n装饰与场景：\n舞池地面由光洁的深色硬木铺成，在灯光下泛着温润的光泽。\n舞池上方，数盏巨大的多层水晶吊灯悬挂，折射出璀璨如星的光芒。\n舞池一侧设有小型舞台，一支身着黑色礼服的弦乐队正在现场演奏。\n舞池边缘装饰着高大的绿植和白色罗马柱，柱身缠绕着清新的常春藤与暖白色小串灯。\n四周摆放着铺有白色桌布的小圆桌，桌上点缀着精致的中央花饰。\n整体氛围优雅而梦幻，空气中弥漫着淡淡的花香与音乐声。",
+    "dialogue_content": [
+      {
+        "id": "193",
+        "name": "旁白",
+        "content": "舞池中，慢舞环节开始。",
+        "background": "/pic_bg/20260327_071921/地点10.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "194": ""
+        },
+        "branch_num": 1,
+        "parent_id": "g8:192",
+        "children": [
+          "194"
+        ]
+      },
+      {
+        "id": "194",
+        "name": "旁白",
+        "content": "弦乐队正演奏着《月光》。",
+        "background": "/pic_bg/20260327_071921/地点10.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "195": ""
+        },
+        "branch_num": 1,
+        "parent_id": "193",
+        "children": [
+          "195"
+        ]
+      },
+      {
+        "id": "195",
+        "name": "Emily",
+        "content": "我们得跳一支舞。",
+        "background": "/pic_bg/20260327_071921/地点10.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "196": ""
+        },
+        "branch_num": 1,
+        "parent_id": "194",
+        "children": [
+          "196"
+        ]
+      },
+      {
+        "id": "196",
+        "name": "Emily",
+        "content": "不然妈妈会怀疑的。",
+        "background": "/pic_bg/20260327_071921/地点10.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "197": ""
+        },
+        "branch_num": 1,
+        "parent_id": "195",
+        "children": [
+          "197"
+        ]
+      },
+      {
+        "id": "197",
+        "name": "旁白",
+        "content": "两人步入舞池。",
+        "background": "/pic_bg/20260327_071921/地点10.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "198": ""
+        },
+        "branch_num": 1,
+        "parent_id": "196",
+        "children": [
+          "198"
+        ]
+      },
+      {
+        "id": "198",
+        "name": "旁白",
+        "content": "Emily起初身体有些僵硬。",
+        "background": "/pic_bg/20260327_071921/地点10.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "199": ""
+        },
+        "branch_num": 1,
+        "parent_id": "197",
+        "children": [
+          "199"
+        ]
+      },
+      {
+        "id": "199",
+        "name": "旁白",
+        "content": "随着音乐，她逐渐放松下来。",
+        "background": "/pic_bg/20260327_071921/地点10.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "200": ""
+        },
+        "branch_num": 1,
+        "parent_id": "198",
+        "children": [
+          "200"
+        ]
+      },
+      {
+        "id": "200",
+        "name": "旁白",
+        "content": "她的手轻轻搭在用户肩上。",
+        "background": "/pic_bg/20260327_071921/地点10.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "201": ""
+        },
+        "branch_num": 1,
+        "parent_id": "199",
+        "children": [
+          "201"
+        ]
+      },
+      {
+        "id": "201",
+        "name": "Emily",
+        "content": "谢谢你。",
+        "background": "/pic_bg/20260327_071921/地点10.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "202": ""
+        },
+        "branch_num": 1,
+        "parent_id": "200",
+        "children": [
+          "202"
+        ]
+      },
+      {
+        "id": "202",
+        "name": "Emily",
+        "content": "今天……我好像没那么透明了。",
+        "background": "/pic_bg/20260327_071921/地点10.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "203": ""
+        },
+        "branch_num": 1,
+        "parent_id": "201",
+        "children": [
+          "203"
+        ]
+      },
+      {
+        "id": "203",
+        "name": "Emily",
+        "content": "他们看我的时候，终于不是‘单身的Emily’。",
+        "background": "/pic_bg/20260327_071921/地点10.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "204": ""
+        },
+        "branch_num": 1,
+        "parent_id": "202",
+        "children": [
+          "204"
+        ]
+      },
+      {
+        "id": "204",
+        "name": "Emily",
+        "content": "而是‘有男友的Emily’。",
+        "background": "/pic_bg/20260327_071921/地点10.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "205": ""
+        },
+        "branch_num": 1,
+        "parent_id": "203",
+        "children": [
+          "205"
+        ]
+      },
+      {
+        "id": "205",
+        "name": "Emily",
+        "content": "虽然这很可悲，但……",
+        "background": "/pic_bg/20260327_071921/地点10.png",
+        "character": "沮丧",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "206": ""
+        },
+        "branch_num": 1,
+        "parent_id": "204",
+        "children": [
+          "206"
+        ]
+      },
+      {
+        "id": "206",
+        "name": "旁白",
+        "content": "她抬起头，橄榄绿的眼睛闪烁着。",
+        "background": "/pic_bg/20260327_071921/地点10.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "207": ""
+        },
+        "branch_num": 1,
+        "parent_id": "205",
+        "children": [
+          "207"
+        ]
+      },
+      {
+        "id": "207",
+        "name": "Emily",
+        "content": "你对我笑的第三次。",
+        "background": "/pic_bg/20260327_071921/地点10.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "208": ""
+        },
+        "branch_num": 1,
+        "parent_id": "206",
+        "children": [
+          "208"
+        ]
+      },
+      {
+        "id": "208",
+        "name": "Emily",
+        "content": "在回答姨妈问题的时候。",
+        "background": "/pic_bg/20260327_071921/地点10.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "209": ""
+        },
+        "branch_num": 1,
+        "parent_id": "207",
+        "children": [
+          "209"
+        ]
+      },
+      {
+        "id": "209",
+        "name": "Emily",
+        "content": "我差点忘了我们是假的。",
+        "background": "/pic_bg/20260327_071921/地点10.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "210": ""
+        },
+        "branch_num": 1,
+        "parent_id": "208",
+        "children": [
+          "210"
+        ]
+      },
+      {
+        "id": "210",
+        "name": "旁白",
+        "content": "音乐悠扬，周围是旋转的礼服。",
+        "background": "/pic_bg/20260327_071921/地点10.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "211": ""
+        },
+        "branch_num": 1,
+        "parent_id": "209",
+        "children": [
+          "211"
+        ]
+      },
+      {
+        "id": "211",
+        "name": "旁白",
+        "content": "幸福的笑脸环绕着他们。",
+        "background": "/pic_bg/20260327_071921/地点10.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "212": ""
+        },
+        "branch_num": 1,
+        "parent_id": "210",
+        "children": [
+          "212"
+        ]
+      },
+      {
+        "id": "212",
+        "name": "旁白",
+        "content": "在这个充满谎言的场景里。",
+        "background": "/pic_bg/20260327_071921/地点10.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "213": ""
+        },
+        "branch_num": 1,
+        "parent_id": "211",
+        "children": [
+          "213"
+        ]
+      },
+      {
+        "id": "213",
+        "name": "旁白",
+        "content": "某些真实的东西正在悄然生长。",
+        "background": "/pic_bg/20260327_071921/地点10.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "g10:214": ""
+        },
+        "branch_num": 1,
+        "parent_id": "212",
+        "children": [
+          "g10:214"
+        ]
+      }
+    ]
+  },
+  {
+    "dialogue_name": "第一幕",
+    "site_description": "一间昏暗的办公室，深夜，只有电脑屏幕发出微光。窗外偶尔有车灯闪过，照亮室内杂乱的桌面。桌上散落着文件和一只倾倒的咖啡杯，咖啡液正漫过纸张。",
+    "dialogue_content": [
+      {
+        "id": "214",
+        "name": "旁白",
+        "content": "昏暗的办公室，深夜。李伟独自坐在电脑前。",
+        "background": "/pic_bg/20260327_071921/地点11.png",
+        "character": "沮丧",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "215": ""
+        },
+        "branch_num": 1,
+        "parent_id": "g9:213",
+        "children": [
+          "215"
+        ]
+      },
+      {
+        "id": "215",
+        "name": "李伟",
+        "content": "数据对不上……一定漏了什么。",
+        "background": "/pic_bg/20260327_071921/地点11.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "216": ""
+        },
+        "branch_num": 1,
+        "parent_id": "214",
+        "children": [
+          "216"
+        ]
+      },
+      {
+        "id": "216",
+        "name": "旁白",
+        "content": "他拿起冷咖啡喝了一口，皱眉。",
+        "background": "/pic_bg/20260327_071921/地点11.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "217": ""
+        },
+        "branch_num": 1,
+        "parent_id": "215",
+        "children": [
+          "217"
+        ]
+      },
+      {
+        "id": "217",
+        "name": "旁白",
+        "content": "电话响起，李伟迟疑后接起。",
+        "background": "/pic_bg/20260327_071921/地点11.png",
+        "character": "沮丧",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "218": ""
+        },
+        "branch_num": 1,
+        "parent_id": "216",
+        "children": [
+          "218"
+        ]
+      },
+      {
+        "id": "218",
+        "name": "李伟",
+        "content": "喂？",
+        "background": "/pic_bg/20260327_071921/地点11.png",
+        "character": "沮丧",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "219": ""
+        },
+        "branch_num": 1,
+        "parent_id": "217",
+        "children": [
+          "219"
+        ]
+      },
+      {
+        "id": "219",
+        "name": "旁白",
+        "content": "电话那头传来急促的说话声。",
+        "background": "/pic_bg/20260327_071921/地点11.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "220": ""
+        },
+        "branch_num": 1,
+        "parent_id": "218",
+        "children": [
+          "220"
+        ]
+      },
+      {
+        "id": "220",
+        "name": "李伟",
+        "content": "什么时候的事？",
+        "background": "/pic_bg/20260327_071921/地点11.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "221": ""
+        },
+        "branch_num": 1,
+        "parent_id": "219",
+        "children": [
+          "221"
+        ]
+      },
+      {
+        "id": "221",
+        "name": "旁白",
+        "content": "他猛地站起，碰倒了咖啡杯。",
+        "background": "/pic_bg/20260327_071921/地点11.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "g11:222": ""
+        },
+        "branch_num": 1,
+        "parent_id": "220",
+        "children": [
+          "g11:222"
+        ]
+      }
+    ]
+  },
+  {
+    "dialogue_name": "第一幕",
+    "site_description": "一间深夜依然亮着灯的办公室，光线昏暗，只有电脑屏幕是主要光源。窗外是城市的夜景，偶尔有车辆驶过，车灯的光影短暂地划过室内。室内陈设简单，桌上散落着文件和一杯冷掉的咖啡，空气中弥漫着疲惫与紧张的气息。",
+    "dialogue_content": [
+      {
+        "id": "222",
+        "name": "旁白",
+        "content": "昏暗的办公室，深夜。李伟独自坐在电脑前，屏幕光映在他疲惫的脸上。窗外偶尔有车灯闪过。",
+        "background": "/pic_bg/20260327_071921/地点12.png",
+        "character": "沮丧",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "223": ""
+        },
+        "branch_num": 1,
+        "parent_id": "g10:221",
+        "children": [
+          "223"
+        ]
+      },
+      {
+        "id": "223",
+        "name": "李伟",
+        "content": "数据对不上……一定漏了什么。",
+        "background": "/pic_bg/20260327_071921/地点12.png",
+        "character": "沮丧",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "224": ""
+        },
+        "branch_num": 1,
+        "parent_id": "222",
+        "children": [
+          "224"
+        ]
+      },
+      {
+        "id": "224",
+        "name": "旁白",
+        "content": "他拿起桌边的冷咖啡喝了一口，皱眉。键盘敲击声在寂静中格外清晰。突然，门被推开。王静站在门口，手里拿着文件夹。",
+        "background": "/pic_bg/20260327_071921/地点12.png",
+        "character": "沮丧",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "225": ""
+        },
+        "branch_num": 1,
+        "parent_id": "223",
+        "children": [
+          "225"
+        ]
+      },
+      {
+        "id": "225",
+        "name": "王静",
+        "content": "还在查？",
+        "background": "/pic_bg/20260327_071921/地点12.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "226": ""
+        },
+        "branch_num": 1,
+        "parent_id": "224",
+        "children": [
+          "226"
+        ]
+      },
+      {
+        "id": "226",
+        "name": "李伟",
+        "content": "嗯。你也没走？",
+        "background": "/pic_bg/20260327_071921/地点12.png",
+        "character": "沮丧",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "227": ""
+        },
+        "branch_num": 1,
+        "parent_id": "225",
+        "children": [
+          "227"
+        ]
+      },
+      {
+        "id": "227",
+        "name": "旁白",
+        "content": "王静走近，将文件夹放在桌上。",
+        "background": "/pic_bg/20260327_071921/地点12.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "228": ""
+        },
+        "branch_num": 1,
+        "parent_id": "226",
+        "children": [
+          "228"
+        ]
+      },
+      {
+        "id": "228",
+        "name": "王静",
+        "content": "财务部的备份记录。我想你可能需要。",
+        "background": "/pic_bg/20260327_071921/地点12.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "229": ""
+        },
+        "branch_num": 1,
+        "parent_id": "227",
+        "children": [
+          "229"
+        ]
+      },
+      {
+        "id": "229",
+        "name": "旁白",
+        "content": "李伟抬头看她，眼神复杂。停顿片刻。",
+        "background": "/pic_bg/20260327_071921/地点12.png",
+        "character": "沮丧",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "230": ""
+        },
+        "branch_num": 1,
+        "parent_id": "228",
+        "children": [
+          "230"
+        ]
+      },
+      {
+        "id": "230",
+        "name": "李伟",
+        "content": "谢谢。",
+        "background": "/pic_bg/20260327_071921/地点12.png",
+        "character": "沮丧",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "231": ""
+        },
+        "branch_num": 1,
+        "parent_id": "229",
+        "children": [
+          "231"
+        ]
+      },
+      {
+        "id": "231",
+        "name": "王静",
+        "content": "不客气。毕竟……我们都是这条船上的人。",
+        "background": "/pic_bg/20260327_071921/地点12.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "232": ""
+        },
+        "branch_num": 1,
+        "parent_id": "230",
+        "children": [
+          "232"
+        ]
+      },
+      {
+        "id": "232",
+        "name": "旁白",
+        "content": "电话铃声骤然响起。两人对视，气氛凝固。",
+        "background": "/pic_bg/20260327_071921/地点12.png",
+        "character": "痛苦",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "g12:233": ""
+        },
+        "branch_num": 1,
+        "parent_id": "231",
+        "children": [
+          "g12:233"
+        ]
+      }
+    ]
+  },
+  {
+    "dialogue_name": "梧桐街夜巷",
+    "site_description": "名称：梧桐街夜巷\n地点：城市中心区西侧，连接商业区与住宅区的步行街道\n场景时间：周六晚上九点后\n\n装饰与场景细节：\n- 街道宽约八米，地面铺陈浅灰色花岗岩地砖，部分砖缝间钻出细小野草\n- 两侧栽种法国梧桐，树龄约二十年，枝叶在路灯下投出斑驳影子\n- 每间隔十五米设一盏复古铸铁路灯，灯罩为磨砂玻璃，散发暖黄色光晕\n- 右侧有一排关闭的精品店，其中一家烘焙坊橱窗内陈列着仿真蛋糕模型\n- 左侧为红砖墙住宅区围墙，墙上爬着部分枯萎的爬山虎\n- 街道中段设有一个长木椅，椅边立着铸铁垃圾桶\n- 空气中飘散着淡淡桂花香与远处咖啡店隐约飘来的烘焙气息\n- 地面微湿，似傍晚下过细雨，反射着路灯碎金般的光点\n- 远处偶尔传来电车驶过的轻微声响，更衬出街道的宁静\n\n整体氛围：静谧、略带凉意的秋夜街道，充满生活痕迹与温柔光感，为人物对话提供舒缓而私密的叙事空间。",
+    "dialogue_content": [
+      {
+        "id": "233",
+        "name": "旁白",
+        "content": "周六夜晚九点，城市街道安静延伸。",
+        "background": "/pic_bg/20260327_071921/地点13.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "234": ""
+        },
+        "branch_num": 1,
+        "parent_id": "g11:232",
+        "children": [
+          "234"
+        ]
+      },
+      {
+        "id": "234",
+        "name": "旁白",
+        "content": "路灯昏黄，将人影拉长又缩短。",
+        "background": "/pic_bg/20260327_071921/地点13.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "235": ""
+        },
+        "branch_num": 1,
+        "parent_id": "233",
+        "children": [
+          "235"
+        ]
+      },
+      {
+        "id": "235",
+        "name": "Emily",
+        "content": "今天你说的话……关于我梦想开烘焙坊。",
+        "background": "/pic_bg/20260327_071921/地点13.png",
+        "character": "害羞",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "236": ""
+        },
+        "branch_num": 1,
+        "parent_id": "234",
+        "children": [
+          "236"
+        ]
+      },
+      {
+        "id": "236",
+        "name": "Emily",
+        "content": "我从没告诉家人。",
+        "background": "/pic_bg/20260327_071921/地点13.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "237": ""
+        },
+        "branch_num": 1,
+        "parent_id": "235",
+        "children": [
+          "237"
+        ]
+      },
+      {
+        "id": "237",
+        "name": "Emily",
+        "content": "他们觉得那只是小爱好。",
+        "background": "/pic_bg/20260327_071921/地点13.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "238": ""
+        },
+        "branch_num": 1,
+        "parent_id": "236",
+        "children": [
+          "238"
+        ]
+      },
+      {
+        "id": "238",
+        "name": "用户",
+        "content": "但它就是真正的事业。",
+        "background": "/pic_bg/20260327_071921/地点13.png",
+        "character": "咧嘴笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "239": ""
+        },
+        "branch_num": 1,
+        "parent_id": "237",
+        "children": [
+          "239"
+        ]
+      },
+      {
+        "id": "239",
+        "name": "用户",
+        "content": "你做的可颂是全城最好的。",
+        "background": "/pic_bg/20260327_071921/地点13.png",
+        "character": "咧嘴笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "240": ""
+        },
+        "branch_num": 1,
+        "parent_id": "238",
+        "children": [
+          "240"
+        ]
+      },
+      {
+        "id": "240",
+        "name": "Emily",
+        "content": "你把它说得很认真。",
+        "background": "/pic_bg/20260327_071921/地点13.png",
+        "character": "流泪",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "241": ""
+        },
+        "branch_num": 1,
+        "parent_id": "239",
+        "children": [
+          "241"
+        ]
+      },
+      {
+        "id": "241",
+        "name": "Emily",
+        "content": "姨妈眼神都变了。",
+        "background": "/pic_bg/20260327_071921/地点13.png",
+        "character": "流泪",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "242": ""
+        },
+        "branch_num": 1,
+        "parent_id": "240",
+        "children": [
+          "242"
+        ]
+      },
+      {
+        "id": "242",
+        "name": "用户",
+        "content": "你比他们想的坚强得多。",
+        "background": "/pic_bg/20260327_071921/地点13.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "243": ""
+        },
+        "branch_num": 1,
+        "parent_id": "241",
+        "children": [
+          "243"
+        ]
+      },
+      {
+        "id": "243",
+        "name": "用户",
+        "content": "每天清晨五点就开始工作。",
+        "background": "/pic_bg/20260327_071921/地点13.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "244": ""
+        },
+        "branch_num": 1,
+        "parent_id": "242",
+        "children": [
+          "244"
+        ]
+      },
+      {
+        "id": "244",
+        "name": "用户",
+        "content": "记住几十个客人喜好。",
+        "background": "/pic_bg/20260327_071921/地点13.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "245": ""
+        },
+        "branch_num": 1,
+        "parent_id": "243",
+        "children": [
+          "245"
+        ]
+      },
+      {
+        "id": "245",
+        "name": "用户",
+        "content": "深夜还研发新配方。",
+        "background": "/pic_bg/20260327_071921/地点13.png",
+        "character": "咧嘴笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "246": ""
+        },
+        "branch_num": 1,
+        "parent_id": "244",
+        "children": [
+          "246"
+        ]
+      },
+      {
+        "id": "246",
+        "name": "用户",
+        "content": "这不是“只是服务员”。",
+        "background": "/pic_bg/20260327_071921/地点13.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "247": ""
+        },
+        "branch_num": 1,
+        "parent_id": "245",
+        "children": [
+          "247"
+        ]
+      },
+      {
+        "id": "247",
+        "name": "用户",
+        "content": "这是毅力、热情和才华。",
+        "background": "/pic_bg/20260327_071921/地点13.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "248": ""
+        },
+        "branch_num": 1,
+        "parent_id": "246",
+        "children": [
+          "248"
+        ]
+      },
+      {
+        "id": "248",
+        "name": "Emily",
+        "content": "谢谢……",
+        "background": "/pic_bg/20260327_071921/地点13.png",
+        "character": "流泪",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "249": ""
+        },
+        "branch_num": 1,
+        "parent_id": "247",
+        "children": [
+          "249"
+        ]
+      },
+      {
+        "id": "249",
+        "name": "Emily",
+        "content": "声音很轻。",
+        "background": "/pic_bg/20260327_071921/地点13.png",
+        "character": "流泪",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "250": ""
+        },
+        "branch_num": 1,
+        "parent_id": "248",
+        "children": [
+          "250"
+        ]
+      },
+      {
+        "id": "250",
+        "name": "旁白",
+        "content": "Emily停下脚步，眼睛闪着光。",
+        "background": "/pic_bg/20260327_071921/地点13.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {
+          "251": ""
+        },
+        "branch_num": 1,
+        "parent_id": "249",
+        "children": [
+          "251"
+        ]
+      },
+      {
+        "id": "251",
+        "name": "旁白",
+        "content": "她转头看向街角橱窗。",
+        "background": "/pic_bg/20260327_071921/地点13.png",
+        "character": "微笑",
+        "music": "",
+        "sound": "",
+        "transition": "",
+        "menu": [],
+        "setOrChangeFlag": "",
+        "checkFlag": {},
+        "branch_num": 0,
+        "parent_id": "250",
+        "children": []
+      }
+    ]
+  }
+]

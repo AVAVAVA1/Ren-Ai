@@ -3,7 +3,7 @@ from pydantic import BaseModel, Field
 from typing import List, Literal, get_args
 from app.services import tools
 
-CharacterExpression = Literal['咧嘴笑', '沮丧', '流泪', '微笑', '痛苦', '害羞', '傲娇']
+CharacterExpression = Literal['happy', 'depression', 'crying', 'smile', 'surprise', 'shy', 'tsundere','anger','sad']
 expression_ls = list(get_args(CharacterExpression))
 
 

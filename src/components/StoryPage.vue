@@ -1,9 +1,29 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted, nextTick } from 'vue'
 
 const emit = defineEmits(['open-flow'])
 
-const storyContent = ref('')
+let _segUidSeq = 0
+function makeSegUid() {
+  _segUidSeq += 1
+  let rnd = ''
+  try {
+    const c = globalThis.crypto
+    if (c && typeof c.randomUUID === 'function') {
+      rnd = c.randomUUID()
+    }
+  } catch {
+    /* ignore */
+  }
+  if (!rnd) {
+    rnd = `${Math.random().toString(36).slice(2)}${Date.now()}`
+  }
+  return `s_${Date.now()}_${_segUidSeq}_${rnd}`
+}
+
+/** 大纲编辑：文本段 + 角色卡（界面仅显示角色名小块，提交时再展开为完整信息） */
+const storySegments = ref([{ type: 'text', uid: makeSegUid(), content: '' }])
+
 const isGenerating = ref(false)
 const currentStage = ref('')
 const progress = ref(0)
@@ -13,7 +33,7 @@ const editorPlaceholder = `在这里输入故事大纲...
 
 可以包含：
 • 故事背景设定
-• 主要角色介绍（可点击"选择角色"导入角色卡信息）
+• 主要角色介绍（点「选择角色」后以角色名小标签显示；生成故事时仍会提交完整角色卡信息）
 • 情节发展脉络
 • 关键转折点
 • 结局走向
@@ -35,6 +55,49 @@ const API_BASE_URL = 'http://localhost:8000'
 /** 一键生成完成后，后端 SSE 下发的原始对话列表，用于导出流程图 JSON */
 const lastDialogueResults = ref(null)
 const isExportingFlow = ref(false)
+
+const activeTextSegIndex = ref(0)
+const textSelection = ref({ start: 0, end: 0 })
+
+const hasComposerInput = computed(() =>
+  storySegments.value.some(
+    (s) => s.type === 'character' || (s.type === 'text' && s.content.trim())
+  )
+)
+
+function syncTextCaret(idx, el) {
+  activeTextSegIndex.value = idx
+  if (el && typeof el.selectionStart === 'number') {
+    textSelection.value = {
+      start: el.selectionStart,
+      end: el.selectionEnd
+    }
+  }
+}
+
+function autoGrowTextarea(el) {
+  if (!el) return
+  el.style.height = 'auto'
+  el.style.height = `${Math.max(26, el.scrollHeight)}px`
+}
+
+function buildUserInputForApi() {
+  return storySegments.value
+    .map((seg) => {
+      if (seg.type === 'text') return seg.content
+      return formatCharacterInfo(seg.character)
+    })
+    .join('')
+}
+
+function setStoryFromApiPlainText(text) {
+  storySegments.value = [{ type: 'text', uid: makeSegUid(), content: text || '' }]
+  activeTextSegIndex.value = 0
+  textSelection.value = { start: 0, end: 0 }
+  nextTick(() => {
+    document.querySelectorAll('.story-seg-text').forEach((el) => autoGrowTextarea(el))
+  })
+}
 
 onMounted(() => {
   loadSavedCharacters()
@@ -74,16 +137,87 @@ function closeCharacterJson() {
 }
 
 function insertCharacterInfo(character) {
-  const charInfo = formatCharacterInfo(character)
-  const textarea = document.querySelector('.story-editor')
-  if (textarea) {
-    const start = textarea.selectionStart
-    const end = textarea.selectionEnd
-    const text = storyContent.value
-    storyContent.value = text.substring(0, start) + charInfo + text.substring(end)
-    textarea.focus()
+  const card = {
+    id: character.id,
+    data: { ...(character.data || {}) },
+    images: character.images ? [...character.images] : []
   }
+
+  let i = activeTextSegIndex.value
+  if (!storySegments.value[i] || storySegments.value[i].type !== 'text') {
+    i = storySegments.value.findIndex((s) => s.type === 'text')
+    if (i < 0) {
+      storySegments.value.push({ type: 'text', uid: makeSegUid(), content: '' })
+      i = storySegments.value.length - 1
+    }
+  }
+
+  const seg = storySegments.value[i]
+  const start = Math.min(textSelection.value.start, textSelection.value.end)
+  const end = Math.max(textSelection.value.start, textSelection.value.end)
+  const t = seg.content
+  const before = t.slice(0, start)
+  const after = t.slice(end)
+
+  const next = [...storySegments.value]
+  next[i] = { type: 'text', uid: makeSegUid(), content: before }
+  next.splice(i + 1, 0, {
+    type: 'character',
+    uid: makeSegUid(),
+    character: card
+  })
+  next.splice(i + 2, 0, { type: 'text', uid: makeSegUid(), content: after })
+  storySegments.value = next
+
   closeCharacterSelector()
+
+  const focusIdx = i + 2
+  nextTick(() => {
+    const ta = document.querySelector(`textarea.story-seg-text[data-seg-index="${focusIdx}"]`)
+    if (ta) {
+      ta.focus()
+      ta.setSelectionRange(0, 0)
+      autoGrowTextarea(ta)
+    }
+    activeTextSegIndex.value = focusIdx
+    textSelection.value = { start: 0, end: 0 }
+    document.querySelectorAll('.story-seg-text').forEach((el) => autoGrowTextarea(el))
+  })
+}
+
+function removeCharacterSegment(index) {
+  const s = storySegments.value
+  if (s[index]?.type !== 'character') return
+  const prev = s[index - 1]
+  const nxt = s[index + 1]
+  const left = prev?.type === 'text' ? prev.content : ''
+  const right = nxt?.type === 'text' ? nxt.content : ''
+  const merged = { type: 'text', uid: makeSegUid(), content: left + right }
+  const before = prev?.type === 'text' ? s.slice(0, index - 1) : s.slice(0, index)
+  const afterStart = nxt?.type === 'text' ? index + 2 : index + 1
+  const rest = s.slice(afterStart)
+  let next = [...before, merged, ...rest]
+  if (next.length === 0) {
+    next = [{ type: 'text', uid: makeSegUid(), content: '' }]
+  }
+  storySegments.value = next
+  nextTick(() => {
+    document.querySelectorAll('.story-seg-text').forEach((el) => autoGrowTextarea(el))
+  })
+}
+
+function chipDisplayName(character) {
+  return character?.data?.name?.trim() || '未命名'
+}
+
+/** 避免 flex-grow 把「角色前的短文本框」拉满整行导致光标像在中间；仅全文一段或最后一段用满宽以便换行 */
+function textSegmentLayoutClass(idx) {
+  const segs = storySegments.value
+  if (segs[idx]?.type !== 'text') return ''
+  const last = segs.length - 1
+  if (last === 0) return 'story-seg-text--wide'
+  if (idx === last) return 'story-seg-text--wide'
+  return 'story-seg-text--inline'
 }
 
 function formatCharacterInfo(character) {
@@ -101,11 +235,12 @@ function formatCharacterInfo(character) {
 }
 
 async function generateStory() {
-  if (!storyContent.value.trim()) {
+  const userInput = buildUserInputForApi()
+  if (!userInput.trim()) {
     alert('请先输入故事大纲')
     return
   }
-  
+
   isGenerating.value = true
   progress.value = 0
   currentStage.value = '准备开始...'
@@ -118,7 +253,7 @@ async function generateStory() {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        user_input: storyContent.value,
+        user_input: userInput,
         strict_model: strictModel.value
       })
     })
@@ -162,7 +297,7 @@ async function generateStory() {
           lastDialogueResults.value = data.dialogue_results
         }
         if (data.stage === 'complete' && data.final_result != null) {
-          storyContent.value = data.final_result
+          setStoryFromApiPlainText(data.final_result)
         }
       }
 
@@ -262,13 +397,50 @@ function getCharacterInitial(name) {
         <span class="progress-text">{{ currentStage }} ({{ progress }}%)</span>
       </div>
       
-      <div class="editor-container">
-        <textarea
-          v-model="storyContent"
-          class="story-editor"
-          :placeholder="editorPlaceholder"
-          :disabled="isGenerating"
-        ></textarea>
+      <div class="editor-container editor-composite-wrap">
+        <p
+          v-if="!hasComposerInput && !isGenerating"
+          class="editor-floating-placeholder"
+        >
+          {{ editorPlaceholder }}
+        </p>
+        <div
+          class="story-editor story-composite"
+          :class="{ 'is-disabled': isGenerating }"
+        >
+          <template v-for="(seg, idx) in storySegments" :key="seg.uid">
+            <textarea
+              v-if="seg.type === 'text'"
+              v-model="seg.content"
+              class="story-seg-text"
+              :class="textSegmentLayoutClass(idx)"
+              :data-seg-index="idx"
+              :disabled="isGenerating"
+              rows="1"
+              @focus="syncTextCaret(idx, $event.target)"
+              @click="syncTextCaret(idx, $event.target)"
+              @keyup="syncTextCaret(idx, $event.target)"
+              @select="syncTextCaret(idx, $event.target)"
+              @input="autoGrowTextarea($event.target)"
+            />
+            <span
+              v-else
+              class="char-chip-inline"
+              :title="'提交时将附带完整角色卡信息：' + chipDisplayName(seg.character)"
+            >
+              <span class="char-chip-name">{{ chipDisplayName(seg.character) }}</span>
+              <button
+                type="button"
+                class="char-chip-remove"
+                :disabled="isGenerating"
+                title="移除此角色引用"
+                @click.stop="removeCharacterSegment(idx)"
+              >
+                ×
+              </button>
+            </span>
+          </template>
+        </div>
       </div>
     </div>
     
@@ -302,7 +474,11 @@ function getCharacterInitial(name) {
               </div>
             </div>
             <div class="selector-actions">
-              <button class="selector-action-btn insert-btn" @click.stop="insertCharacterInfo(char)" title="插入角色信息">
+              <button
+                class="selector-action-btn insert-btn"
+                @click.stop="insertCharacterInfo(char)"
+                title="插入为角色名标签（界面紧凑；生成时提交完整角色信息）"
+              >
                 <span>📝</span>
               </button>
               <button class="selector-action-btn" @click.stop="showCharacterJsonData(char)" title="查看JSON数据">
@@ -482,35 +658,151 @@ function getCharacterInitial(name) {
 .editor-container {
   flex: 1;
   overflow: hidden;
+  position: relative;
+  min-height: 0;
 }
 
-.story-editor {
+.editor-composite-wrap:focus-within .story-composite {
+  border-color: rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+}
+
+.editor-floating-placeholder {
+  position: absolute;
+  top: 24px;
+  left: 28px;
+  right: 28px;
+  margin: 0;
+  pointer-events: none;
+  white-space: pre-wrap;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.28);
+  z-index: 0;
+  font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+.story-editor.story-composite {
   width: 100%;
   height: 100%;
-  padding: 24px;
+  min-height: 200px;
+  max-height: 100%;
+  overflow-y: auto;
+  padding: 20px 22px;
+  box-sizing: border-box;
   background: rgba(26, 26, 46, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   color: rgba(255, 255, 255, 0.9);
   font-size: 0.95rem;
   line-height: 1.8;
-  resize: none;
   font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  transition: all 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  /* 用普通文档流而非 flex 换行，避免 flex-basis:100% 等与顺序相关的重排，把角色块「挤」到顶行 */
+  display: block;
+  white-space: normal;
+  position: relative;
+  z-index: 1;
 }
 
-.story-editor:focus {
-  outline: none;
-  border-color: rgba(0, 212, 255, 0.3);
-  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
-}
-
-.story-editor::placeholder {
-  color: rgba(255, 255, 255, 0.3);
-}
-
-.story-editor:disabled {
+.story-editor.story-composite.is-disabled {
   opacity: 0.7;
+  pointer-events: none;
+}
+
+.story-seg-text {
+  box-sizing: border-box;
+  min-height: 26px;
+  padding: 2px 4px;
+  margin: 0;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  font-family: inherit;
+  resize: none;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+/* 角色标签前后的短输入：行内块，随内容宽度，不单独占满整行 */
+.story-seg-text--inline {
+  display: inline-block;
+  vertical-align: top;
+  width: auto;
+  min-width: 3rem;
+  max-width: 100%;
+  margin: 2px 2px 2px 0;
+  field-sizing: content;
+}
+
+/* 仅一段大纲，或最后一段续写：块级占满一行，长文换行 */
+.story-seg-text--wide {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 4px 0;
+  box-sizing: border-box;
+}
+
+.story-seg-text:focus {
+  outline: none;
+}
+
+.story-seg-text:disabled {
+  cursor: not-allowed;
+}
+
+.char-chip-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  max-width: 100%;
+  padding: 2px 4px 2px 10px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(123, 44, 191, 0.35) 0%, rgba(0, 212, 255, 0.2) 100%);
+  border: 1px solid rgba(0, 212, 255, 0.45);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  vertical-align: top;
+  margin: 2px 6px 2px 0;
+}
+
+.char-chip-name {
+  color: #e0f7ff;
+  font-weight: 600;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.char-chip-remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.25);
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.char-chip-remove:hover:not(:disabled) {
+  background: rgba(255, 59, 48, 0.35);
+  color: #fff;
+}
+
+.char-chip-remove:disabled {
+  opacity: 0.5;
   cursor: not-allowed;
 }
 

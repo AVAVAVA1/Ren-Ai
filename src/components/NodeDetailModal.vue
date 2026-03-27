@@ -5,6 +5,11 @@ const props = defineProps({
   node: {
     type: Object,
     required: true
+  },
+  /** 画布上全部节点，用于子节点 Vue id 与导出 JSON 中 checkFlag 键（如 "7" / g1:id）互转 */
+  flowNodes: {
+    type: Array,
+    default: () => []
   }
 })
 
@@ -22,36 +27,67 @@ const editedMenu = ref([])
 const editedSetOrChangeFlag = ref('')
 const editedCheckFlag = ref({})
 
-watch(() => props.node, (newNode) => {
-  if (newNode) {
-    editedId.value = newNode.id || ''
-    editedName.value = newNode.data?.name || ''
-    editedContent.value = newNode.data?.content || ''
-    editedBackground.value = newNode.data?.background || ''
-    editedCharacter.value = newNode.data?.character || ''
-    editedMusic.value = newNode.data?.music || ''
-    editedSound.value = newNode.data?.sound || ''
-    editedTransition.value = newNode.data?.transition || ''
-    editedMenu.value = Array.isArray(newNode.data?.menu) 
-      ? newNode.data.menu.map(item => {
-          if (typeof item === 'object' && item !== null) {
-            return { content: item.content || '', flag: item.flag || '' }
-          }
-          return { content: item || '', flag: '' }
-        }) 
-      : []
-    editedSetOrChangeFlag.value = newNode.data?.setOrChangeFlag || ''
-    
-    const checkFlagData = newNode.data?.checkFlag || {}
-    if (typeof checkFlagData === 'object' && !Array.isArray(checkFlagData)) {
-      editedCheckFlag.value = { ...checkFlagData }
-    } else if (typeof checkFlagData === 'string' && checkFlagData) {
-      editedCheckFlag.value = {}
-    } else {
-      editedCheckFlag.value = {}
-    }
-  }
-}, { immediate: true })
+function exportRefForChild(sourceNode, childVueId) {
+  const sn = sourceNode
+  const tn = props.flowNodes.find((n) => n.id === childVueId)
+  if (!sn || !tn) return String(childVueId)
+  if (Number(sn.groupId) === Number(tn.groupId)) return String(tn.originalId)
+  return `g${tn.groupId}:${tn.originalId}`
+}
+
+function hydrateCheckFlagForUi(sourceNode, checkFlagRaw, childVueIds) {
+  const cf =
+    checkFlagRaw && typeof checkFlagRaw === 'object' && !Array.isArray(checkFlagRaw)
+      ? checkFlagRaw
+      : {}
+  const edit = {}
+  childVueIds.forEach((childVueId) => {
+    const tn = props.flowNodes.find((n) => n.id === childVueId)
+    const expKey = exportRefForChild(sourceNode, childVueId)
+    const co = tn ? String(tn.originalId) : ''
+    let v = cf[childVueId]
+    if (v === undefined) v = cf[expKey]
+    if (v === undefined && co) v = cf[co]
+    edit[childVueId] = v !== undefined && v !== null ? String(v) : ''
+  })
+  return edit
+}
+
+function loadNodeIntoForm() {
+  const newNode = props.node
+  if (!newNode) return
+  editedId.value = newNode.id || ''
+  editedName.value = newNode.data?.name || ''
+  editedContent.value = newNode.data?.content || ''
+  editedBackground.value = newNode.data?.background || ''
+  editedCharacter.value = newNode.data?.character || ''
+  editedMusic.value = newNode.data?.music || ''
+  editedSound.value = newNode.data?.sound || ''
+  editedTransition.value = newNode.data?.transition || ''
+  editedMenu.value = Array.isArray(newNode.data?.menu)
+    ? newNode.data.menu.map((item) => {
+        if (typeof item === 'object' && item !== null) {
+          return { content: item.content || '', flag: item.flag || '' }
+        }
+        return { content: item || '', flag: '' }
+      })
+    : []
+  editedSetOrChangeFlag.value = newNode.data?.setOrChangeFlag || ''
+
+  const children = newNode.data?.children || []
+  editedCheckFlag.value = hydrateCheckFlagForUi(
+    newNode,
+    newNode.data?.checkFlag,
+    children
+  )
+}
+
+/** 仅切换节点时同步表单。勿对 flowNodes 做 deep watch，否则拖动画布会反复覆盖正在编辑的 checkFlag。 */
+watch(
+  () => props.node?.id,
+  () => loadNodeIntoForm(),
+  { immediate: true }
+)
 
 const branchNum = computed(() => props.node?.data?.branch_num || 0)
 const parentId = computed(() => props.node?.data?.parent_id || '无')
@@ -79,16 +115,20 @@ function handleOverlayClick(event) {
 
 function handleSave() {
   let checkFlagValue = {}
-  if (canEditCheckFlag.value) {
-    children.value.forEach(childId => {
-      if (editedCheckFlag.value[childId] !== undefined) {
-        checkFlagValue[childId] = editedCheckFlag.value[childId]
-      } else {
-        checkFlagValue[childId] = ''
-      }
+  if (canEditCheckFlag.value && children.value.length > 0) {
+    children.value.forEach((childVueId) => {
+      const expKey = exportRefForChild(props.node, childVueId)
+      checkFlagValue[expKey] =
+        editedCheckFlag.value[childVueId] !== undefined
+          ? editedCheckFlag.value[childVueId]
+          : ''
     })
+  } else {
+    const prev = props.node.data?.checkFlag
+    checkFlagValue =
+      prev && typeof prev === 'object' && !Array.isArray(prev) ? { ...prev } : {}
   }
-  
+
   const menuItems = editedMenu.value
     .filter(item => item.content !== '')
     .map(item => ({ content: item.content, flag: item.flag || '' }))
