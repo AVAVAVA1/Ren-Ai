@@ -11,6 +11,23 @@ from urllib.parse import urlparse
 
 from app.services import const
 
+# 背景图提示词统一追加，避免生成带人物的场景图
+_BG_NO_PEOPLE = "不要出现人物"
+
+
+def _append_no_people_to_prompts(prompts: list[str]) -> list[str]:
+    """每条 positive_prompt 末尾追加「不要出现人物」（已包含则不再重复）。"""
+    out: list[str] = []
+    for p in prompts:
+        s = (p or "").strip()
+        if _BG_NO_PEOPLE in s:
+            out.append(s)
+        elif s:
+            out.append(f"{s}，{_BG_NO_PEOPLE}")
+        else:
+            out.append(_BG_NO_PEOPLE)
+    return out
+
 
 # 2037179226444533762
 def run_RunningHub(workflowId: str, positive_prompt: str):
@@ -247,9 +264,10 @@ def get_bg(
     save_filenames: list[str],
 ):
     """按块调用 RunningHub 出背景图；图片写入 save_dir，文件名与 save_filenames 一一对应。"""
+    prompts = _append_no_people_to_prompts(positive_prompt)
     download_runninghub(
         workflowId=workflowId,
-        positive_prompt=positive_prompt,
+        positive_prompt=prompts,
         save_dir=save_dir,
         save_filenames=save_filenames,
     )
