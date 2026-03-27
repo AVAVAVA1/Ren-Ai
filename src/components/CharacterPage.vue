@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch, onMounted } from 'vue'
+import { ref, computed, watch, onMounted, nextTick } from 'vue'
 
 const defaultCharacterData = {
   name: '',
@@ -19,16 +19,25 @@ const selectedImageIndex = ref(0)
 const viewMode = ref('chat')
 
 onMounted(() => {
+  _suppressCharactersWatch = true
   loadCharactersFromStorage()
+  nextTick(() => {
+    _suppressCharactersWatch = false
+  })
 })
+
+const CHARACTERS_STORAGE_KEY = 'characters_data'
 
 function loadCharactersFromStorage() {
   try {
-    const saved = localStorage.getItem('characters_data')
+    const saved = localStorage.getItem(CHARACTERS_STORAGE_KEY)
     if (saved) {
-      characters.value = JSON.parse(saved)
-      if (characters.value.length > 0) {
-        selectedCharacterId.value = characters.value[0].id
+      const parsed = JSON.parse(saved)
+      if (Array.isArray(parsed)) {
+        characters.value = parsed
+        if (characters.value.length > 0) {
+          selectedCharacterId.value = characters.value[0].id
+        }
       }
     }
   } catch (error) {
@@ -36,16 +45,153 @@ function loadCharactersFromStorage() {
   }
 }
 
-function saveCharactersToStorage() {
+/** 用于写入 localStorage：去掉超长 data URL，避免配额爆掉导致刷新后角色卡消失 */
+function buildCharactersPayloadForDisk(list, stripDataUrls) {
+  return list.map((c) => ({
+    id: c.id,
+    data: { ...(c.data || {}) },
+    images: (c.images || []).map((img) => ({
+      id: img.id,
+      name: img.name || '',
+      url:
+        stripDataUrls &&
+        typeof img.url === 'string' &&
+        img.url.startsWith('data:') &&
+        img.url.length > 8000
+          ? ''
+          : img.url || ''
+    }))
+  }))
+}
+
+/** 曾触发过配额限制后，跳过大图 JSON 直写，避免每次保存都失败一遍 */
+let _useLiteLocalStoragePersist = false
+let _quotaHintShown = false
+
+function persistCharactersToLocalStorage() {
+  const tryWrite = (list) => {
+    const str = JSON.stringify(list)
+    localStorage.setItem(CHARACTERS_STORAGE_KEY, str)
+    return true
+  }
+
+  if (_useLiteLocalStoragePersist) {
+    try {
+      const lite = buildCharactersPayloadForDisk(characters.value, true)
+      tryWrite(lite)
+      return { ok: true, stripped: true }
+    } catch (e2) {
+      console.error('精简图片后仍无法保存:', e2)
+    }
+    try {
+      const minimal = characters.value.map((c) => ({
+        id: c.id,
+        data: { ...(c.data || {}) },
+        images: []
+      }))
+      tryWrite(minimal)
+      return { ok: true, stripped: true, imagesDropped: true }
+    } catch (e3) {
+      console.error('保存角色数据失败（已尝试去掉全部图片）:', e3)
+      return { ok: false, stripped: true, error: e3 }
+    }
+  }
+
   try {
-    localStorage.setItem('characters_data', JSON.stringify(characters.value))
-    window.dispatchEvent(new CustomEvent('renai-characters-storage'))
-  } catch (error) {
-    console.error('保存角色数据失败:', error)
+    tryWrite(characters.value)
+    return { ok: true, stripped: false }
+  } catch (e) {
+    const isQuota =
+      e?.name === 'QuotaExceededError' ||
+      e?.code === 22 ||
+      (typeof e?.message === 'string' && e.message.toLowerCase().includes('quota'))
+    if (!isQuota) {
+      console.error('保存角色数据失败:', e)
+      return { ok: false, stripped: false, error: e }
+    }
+    _useLiteLocalStoragePersist = true
+    try {
+      const lite = buildCharactersPayloadForDisk(characters.value, true)
+      tryWrite(lite)
+      return { ok: true, stripped: true }
+    } catch (e2) {
+      console.error('精简图片后仍无法保存:', e2)
+    }
+    try {
+      const minimal = characters.value.map((c) => ({
+        id: c.id,
+        data: { ...(c.data || {}) },
+        images: []
+      }))
+      tryWrite(minimal)
+      return { ok: true, stripped: true, imagesDropped: true }
+    } catch (e3) {
+      console.error('保存角色数据失败（已尝试去掉全部图片）:', e3)
+      return { ok: false, stripped: true, error: e3 }
+    }
   }
 }
 
+function safeSnapshotForBroadcast() {
+  try {
+    return JSON.parse(JSON.stringify(characters.value))
+  } catch (e) {
+    console.warn('角色卡深拷贝失败，使用精简字段同步故事页', e)
+    return characters.value.map((c) => ({
+      id: c.id,
+      data: { ...defaultCharacterData, ...(c.data || {}) },
+      images: Array.isArray(c.images)
+        ? c.images.map((img) => ({
+            id: img.id,
+            name: img.name || '',
+            url: typeof img.url === 'string' ? img.url : ''
+          }))
+        : []
+    }))
+  }
+}
+
+function saveCharactersToStorage() {
+  const persist = persistCharactersToLocalStorage()
+
+  if (persist.ok && persist.stripped && !_quotaHintShown) {
+    _quotaHintShown = true
+    const msg =
+      persist.imagesDropped === true
+        ? '浏览器存储空间不足：已保存角色文字信息，但本地未保存立绘图片；请用「备份全部」导出 JSON 以防丢失。'
+        : '浏览器存储空间不足：已保存角色卡，但过大的图片未写入本地；刷新后可能无头像，请使用「备份全部」保存完整数据。'
+    if (typeof window !== 'undefined') {
+      window.setTimeout(() => alert(msg), 0)
+    }
+  } else if (!persist.ok && !_quotaHintShown) {
+    _quotaHintShown = true
+    if (typeof window !== 'undefined') {
+      window.setTimeout(
+        () =>
+          alert(
+            '角色卡无法写入本地存储，刷新后可能丢失本次导入；请立即使用「备份全部」导出 JSON，或清理站点数据后重试。'
+          ),
+        0
+      )
+    }
+  }
+
+  const broadcast = safeSnapshotForBroadcast()
+  window.dispatchEvent(
+    new CustomEvent('renai-characters-storage', {
+      detail: {
+        characters: broadcast,
+        persistOk: persist.ok
+      }
+    })
+  )
+}
+
+/** 初次从磁盘载入时不要触发 watch 写回，避免与 Story 等组件挂载顺序竞争 */
+let _suppressCharactersWatch = false
+
 watch(characters, () => {
+  if (_suppressCharactersWatch) return
   saveCharactersToStorage()
 }, { deep: true })
 
@@ -124,6 +270,7 @@ function deleteCharacter(id) {
     if (selectedCharacterId.value === id) {
       selectedCharacterId.value = characters.value.length > 0 ? characters.value[0].id : null
     }
+    saveCharactersToStorage()
   }
 }
 
@@ -284,8 +431,32 @@ function triggerExport() {
 async function handleImportCharacterCard(event) {
   const file = event.target.files?.[0]
   if (!file) return
-  
+
+  const nameLower = (file.name || '').toLowerCase()
+
   try {
+    if (nameLower.endsWith('.json')) {
+      const text = await file.text()
+      const parsed = JSON.parse(text)
+      const list = Array.isArray(parsed) ? parsed : parsed && typeof parsed === 'object' ? [parsed] : []
+      if (list.length === 0) {
+        throw new Error('JSON 中未找到角色数据')
+      }
+      for (const item of list) {
+        if (!item || typeof item !== 'object' || !item.data) continue
+        characters.value.push({
+          id: item.id || generateId(),
+          data: { ...defaultCharacterData, ...item.data },
+          images: Array.isArray(item.images) ? item.images : []
+        })
+      }
+      const last = characters.value[characters.value.length - 1]
+      if (last) selectedCharacterId.value = last.id
+      saveCharactersToStorage()
+      event.target.value = ''
+      return
+    }
+
     const characterData = await parseCharacterCard(file)
     if (characterData) {
       const newChar = {
@@ -295,6 +466,7 @@ async function handleImportCharacterCard(event) {
       }
       characters.value.push(newChar)
       selectedCharacterId.value = newChar.id
+      saveCharactersToStorage()
     }
   } catch (error) {
     console.error('导入角色卡失败:', error)
@@ -383,10 +555,10 @@ function parseCharacterCard(file) {
             creator: charData.creator || charData.data?.creator || '',
             tags: charData.tags || charData.data?.tags || [],
             system_prompt: charData.system_prompt || charData.data?.system_prompt || '',
-            post_history_instructions: charData.post_history_instructions || charData.data?.post_history_instructions || '',
+            post_history_instructions:
+              charData.post_history_instructions || charData.data?.post_history_instructions || '',
             character_version: charData.character_version || charData.data?.character_version || '',
-            first_mes: charData.first_mes || charData.data?.first_mes || '',
-            ...charData
+            first_mes: charData.first_mes || charData.data?.first_mes || ''
           }
         }
         

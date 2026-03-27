@@ -19,7 +19,6 @@ def structured_json(
     :return: (renai_data, 磁盘绝对路径；persist False 时第二项为空字符串)
     """
     renai_data: List[Dict[str, Any]] = []
-    counter = 0
 
     for element in data:
         chapter_data = {
@@ -29,12 +28,13 @@ def structured_json(
         }
         dialogues = element.get("dialogues") or []
         total_dialogues = len(dialogues)
+        # 每章独立 0..n-1，children/parent 仅指向本章内；FlowCanvas 用 `${groupIndex}_${id}`，不可用跨章全局递增 id
         for index, dialogue in enumerate(dialogues):
-            parent_id = "" if index == 0 else f"{counter - 1}"
-            children = [] if index == total_dialogues - 1 else [f"{counter + 1}"]
+            parent_id = "" if index == 0 else str(index - 1)
+            children = [] if index == total_dialogues - 1 else [str(index + 1)]
 
             entry = {
-                "id": f"{counter}",
+                "id": str(index),
                 "name": dialogue.get("name") or "",
                 "content": dialogue.get("dialogue_content") or "",
                 "background": "",
@@ -50,7 +50,6 @@ def structured_json(
                 "children": children,
             }
             chapter_data["dialogue_content"].append(entry)
-            counter += 1
 
         renai_data.append(chapter_data)
 

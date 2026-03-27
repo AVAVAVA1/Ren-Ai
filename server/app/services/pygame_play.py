@@ -20,6 +20,7 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import pygame
 
+from app.services.get_runninghub_pic import list_stand_pic_png_paths
 from app.services.tools import get_project_root, read_json_file
 
 _CROSS_BLOCK_REF = re.compile(r"^g(\d+):(.+)$")
@@ -112,14 +113,32 @@ def _resolve_background_path(project_root: Path, background: str) -> Optional[Pa
 
 
 def _character_sprite_path(project_root: Path, speaker_name: str, character: str) -> Optional[Path]:
+    """
+    立绘路径：public/sources/pic/{角色名}/ 下。
+    - 与 RunningHub / 去背景一致：除 {expr}.png 外，还认 {expr}_1.png、{expr}_2.png 等。
+    """
     ch = (character or "").strip()
     if not ch:
         return None
-    base = ch if ch.lower().endswith(".png") else f"{ch}.png"
     folder = _sanitize_path_segment(speaker_name)
-    full = project_root / "public" / "sources" / "pic" / folder / base
-    if full.is_file():
-        return full
+    pic_dir = project_root / "public" / "sources" / "pic" / folder
+    if not pic_dir.is_dir():
+        return None
+
+    if ch.lower().endswith(".png"):
+        full = pic_dir / ch
+        if full.is_file():
+            return full
+        expr_for_match = ch[:-4]
+    else:
+        full = pic_dir / f"{ch}.png"
+        if full.is_file():
+            return full
+        expr_for_match = ch
+
+    candidates = list_stand_pic_png_paths(str(pic_dir), expr_for_match)
+    if candidates:
+        return Path(candidates[0])
     return None
 
 

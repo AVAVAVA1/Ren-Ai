@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch, onMounted, nextTick } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
 
 const emit = defineEmits(['open-flow'])
 
@@ -142,30 +142,93 @@ function persistStoryDraft() {
 
 watch([storySegments, strictModel, lastDialogueResults], () => persistStoryDraft(), { deep: true })
 
-onMounted(() => {
+const CHARACTERS_STORAGE_KEY = 'characters_data'
+
+function loadSavedCharacters() {
+  try {
+    const saved = localStorage.getItem(CHARACTERS_STORAGE_KEY)
+    if (saved) {
+      const parsed = JSON.parse(saved)
+      savedCharacters.value = Array.isArray(parsed) ? parsed : []
+    } else {
+      savedCharacters.value = []
+    }
+  } catch (error) {
+    console.error('加载角色卡失败:', error)
+    savedCharacters.value = []
+  }
+}
+
+/** 将大纲里已插入的角色块与当前人物卡列表对齐（编辑/删除人物卡后同步） */
+function syncStoryCharacterRefsFromCards() {
+  const list = savedCharacters.value
+  const byId = new Map(list.map((c) => [c.id, c]))
+  storySegments.value = storySegments.value.map((seg) => {
+    if (seg.type !== 'character') return seg
+    const cid = seg.character?.id
+    const live = cid != null ? byId.get(cid) : null
+    if (!live) {
+      return {
+        ...seg,
+        character: {
+          ...(seg.character || { data: {} }),
+          _missingCard: true
+        }
+      }
+    }
+    return {
+      ...seg,
+      character: {
+        id: live.id,
+        data: { ...(live.data || {}) },
+        images: live.images ? [...live.images] : []
+      }
+    }
+  })
+}
+
+function refreshCharactersFromStorage() {
   loadSavedCharacters()
+  syncStoryCharacterRefsFromCards()
+}
+
+function onRenaiCharactersStorage(e) {
+  const d = e?.detail?.characters
+  if (Array.isArray(d)) {
+    savedCharacters.value = d
+    syncStoryCharacterRefsFromCards()
+    return
+  }
+  refreshCharactersFromStorage()
+}
+
+function onWindowStorage(e) {
+  if (e.key === CHARACTERS_STORAGE_KEY) {
+    refreshCharactersFromStorage()
+  }
+}
+
+onMounted(() => {
+  refreshCharactersFromStorage()
   loadStoryDraft()
+  window.addEventListener('renai-characters-storage', onRenaiCharactersStorage)
+  window.addEventListener('storage', onWindowStorage)
   nextTick(() => {
     document.querySelectorAll('.story-seg-text').forEach((el) => autoGrowTextarea(el))
   })
 })
 
-function loadSavedCharacters() {
-  try {
-    const saved = localStorage.getItem('characters_data')
-    if (saved) {
-      savedCharacters.value = JSON.parse(saved)
-    }
-  } catch (error) {
-    console.error('加载角色卡失败:', error)
-  }
-}
+onUnmounted(() => {
+  window.removeEventListener('renai-characters-storage', onRenaiCharactersStorage)
+  window.removeEventListener('storage', onWindowStorage)
+})
 
 function toggleStrictModel() {
   strictModel.value = !strictModel.value
 }
 
 function openCharacterSelector() {
+  refreshCharactersFromStorage()
   showCharacterSelector.value = true
 }
 
@@ -254,7 +317,9 @@ function removeCharacterSegment(index) {
 }
 
 function chipDisplayName(character) {
-  return character?.data?.name?.trim() || '未命名'
+  const name = character?.data?.name?.trim() || '未命名'
+  if (character?._missingCard) return `${name}（人物卡已删除）`
+  return name
 }
 
 /** 避免 flex-grow 把「角色前的短文本框」拉满整行导致光标像在中间；仅全文一段或最后一段用满宽以便换行 */
@@ -268,9 +333,11 @@ function textSegmentLayoutClass(idx) {
 }
 
 function formatCharacterInfo(character) {
-  const data = character.data
+  const data = character.data || {}
   let info = `\n【角色：${data.name || '未命名'}】\n`
-  
+  if (character._missingCard) {
+    info += '（注意：该人物卡已从本地删除，以下为插入大纲时保留的信息）\n'
+  }
   if (data.gender) info += `性别：${data.gender}\n`
   if (data.age) info += `年龄：${data.age}\n`
   if (data.appearance) info += `外貌：${data.appearance}\n`
@@ -473,6 +540,7 @@ function getCharacterInitial(name) {
             <span
               v-else
               class="char-chip-inline"
+              :class="{ 'char-chip-inline--missing': seg.character?._missingCard }"
               :title="'提交时将附带完整角色卡信息：' + chipDisplayName(seg.character)"
             >
               <span class="char-chip-name">{{ chipDisplayName(seg.character) }}</span>
@@ -815,6 +883,11 @@ function getCharacterInitial(name) {
   line-height: 1.5;
   vertical-align: top;
   margin: 2px 6px 2px 0;
+}
+
+.char-chip-inline--missing {
+  border-color: rgba(255, 140, 90, 0.55);
+  background: linear-gradient(135deg, rgba(180, 70, 50, 0.28) 0%, rgba(90, 40, 40, 0.22) 100%);
 }
 
 .char-chip-name {

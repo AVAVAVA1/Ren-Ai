@@ -63,16 +63,26 @@ const {
   onConnectEnd,
   getViewport,
   setViewport,
-  onMoveEnd
+  onMoveEnd,
+  fitView
 } = useVueFlow()
 
 const fitViewOnInit = ref(!_flowDraft)
+
+/** 节点多时关闭边动画与箭头、减轻 MiniMap / localStorage，避免卡顿 */
+const FLOW_HEAVY_NODE_THRESHOLD = 160
+
+const showFlowMiniMap = computed(
+  () => nodes.value.filter((n) => n.type === 'dialogue').length < 500
+)
 
 const nodes = ref(_flowDraft?.nodes ?? [])
 const edges = ref(_flowDraft?.edges ?? [])
 const selectedNode = ref(null)
 const showModal = ref(false)
-const mousePosition = ref({ x: 0, y: 0 })
+/** 粘贴落点用；不用 ref，避免 document mousemove 触发整组件重渲染 */
+let lastPasteScreenClientX = 0
+let lastPasteScreenClientY = 0
 const nodeIdCounter = ref(
   typeof _flowDraft?.nodeIdCounter === 'number' ? _flowDraft.nodeIdCounter : 0
 )
@@ -115,6 +125,66 @@ function childRefToVueNodeId(childRef, sourceGroupIndex) {
   const m = s.match(CROSS_BLOCK_REF)
   if (m) return `${m[1]}_${m[2]}`
   return `${sourceGroupIndex}_${s}`
+}
+
+/**
+ * 旧版 structured_json 使用跨章节全局 id，children 指向下一章节点，在本区块内无法解析为 `${groupIndex}_${id}`。
+ * 检测到有子引用落在当前块 id 集合外时，改为块内 0..n-1 线性链（与当前 dialogue 导出一致）。
+ */
+function normalizeDialogueContentForFlowGroup(content) {
+  if (!Array.isArray(content) || content.length === 0) return content
+  const idSet = new Set(content.map((item) => String(item?.id)))
+  let outOfGroupRef = false
+  for (const item of content) {
+    for (const c of item.children || []) {
+      if (!idSet.has(String(c))) {
+        outOfGroupRef = true
+        break
+      }
+    }
+    if (outOfGroupRef) break
+  }
+  if (!outOfGroupRef) return content
+  return content.map((item, index) => ({
+    ...item,
+    id: String(index),
+    parent_id: index === 0 ? '' : String(index - 1),
+    children: index === content.length - 1 ? [] : [String(index + 1)],
+    branch_num: item.branch_num != null ? item.branch_num : 1
+  }))
+}
+
+/** 是否存在多分支（保留 JSON 中的 children 拓扑，仅做跨块 id 修复） */
+function chapterHasBranching(content) {
+  if (!Array.isArray(content)) return false
+  for (const item of content) {
+    if (Array.isArray(item.children) && item.children.length > 1) return true
+  }
+  return false
+}
+
+/**
+ * 对话剧本/线性章节：严格按数组顺序连成 0→1→2…，彻底忽略错误的 id 与 children（乱连根源）。
+ * 含多子节点时走 normalize，保留分支结构。
+ */
+function forceLinearDialogueChainByArrayOrder(content) {
+  if (!Array.isArray(content) || content.length === 0) return content
+  return content.map((item, index) => ({
+    ...item,
+    id: String(index),
+    parent_id: index === 0 ? '' : String(index - 1),
+    children: index === content.length - 1 ? [] : [String(index + 1)],
+    branch_num: 1
+  }))
+}
+
+function resolveDialogueContentForFlowGroup(content) {
+  const raw = Array.isArray(content) ? content : []
+  if (raw.length === 0) return raw
+  if (chapterHasBranching(raw)) {
+    return normalizeDialogueContentForFlowGroup(raw)
+  }
+  return forceLinearDialogueChainByArrayOrder(raw)
 }
 
 function vueNodeIdToExportedRef(sourceNode, targetNode) {
@@ -423,6 +493,7 @@ function deleteExpandedBlockGroup(gi) {
   syncBlockTitlesToNodes()
   syncBlockGroupNodesMeta()
   syncEdgesFromHiddenNodes()
+  persistFlowDraft()
 }
 
 /** 收起：删除块及其中全部节点，并压缩后续区块索引 */
@@ -455,6 +526,7 @@ function deleteCollapsedBlockGroup(gi) {
     activeGroupIndex.value,
     Math.max(0, flowGroups.value.length - 1)
   )
+  persistFlowDraft()
 }
 
 function handleContextMenuDeleteBlock() {
@@ -477,6 +549,7 @@ watch(
   () => {
     syncBlockTitlesToNodes()
     syncBlockGroupNodesMeta()
+    persistFlowDraft()
   },
   { deep: true }
 )
@@ -498,6 +571,17 @@ const duplicateIds = computed(() => {
 })
 
 const hasIdConflicts = computed(() => duplicateIds.value.length > 0)
+
+/** 侧栏「N 节点」：避免每个区块卡片里 nodes.filter 全量扫描 */
+const dialogueCountByGroup = computed(() => {
+  const m = new Map()
+  for (const n of nodes.value) {
+    if (n.type !== 'dialogue' || typeof n.groupId !== 'number') continue
+    const g = n.groupId
+    m.set(g, (m.get(g) || 0) + 1)
+  }
+  return m
+})
 
 const CARD_STORAGE_KEY = 'characters_data'
 
@@ -670,7 +754,7 @@ function convertJsonToFlow(jsonData) {
   let currentOffsetX = 40
 
   dialogues.forEach((dialogue, groupIndex) => {
-    const content = dialogue.dialogue_content || []
+    const content = resolveDialogueContentForFlowGroup(dialogue.dialogue_content || [])
     const flowNodes = []
 
     let maxId = 0
@@ -763,26 +847,38 @@ function convertJsonToFlow(jsonData) {
 
   const nodeIdSet = new Set(dialogueNodes.map((n) => n.id))
   const allEdges = []
+  const edgeKeySet = new Set()
+  const dialogueNodeCount = dialogueNodes.filter((n) => n.type === 'dialogue').length
+  const heavyFlow = dialogueNodeCount >= FLOW_HEAVY_NODE_THRESHOLD
 
   dialogues.forEach((dialogue, groupIndex) => {
-    const content = dialogue.dialogue_content || []
+    const content = resolveDialogueContentForFlowGroup(dialogue.dialogue_content || [])
     content.forEach((item) => {
       const srcId = `${groupIndex}_${item.id}`
       if (!nodeIdSet.has(srcId)) return
       ;(item.children || []).forEach((childRef) => {
         const tid = childRefToVueNodeId(childRef, groupIndex)
         if (!tid || !nodeIdSet.has(tid)) return
+        const ek = `${srcId}\t${tid}`
+        if (edgeKeySet.has(ek)) return
+        edgeKeySet.add(ek)
         allEdges.push({
           id: `e-${srcId}-${tid}-${Math.random().toString(36).slice(2, 8)}`,
           source: srcId,
           target: tid,
           type: 'smoothstep',
-          animated: true,
-          style: { stroke: '#00d4ff', strokeWidth: 2 },
-          markerEnd: {
-            type: 'arrowclosed',
-            color: '#00d4ff'
-          }
+          // 默认边 zIndex=0 会画在 zIndex=2 的对话节点之下，嵌套在区块里时整条线被挡住
+          zIndex: 5,
+          animated: !heavyFlow,
+          style: { stroke: '#00d4ff', strokeWidth: heavyFlow ? 1.5 : 2 },
+          ...(heavyFlow
+            ? {}
+            : {
+                markerEnd: {
+                  type: 'arrowclosed',
+                  color: '#00d4ff'
+                }
+              })
         })
       })
     })
@@ -795,6 +891,14 @@ function convertJsonToFlow(jsonData) {
   syncBlockTitlesToNodes()
   syncBlockGroupNodesMeta()
   syncEdgesFromHiddenNodes()
+  nextTick(() => {
+    try {
+      fitView({ padding: 0.15, duration: 320 })
+    } catch {
+      /* store 未就绪时可能不可用 */
+    }
+  })
+  persistFlowDraft()
 }
 
 function ensureFlowGroupsCoverNodes() {
@@ -956,6 +1060,7 @@ function handleDeleteNode(nodeId) {
     fitBlockParentBounds(gi)
     syncEdgesFromHiddenNodes()
   }
+  persistFlowDraft()
 }
 
 function closeModal() {
@@ -1016,6 +1121,7 @@ function handleUpdateNode(updateData) {
   }
   
   updateNodeDataFromEdges()
+  persistFlowDraft()
 }
 
 function addNewNodeAtPosition(x, y) {
@@ -1068,6 +1174,7 @@ function addNewNodeAtPosition(x, y) {
   nodes.value.push(newNode)
   fitBlockParentBounds(gi)
   updateNodeDataFromEdges()
+  persistFlowDraft()
   return vid
 }
 
@@ -1141,6 +1248,7 @@ function pasteNodeAtPosition(x, y) {
   nodes.value.push(newNode)
   fitBlockParentBounds(gi)
   updateNodeDataFromEdges()
+  persistFlowDraft()
 }
 
 function addFlowBlock() {
@@ -1203,6 +1311,7 @@ function addFlowBlock() {
   updateNodeDataFromEdges()
   syncBlockTitlesToNodes()
   syncBlockGroupNodesMeta()
+  persistFlowDraft()
 }
 
 function handleContextMenu(event) {
@@ -1296,8 +1405,8 @@ function handleKeyDown(event) {
       
       const rect = flowContainer.getBoundingClientRect()
       const flowCoords = screenToFlowCoordinate({
-        x: mousePosition.value.x,
-        y: mousePosition.value.y
+        x: lastPasteScreenClientX,
+        y: lastPasteScreenClientY
       })
       
       pasteNodeAtPosition(flowCoords.x - 100, flowCoords.y - 50)
@@ -1306,7 +1415,8 @@ function handleKeyDown(event) {
 }
 
 function handleMouseMove(event) {
-  mousePosition.value = { x: event.clientX, y: event.clientY }
+  lastPasteScreenClientX = event.clientX
+  lastPasteScreenClientY = event.clientY
 }
 
 async function loadDefaultData() {
@@ -1535,6 +1645,7 @@ function handleEdgeDoubleClick(event) {
   if (edgeId) {
     edges.value = edges.value.filter(e => e.id !== edgeId)
     updateNodeDataFromEdges()
+    persistFlowDraft()
   }
 }
 
@@ -1580,6 +1691,7 @@ function relayoutNodes() {
     currentOffsetX += parentW + BLOCK_GAP_X
   }
   syncEdgesFromHiddenNodes()
+  persistFlowDraft()
 }
 
 onConnectStart((params) => {
@@ -1606,6 +1718,7 @@ onConnectEnd(() => {
   if (dragStartInfo.value && !connectionMade.value) {
     edges.value = edges.value.filter(e => e.id !== dragStartInfo.value.edgeId)
     updateNodeDataFromEdges()
+    persistFlowDraft()
   }
   
   dragStartInfo.value = null
@@ -1624,21 +1737,28 @@ onConnect((params) => {
     edges.value = edges.value.filter(e => e.id !== dragStartInfo.value.edgeId)
   }
   
+  const heavy = nodes.value.filter((n) => n.type === 'dialogue').length >= FLOW_HEAVY_NODE_THRESHOLD
   const newEdge = {
     id: `e-${params.source}-${params.target}-${Date.now()}`,
     source: params.source,
     target: params.target,
     type: 'smoothstep',
-    animated: true,
-    style: { stroke: '#00d4ff', strokeWidth: 2 },
-    markerEnd: {
-      type: 'arrowclosed',
-      color: '#00d4ff'
-    }
+    zIndex: 5,
+    animated: !heavy,
+    style: { stroke: '#00d4ff', strokeWidth: heavy ? 1.5 : 2 },
+    ...(heavy
+      ? {}
+      : {
+          markerEnd: {
+            type: 'arrowclosed',
+            color: '#00d4ff'
+          }
+        })
   }
   
   edges.value = [...edges.value, newEdge]
   updateNodeDataFromEdges()
+  persistFlowDraft()
   
   dragStartInfo.value = null
 })
@@ -1646,6 +1766,8 @@ onConnect((params) => {
 let flowDraftPersistTimer = null
 function persistFlowDraft() {
   if (flowDraftPersistTimer) clearTimeout(flowDraftPersistTimer)
+  const delay =
+    nodes.value.length > 200 ? 2200 : nodes.value.length > 80 ? 900 : 400
   flowDraftPersistTimer = setTimeout(() => {
     flowDraftPersistTimer = null
     let vp = { x: 0, y: 0, zoom: 1 }
@@ -1670,14 +1792,10 @@ function persistFlowDraft() {
     } catch (e) {
       console.warn('无法保存流程图草稿（可能超出浏览器存储配额）', e)
     }
-  }, 400)
+  }, delay)
 }
 
-watch(
-  [nodes, edges, flowGroups, nodeIdCounter, activeGroupIndex],
-  () => persistFlowDraft(),
-  { deep: true }
-)
+watch([nodeIdCounter, activeGroupIndex], () => persistFlowDraft())
 
 onMoveEnd(() => persistFlowDraft())
 
@@ -1691,6 +1809,10 @@ function onWindowStorage(e) {
 
 onMounted(() => {
   if (_flowDraft) {
+    edges.value = edges.value.map((e) => ({
+      ...e,
+      zIndex: typeof e.zIndex === 'number' ? e.zIndex : 5
+    }))
     updateNodeDataFromEdges()
     syncBlockTitlesToNodes()
     syncBlockGroupNodesMeta()
@@ -1746,7 +1868,7 @@ defineExpose({
       >
         <div class="block-card-head">
           <span class="block-index">#{{ idx + 1 }}</span>
-          <span class="block-node-count">{{ nodes.filter((n) => n.groupId === idx).length }} 节点</span>
+          <span class="block-node-count">{{ dialogueCountByGroup.get(idx) ?? 0 }} 节点</span>
           <button
             type="button"
             class="block-side-toggle"
@@ -1815,12 +1937,16 @@ defineExpose({
       :nodes-draggable="true"
       :edges-updatable="true"
       :fit-view-on-init="fitViewOnInit"
+      :elevate-edges-on-select="true"
       class="vue-flow-wrapper"
       @edge-double-click="handleEdgeDoubleClick"
+      @node-drag-stop="persistFlowDraft"
+      @selection-drag-stop="persistFlowDraft"
+      @edge-update-end="persistFlowDraft"
     >
       <Background pattern-color="rgba(255, 255, 255, 0.1)" :gap="20" />
       <Controls />
-      <MiniMap />
+      <MiniMap v-if="showFlowMiniMap" />
       
       <template #node-dialogue="nodeProps">
         <DialogueNode

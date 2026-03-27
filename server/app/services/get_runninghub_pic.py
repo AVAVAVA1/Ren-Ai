@@ -178,6 +178,12 @@ def download_image_from_url(
                 else:
                     base_name = "image"
 
+            # 立绘约定 save_filename 已是 {expression}_1.png；ZIP 内多图会再拼 _{idx}，
+            # 若直接用 stem「anger_1」会得到 anger_1_1.png。去掉 stem 末尾 _数字 再编号：
+            # anger_1 → anger → anger_1.png、anger_2.png…
+            m = re.match(r"^(.+)_(\d+)$", base_name)
+            zip_series_stem = m.group(1) if m else base_name
+
             # 排序后重命名
             image_files.sort(key=lambda p: os.path.basename(p))
             saved_paths = []
@@ -186,7 +192,7 @@ def download_image_from_url(
                 # 扩展名不在支持列表时默认.jpg
                 if ext not in image_extensions:
                     ext = '.jpg'
-                new_filename = f"{base_name}_{idx}{ext}"
+                new_filename = f"{zip_series_stem}_{idx}{ext}"
                 dest_path = os.path.join(save_dir, new_filename)
                 shutil.move(src_path, dest_path)
                 saved_paths.append(dest_path)
