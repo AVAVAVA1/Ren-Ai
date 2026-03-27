@@ -39,6 +39,7 @@ function loadCharactersFromStorage() {
 function saveCharactersToStorage() {
   try {
     localStorage.setItem('characters_data', JSON.stringify(characters.value))
+    window.dispatchEvent(new CustomEvent('renai-characters-storage'))
   } catch (error) {
     console.error('保存角色数据失败:', error)
   }
@@ -68,6 +69,11 @@ const characterForm = ref({ ...defaultCharacterData })
 
 const chatMessages = ref([])
 const chatInput = ref('')
+
+const RUNNINGHUB_WORKFLOW_STORAGE_KEY = 'renai_runninghub_workflow_id'
+const API_BASE_URL = 'http://localhost:8000'
+const runninghubPicLoading = ref(false)
+const removeStandBgLoading = ref(false)
 
 watch(selectedCharacter, (newChar) => {
   if (newChar) {
@@ -132,6 +138,102 @@ function closeEditMode() {
 function updateCharacterData() {
   if (!selectedCharacter.value) return
   selectedCharacter.value.data = { ...characterForm.value }
+}
+
+async function generateRunninghubCharacterPics() {
+  const wf = localStorage.getItem(RUNNINGHUB_WORKFLOW_STORAGE_KEY)?.trim()
+  if (!wf) {
+    alert('请先在「设置」页面填写 RunningHub 工作流 ID')
+    return
+  }
+  const appearance = (characterForm.value.appearance || '').trim()
+  const personality = (characterForm.value.personality || '').trim()
+  if (!appearance && !personality) {
+    alert('请先填写「外貌描述」或「性格设定」')
+    return
+  }
+  updateCharacterData()
+  runninghubPicLoading.value = true
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/runninghub/generate-character-pics`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        workflow_id: wf,
+        character_name: (characterForm.value.name || '').trim(),
+        appearance,
+        personality
+      })
+    })
+    const raw = await res.text()
+    let data
+    try {
+      data = JSON.parse(raw)
+    } catch {
+      data = { detail: raw }
+    }
+    if (!res.ok) {
+      const msg =
+        typeof data.detail === 'string'
+          ? data.detail
+          : Array.isArray(data.detail)
+            ? data.detail.map((d) => d.msg || d).join('; ')
+            : raw
+      throw new Error(msg || `HTTP ${res.status}`)
+    }
+    alert(
+      `${data.message || '已完成'}\n静态路径：${data.public_base || '/sources/pic/'}（文件名如 happy_1.png；耗时较长属正常；可打开该目录将图片再「添加」到本角色）`
+    )
+  } catch (e) {
+    console.error(e)
+    alert('生成失败：' + (e.message || String(e)))
+  } finally {
+    runninghubPicLoading.value = false
+  }
+}
+
+async function applyRemoveStandPicBackgrounds() {
+  if (!selectedCharacter.value) return
+  updateCharacterData()
+  const name = (characterForm.value.name || '').trim()
+  removeStandBgLoading.value = true
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/runninghub/remove-stand-pic-backgrounds`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ character_name: name })
+    })
+    const raw = await res.text()
+    let data
+    try {
+      data = JSON.parse(raw)
+    } catch {
+      data = { detail: raw }
+    }
+    if (!res.ok) {
+      const msg =
+        typeof data.detail === 'string'
+          ? data.detail
+          : Array.isArray(data.detail)
+            ? data.detail.map((d) => d.msg || d).join('; ')
+            : raw
+      throw new Error(msg || `HTTP ${res.status}`)
+    }
+    const v = Date.now()
+    selectedCharacter.value.images = (data.images || []).map((im) => ({
+      id: generateId(),
+      url: `${im.url}?v=${v}`,
+      name: im.name
+    }))
+    selectedImageIndex.value = 0
+    saveCharactersToStorage()
+    alert(data.message || '已用去背景立绘替换当前角色的图片列表')
+  } catch (e) {
+    console.error(e)
+    alert('去背景失败：' + (e.message || String(e)))
+  } finally {
+    removeStandBgLoading.value = false
+  }
 }
 
 function selectImage(index) {
@@ -707,6 +809,42 @@ function handleKeyDown(event) {
                     placeholder="描述角色的性格特点..."
                     rows="4"
                   ></textarea>
+                </div>
+
+                <div class="form-group runninghub-pic-block">
+                  <label>RunningHub 立绘</label>
+                  <p class="runninghub-pic-hint">
+                    请先在「设置」填写 RunningHub 工作流 ID。将结合上方外貌描述与性格设定生成多套表情图，保存到
+                    public/sources/pic；任务排队较久，请勿关闭页面。「去背景」依赖 remove.bg（.env 中配置
+                    REMOVE_BG_API_KEY），会覆盖同目录下已有
+                    PNG。
+                  </p>
+                  <div class="runninghub-pic-actions">
+                    <button
+                      type="button"
+                      class="runninghub-pic-btn"
+                      :disabled="runninghubPicLoading || removeStandBgLoading"
+                      @click="generateRunninghubCharacterPics"
+                    >
+                      {{
+                        runninghubPicLoading
+                          ? '生成中（请勿关闭页面）…'
+                          : '🖼 RunningHub 生成立绘'
+                      }}
+                    </button>
+                    <button
+                      type="button"
+                      class="runninghub-pic-btn runninghub-pic-btn-secondary"
+                      :disabled="runninghubPicLoading || removeStandBgLoading"
+                      @click="applyRemoveStandPicBackgrounds"
+                    >
+                      {{
+                        removeStandBgLoading
+                          ? '去背景处理中…'
+                          : '✂️ 立绘去背景并替换'
+                      }}
+                    </button>
+                  </div>
                 </div>
                 
                 <div class="form-group">
@@ -1370,6 +1508,56 @@ function handleKeyDown(event) {
 .form-group select option {
   background: #1a1a2e;
   color: #fff;
+}
+
+.runninghub-pic-block {
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 212, 255, 0.22);
+  background: rgba(0, 212, 255, 0.06);
+}
+
+.runninghub-pic-hint {
+  margin: 0 0 12px 0;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.48);
+}
+
+.runninghub-pic-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.runninghub-pic-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: 1px solid rgba(123, 44, 191, 0.45);
+  background: linear-gradient(135deg, rgba(123, 44, 191, 0.28) 0%, rgba(0, 212, 255, 0.14) 100%);
+  color: #e8e8ff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.runninghub-pic-btn:hover:not(:disabled) {
+  border-color: rgba(0, 212, 255, 0.55);
+  box-shadow: 0 4px 14px rgba(0, 212, 255, 0.12);
+}
+
+.runninghub-pic-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.runninghub-pic-btn-secondary {
+  border-color: rgba(0, 212, 255, 0.35);
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.12) 0%, rgba(123, 44, 191, 0.1) 100%);
 }
 
 .form-row {

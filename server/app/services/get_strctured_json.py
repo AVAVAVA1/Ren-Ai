@@ -8,20 +8,23 @@ _DEFAULT_EXPRESSION = "微笑"
 def structured_json(
     data: List[Dict[str, Any]],
     save_path: Optional[str] = None,
+    *,
+    persist: bool = True,
 ) -> Tuple[List[Dict[str, Any]], str]:
     """
-    将对话生成结果转为流程图用 JSON，并写入 public/sources/strctured_json。
-    :param data: 与 dialogue 输出一致，每项含 chapter_name、site、dialogues
-    :param save_path: 若为空则自动生成带时间戳路径
-    :return: (renai_data, 磁盘绝对路径)
+    将对话生成结果转为流程图用 JSON；可选写入 public/sources/strctured_json。
+    :param data: 与 dialogue 输出一致，每项含 chapter_name、site、dialogues（如 dialogue_*.json）
+    :param save_path: persist 为 True 且为空则自动生成带时间戳路径
+    :param persist: False 时仅返回 renai_data，不写盘
+    :return: (renai_data, 磁盘绝对路径；persist False 时第二项为空字符串)
     """
     renai_data: List[Dict[str, Any]] = []
     counter = 0
 
     for element in data:
         chapter_data = {
-            "dialogue_name": element["chapter_name"],
-            "site_description": element["site"],
+            "dialogue_name": element.get("chapter_name") or "",
+            "site_description": element.get("site") or "",
             "dialogue_content": [],
         }
         dialogues = element.get("dialogues") or []
@@ -32,8 +35,8 @@ def structured_json(
 
             entry = {
                 "id": f"{counter}",
-                "name": dialogue["name"],
-                "content": dialogue["dialogue_content"],
+                "name": dialogue.get("name") or "",
+                "content": dialogue.get("dialogue_content") or "",
                 "background": "",
                 "character": dialogue.get("character") or _DEFAULT_EXPRESSION,
                 "music": "",
@@ -51,7 +54,8 @@ def structured_json(
 
         renai_data.append(chapter_data)
 
-    if not save_path:
-        save_path = tools.generate_save_path("strctured_json", "renai")
-    tools.save_dict_to_json(data=renai_data, file_path=save_path)
-    return renai_data, save_path
+    if persist:
+        out_path = save_path or tools.generate_save_path("strctured_json", "renai")
+        tools.save_dict_to_json(data=renai_data, file_path=out_path)
+        return renai_data, out_path
+    return renai_data, save_path or ""

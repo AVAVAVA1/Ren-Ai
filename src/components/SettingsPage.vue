@@ -1,5 +1,7 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watch, onMounted } from 'vue'
+
+const RUNNINGHUB_WORKFLOW_STORAGE_KEY = 'renai_runninghub_workflow_id'
 
 const settings = ref({
   theme: 'dark',
@@ -7,6 +9,26 @@ const settings = ref({
   autoSave: true,
   snapToGrid: true,
   gridSize: 20
+})
+
+/** RunningHub 工作流 ID，人物卡「生成立绘」时使用 */
+const runninghubWorkflowId = ref('')
+
+onMounted(() => {
+  try {
+    const v = localStorage.getItem(RUNNINGHUB_WORKFLOW_STORAGE_KEY)
+    if (v) runninghubWorkflowId.value = v
+  } catch {
+    /* ignore */
+  }
+})
+
+watch(runninghubWorkflowId, (v) => {
+  try {
+    localStorage.setItem(RUNNINGHUB_WORKFLOW_STORAGE_KEY, v || '')
+  } catch {
+    /* ignore */
+  }
 })
 
 function handleSettingChange(key, value) {
@@ -96,6 +118,20 @@ function handleSettingChange(key, value) {
           @change="handleSettingChange('gridSize', settings.gridSize)"
         />
       </div>
+
+      <div class="setting-item setting-item-wide">
+        <div class="setting-info setting-info-full">
+          <h4>RunningHub 工作流 ID</h4>
+          <p>人物卡编辑页「RunningHub 生成立绘」时使用；与 RunningHub 控制台中的 workflowId 一致。</p>
+        </div>
+        <input
+          v-model.trim="runninghubWorkflowId"
+          type="text"
+          class="setting-input setting-input-full"
+          placeholder="例如：2037082428853981185"
+          autocomplete="off"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -138,6 +174,22 @@ function handleSettingChange(key, value) {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   transition: all 0.3s ease;
+}
+
+.setting-item-wide {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.setting-info-full {
+  width: 100%;
+}
+
+.setting-input-full {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .setting-item:hover {

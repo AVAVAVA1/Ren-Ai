@@ -16,6 +16,26 @@ import '@vue-flow/minimap/dist/style.css'
 
 const emit = defineEmits(['export-data'])
 
+const API_BASE_URL = 'http://localhost:8000'
+
+const DEFAULT_BG_WORKFLOW_ID = '2037179226444533762'
+const isGeneratingFlowBg = ref(false)
+const isLaunchingPygame = ref(false)
+
+/** 与 public/sources/dialogue 下 dialogue_*.json 一致：chapter_name、site、dialogues[] */
+function isDialogueScriptImportShape(data) {
+  const arr = Array.isArray(data) ? data : [data]
+  if (arr.length === 0) return false
+  return arr.every(
+    (item) =>
+      item &&
+      typeof item === 'object' &&
+      Object.prototype.hasOwnProperty.call(item, 'chapter_name') &&
+      Object.prototype.hasOwnProperty.call(item, 'dialogues') &&
+      Array.isArray(item.dialogues)
+  )
+}
+
 const {
   onConnect,
   addEdges,
@@ -74,7 +94,9 @@ function childRefToVueNodeId(childRef, sourceGroupIndex) {
 
 function vueNodeIdToExportedRef(sourceNode, targetNode) {
   if (!sourceNode || !targetNode) return ''
-  if (sourceNode.groupId === targetNode.groupId) return String(targetNode.originalId)
+  if (Number(sourceNode.groupId) === Number(targetNode.groupId)) {
+    return String(targetNode.originalId)
+  }
   return `g${targetNode.groupId}:${targetNode.originalId}`
 }
 
@@ -452,6 +474,51 @@ const duplicateIds = computed(() => {
 
 const hasIdConflicts = computed(() => duplicateIds.value.length > 0)
 
+const CARD_STORAGE_KEY = 'characters_data'
+
+/** 人物卡写入或跨标签页同步后递增，用于刷新「流程 vs 人物卡」对比 */
+const flowCardSyncKey = ref(0)
+
+function bumpFlowCardSync() {
+  flowCardSyncKey.value++
+}
+
+function loadCharacterCardNameSet() {
+  try {
+    const raw = localStorage.getItem(CARD_STORAGE_KEY)
+    if (!raw) return new Set()
+    const arr = JSON.parse(raw)
+    if (!Array.isArray(arr)) return new Set()
+    const set = new Set()
+    for (const c of arr) {
+      const n = (c?.data?.name ?? '').trim()
+      if (n) set.add(n)
+    }
+    return set
+  } catch {
+    return new Set()
+  }
+}
+
+/** 当前加载的流程里出现的说话者（去重，不含「旁白」与空名） */
+const flowCharacterNames = computed(() => {
+  const names = new Set()
+  for (const n of nodes.value) {
+    if (n.type !== 'dialogue') continue
+    const raw = (n.data?.name ?? '').trim()
+    if (!raw || raw === '旁白') continue
+    names.add(raw)
+  }
+  return Array.from(names).sort((a, b) => a.localeCompare(b, 'zh-Hans-CN'))
+})
+
+/** 流程中有、本地人物卡 data.name 中未出现的名字 */
+const flowNamesMissingFromCards = computed(() => {
+  void flowCardSyncKey.value
+  const cardNames = loadCharacterCardNameSet()
+  return flowCharacterNames.value.filter((name) => !cardNames.has(name))
+})
+
 function generateNodeId() {
   nodeIdCounter.value++
   return `node_${Date.now()}_${nodeIdCounter.value}`
@@ -746,20 +813,32 @@ function convertFlowToJson() {
       const childrenVue = node.data.children || []
       const childrenExported = []
       const checkFlagOutput = {}
+      const menuArr = Array.isArray(node.data.menu) ? node.data.menu : []
 
-      childrenVue.forEach((childVueId) => {
+      childrenVue.forEach((childVueId, childIndex) => {
         const tn = nodes.value.find((n) => n.id === childVueId)
         if (!tn) return
         const expKey = vueNodeIdToExportedRef(node, tn)
         childrenExported.push(expKey)
         const co = String(tn.originalId)
-        const v =
+        let v =
           checkFlagData[co] !== undefined
             ? checkFlagData[co]
             : checkFlagData[expKey] !== undefined
               ? checkFlagData[expKey]
-              : ''
-        checkFlagOutput[expKey] = v
+              : checkFlagData[childVueId] !== undefined
+                ? checkFlagData[childVueId]
+                : ''
+        const menuFlag = menuArr[childIndex]?.flag
+        if (
+          (v === undefined || v === null || String(v).trim() === '') &&
+          menuFlag !== undefined &&
+          menuFlag !== null &&
+          String(menuFlag).trim() !== ''
+        ) {
+          v = String(menuFlag).trim()
+        }
+        checkFlagOutput[expKey] = v === undefined || v === null ? '' : String(v)
       })
 
       let parentExported = ''
@@ -830,10 +909,15 @@ function updateNodeDataFromEdges() {
 }
 
 function handleShowMenu(event) {
-  selectedNode.value = {
-    id: event.nodeId,
-    data: event.data
-  }
+  const full = nodes.value.find((n) => n.id === event.nodeId)
+  selectedNode.value =
+    full ||
+    ({
+      id: event.nodeId,
+      data: event.data,
+      groupId: 0,
+      originalId: String(event.data?.id ?? event.nodeId)
+    })
   showModal.value = true
 }
 
@@ -1251,6 +1335,32 @@ async function loadFromPublicUrl(url) {
       throw new Error(`HTTP ${response.status}`)
     }
     const data = await response.json()
+    if (isDialogueScriptImportShape(data)) {
+      const payload = Array.isArray(data) ? data : [data]
+      const res = await fetch(`${API_BASE_URL}/api/story/import-dialogue-for-flow`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ dialogue_results: payload, persist: false })
+      })
+      const rawText = await res.text()
+      let parsed
+      try {
+        parsed = JSON.parse(rawText)
+      } catch {
+        throw new Error(rawText || `HTTP ${res.status}`)
+      }
+      if (!res.ok) {
+        const msg =
+          typeof parsed.detail === 'string'
+            ? parsed.detail
+            : Array.isArray(parsed.detail)
+              ? parsed.detail.map((d) => d.msg || d).join('; ')
+            : rawText
+        throw new Error(msg || `HTTP ${res.status}`)
+      }
+      convertJsonToFlow(parsed.dialogues)
+      return
+    }
     convertJsonToFlow(data)
   } catch (e) {
     console.error('从 URL 加载流程 JSON 失败:', e)
@@ -1260,13 +1370,39 @@ async function loadFromPublicUrl(url) {
 
 function handleImportJson(file) {
   const reader = new FileReader()
-  reader.onload = (e) => {
+  reader.onload = async (e) => {
     try {
       const jsonData = JSON.parse(e.target.result)
+      if (isDialogueScriptImportShape(jsonData)) {
+        const payload = Array.isArray(jsonData) ? jsonData : [jsonData]
+        const res = await fetch(`${API_BASE_URL}/api/story/import-dialogue-for-flow`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ dialogue_results: payload, persist: false })
+        })
+        const rawText = await res.text()
+        let data
+        try {
+          data = JSON.parse(rawText)
+        } catch {
+          data = { detail: rawText }
+        }
+        if (!res.ok) {
+          const msg =
+            typeof data.detail === 'string'
+              ? data.detail
+              : Array.isArray(data.detail)
+                ? data.detail.map((d) => d.msg || d).join('; ')
+                : rawText
+          throw new Error(msg || `HTTP ${res.status}`)
+        }
+        convertJsonToFlow(data.dialogues)
+        return
+      }
       convertJsonToFlow(jsonData)
     } catch (error) {
-      console.error('Failed to parse JSON:', error)
-      alert('JSON文件格式错误')
+      console.error('Failed to parse/import JSON:', error)
+      alert(error?.message || 'JSON 文件格式错误或导入失败（对话剧本导入需后端已启动）')
     }
   }
   reader.readAsText(file)
@@ -1282,6 +1418,91 @@ function handleExportJson() {
   a.download = fileName
   a.click()
   URL.revokeObjectURL(url)
+}
+
+async function handleGenerateFlowBackgrounds() {
+  if (flowGroups.value.length === 0) {
+    alert('请先导入或编辑流程图后再生成背景。')
+    return
+  }
+  const structuredJson = convertFlowToJson()
+  isGeneratingFlowBg.value = true
+  try {
+    const controller = new AbortController()
+    const timeoutMs = 60 * 60 * 1000
+    const tid = setTimeout(() => controller.abort(), timeoutMs)
+    const response = await fetch(`${API_BASE_URL}/api/runninghub/generate-flow-backgrounds`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      signal: controller.signal,
+      body: JSON.stringify({
+        structured_json: structuredJson,
+        workflow_id: DEFAULT_BG_WORKFLOW_ID
+      })
+    })
+    clearTimeout(tid)
+    const rawText = await response.text()
+    let parsed
+    try {
+      parsed = JSON.parse(rawText)
+    } catch {
+      throw new Error(rawText || `HTTP ${response.status}`)
+    }
+    if (!response.ok) {
+      const msg =
+        typeof parsed.detail === 'string'
+          ? parsed.detail
+          : Array.isArray(parsed.detail)
+            ? parsed.detail.map((d) => d.msg || d).join('; ')
+            : rawText
+      throw new Error(msg || `HTTP ${response.status}`)
+    }
+    convertJsonToFlow(parsed.dialogues)
+    alert(parsed.message || '背景已生成并已写回流程节点。')
+  } catch (e) {
+    console.error('一键生成背景失败:', e)
+    alert('生成背景失败: ' + (e?.message || String(e)))
+  } finally {
+    isGeneratingFlowBg.value = false
+  }
+}
+
+async function handleRunFlowPygame() {
+  if (flowGroups.value.length === 0) {
+    alert('请先导入或编辑流程图。')
+    return
+  }
+  const structuredJson = convertFlowToJson()
+  isLaunchingPygame.value = true
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/play/run-flow-pygame`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ structured_json: structuredJson })
+    })
+    const rawText = await response.text()
+    let parsed
+    try {
+      parsed = JSON.parse(rawText)
+    } catch {
+      throw new Error(rawText || `HTTP ${response.status}`)
+    }
+    if (!response.ok) {
+      const msg =
+        typeof parsed.detail === 'string'
+          ? parsed.detail
+          : Array.isArray(parsed.detail)
+            ? parsed.detail.map((d) => d.msg || d).join('; ')
+            : rawText
+      throw new Error(msg || `HTTP ${response.status}`)
+    }
+    alert(parsed.message || '已启动 Pygame 预览。')
+  } catch (e) {
+    console.error('启动 Pygame 失败:', e)
+    alert('启动失败: ' + (e?.message || String(e)))
+  } finally {
+    isLaunchingPygame.value = false
+  }
 }
 
 function handleEdgeDoubleClick(event) {
@@ -1397,15 +1618,27 @@ onConnect((params) => {
   dragStartInfo.value = null
 })
 
+function onCharacterStorageEvent() {
+  bumpFlowCardSync()
+}
+
+function onWindowStorage(e) {
+  if (e.key === CARD_STORAGE_KEY) bumpFlowCardSync()
+}
+
 onMounted(() => {
   loadDefaultData()
   document.addEventListener('keydown', handleKeyDown)
   document.addEventListener('mousemove', handleMouseMove)
+  window.addEventListener('renai-characters-storage', onCharacterStorageEvent)
+  window.addEventListener('storage', onWindowStorage)
 })
 
 onUnmounted(() => {
   document.removeEventListener('keydown', handleKeyDown)
   document.removeEventListener('mousemove', handleMouseMove)
+  window.removeEventListener('renai-characters-storage', onCharacterStorageEvent)
+  window.removeEventListener('storage', onWindowStorage)
 })
 
 defineExpose({
@@ -1427,7 +1660,9 @@ defineExpose({
         <button type="button" class="add-block-btn" @click="addFlowBlock">＋ 区块</button>
       </div>
       <p class="blocks-hint">数组每项对应一个区块；当前选中的区块用于 Tab / 粘贴新建节点。</p>
-      <div v-if="flowGroups.length === 0" class="blocks-empty">请导入 JSON 或点击「区块」添加</div>
+      <div v-if="flowGroups.length === 0" class="blocks-empty">
+        请导入流程图 JSON、或对话剧本 JSON（chapter_name / site / dialogues，与 dialogue_*.json 相同），也可点击「区块」添加
+      </div>
       <div
         v-for="(g, idx) in flowGroups"
         :key="g.id"
@@ -1457,6 +1692,28 @@ defineExpose({
           @click.stop
         />
       </div>
+
+      <section class="flow-cast-panel" aria-label="流程中的角色">
+        <h4 class="flow-cast-title">流中的角色</h4>
+        <p class="flow-cast-sub">不含「旁白」；与本地人物卡「姓名」对比。</p>
+        <div v-if="flowCharacterNames.length === 0" class="flow-cast-empty">
+          暂无角色名（无对话节点或仅有旁白）
+        </div>
+        <div v-else class="flow-cast-tags">
+          <span v-for="name in flowCharacterNames" :key="name" class="flow-cast-tag">{{ name }}</span>
+        </div>
+        <div
+          v-if="flowNamesMissingFromCards.length"
+          class="flow-cast-missing"
+          role="status"
+        >
+          <span class="flow-cast-missing-label">以下在流程中有，人物卡中没有：</span>
+          <span class="flow-cast-missing-value">{{ flowNamesMissingFromCards.join('、') }}</span>
+        </div>
+        <p v-else-if="flowCharacterNames.length" class="flow-cast-ok">
+          人物卡已覆盖当前流中的全部角色名。
+        </p>
+      </section>
     </aside>
 
     <div class="flow-main">
@@ -1515,6 +1772,24 @@ defineExpose({
       <button class="relayout-btn demo-heavy-btn" type="button" @click="loadDemoLargeFile" title="可能明显卡顿，仅作联调">
         加载大示例 JSON
       </button>
+      <button
+        class="relayout-btn generate-bg-btn"
+        type="button"
+        :disabled="isGeneratingFlowBg || flowGroups.length === 0"
+        title="按各区块 site_description 调用 RunningHub 出图，保存到 public/pic_bg/时间戳/，并写回节点背景路径"
+        @click="handleGenerateFlowBackgrounds"
+      >
+        {{ isGeneratingFlowBg ? '生成背景中…' : '一键生成背景' }}
+      </button>
+      <button
+        class="relayout-btn run-pygame-btn"
+        type="button"
+        :disabled="isLaunchingPygame || isGeneratingFlowBg || flowGroups.length === 0"
+        title="将当前画布导出为结构化 JSON，由本机后端启动 pygame_play 预览（需已 pip install pygame）"
+        @click="handleRunFlowPygame"
+      >
+        {{ isLaunchingPygame ? '启动中…' : '运行剧本(Pygame)' }}
+      </button>
     </div>
     </div>
     
@@ -1522,6 +1797,7 @@ defineExpose({
       <NodeDetailModal
         v-if="showModal && selectedNode"
         :node="selectedNode"
+        :flow-nodes="nodes"
         @close="closeModal"
         @update="handleUpdateNode"
       />
@@ -1630,6 +1906,84 @@ defineExpose({
   color: rgba(255, 255, 255, 0.4);
   padding: 12px 4px;
   text-align: center;
+}
+
+.flow-cast-panel {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.flow-cast-title {
+  margin: 0 0 4px 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.flow-cast-sub {
+  margin: 0 0 10px 0;
+  font-size: 0.65rem;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.flow-cast-empty {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.35);
+  padding: 6px 0;
+}
+
+.flow-cast-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+  margin-bottom: 10px;
+}
+
+.flow-cast-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: #e0f7ff;
+  background: rgba(0, 212, 255, 0.14);
+  border: 1px solid rgba(0, 212, 255, 0.35);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.flow-cast-missing {
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(255, 193, 7, 0.08);
+  border: 1px solid rgba(255, 193, 7, 0.35);
+  font-size: 0.68rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.flow-cast-missing-label {
+  display: block;
+  margin-bottom: 4px;
+  color: #ffc107;
+  font-weight: 600;
+}
+
+.flow-cast-missing-value {
+  color: rgba(255, 224, 130, 0.95);
+  word-break: break-all;
+}
+
+.flow-cast-ok {
+  margin: 0;
+  font-size: 0.68rem;
+  color: rgba(46, 204, 113, 0.85);
+  line-height: 1.4;
 }
 
 .block-card {
@@ -1809,6 +2163,40 @@ defineExpose({
 
 .relayout-btn svg {
   flex-shrink: 0;
+}
+
+.generate-bg-btn {
+  background: rgba(123, 44, 191, 0.25);
+  border-color: rgba(179, 102, 233, 0.45);
+  color: #d4a5ff;
+}
+
+.generate-bg-btn:hover:not(:disabled) {
+  background: rgba(123, 44, 191, 0.38);
+  border-color: rgba(179, 102, 233, 0.65);
+}
+
+.generate-bg-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.run-pygame-btn {
+  background: rgba(46, 213, 115, 0.2);
+  border-color: rgba(46, 213, 115, 0.45);
+  color: #7bed9f;
+}
+
+.run-pygame-btn:hover:not(:disabled) {
+  background: rgba(46, 213, 115, 0.32);
+  border-color: rgba(46, 213, 115, 0.65);
+}
+
+.run-pygame-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .context-menu-overlay {
