@@ -1,11 +1,9 @@
+import re
+from typing import List, Optional
+
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-from typing import List, Optional
-import os
-import sys
-import re
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from app.services.get_dialogue import dialogue
 from app.services import tools
 

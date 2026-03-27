@@ -1,13 +1,11 @@
+import json
+from pathlib import Path
+from typing import Any, Dict, List
+
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
-from pathlib import Path
-import sys
-import json
-import os
-from typing import Any, Dict, List
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from app.services.get_outline import outline
 from app.services.get_complete_script import complete_script
 from app.services.get_dialogue import dialogue

@@ -1,10 +1,8 @@
+from typing import Optional
+
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-from typing import Optional
-import os
-import sys
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from app.services.get_outline import outline
 
 router = APIRouter(prefix="/api/outline", tags=["outline"])

@@ -1,6 +1,7 @@
-from app.services.llm_generator import LLMGenerator
 from pydantic import BaseModel, Field
+
 from app.services import tools
+from app.services.llm_generator import LLMGenerator
 
 
 def outline(user_input: str, save_path: str, strict_model: bool = False):
@@ -21,7 +22,6 @@ def outline(user_input: str, save_path: str, strict_model: bool = False):
         strict_model=strict_model,
         content_formatter=format_outline_input
     )
-    
-    print(result)
+
     tools.save_dict_to_json(result.model_dump(), save_path)
     return result.model_dump()

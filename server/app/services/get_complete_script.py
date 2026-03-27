@@ -77,16 +77,14 @@ def complete_script(user_input: str, outline, path: str, strict_model: bool = Fa
         pydantic_object=ArticleCompleteScript,
         result_type='剧本'
     )
-    
-    get_outline = outline
-    
+
     def format_script_input(user_input, previous_result):
         return (
             f'用户要求和待修改的剧本：{user_input}'
             f'根据大纲完成完整剧本的创作或修改剧本，要求根据所给的内容输出作品的完整剧本,'
             f'并进行合理分段，并保证剧情连贯。要求内容完整充实，分段合理。'
             f'对不同的分段之间应保证剧情的连贯性。分段要求：如地点变化必须新分一段。'
-            f'同一段中场景地点必须只有一个。以下为原大纲内容{get_outline}'
+            f'同一段中场景地点必须只有一个。以下为原大纲内容{outline}'
         )
     
     result = generator.generate_with_retry(
