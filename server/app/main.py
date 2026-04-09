@@ -23,3 +23,9 @@ app.include_router(play.router)
 @app.get("/")
 async def root():
     return {"message": "Story Generation API is running"}
+
+
+@app.get("/health")
+async def health():
+    """探活（部署/反向代理可用）。"""
+    return {"status": "ok"}
