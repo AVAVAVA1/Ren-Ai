@@ -1,4 +1,22 @@
 # Ren'Ai 视觉小说零代码开发平台项目说明书
+## 演示视频：https://www.bilibili.com/video/BV1edXTBCEYL
+## 如何部署：
+## 架构说明：
+
+- **前端**：Vue 3 + Vite，。
+- **后端**：FastAPI，在 **`server/`** 目录下用 Uvicorn 启动。
+- 当前前端部分请求里 **API 基地址写为 `http://localhost:8000`**
+### 1.下载仓库到你的文件夹
+### 2.**准备 Python 环境**（在 `server/`）  
+   ```bash
+   python -m venv venv
+   # Windows: venv\Scripts\activate
+   # Linux/macOS: source venv/bin/activate
+   pip install -r requirements.txt
+   ```
+### 3.powershell -ExecutionPolicy Bypass -File start-backend.ps1 （启动后端）
+###   powershell -ExecutionPolicy Bypass -File start-frontend.ps1（启动前端）
+### 使用时设置中的workflowId不能为空，建议填：2037082428853981185
 ## 一、问题背景
 视觉小说（Visual Novel）作为一种融合文字、图像、音频的互动叙事形式，拥有广泛的创作需求，但传统开发模式存在显著门槛：
 1. **技术壁垒高**：主流工具（如 Ren'Py）需掌握代码编写、脚本语法，非技术创作者难以入门；
@@ -160,7 +178,3 @@ graph TD
 
 ## 八、总结
 Ren'Ai 项目通过「AI 全链路集成 + 零代码可视化」解决了视觉小说创作的技术门槛问题，核心价值在于将分散的 LLM、文生图等 AI 能力封装为面向创作者的易用工具，同时通过结构化输出、容错机制保证创作流程的稳定性。未来可进一步优化异步生图任务、扩展多模态 AI 能力（如语音生成）、增强流程图协作功能，推动视觉小说创作从「技术导向」转向「创意导向」。
-
-## 九、部署与环境变量（GitHub）
-- **部署步骤与 Nginx/CI 说明**见仓库内 **[docs/DEPLOY.md](./docs/DEPLOY.md)**，可直接作为 GitHub 上的部署文档链接给协作者。
-- **`.env`：不要提交到 Git。** 将 `server/.env.example` 复制为 `server/.env` 后填写密钥；CI/云平台使用 Secrets / 环境变量注入，勿把真实 `.env` 打进镜像或写进仓库。

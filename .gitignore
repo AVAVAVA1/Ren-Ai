@@ -56,3 +56,6 @@ env/
 
 # Agents
 .agents/
+
+# 本地长版项目说明书（与远端 README 分离，避免推送覆盖）
+README.local.md
