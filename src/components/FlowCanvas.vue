@@ -35,6 +35,10 @@ function readFlowDraftFromStorage() {
 const _flowDraft = readFlowDraftFromStorage()
 
 const DEFAULT_BG_WORKFLOW_ID = '2037179226444533762'
+const IMAGE_BACKEND_STORAGE_KEY = 'renai_image_backend'
+const COMFYUI_CKPT_STORAGE_KEY = 'renai_comfyui_checkpoint'
+const COMFYUI_WORKFLOW_STORAGE_KEY = 'renai_comfyui_workflow'
+const COMFYUI_SIZE_RATIO_STORAGE_KEY = 'renai_comfyui_size_ratio'
 const isGeneratingFlowBg = ref(false)
 const isLaunchingPygame = ref(false)
 
@@ -1566,13 +1570,18 @@ async function handleGenerateFlowBackgrounds() {
     const controller = new AbortController()
     const timeoutMs = 60 * 60 * 1000
     const tid = setTimeout(() => controller.abort(), timeoutMs)
-    const response = await fetch(`${API_BASE_URL}/api/runninghub/generate-flow-backgrounds`, {
+    const imageBackend = (localStorage.getItem(IMAGE_BACKEND_STORAGE_KEY) || 'runninghub').trim()
+    const response = await fetch(`${API_BASE_URL}/api/image/generate-flow-backgrounds`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       signal: controller.signal,
       body: JSON.stringify({
         structured_json: structuredJson,
-        workflow_id: DEFAULT_BG_WORKFLOW_ID
+        workflow_id: DEFAULT_BG_WORKFLOW_ID,
+        image_backend: imageBackend,
+        comfyui_checkpoint: (localStorage.getItem(COMFYUI_CKPT_STORAGE_KEY) || '').trim(),
+        comfyui_workflow: (localStorage.getItem(COMFYUI_WORKFLOW_STORAGE_KEY) || '').trim(),
+        comfyui_size_ratio: (localStorage.getItem(COMFYUI_SIZE_RATIO_STORAGE_KEY) || '').trim()
       })
     })
     clearTimeout(tid)
@@ -1976,7 +1985,7 @@ defineExpose({
         class="relayout-btn generate-bg-btn"
         type="button"
         :disabled="isGeneratingFlowBg || flowGroups.length === 0"
-        title="按各区块 site_description 调用 RunningHub 出图，保存到 public/pic_bg/时间戳/，并写回节点背景路径"
+        title="按各区块 site_description 出图（设置中选 RunningHub 或本地 ComfyUI），保存到 public/pic_bg/时间戳/，并写回节点背景路径"
         @click="handleGenerateFlowBackgrounds"
       >
         {{ isGeneratingFlowBg ? '生成背景中…' : '一键生成背景' }}

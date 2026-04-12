@@ -2,6 +2,10 @@
 import { ref, watch, onMounted } from 'vue'
 
 const RUNNINGHUB_WORKFLOW_STORAGE_KEY = 'renai_runninghub_workflow_id'
+const IMAGE_BACKEND_STORAGE_KEY = 'renai_image_backend'
+const COMFYUI_CKPT_STORAGE_KEY = 'renai_comfyui_checkpoint'
+const COMFYUI_WORKFLOW_STORAGE_KEY = 'renai_comfyui_workflow'
+const COMFYUI_SIZE_RATIO_STORAGE_KEY = 'renai_comfyui_size_ratio'
 
 const settings = ref({
   theme: 'dark',
@@ -13,19 +17,123 @@ const settings = ref({
 
 /** RunningHub 工作流 ID，人物卡「生成立绘」时使用 */
 const runninghubWorkflowId = ref('')
+/** runninghub | comfyui：人物立绘与流程背景共用 */
+const imageBackend = ref('runninghub')
+/** ComfyUI Checkpoint 文件名，空则使用后端默认（工作流 JSON / .env） */
+const comfyuiCheckpoint = ref('')
+/** public/comfyui 下工作流 JSON 文件名 */
+const comfyUiWorkflowFile = ref('workflow1.json')
+const comfyWorkflowOptions = ref([])
+const comfyWorkflowsLoadError = ref('')
+const sizePresetList = ref([{ ratio: '1.0', width: 1024, height: 1024, label: '1.0 — 1024×1024' }])
+const comfySizeRatio = ref('1.0')
 
-onMounted(() => {
+async function loadSizePresets() {
+  let saved = ''
   try {
-    const v = localStorage.getItem(RUNNINGHUB_WORKFLOW_STORAGE_KEY)
-    if (v) runninghubWorkflowId.value = v
+    saved = localStorage.getItem(COMFYUI_SIZE_RATIO_STORAGE_KEY) || ''
   } catch {
     /* ignore */
   }
+  try {
+    const r = await fetch('/api/image/comfyui-size-presets')
+    if (!r.ok) throw new Error(`HTTP ${r.status}`)
+    const j = await r.json()
+    const list = Array.isArray(j.presets) ? j.presets : []
+    if (list.length) sizePresetList.value = list
+    const def = (j.default_ratio || '1.0').trim() || '1.0'
+    const ratios = new Set(sizePresetList.value.map((p) => p.ratio))
+    if (saved && ratios.has(saved)) comfySizeRatio.value = saved
+    else if (ratios.has(def)) comfySizeRatio.value = def
+    else comfySizeRatio.value = sizePresetList.value[0]?.ratio || '1.0'
+  } catch {
+    comfySizeRatio.value = saved || '1.0'
+  }
+}
+
+async function loadComfyWorkflows() {
+  comfyWorkflowsLoadError.value = ''
+  let saved = ''
+  try {
+    saved = localStorage.getItem(COMFYUI_WORKFLOW_STORAGE_KEY) || ''
+  } catch {
+    /* ignore */
+  }
+  try {
+    const r = await fetch('/api/image/comfyui-workflows')
+    if (!r.ok) throw new Error(`HTTP ${r.status}`)
+    const j = await r.json()
+    const list = Array.isArray(j.workflows) ? j.workflows : []
+    comfyWorkflowOptions.value = list
+    const def = (j.default_file || 'workflow1.json').trim() || 'workflow1.json'
+    const names = new Set(list.map((w) => w.file))
+    if (saved && names.has(saved)) comfyUiWorkflowFile.value = saved
+    else if (names.has(def)) comfyUiWorkflowFile.value = def
+    else if (list[0]?.file) comfyUiWorkflowFile.value = list[0].file
+    else comfyUiWorkflowFile.value = def
+  } catch (e) {
+    comfyWorkflowsLoadError.value = e?.message || String(e)
+    comfyWorkflowOptions.value = [
+      {
+        file: 'workflow1.json',
+        label: 'workflow1.json（离线默认）',
+        mapping_ok: true,
+        mapping_source: 'fallback'
+      }
+    ]
+    comfyUiWorkflowFile.value = saved || 'workflow1.json'
+  }
+}
+
+onMounted(async () => {
+  try {
+    const v = localStorage.getItem(RUNNINGHUB_WORKFLOW_STORAGE_KEY)
+    if (v) runninghubWorkflowId.value = v
+    const b = localStorage.getItem(IMAGE_BACKEND_STORAGE_KEY)
+    if (b === 'comfyui' || b === 'runninghub') imageBackend.value = b
+    const ck = localStorage.getItem(COMFYUI_CKPT_STORAGE_KEY)
+    if (ck) comfyuiCheckpoint.value = ck
+  } catch {
+    /* ignore */
+  }
+  await Promise.all([loadComfyWorkflows(), loadSizePresets()])
 })
 
 watch(runninghubWorkflowId, (v) => {
   try {
     localStorage.setItem(RUNNINGHUB_WORKFLOW_STORAGE_KEY, v || '')
+  } catch {
+    /* ignore */
+  }
+})
+
+watch(imageBackend, (v) => {
+  try {
+    localStorage.setItem(IMAGE_BACKEND_STORAGE_KEY, v || 'runninghub')
+  } catch {
+    /* ignore */
+  }
+})
+
+watch(comfyuiCheckpoint, (v) => {
+  try {
+    localStorage.setItem(COMFYUI_CKPT_STORAGE_KEY, v || '')
+  } catch {
+    /* ignore */
+  }
+})
+
+watch(comfyUiWorkflowFile, (v) => {
+  try {
+    localStorage.setItem(COMFYUI_WORKFLOW_STORAGE_KEY, v || '')
+  } catch {
+    /* ignore */
+  }
+})
+
+watch(comfySizeRatio, (v) => {
+  try {
+    localStorage.setItem(COMFYUI_SIZE_RATIO_STORAGE_KEY, v || '')
   } catch {
     /* ignore */
   }
@@ -121,8 +229,78 @@ function handleSettingChange(key, value) {
 
       <div class="setting-item setting-item-wide">
         <div class="setting-info setting-info-full">
+          <h4>生图方式</h4>
+          <p>
+            人物立绘与流程图「一键生成背景」共用。选「本地 ComfyUI」时需本机已启动 ComfyUI；工作流来自
+            <code>public/comfyui/*.json</code>，正/负向与 Checkpoint 注入位置由同名的
+            <code>.mapping.json</code> 或 <code>.txt</code> 描述（见仓库内示例）。
+          </p>
+        </div>
+        <select v-model="imageBackend" class="setting-select setting-input-full">
+          <option value="runninghub">RunningHub 云端</option>
+          <option value="comfyui">本地 ComfyUI</option>
+        </select>
+      </div>
+
+      <div class="setting-item setting-item-wide">
+        <div class="setting-info setting-info-full">
+          <h4>ComfyUI 工作流 JSON</h4>
+          <p>
+            下拉列表由后端扫描 <code>public/comfyui</code> 生成。新增工作流时放入
+            <code>foo.json</code>，并添加 <code>foo.mapping.json</code>（推荐）或
+            <code>foo.txt</code> 声明 positive / negative / checkpoint 的节点与 input 键。默认文件可由环境变量
+            <code>COMFYUI_WORKFLOW_JSON</code> 指定。
+          </p>
+          <p v-if="comfyWorkflowsLoadError" class="setting-fetch-warning">
+            无法拉取工作流列表：{{ comfyWorkflowsLoadError }}（已使用本地默认选项）
+          </p>
+        </div>
+        <select v-model="comfyUiWorkflowFile" class="setting-select setting-input-full">
+          <option v-for="w in comfyWorkflowOptions" :key="w.file" :value="w.file">
+            {{ w.label }} — {{ w.file }}
+            {{ w.mapping_ok ? '' : '（映射需修复）' }}
+          </option>
+        </select>
+      </div>
+
+      <div class="setting-item setting-item-wide">
+        <div class="setting-info setting-info-full">
+          <h4>ComfyUI 生图尺寸（ratio）</h4>
+          <p>
+            仅当所选工作流的 <code>.mapping.json</code> 中包含 <code>size</code> 时生效：
+            <code>empty_latent</code> 写入 width/height；
+            <code>mx_slider2d</code> 写入 Xi/Xf/Yi/Yf（与 workflow1 节点 19 一致）。默认 ratio 可由
+            <code>COMFYUI_SIZE_RATIO</code> 配置。
+          </p>
+        </div>
+        <select v-model="comfySizeRatio" class="setting-select setting-input-full">
+          <option v-for="p in sizePresetList" :key="p.ratio" :value="p.ratio">
+            {{ p.label }}
+          </option>
+        </select>
+      </div>
+
+      <div class="setting-item setting-item-wide">
+        <div class="setting-info setting-info-full">
+          <h4>ComfyUI Checkpoint（可选）</h4>
+          <p>
+            填写 ComfyUI 模型列表中的完整文件名（含 .safetensors）。留空则使用后端默认：优先
+            <code>COMFYUI_DEFAULT_CHECKPOINT</code>，否则使用工作流 JSON 中的模型名。
+          </p>
+        </div>
+        <input
+          v-model.trim="comfyuiCheckpoint"
+          type="text"
+          class="setting-input setting-input-full"
+          placeholder="例如：waiIllustriousSDXL_v160 (1).safetensors"
+          autocomplete="off"
+        />
+      </div>
+
+      <div class="setting-item setting-item-wide">
+        <div class="setting-info setting-info-full">
           <h4>RunningHub 工作流 ID</h4>
-          <p>人物卡编辑页「RunningHub 生成立绘」时使用；与 RunningHub 控制台中的 workflowId 一致。</p>
+          <p>选择「RunningHub 云端」生图时必填；与 RunningHub 控制台中的 workflowId 一致。</p>
         </div>
         <input
           v-model.trim="runninghubWorkflowId"
@@ -235,6 +413,20 @@ function handleSettingChange(key, value) {
 .setting-select option {
   background: #1a1a2e;
   color: #fff;
+}
+
+.setting-info code {
+  font-size: 0.8em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.35);
+  color: #a8e6ff;
+}
+
+.setting-fetch-warning {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: #ffb86c;
 }
 
 .toggle-switch {

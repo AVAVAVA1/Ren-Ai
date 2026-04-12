@@ -217,6 +217,10 @@ const chatMessages = ref([])
 const chatInput = ref('')
 
 const RUNNINGHUB_WORKFLOW_STORAGE_KEY = 'renai_runninghub_workflow_id'
+const IMAGE_BACKEND_STORAGE_KEY = 'renai_image_backend'
+const COMFYUI_CKPT_STORAGE_KEY = 'renai_comfyui_checkpoint'
+const COMFYUI_WORKFLOW_STORAGE_KEY = 'renai_comfyui_workflow'
+const COMFYUI_SIZE_RATIO_STORAGE_KEY = 'renai_comfyui_size_ratio'
 const API_BASE_URL = 'http://localhost:8000'
 const runninghubPicLoading = ref(false)
 const removeStandBgLoading = ref(false)
@@ -288,8 +292,9 @@ function updateCharacterData() {
 }
 
 async function generateRunninghubCharacterPics() {
+  const backend = (localStorage.getItem(IMAGE_BACKEND_STORAGE_KEY) || 'runninghub').trim()
   const wf = localStorage.getItem(RUNNINGHUB_WORKFLOW_STORAGE_KEY)?.trim()
-  if (!wf) {
+  if (backend === 'runninghub' && !wf) {
     alert('请先在「设置」页面填写 RunningHub 工作流 ID')
     return
   }
@@ -302,14 +307,18 @@ async function generateRunninghubCharacterPics() {
   updateCharacterData()
   runninghubPicLoading.value = true
   try {
-    const res = await fetch(`${API_BASE_URL}/api/runninghub/generate-character-pics`, {
+    const res = await fetch(`${API_BASE_URL}/api/image/generate-character-pics`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        workflow_id: wf,
+        workflow_id: wf || '',
         character_name: (characterForm.value.name || '').trim(),
         appearance,
-        personality
+        personality,
+        image_backend: backend,
+        comfyui_checkpoint: (localStorage.getItem(COMFYUI_CKPT_STORAGE_KEY) || '').trim(),
+        comfyui_workflow: (localStorage.getItem(COMFYUI_WORKFLOW_STORAGE_KEY) || '').trim(),
+        comfyui_size_ratio: (localStorage.getItem(COMFYUI_SIZE_RATIO_STORAGE_KEY) || '').trim()
       })
     })
     const raw = await res.text()
@@ -345,7 +354,7 @@ async function applyRemoveStandPicBackgrounds() {
   const name = (characterForm.value.name || '').trim()
   removeStandBgLoading.value = true
   try {
-    const res = await fetch(`${API_BASE_URL}/api/runninghub/remove-stand-pic-backgrounds`, {
+    const res = await fetch(`${API_BASE_URL}/api/image/remove-stand-pic-backgrounds`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ character_name: name })
@@ -984,12 +993,12 @@ function handleKeyDown(event) {
                 </div>
 
                 <div class="form-group runninghub-pic-block">
-                  <label>RunningHub 立绘</label>
+                  <label>立绘生成</label>
                   <p class="runninghub-pic-hint">
-                    请先在「设置」填写 RunningHub 工作流 ID。将结合上方外貌描述与性格设定生成多套表情图，保存到
-                    public/sources/pic；任务排队较久，请勿关闭页面。「去背景」依赖 remove.bg（.env 中配置
-                    REMOVE_BG_API_KEY），会覆盖同目录下已有
-                    PNG。
+                    在「设置」中选择 RunningHub 或本地 ComfyUI，并按要求填写工作流 ID / Checkpoint。将结合上方外貌与性格生成多套表情图到
+                    public/sources/pic（与原先 RunningHub 路径一致）。云端排队较久请勿关页；本地 ComfyUI
+                    需已启动且工作流与仓库
+                    public/comfyui/workflow1.json 一致。「去背景」依赖 remove.bg（.env 中 REMOVE_BG_API_KEY）。
                   </p>
                   <div class="runninghub-pic-actions">
                     <button
@@ -1001,7 +1010,7 @@ function handleKeyDown(event) {
                       {{
                         runninghubPicLoading
                           ? '生成中（请勿关闭页面）…'
-                          : '🖼 RunningHub 生成立绘'
+                          : '🖼 生成立绘'
                       }}
                     </button>
                     <button

@@ -1,0 +1,9 @@
+# ComfyUI 槽位映射（与同名 workflow1.json 配套）
+# 优先级：同名的 workflow1.mapping.json > 本 .txt > 内置默认（79/127/45）
+# 语法：每行一条，= 右侧只能是 positive_prompt | negative_prompt | checkpoint
+# 若某槽位有多行 positive，会按顺序全部写入（如 wildcard + populated）
+
+workflow['45']['inputs']['string'] = negative_prompt
+workflow['127']['inputs']['wildcard_text'] = positive_prompt
+workflow['127']['inputs']['populated_text'] = positive_prompt
+workflow['79']['inputs']['ckpt_name'] = checkpoint

@@ -1,0 +1,13 @@
+{
+  "label": "workflow1 4x高清修复",
+  "checkpoint": { "node": "79", "input": "ckpt_name" },
+  "size": {
+    "type": "mx_slider2d",
+    "node": "19"
+  },
+  "positive": [
+    { "node": "127", "input": "wildcard_text" },
+    { "node": "127", "input": "populated_text" }
+  ],
+  "negative": [{ "node": "45", "input": "string" }]
+}

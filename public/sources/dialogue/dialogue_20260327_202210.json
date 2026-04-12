@@ -1,0 +1,2199 @@
+[
+    {
+        "dialogues": [
+            {
+                "name": "旁白",
+                "dialogue_content": "晨光透过落地窗，在深色木地板上切出金色的斜角。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "空气中弥漫着现磨咖啡豆的香气。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "还有刚出炉面包的甜味。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "杏仁可颂，摆好了。",
+                "character": "happy"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "门铃清脆地响起。",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "他总是在这个时刻出现。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "男人推门而入时微微低头。",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "他穿着简单的亚麻衬衫。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "却有种古典的格格不入气质。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "早安，吉尔。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "托盘已准备好。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "一块淋着蜂蜜的麦饼。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "一杯深红如宝石的石榴汁。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "点头致意。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "没有多余言语。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "他走向角落靠窗的位置。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "那个座位似乎专为他保留。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "艾米丽看着他坐下。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "他从帆布袋中取出一本书。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "今天仍是《吉尔伽美什史诗》。",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "但换了个译本。",
+                "character": "sad"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "书脊磨损严重。",
+                "character": "sad"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "显然被反复翻阅。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "柜台后的手机震动起来。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "屏幕显示“妈妈”。",
+                "character": "surprise"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "深吸一口气。",
+                "character": "depression"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "接通电话。",
+                "character": "smile"
+            },
+            {
+                "name": "妈妈",
+                "dialogue_content": "你姐姐的婚纱照出来了。",
+                "character": "happy"
+            },
+            {
+                "name": "妈妈",
+                "dialogue_content": "我发到你邮箱了。",
+                "character": "happy"
+            },
+            {
+                "name": "妈妈",
+                "dialogue_content": "还有三天。",
+                "character": "tsundere"
+            },
+            {
+                "name": "妈妈",
+                "dialogue_content": "你确定要一个人来？",
+                "character": "tsundere"
+            },
+            {
+                "name": "妈妈",
+                "dialogue_content": "王阿姨说她侄子刚回国。",
+                "character": "happy"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "妈，我说过了。",
+                "character": "shy"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我有男朋友。",
+                "character": "shy"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "她压低声音。",
+                "character": "shy"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "眼睛瞟向角落。",
+                "character": "shy"
+            },
+            {
+                "name": "妈妈",
+                "dialogue_content": "那你倒是带回来看看啊！",
+                "character": "anger"
+            },
+            {
+                "name": "妈妈",
+                "dialogue_content": "你姐说没见过他接你。",
+                "character": "anger"
+            },
+            {
+                "name": "妈妈",
+                "dialogue_content": "也没在社交媒体看到合照。",
+                "character": "anger"
+            },
+            {
+                "name": "妈妈",
+                "dialogue_content": "艾米丽，你不要又骗妈妈。",
+                "character": "sad"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "他很忙，是工程师。",
+                "character": "depression"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "她感到胃部收紧。",
+                "character": "sad"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "婚礼那天你会见到他。",
+                "character": "shy"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我保证。",
+                "character": "shy"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "挂断电话时，她的手在颤抖。",
+                "character": "sad"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "谎言像雪球，越滚越大。",
+                "character": "sad"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "如今已逼近崩塌的边缘。",
+                "character": "depression"
+            }
+        ],
+        "chapter_name": "宁孙之盏的晨间谎言",
+        "site": "名称：宁孙之盏咖啡馆。地点：街角独立店铺，拥有宽敞的落地窗。装饰与场景：整体氛围：温馨宁静，带有书卷气与现代简约风的融合。硬装：深色原木地板，米白色墙面，挑高的天花板悬挂着几盏暖黄色吊灯。巨大的落地窗占据临街整面墙，清晨阳光可充分洒入。家具：深棕色实木桌椅，分布疏朗。角落靠窗处有一张较大的单人沙发椅与小圆桌，似为常客预留。柜台为长条形深色木制吧台。功能区域：入口处有清脆的门铃。柜台后是专业的意式咖啡机、磨豆机及玻璃展示柜，柜内陈列着各式新鲜面包与糕点。靠墙有一整面书架，摆满书籍与少量绿植。细节：空气中始终弥漫着咖啡与烘焙香气。吧台上方黑板手写着每日推荐。书架旁有一个小角落摆放着复古唱片机与黑胶唱片。整体干净整洁，光线充足，是适合独处或安静交谈的场所。"
+    },
+    {
+        "dialogues": [
+            {
+                "name": "旁白",
+                "dialogue_content": "李伟独自坐在电脑前。",
+                "character": "sad"
+            },
+            {
+                "name": "李伟",
+                "dialogue_content": "数据对不上……一定漏了什么。",
+                "character": "depression"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "他拿起冷咖啡喝了一口。",
+                "character": "sad"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "电话突然响起。",
+                "character": "surprise"
+            },
+            {
+                "name": "李伟",
+                "dialogue_content": "喂？",
+                "character": "surprise"
+            },
+            {
+                "name": "李伟",
+                "dialogue_content": "什么时候的事？",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "他猛地站起，碰倒了咖啡杯。",
+                "character": "surprise"
+            }
+        ],
+        "chapter_name": "第一幕",
+        "site": "一间昏暗的办公室，深夜。窗外偶尔有车灯闪过，室内只有电脑屏幕的光亮。"
+    },
+    {
+        "dialogues": [
+            {
+                "name": "旁白",
+                "dialogue_content": "夜晚八点四十分，城市霓虹渐亮。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "街角“时光胶囊”咖啡馆已打烊。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "最后一位客人推门离开。",
+                "character": "smile"
+            },
+            {
+                "name": "门铃",
+                "dialogue_content": "叮当——",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "轻轻锁上店门。",
+                "character": "depression"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "转身时，她忽然怔住。",
+                "character": "depression"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "坐在角落窗边，合上手中旧书。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "目光静静落在她身上。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "汝之焦虑如即将来临的暴雨。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "顿了顿，他换了一种语气。",
+                "character": "happy"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "你看起来需要帮助。",
+                "character": "happy"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "所有防线瞬间崩塌。",
+                "character": "crying"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "她靠向柜台，声音发颤。",
+                "character": "crying"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我姐姐下月要结婚了。",
+                "character": "crying"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "全家都在追问我的感情。",
+                "character": "sad"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我撒谎说已有男友。",
+                "character": "sad"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "这个谎说了三个月。",
+                "character": "depression"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "现在再也瞒不住了。",
+                "character": "shy"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "话语像决堤的洪水。",
+                "character": "shy"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "她忽然抬头，语速加快。",
+                "character": "tsundere"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "你能假扮我男友吗？",
+                "character": "tsundere"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "只需要婚礼那一天。",
+                "character": "shy"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "结束后就和平分手。",
+                "character": "shy"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "她低头盯着地板。",
+                "character": "depression"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我知道这很荒谬。",
+                "character": "depression"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "但你看起来可靠。",
+                "character": "shy"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "像从史诗走出来的人。",
+                "character": "shy"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "长久的沉默弥漫开来。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "只有冰箱低沉嗡鸣。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "目光越过她，望向窗外。",
+                "character": "surprise"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "手指在桌面轻轻敲击。",
+                "character": "surprise"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "节奏古老而陌生。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "吾曾筑墙以御洪水。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "若此乃汝之洪水。",
+                "character": "happy"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "吾愿为汝筑墙。",
+                "character": "happy"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "他站起身，灯光勾勒身影。",
+                "character": "happy"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "我是说，好的。",
+                "character": "happy"
+            }
+        ],
+        "chapter_name": "夜晚八点四十分的请求",
+        "site": "名称：时光胶囊咖啡馆\n地点：城市旧街区转角处，毗邻梧桐步道\n外观：砖红色外墙，墨绿色雨棚，木质边框玻璃门，门上挂铜铃\n内部布局：\n- 面积约60平方米，L型原木柜台靠右墙\n- 左侧为窗边卡座区，共四张深棕色皮质沙发\n- 中央散布六张胡桃木圆桌，每桌配绒面扶手椅\n- 最里侧靠墙有一整面书架，摆满旧书与陶艺品\n装饰细节：\n- 暖黄色吊灯与壁灯交织照明\n- 墙面挂复古城市地图与黑白风景照片\n- 柜台后黑板手写今日推荐菜单\n- 书架旁角落放置老式唱片机与黑胶唱片架\n- 窗台点缀绿萝与多肉植物小盆栽\n场景氛围：\n打烊后仅留柜台一盏灯与窗边阅读灯，光线昏黄柔和。窗外霓虹光影透过百叶窗缝隙，在地面投下斑驳条纹。空气中残留咖啡豆香气与旧书纸页的淡淡气味，静谧中隐约回荡街道远处车流声。"
+    },
+    {
+        "dialogues": [
+            {
+                "name": "旁白",
+                "dialogue_content": "夜晚九点十五分，街角咖啡馆内。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "暖黄灯光笼罩着安静空间。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "深棕色木质桌椅整齐排列。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "墙面上挂着几幅抽象画作。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "柜台后咖啡机正轻声嗡鸣。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "首先，你不能用吾和汝。",
+                "character": "happy"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "她转身在白板上写字。",
+                "character": "happy"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我家人会以为你在演历史剧。",
+                "character": "happy"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "认真点头，像学生在听讲。",
+                "character": "shy"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "在我的家乡，我们保留古语。",
+                "character": "shy"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "但我会努力适应现代习惯。",
+                "character": "shy"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "你的家乡具体是哪里？",
+                "character": "surprise"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "乌鲁克。伊拉克的小镇。",
+                "character": "shy"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "战后重建时我在那里工作。",
+                "character": "shy"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "在背景故事栏写下注释。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "建筑工程师，参与重建。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "现任职于本地建筑公司。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我父亲会问职业规划。",
+                "character": "tsundere"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我母亲会问家庭背景。",
+                "character": "tsundere"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我姐姐可能会炫耀。",
+                "character": "tsundere"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "你需要表现得礼貌。",
+                "character": "tsundere"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "若有所思地看向天花板。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "汝父如恩利尔需敬畏。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "汝母如宁孙需智慧应对。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "汝姐如伊什塔尔需谨慎。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "愣住片刻，眨了眨眼。",
+                "character": "surprise"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "你刚才说的是什么？",
+                "character": "surprise"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "抱歉，揉了揉自己眉心。",
+                "character": "shy"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "这是一种文化记忆法。",
+                "character": "shy"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "我们用神话比喻人际关系。",
+                "character": "shy"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "你真的很喜欢那本史诗。",
+                "character": "happy"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "在兴趣栏写下古代历史。",
+                "character": "happy"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "还有建筑学和阅读。",
+                "character": "happy"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "培训持续到深夜时分。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "教他现代握手力度。",
+                "character": "happy"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "教他西餐用餐顺序。",
+                "character": "happy"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "你真的从没用手机？",
+                "character": "surprise"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "不经意流露古老智慧。",
+                "character": "shy"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "通过星象判断天气。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "通过微震感知车流。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "通过眼睛判断谎言。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "凌晨一点咖啡馆打烊。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "两人站在门口告别。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "三天后我来接你。",
+                "character": "tsundere"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "上午十点要准时。",
+                "character": "tsundere"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "记得穿正式西装。",
+                "character": "tsundere"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "在月光下轻轻点头。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "他的轮廓显得虚幻。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "艾米丽，轻声呼唤。",
+                "character": "sad"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "嗯？抬头看他。",
+                "character": "surprise"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "谎言如芦苇之舟。",
+                "character": "sad"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "可渡浅滩难越海。",
+                "character": "sad"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "婚礼后需说真相。",
+                "character": "sad"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我知道，声音很轻。",
+                "character": "depression"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "谢谢你，吉尔。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "他转身稳健离去。",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "步伐如沙漠旅人。",
+                "character": "surprise"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "突然追出几步远。",
+                "character": "surprise"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "吉尔！大声喊道。",
+                "character": "surprise"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "你全名是什么？",
+                "character": "surprise"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "家人肯定会问的。",
+                "character": "surprise"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "夜风传来回答声。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "吉尔伽美什全名。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "但可说吉尔加麦尔。",
+                "character": "smile"
+            }
+        ],
+        "chapter_name": "咖啡馆的预演",
+        "site": "街角咖啡馆（Corner Café）位于城市一条僻静街道的转角处，毗邻一个小型社区公园。咖啡馆主色调为暖棕色与奶油白，墙面采用仿古砖纹壁纸。店内整齐排列着六组深棕色的实木桌椅，配有墨绿色的绒面坐垫。靠窗的长桌旁摆放着三盆悬挂式绿萝。左侧墙面上悬挂着四幅抽象风景油画，配有射灯照明；右侧整面墙为嵌入式书架，摆放着旧书籍与陶瓷摆件。柜台长三米，表面为白色大理石纹路，两台银色咖啡机与磨豆机运作声轻柔。玻璃展柜内陈列着当日烘焙的甜点。角落的立式老唱片机播放着爵士钢琴曲。每张桌面都放置着小陶瓶，插着新鲜的雏菊。天花板悬挂着黄铜吊灯，光线温暖柔和。门口的风铃在客人进出时发出清脆声响，空气中弥漫着咖啡豆香与淡淡的香草气息。"
+    },
+    {
+        "dialogues": [
+            {
+                "name": "旁白",
+                "dialogue_content": "晚上十一点二十分。艾米丽的公寓卧室。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "唉，睡不着。",
+                "character": "depression"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "她在床上辗转反侧。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "婚礼前夜，真难熬。",
+                "character": "depression"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "她伸手拿起床头柜上的手机。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "搜索一下“吉尔伽美什”吧。",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "手机屏幕亮起白光。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "维基百科条目显示出来。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "古代美索不达米亚英雄。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "乌鲁克国王。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "三分之二为神。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "三分之一为人。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "追寻永生？",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "最终领悟生命有限才是意义。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "点开图片看看。",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "一座残缺的雕像出现。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "卷曲的长须。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "强壮的身躯。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "头戴角冠。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "角冠？",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "艾米丽突然坐起身。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "放大图片。",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "雕像肩部有角冠压痕。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "这痕迹……",
+                "character": "surprise"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "和吉尔肩上的好像。",
+                "character": "surprise"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "惊人地相似。",
+                "character": "surprise"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "不，一定是巧合。",
+                "character": "depression"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "她摇摇头，继续阅读。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "史诗节选浮现。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "“吉尔伽美什对恩奇都说。”",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "“我的朋友，你为何要死？”",
+                "character": "sad"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "“我为何还要活着？”",
+                "character": "sad"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "真悲伤啊。",
+                "character": "sad"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "“吉尔伽美什对乌特纳皮什提姆说。”",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "“请告诉我，如何获得永生？”",
+                "character": "surprise"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "永生……",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "“吉尔伽美什归来后说。”",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "“我看到了深渊。”",
+                "character": "happy"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "“我懂得了生命。”",
+                "character": "happy"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "“我要建设我的城邦。”",
+                "character": "happy"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "“我要让名字被后人铭记。”",
+                "character": "happy"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "这种气魄……",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "窗外突然传来雷声。",
+                "character": "surprise"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "啊，打雷了。",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "天气预报说婚礼当天有暴雨。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "暴雨婚礼吗？",
+                "character": "depression"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "她关掉手机屏幕。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "房间陷入黑暗。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "在黑暗中睁着眼睛。",
+                "character": "depression"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "想起吉尔说那句话。",
+                "character": "sad"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "“我曾是王者。”",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "他当时的眼神……",
+                "character": "surprise"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "那么遥远而沉重。",
+                "character": "surprise"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "还有肩上的压痕。",
+                "character": "surprise"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "他单手抬起咖啡机。",
+                "character": "surprise"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "轻松得不像常人。",
+                "character": "surprise"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "不可能。",
+                "character": "depression"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "她对自己轻声说。",
+                "character": "depression"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "这太荒唐了。",
+                "character": "depression"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "但怀疑的种子已经埋下。",
+                "character": "sad"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "在雷声中悄然生根。",
+                "character": "sad"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "明天就要结婚了。",
+                "character": "crying"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我到底在怀疑什么？",
+                "character": "crying"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "雨点开始敲打窗户。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "夜晚还很长。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "而疑问已无法抹去。",
+                "character": "smile"
+            }
+        ],
+        "chapter_name": "第五章 印记",
+        "site": "**名称**：艾米丽的公寓卧室  \n**地点**：城市高层公寓楼内，主卧室  \n**装饰与场景**：房间约15平方米，以米白色和浅灰色为主调。靠窗摆放着一张铺着浅蓝色床单的双人床，床头柜上有一盏造型简洁的白色陶瓷台灯，此刻关闭着。柜面放着一部正在充电的智能手机。墙壁上挂着一幅抽象风景画，画框是深木色。窗户是落地窗，挂着浅灰色遮光帘，此刻窗帘半掩，窗外可见远处城市的零星灯火与隐约闪电。房间角落有一个白色梳妆台，台上整齐摆放着化妆品和几本书籍。地板铺着浅色木地板，床边有一块圆形浅灰色地毯。整体氛围安静而私密，但此刻因窗外天气与主角心绪而弥漫着隐约的紧张感。"
+    },
+    {
+        "dialogues": [
+            {
+                "name": "旁白",
+                "dialogue_content": "艾米丽家门外，婚礼当天上午9:50。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "这是一栋带小花园的独栋房屋。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "白色木栅栏围起整洁草坪。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "门前石板路两侧种着淡紫色薰衣草。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "铜制门牌在晨光中微闪。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "吉尔准时出现。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "他穿着深灰色西装。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "剪裁古典，肩部特意加宽。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "即便如此，他高大身形依然让周遭显得比例失调。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "石榴象征丰饶与轮回。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "在我的文化里，这是祝福。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "他手中拿着一束石榴花。",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "深红花朵如凝固的血，如不朽的生命。",
+                "character": "surprise"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "谢谢。",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "艾米丽看着他，突然意识到自己从未真正“看见”过他。",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "这个男人身上有种时间错位感。",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "像是古老灵魂被错误装进现代躯壳。",
+                "character": "surprise"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "准备好了吗？",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "他的声音今天格外沉稳。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "带着某种她从未听过的权威感。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "没有。",
+                "character": "sad"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "但洪水已经来了。",
+                "character": "sad"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "微微颔首。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "那么，让我们筑墙。",
+                "character": "smile"
+            }
+        ],
+        "chapter_name": "婚礼日的馈赠",
+        "site": "艾米丽家门前花园。白色木质低矮栅栏围合出约20平方米草坪。中央铺设灰色石板步道，通向深蓝色木制大门。步道两侧种植成排薰衣草，正值花期，散发淡淡香气。右侧草坪放置铸铁雕花长椅，椅背缠绕常春藤。门左侧悬挂黄铜门牌，刻有“艾米丽·格林”字样。门廊上方有透明雨棚，边缘悬挂风铃。栅栏外可见安静社区街道，梧桐树投下斑驳光影。晨光斜照，石板路上露水未完全蒸发。整体氛围宁静雅致，与婚礼日的庄重形成微妙对照。"
+    },
+    {
+        "dialogues": [
+            {
+                "name": "旁白",
+                "dialogue_content": "婚礼宴会厅外，上午11:30。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "这是一座典雅华丽的室内宴会厅前厅。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "厅门镶嵌金色花纹，两侧立着罗马柱。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "大理石地面光洁如镜，倒映水晶吊灯光芒。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "墙边摆放插满白玫瑰的珐琅花瓶，香气淡雅。",
+                "character": "smile"
+            },
+            {
+                "name": "陈太太",
+                "dialogue_content": "这位是……？",
+                "character": "surprise"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "妈妈，这是吉尔，我的男朋友。",
+                "character": "shy"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "艾米丽挽住吉尔手臂，感觉他肌肉紧绷。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "那不是紧张，是蓄势待发的警觉。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "夫人，感谢您邀请。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "艾米丽常提起您。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "她说您如宁孙女神般智慧。",
+                "character": "smile"
+            },
+            {
+                "name": "陈太太",
+                "dialogue_content": "宁孙？",
+                "character": "surprise"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "她是古代苏美尔的女神。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "以智慧和庇护著称。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "请原谅我的比喻。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "这是我的职业习惯。",
+                "character": "smile"
+            },
+            {
+                "name": "父亲",
+                "dialogue_content": "工程师？具体做什么？",
+                "character": "surprise"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "城防建设。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "现代叫城市防灾工程。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "我参与过中东城市重建。",
+                "character": "smile"
+            },
+            {
+                "name": "父亲",
+                "dialogue_content": "听起来很有意义。",
+                "character": "happy"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "父亲眼中闪过一丝认可。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "短短十分钟，吉尔征服了亲属。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "他回答时直视对方眼睛。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "他记得每个家庭成员的细节。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "艾米丽的姐姐穿着婚纱走来。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "你的喜悦照亮了这个空间。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "如伊什塔尔降临。祝福你。",
+                "character": "smile"
+            },
+            {
+                "name": "姐姐",
+                "dialogue_content": "谢谢……你真特别。",
+                "character": "shy"
+            },
+            {
+                "name": "姐姐",
+                "dialogue_content": "艾米丽从没告诉过我。",
+                "character": "shy"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "艾米丽看着这一切。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "她感到既荒诞又安心。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "吉尔不是在表演。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "他只是在做自己。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "那个自己完美契合这个场合。",
+                "character": "smile"
+            }
+        ],
+        "chapter_name": "婚礼前厅的初见",
+        "site": "名称：翡翠宫廷婚礼宴会厅前厅\n地点：酒店三层，连接主宴会厅的过渡空间\n装饰：\n- 整体为香槟金与象牙白配色，穹顶绘有古典花卉壁画\n- 六盏三层水晶吊灯对称悬挂，折射温暖光晕\n- 两侧各立四根仿古罗马柱，柱身缠绕丝绸缎带\n- 东墙设有一座大理石喷泉雕塑，水流潺潺\n- 西墙陈列长条餐台，铺刺绣桌布，摆放银器\n场景：\n上午阳光透过东侧拱形窗棂，在拼花地面上投下光斑。\n空气中弥漫白玫瑰与香槟的清新气息。\n远处隐约传来宴会厅内的弦乐四重奏演奏声。\n空间宽敞可容纳百人流动，此刻约有三十余位宾客在此寒暄。"
+    },
+    {
+        "dialogues": [
+            {
+                "name": "旁白",
+                "dialogue_content": "敬酒环节刚结束。姐夫的父亲整理西装站起。",
+                "character": "smile"
+            },
+            {
+                "name": "姐夫父亲",
+                "dialogue_content": "婚姻啊，就像经营企业。",
+                "character": "happy"
+            },
+            {
+                "name": "姐夫父亲",
+                "dialogue_content": "夫妻是合伙人。要有共同目标。",
+                "character": "smile"
+            },
+            {
+                "name": "姐夫父亲",
+                "dialogue_content": "艾米丽还在咖啡馆工作吗？",
+                "character": "surprise"
+            },
+            {
+                "name": "姐夫父亲",
+                "dialogue_content": "年轻人该规划事业了。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "（放下红酒杯）",
+                "character": "anger"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "请允许我分享古老观点。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "他的声音让餐桌安静下来。",
+                "character": "surprise"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "在美索不达米亚。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "婚姻是两个人的盟约。",
+                "character": "happy"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "共同建设城邦般的生活。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "城邦的伟大不在城墙高度。",
+                "character": "surprise"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "在于居民找到归属与意义。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "（转向艾米丽）",
+                "character": "happy"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "艾米丽建造的不是砖石之城。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "是让人晨光中获得慰藉的所在。",
+                "character": "happy"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "这同样是伟大的建设。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "桌上一片寂静。",
+                "character": "surprise"
+            },
+            {
+                "name": "艾米丽父亲",
+                "dialogue_content": "说得好！（举杯）",
+                "character": "happy"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "众人跟着举杯。危机化解。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "（低声对吉尔）谢谢你。",
+                "character": "shy"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "我只是说出事实。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "艾米丽注意到堂兄李哲的视线。",
+                "character": "surprise"
+            },
+            {
+                "name": "李哲",
+                "dialogue_content": "（用审视目光盯着吉尔）",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "他手机摄像头悄悄对准吉尔。",
+                "character": "surprise"
+            },
+            {
+                "name": "李哲",
+                "dialogue_content": "（快速拍了几张照片）",
+                "character": "surprise"
+            },
+            {
+                "name": "李哲",
+                "dialogue_content": "（低头查看照片）",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "（微微皱眉看向李哲）",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "钢琴曲缓缓升高。宴席继续。",
+                "character": "sad"
+            }
+        ],
+        "chapter_name": "第八章 盟约",
+        "site": "皇冠酒店“锦绣厅”婚宴主桌区域。五星级酒店宴会厅内靠舞台的首席圆桌区。铺着香槟色提花桌布的十人圆桌，中央为三层白色玫瑰与满天星组成的环形花艺，每套餐具包含骨瓷餐盘、镀银刀叉与高脚杯。桌面点缀金色烛台与小巧喜糖盒。午后阳光透过右侧落地窗的纱帘柔和洒入，厅内水晶吊灯已调至低亮度。主桌宾客刚完成新人敬酒仪式，部分人仍站立，多数已落座。背景有隐约的婚礼钢琴曲与远处其他宴桌的谈笑声。"
+    },
+    {
+        "dialogues": [
+            {
+                "name": "旁白",
+                "dialogue_content": "下午三点四十分，婚礼花园。暴雨毫无预兆地来临。",
+                "character": "smile"
+            },
+            {
+                "name": "宾客A",
+                "dialogue_content": "天啊！天空全暗了！",
+                "character": "surprise"
+            },
+            {
+                "name": "宾客B",
+                "dialogue_content": "快进室内！雨太大了！",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "狂风卷起纱幔，暴雨倾盆而下。宾客尖叫涌向宴会厅。",
+                "character": "sad"
+            },
+            {
+                "name": "工作人员",
+                "dialogue_content": "电路故障！停电了！",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "宴会厅陷入昏暗。应急灯发出惨绿的光。",
+                "character": "depression"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "奶奶！奶奶摔倒了！",
+                "character": "crying"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "谁来帮帮我奶奶！",
+                "character": "crying"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "混乱中，一个声音响起。不是喊叫，而是吟诵。",
+                "character": "sad"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "（低沉吟诵古老语言，韵律奇异）",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "奇迹般地，恐慌开始平息。人们停下推挤。",
+                "character": "smile"
+            },
+            {
+                "name": "宾客C",
+                "dialogue_content": "怎么回事？我突然平静了。",
+                "character": "surprise"
+            },
+            {
+                "name": "宾客D",
+                "dialogue_content": "那语言……好像有魔力。",
+                "character": "surprise"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "无妨，长者。风暴将息。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "吉尔单膝跪地，轻轻抱起老人。动作超越常人的轻松。",
+                "character": "smile"
+            },
+            {
+                "name": "祖母",
+                "dialogue_content": "孩子……谢谢你。",
+                "character": "shy"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "请您坐好。我去处理那边。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "吉尔走向倒塌的装饰架。那是三米高的金属结构。",
+                "character": "surprise"
+            },
+            {
+                "name": "宾客E",
+                "dialogue_content": "那架子要三个人才能抬！",
+                "character": "surprise"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "（单手扶住金属架）",
+                "character": "smile"
+            },
+            {
+                "name": "宾客F",
+                "dialogue_content": "天哪！他单手扶住了！",
+                "character": "surprise"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "（流畅地将架子移回原位）",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "动作流畅得仿佛重力对他无效。全场寂静。",
+                "character": "surprise"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "暴雨将在七分钟后停止。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "阿达特之怒已息。",
+                "character": "smile"
+            },
+            {
+                "name": "宾客G",
+                "dialogue_content": "他说什么？阿达特？",
+                "character": "surprise"
+            },
+            {
+                "name": "宾客H",
+                "dialogue_content": "七分钟？这怎么可能？",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "六分五十秒后，雨势骤减。七分钟整，阳光刺破云层。",
+                "character": "happy"
+            },
+            {
+                "name": "宾客I",
+                "dialogue_content": "雨停了！真的停了！",
+                "character": "surprise"
+            },
+            {
+                "name": "宾客J",
+                "dialogue_content": "阳光……出来了。",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "宴会厅鸦雀无声。所有人看着吉尔。",
+                "character": "surprise"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "吉尔……你究竟是谁？",
+                "character": "crying"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "只是一个朋友。婚礼可以继续了。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "人们看着吉尔，像看着某种超自然现象。阳光洒进宴会厅。",
+                "character": "surprise"
+            }
+        ],
+        "chapter_name": "第九章 阿达特之怒 - 对话形式台本",
+        "site": "圣罗兰庄园婚礼花园宴会厅。庄园主体建筑一层，连接户外花园的室内宴会厅。整体为欧式拱顶结构，高约六米，两侧有落地玻璃门通向户外花园。墙面装饰着米白色浮雕与金色线条，悬挂多层水晶吊灯（现已熄灭）。中央为舞池区域，铺设香槟色大理石地砖，四周摆放着二十余张铺有象牙白桌布、装饰玫瑰与纱幔的圆桌。靠近花园的玻璃门旁，有一座高三米、装饰着新鲜花卉与水晶挂饰的银色金属装饰架（现已倒塌被扶起）。因暴雨侵袭，部分纱幔被风吹落，地面有零星水渍，玻璃门外可见狂风暴雨中的花园景象。仅靠墙壁上数盏应急灯提供惨绿色照明，营造出昏暗而诡异的氛围。空气中弥漫着雨水湿气与淡淡的花香，隐约能听见户外暴雨敲打玻璃的声响。"
+    },
+    {
+        "dialogues": [
+            {
+                "name": "李哲",
+                "dialogue_content": "你看这个。",
+                "character": "surprise"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "什么照片？",
+                "character": "surprise"
+            },
+            {
+                "name": "李哲",
+                "dialogue_content": "玄武岩雕像。",
+                "character": "happy"
+            },
+            {
+                "name": "李哲",
+                "dialogue_content": "卷曲胡须真强壮。",
+                "character": "happy"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "这是吉尔伽美什？",
+                "character": "surprise"
+            },
+            {
+                "name": "李哲",
+                "dialogue_content": "公元前八世纪。",
+                "character": "sad"
+            },
+            {
+                "name": "李哲",
+                "dialogue_content": "再看这张侧脸。",
+                "character": "surprise"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "天啊……太像了。",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "手机屏幕微光颤动。",
+                "character": "smile"
+            },
+            {
+                "name": "李哲",
+                "dialogue_content": "还有这段视频。",
+                "character": "surprise"
+            },
+            {
+                "name": "李哲",
+                "dialogue_content": "教授说这是阿卡德语。",
+                "character": "happy"
+            },
+            {
+                "name": "李哲",
+                "dialogue_content": "发音准确如母语者。",
+                "character": "happy"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我感到一阵眩晕。",
+                "character": "sad"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "你想说什么？",
+                "character": "sad"
+            },
+            {
+                "name": "李哲",
+                "dialogue_content": "我不知道。",
+                "character": "sad"
+            },
+            {
+                "name": "李哲",
+                "dialogue_content": "但他不正常。",
+                "character": "sad"
+            },
+            {
+                "name": "李哲",
+                "dialogue_content": "他像教科书走出的英雄。",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "黄铜钟摆轻轻晃动。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "这不可能……",
+                "character": "sad"
+            },
+            {
+                "name": "李哲",
+                "dialogue_content": "证据就在眼前。",
+                "character": "sad"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "纱帘外暮色渐浓。",
+                "character": "smile"
+            }
+        ],
+        "chapter_name": "婚礼宴会厅侧休息室",
+        "site": "婚礼宴会厅侧休息室位于酒店二层南侧，毗邻主宴会厅。室内装饰着米白色浮雕壁纸，水晶壁灯散发出暖黄光晕。墨绿色丝绒沙发呈L型摆放，玻璃茶几上散落着喜糖盒与香槟杯。东侧落地窗悬挂着双层纱帘，窗外可见城市天际线，窗边立着一座复古黄铜摆钟，指针指向下午4:20。室内光线柔和，远处隐约传来婚礼乐队的演奏声，茶几边缘反光映出窗外稀薄的云层。"
+    },
+    {
+        "dialogues": [
+            {
+                "name": "旁白",
+                "dialogue_content": "婚礼花园，夜晚九点十分。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "宾客已散尽，工作人员正安静地清理场地。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "艾米丽找到了吉尔。他正站在一棵石榴树下。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "今晚的月亮……",
+                "character": "sad"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "与四千年前照耀乌鲁克的，是同一个。",
+                "character": "sad"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "吉尔。",
+                "character": "surprise"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "你到底是谁？",
+                "character": "surprise"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "长久的沉默中，只有蝉鸣在响。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "我常梦见自己是古代王者。",
+                "character": "depression"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "不是比喻，不是幻想。",
+                "character": "depression"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "我梦见石砌的城墙。",
+                "character": "sad"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "梦见泥板上的楔形文字。",
+                "character": "sad"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "梦见一位叫恩奇都的朋友。",
+                "character": "sad"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "还梦见追寻永生的旅程。",
+                "character": "depression"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "有时醒来，我分不清现实。",
+                "character": "depression"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "他转过身，月光映亮他的眼睛。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "医生说我有既视感综合征。",
+                "character": "sad"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "或是童年创伤导致的幻想。",
+                "character": "sad"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "但那些记忆太清晰了。",
+                "character": "depression"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "我记得洪水的味道。",
+                "character": "sad"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "记得沙漠的热风。",
+                "character": "sad"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "记得对死亡的恐惧。",
+                "character": "sad"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "艾米丽凝视着他。他高大却脆弱。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "没关系。",
+                "character": "shy"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我的“完美男友”本就是谎言。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "你的真相，不比我的谎言荒诞。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "她伸出手，轻轻触碰他的脸颊。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "汝接受此等疯狂？",
+                "character": "surprise"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我接受你。",
+                "character": "happy"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "不管你是工程师。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "还是觉得自己是古代国王。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "呵……",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "吉尔笑了，眼角泛起细纹。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "他低下头，额头轻触她的额头。",
+                "character": "smile"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "汝之有限……",
+                "character": "shy"
+            },
+            {
+                "name": "吉尔",
+                "dialogue_content": "使此刻如琥珀永恒。",
+                "character": "shy"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "他吻了她。不是表演，不是计划。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "只是一个男人在月光下吻了一个女人。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "吻中有蜂蜜麦饼的甜。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "有石榴汁的涩。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "有四千年时光的重量。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "也有此刻此地的轻盈。",
+                "character": "smile"
+            }
+        ],
+        "chapter_name": "月光下的真相",
+        "site": "名称：婚礼花园（晚宴区）\n地点：酒店户外花园，相对僻静的东南角。\n装饰与场景：\n- 核心景观：一棵枝叶繁茂的石榴树，树上点缀着暖白色的小串灯，枝叶间隐约可见成熟的果实。树下设有一张复古铁艺长椅。\n- 地面：铺设深色防腐木地板，散落着少许未及清理的玫瑰花瓣和彩纸屑。\n- 照明：主要依靠石榴树上的串灯、远处走廊的壁灯以及清澈的月光，光线柔和，光影斑驳。\n- 周边布置：近处有几张已收拾干净的圆桌，桌布为香槟色。稍远处，工作人员正轻声整理椅子和餐具。花园边缘装饰着白色纱幔和低矮的景观灯。\n- 氛围：喧闹过后的宁静，空气中残留着淡淡的花香、食物甜香与夜晚的草木气息。蝉鸣清晰可闻，月光如水银泻地，为整个场景蒙上一层静谧而私密的银辉。"
+    },
+    {
+        "dialogues": [
+            {
+                "name": "旁白",
+                "dialogue_content": "深夜十一点四十五分，出租车缓缓停在艾米丽公寓楼下的路边。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "路灯洒下温暖光晕，笼罩着刚下车的两人。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "谢谢你送我回来。",
+                "character": "shy"
+            },
+            {
+                "name": "丹尼尔",
+                "dialogue_content": "不客气，今晚很开心。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "你……只是开心而已吗？",
+                "character": "tsundere"
+            },
+            {
+                "name": "丹尼尔",
+                "dialogue_content": "嗯？",
+                "character": "surprise"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "没什么。我该上去了。",
+                "character": "shy"
+            },
+            {
+                "name": "丹尼尔",
+                "dialogue_content": "等等。",
+                "character": "happy"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "怎么了？",
+                "character": "surprise"
+            },
+            {
+                "name": "丹尼尔",
+                "dialogue_content": "其实……我有点舍不得。",
+                "character": "shy"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "傻瓜。明天还能见面呀。",
+                "character": "smile"
+            },
+            {
+                "name": "丹尼尔",
+                "dialogue_content": "那说好了。",
+                "character": "happy"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "两人相视而笑，影子在灯光下拉长。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "夜晚的风轻轻吹过，带着凉意。",
+                "character": "smile"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "快回去吧，路上小心。",
+                "character": "shy"
+            },
+            {
+                "name": "丹尼尔",
+                "dialogue_content": "看你进门我再走。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "艾米丽转身走向公寓大门，步伐轻快。",
+                "character": "smile"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "丹尼尔站在原地，目送她的背影。",
+                "character": "smile"
+            }
+        ],
+        "chapter_name": "深夜的告别",
+        "site": "艾米丽公寓楼下街角。位于城市旧街区安静支路旁，毗邻六层米白色公寓楼。一盏老式铸铁路灯立于人行道边缘，散发暖黄色光晕，灯罩边缘有细微锈迹。路灯下有一张深绿色长木椅，椅背刻有模糊的花纹。地面铺着灰褐色石砖，缝隙间钻出几丛嫩绿野草。公寓楼入口为深棕色双开木门，右侧挂有铜制门牌“7号”。墙边摆放两个黑色圆形盆栽，内种低矮的紫红色天竺葵。夜间微风拂过，路灯旁梧桐树叶沙沙轻响，远处偶尔传来隐约车声。空气中有淡淡潮湿泥土气息，混合着隐约花香。"
+    }
+]

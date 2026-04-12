@@ -1,0 +1,18 @@
+{
+  "label": "workflow2 可加载LoRA，默认为Disney风格",
+  "checkpoint": { "node": "14", "input": "ckpt_name" },
+  "size": {
+    "type": "empty_latent",
+    "node": "5",
+    "width_key": "width",
+    "height_key": "height"
+  },
+  "positive": [
+    { "node": "16", "input": "text_g" },
+    { "node": "16", "input": "text_l" }
+  ],
+  "negative": [
+    { "node": "19", "input": "text_g" },
+    { "node": "19", "input": "text_l" }
+  ]
+}

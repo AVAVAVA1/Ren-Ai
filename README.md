@@ -38,7 +38,7 @@ Ren'Ai 以「AI 能力为核心、流程编排为载体、可视化交互为入�
 - **功能**：提供可视化操作界面，负责用户输入收集、数据展示、API 调用触发，存储前端配置（如 RunningHub 工作流 ID 到 localStorage）。
 
 ### 2. 接入层（后端 API 路由）
-- **核心路由**：story（故事生成）、runninghub（生图）、outline/script/dialogue（分段生成）、play（剧本预览）；
+- **核心路由**：story（故事生成）、image `/api/image/*`（立绘/背景，RunningHub 或 ComfyUI）、outline/script/dialogue（分段生成）、play（剧本预览）；
 - **功能**：接收前端请求，转发至对应服务模块，处理 SSE 流式输出、HTTP 响应封装，统一接口规范。
 
 ### 3. 智能服务层（核心 AI 能力）
@@ -87,8 +87,8 @@ graph TD
     B --> C[LLMGenerator生成结构化剧本]
     C --> D[流程图组件加载剧本JSON]
     D --> E[用户配置人物卡+场景描述]
-    E --> F[调用/api/runninghub/generate-character-pics生成立绘]
-    E --> G[调用/api/runninghub/generate-flow-backgrounds生成背景]
+    E --> F[调用/api/image/generate-character-pics生成立绘]
+    E --> G[调用/api/image/generate-flow-backgrounds生成背景]
     F --> H[LLM优化提示词+RunningHub生图+去背景]
     G --> I[LLM追加去人物提示词+RunningHub生图]
     H --> J[立绘关联至人物卡]
@@ -160,3 +160,7 @@ graph TD
 
 ## 八、总结
 Ren'Ai 项目通过「AI 全链路集成 + 零代码可视化」解决了视觉小说创作的技术门槛问题，核心价值在于将分散的 LLM、文生图等 AI 能力封装为面向创作者的易用工具，同时通过结构化输出、容错机制保证创作流程的稳定性。未来可进一步优化异步生图任务、扩展多模态 AI 能力（如语音生成）、增强流程图协作功能，推动视觉小说创作从「技术导向」转向「创意导向」。
+
+## 九、部署与环境变量（GitHub）
+- **部署步骤与 Nginx/CI 说明**见仓库内 **[docs/DEPLOY.md](./docs/DEPLOY.md)**，可直接作为 GitHub 上的部署文档链接给协作者。
+- **`.env`：不要提交到 Git。** 将 `server/.env.example` 复制为 `server/.env` 后填写密钥；CI/云平台使用 Secrets / 环境变量注入，勿把真实 `.env` 打进镜像或写进仓库。

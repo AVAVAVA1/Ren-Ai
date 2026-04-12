@@ -26,5 +26,20 @@ modelscope_api_key = os.getenv("MODELSCOPE_API_KEY")
 running_hub_key = os.getenv('RunningHub_API_KEY')
 # remove.bg：https://www.remove.bg/api — 勿将密钥写入代码，使用 .env
 remove_bg_key = (os.getenv("REMOVE_BG_API_KEY") or os.getenv("REMOVE_BG_KEY") or "").strip()
+
+# 本地 ComfyUI（与 public/comfyui/workflow1.json 配套）
+comfyui_base_url = (os.getenv("COMFYUI_BASE_URL") or "http://127.0.0.1:8188").strip().rstrip("/")
+comfyui_default_checkpoint = (os.getenv("COMFYUI_DEFAULT_CHECKPOINT") or "").strip()
+comfyui_default_workflow_json = (os.getenv("COMFYUI_WORKFLOW_JSON") or "workflow1.json").strip() or "workflow1.json"
+# 轮询 /history 直到出现可下载图片的最长等待（秒）；重型工作流（高清修复、多节点）常需 15–30+ 分钟
+try:
+    comfyui_poll_timeout = float((os.getenv("COMFYUI_POLL_TIMEOUT") or "1800").strip())
+except ValueError:
+    comfyui_poll_timeout = 1800.0
+comfyui_poll_timeout = max(120.0, min(comfyui_poll_timeout, 7200.0))
+
+# 生图分辨率预设 ratio 键（见 comfyui_size_presets）；空或非法时由解析函数回退 1.0
+comfyui_default_size_ratio = (os.getenv("COMFYUI_SIZE_RATIO") or "1.0").strip() or "1.0"
+
 time_now = datetime.now()
 time_now_ = str(time_now).split(".")[0].replace(":", "_")
