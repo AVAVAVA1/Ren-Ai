@@ -39,8 +39,14 @@ const IMAGE_BACKEND_STORAGE_KEY = 'renai_image_backend'
 const COMFYUI_CKPT_STORAGE_KEY = 'renai_comfyui_checkpoint'
 const COMFYUI_WORKFLOW_STORAGE_KEY = 'renai_comfyui_workflow'
 const COMFYUI_SIZE_RATIO_STORAGE_KEY = 'renai_comfyui_size_ratio'
+const PIC_BG_FOLDER_STORAGE_KEY = 'renai_flow_pic_bg_folder_v1'
 const isGeneratingFlowBg = ref(false)
 const isLaunchingPygame = ref(false)
+
+const picBgFolders = ref([])
+const selectedPicBgFolder = ref('')
+const picBgFoldersLoading = ref(false)
+const picBgFoldersError = ref('')
 
 /** 与 public/sources/dialogue 下 dialogue_*.json 一致：chapter_name、site、dialogues[] */
 function isDialogueScriptImportShape(data) {
@@ -129,6 +135,28 @@ function childRefToVueNodeId(childRef, sourceGroupIndex) {
   const m = s.match(CROSS_BLOCK_REF)
   if (m) return `${m[1]}_${m[2]}`
   return `${sourceGroupIndex}_${s}`
+}
+
+/** 追加导入时把文件内的 g组号: 引用整体平移，避免指向画布上已有区块 */
+function shiftCrossBlockGroupRefsInDialogues(dialogues, giOffset) {
+  if (!giOffset || !Array.isArray(dialogues)) return dialogues
+  const re = /^g(\d+):(.+)$/
+  const shift = (s) => {
+    if (s == null) return s
+    const str = typeof s === 'string' ? s : String(s)
+    const m = str.trim().match(re)
+    if (!m) return str
+    const oldG = parseInt(m[1], 10)
+    return `g${oldG + giOffset}:${m[2]}`
+  }
+  return dialogues.map((d) => ({
+    ...d,
+    dialogue_content: (d.dialogue_content || []).map((item) => ({
+      ...item,
+      parent_id: shift(item.parent_id),
+      children: Array.isArray(item.children) ? item.children.map((c) => shift(c)) : item.children
+    }))
+  }))
 }
 
 /**
@@ -742,22 +770,45 @@ function pickBlockGroupIndexAtFlowXY(x, y) {
   )
 }
 
-function convertJsonToFlow(jsonData) {
+function convertJsonToFlow(jsonData, { append = false } = {}) {
   const isArray = Array.isArray(jsonData)
-  const dialogues = isArray ? jsonData : [jsonData]
+  let dialogues = isArray ? jsonData : [jsonData]
+  const giOffset = append ? flowGroups.value.length : 0
+  if (append && giOffset > 0) {
+    dialogues = shiftCrossBlockGroupRefsInDialogues(dialogues, giOffset)
+  }
 
-  flowGroups.value = dialogues.map((dialogue, groupIndex) => ({
-    id: `group_${groupIndex}`,
-    groupIndex,
-    dialogue_name: dialogue.dialogue_name || `区块 ${groupIndex + 1}`,
-    site_description: dialogue.site_description || '',
-    collapsed: false
-  }))
+  const newGroups = dialogues.map((dialogue, localIndex) => {
+    const groupIndex = giOffset + localIndex
+    return {
+      id: `group_${groupIndex}`,
+      groupIndex,
+      dialogue_name: dialogue.dialogue_name || `区块 ${groupIndex + 1}`,
+      site_description: dialogue.site_description || '',
+      collapsed: false
+    }
+  })
+
+  if (append) {
+    flowGroups.value = [...flowGroups.value, ...newGroups]
+  } else {
+    flowGroups.value = newGroups
+  }
 
   const dialogueNodes = []
   let currentOffsetX = 40
+  if (append) {
+    const blocks = nodes.value.filter((n) => n.type === 'blockGroup')
+    if (blocks.length > 0) {
+      currentOffsetX =
+        Math.max(
+          ...blocks.map((b) => b.position.x + (Number.parseFloat(b.style?.width) || 280))
+        ) + BLOCK_GAP_X
+    }
+  }
 
-  dialogues.forEach((dialogue, groupIndex) => {
+  dialogues.forEach((dialogue, localIndex) => {
+    const groupIndex = giOffset + localIndex
     const content = resolveDialogueContentForFlowGroup(dialogue.dialogue_content || [])
     const flowNodes = []
 
@@ -855,7 +906,8 @@ function convertJsonToFlow(jsonData) {
   const dialogueNodeCount = dialogueNodes.filter((n) => n.type === 'dialogue').length
   const heavyFlow = dialogueNodeCount >= FLOW_HEAVY_NODE_THRESHOLD
 
-  dialogues.forEach((dialogue, groupIndex) => {
+  dialogues.forEach((dialogue, localIndex) => {
+    const groupIndex = giOffset + localIndex
     const content = resolveDialogueContentForFlowGroup(dialogue.dialogue_content || [])
     content.forEach((item) => {
       const srcId = `${groupIndex}_${item.id}`
@@ -888,9 +940,15 @@ function convertJsonToFlow(jsonData) {
     })
   })
 
-  nodes.value = dialogueNodes
-  edges.value = allEdges
-  activeGroupIndex.value = 0
+  if (append) {
+    nodes.value = [...nodes.value, ...dialogueNodes]
+    edges.value = [...edges.value, ...allEdges]
+    activeGroupIndex.value = giOffset
+  } else {
+    nodes.value = dialogueNodes
+    edges.value = allEdges
+    activeGroupIndex.value = 0
+  }
   updateNodeDataFromEdges()
   syncBlockTitlesToNodes()
   syncBlockGroupNodesMeta()
@@ -903,6 +961,36 @@ function convertJsonToFlow(jsonData) {
     }
   })
   persistFlowDraft()
+}
+
+function clearFlowCanvas() {
+  if (
+    flowGroups.value.length === 0 &&
+    nodes.value.length === 0 &&
+    edges.value.length === 0
+  ) {
+    return
+  }
+  if (!confirm('确定清空当前流程图？侧栏区块与画布节点将全部删除（不可撤销）。')) {
+    return
+  }
+  closeModal()
+  closeContextMenu()
+  copiedNode.value = null
+  hoveredNodeId.value = null
+  flowGroups.value = []
+  nodes.value = []
+  edges.value = []
+  activeGroupIndex.value = 0
+  nodeIdCounter.value = 0
+  nextTick(() => {
+    try {
+      setViewport({ x: 0, y: 0, zoom: 1 })
+    } catch {
+      /* store 未就绪 */
+    }
+    persistFlowDraft()
+  })
 }
 
 function ensureFlowGroupsCoverNodes() {
@@ -1497,10 +1585,10 @@ async function loadFromPublicUrl(url) {
             : rawText
         throw new Error(msg || `HTTP ${res.status}`)
       }
-      convertJsonToFlow(parsed.dialogues)
+      convertJsonToFlow(parsed.dialogues, { append: true })
       return
     }
-    convertJsonToFlow(data)
+    convertJsonToFlow(data, { append: true })
   } catch (e) {
     console.error('从 URL 加载流程 JSON 失败:', e)
     alert('加载流程图失败: ' + (e?.message || String(e)))
@@ -1535,10 +1623,10 @@ function handleImportJson(file) {
                 : rawText
           throw new Error(msg || `HTTP ${res.status}`)
         }
-        convertJsonToFlow(data.dialogues)
+        convertJsonToFlow(data.dialogues, { append: true })
         return
       }
-      convertJsonToFlow(jsonData)
+      convertJsonToFlow(jsonData, { append: true })
     } catch (error) {
       console.error('Failed to parse/import JSON:', error)
       alert(error?.message || 'JSON 文件格式错误或导入失败（对话剧本导入需后端已启动）')
@@ -1557,6 +1645,68 @@ function handleExportJson() {
   a.download = fileName
   a.click()
   URL.revokeObjectURL(url)
+}
+
+async function fetchPicBgFolders() {
+  picBgFoldersLoading.value = true
+  picBgFoldersError.value = ''
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/image/pic-bg-folders`)
+    const rawText = await res.text()
+    let data
+    try {
+      data = JSON.parse(rawText)
+    } catch {
+      throw new Error(rawText || `HTTP ${res.status}`)
+    }
+    if (!res.ok) {
+      const msg =
+        typeof data.detail === 'string'
+          ? data.detail
+          : Array.isArray(data.detail)
+            ? data.detail.map((d) => d.msg || d).join('; ')
+            : rawText
+      throw new Error(msg || `HTTP ${res.status}`)
+    }
+    picBgFolders.value = Array.isArray(data.folders) ? data.folders : []
+    return picBgFolders.value
+  } catch (e) {
+    picBgFoldersError.value = e?.message || String(e)
+    console.warn('加载 pic_bg 文件夹列表失败:', e)
+    return picBgFolders.value
+  } finally {
+    picBgFoldersLoading.value = false
+  }
+}
+
+function applySelectedPicBgFolderToNodes() {
+  const folder = (selectedPicBgFolder.value || '').trim()
+  if (!folder || flowGroups.value.length === 0) return
+  const base = `/pic_bg/${folder}`
+  for (const n of nodes.value) {
+    if (n.type !== 'dialogue') continue
+    const gi = Number(n.groupId)
+    if (Number.isNaN(gi) || gi < 0) continue
+    n.data.background = `${base}/地点${gi + 1}.png`
+  }
+  updateNodeDataFromEdges()
+  persistFlowDraft()
+}
+
+function onPicBgFolderSelectChange() {
+  const v = (selectedPicBgFolder.value || '').trim()
+  try {
+    if (v) localStorage.setItem(PIC_BG_FOLDER_STORAGE_KEY, v)
+    else localStorage.removeItem(PIC_BG_FOLDER_STORAGE_KEY)
+  } catch {
+    /* ignore */
+  }
+  if (flowGroups.value.length === 0) return
+  if (v) applySelectedPicBgFolderToNodes()
+}
+
+async function refreshPicBgFolders() {
+  await fetchPicBgFolders()
 }
 
 async function handleGenerateFlowBackgrounds() {
@@ -1601,7 +1751,21 @@ async function handleGenerateFlowBackgrounds() {
             : rawText
       throw new Error(msg || `HTTP ${response.status}`)
     }
+    const timeFolder =
+      typeof parsed.time_folder === 'string' ? parsed.time_folder.trim() : ''
     convertJsonToFlow(parsed.dialogues)
+    await fetchPicBgFolders()
+    if (timeFolder && !picBgFolders.value.includes(timeFolder)) {
+      picBgFolders.value = [timeFolder, ...picBgFolders.value]
+    }
+    if (timeFolder) {
+      selectedPicBgFolder.value = timeFolder
+      try {
+        localStorage.setItem(PIC_BG_FOLDER_STORAGE_KEY, timeFolder)
+      } catch {
+        /* ignore */
+      }
+    }
     alert(parsed.message || '背景已生成并已写回流程节点。')
   } catch (e) {
     console.error('一键生成背景失败:', e)
@@ -1837,6 +2001,16 @@ onMounted(() => {
   document.addEventListener('mousemove', handleMouseMove)
   window.addEventListener('renai-characters-storage', onCharacterStorageEvent)
   window.addEventListener('storage', onWindowStorage)
+  fetchPicBgFolders().then(() => {
+    try {
+      const saved = (localStorage.getItem(PIC_BG_FOLDER_STORAGE_KEY) || '').trim()
+      if (saved) {
+        selectedPicBgFolder.value = saved
+      }
+    } catch {
+      /* ignore */
+    }
+  })
 })
 
 onUnmounted(() => {
@@ -1853,7 +2027,8 @@ defineExpose({
   convertFlowToJson,
   relayoutNodes,
   loadDemoLargeFile,
-  loadFromPublicUrl
+  loadFromPublicUrl,
+  clearFlowCanvas
 })
 </script>
 
@@ -1862,9 +2037,14 @@ defineExpose({
     <aside class="blocks-panel">
       <div class="blocks-panel-head">
         <h3 class="blocks-panel-title">流程区块</h3>
-        <button type="button" class="add-block-btn" @click="addFlowBlock">＋ 区块</button>
+        <div class="blocks-panel-actions">
+          <button type="button" class="add-block-btn" @click="addFlowBlock">＋ 区块</button>
+          <button type="button" class="clear-flow-btn" @click="clearFlowCanvas">清空画布</button>
+        </div>
       </div>
-      <p class="blocks-hint">数组每项对应一个区块；当前选中的区块用于 Tab / 粘贴新建节点。</p>
+      <p class="blocks-hint">
+        数组每项对应一个区块；当前选中的区块用于 Tab / 粘贴新建节点。导航栏「导入 JSON」会在当前图后追加新区块（不覆盖已有内容）。
+      </p>
       <div v-if="flowGroups.length === 0" class="blocks-empty">
         请导入流程图 JSON、或对话剧本 JSON（chapter_name / site / dialogues，与 dialogue_*.json 相同），也可点击「区块」添加
       </div>
@@ -1968,7 +2148,39 @@ defineExpose({
         />
       </template>
     </VueFlow>
-    
+
+    <div class="flow-bottom-bar">
+    <div class="flow-bg-folder-row">
+      <label class="flow-bg-folder-label" for="pic-bg-folder-select">背景图目录（public/pic_bg）</label>
+      <select
+        id="pic-bg-folder-select"
+        v-model="selectedPicBgFolder"
+        class="flow-bg-folder-select"
+        :disabled="picBgFoldersLoading"
+        @change="onPicBgFolderSelectChange"
+      >
+        <option value="">— 请选择子文件夹 —</option>
+        <option
+          v-if="selectedPicBgFolder && !picBgFolders.includes(selectedPicBgFolder)"
+          :value="selectedPicBgFolder"
+        >
+          {{ selectedPicBgFolder }}（未在列表中，可点刷新）
+        </option>
+        <option v-for="f in picBgFolders" :key="f" :value="f">{{ f }}</option>
+      </select>
+      <button
+        type="button"
+        class="relayout-btn flow-bg-refresh-btn"
+        :disabled="picBgFoldersLoading"
+        title="重新读取 public/pic_bg 下的文件夹"
+        @click="refreshPicBgFolders"
+      >
+        {{ picBgFoldersLoading ? '加载中…' : '刷新列表' }}
+      </button>
+      <span v-if="picBgFoldersError" class="flow-bg-folder-err" role="status">{{ picBgFoldersError }}</span>
+      <span v-else class="flow-bg-folder-hint">区块 #i 对应 地点i.png，写入各对话节点的「背景」</span>
+    </div>
+
     <div class="help-tip">
       <span>区块内自上而下排版，多块横排；拖区块顶部标题栏整体移动；标题栏右键可删除区块（展开删框并移除侧栏项、节点并入邻块；收起删块内全部）；TAB/粘贴落在指针下或当前选中块</span>
       <button class="relayout-btn" type="button" @click="relayoutNodes" title="按区块重新整理布局">
@@ -1985,7 +2197,7 @@ defineExpose({
         class="relayout-btn generate-bg-btn"
         type="button"
         :disabled="isGeneratingFlowBg || flowGroups.length === 0"
-        title="按各区块 site_description 出图（设置中选 RunningHub 或本地 ComfyUI），保存到 public/pic_bg/时间戳/，并写回节点背景路径"
+        title="按各区块 site_description 出图（设置中选 RunningHub 或本地 ComfyUI），保存到 public/pic_bg/新时间戳/，写回节点背景，并自动选中该批次文件夹"
         @click="handleGenerateFlowBackgrounds"
       >
         {{ isGeneratingFlowBg ? '生成背景中…' : '一键生成背景' }}
@@ -1999,6 +2211,7 @@ defineExpose({
       >
         {{ isLaunchingPygame ? '启动中…' : '运行剧本(Pygame)' }}
       </button>
+    </div>
     </div>
     </div>
     
@@ -2082,6 +2295,13 @@ defineExpose({
   gap: 8px;
 }
 
+.blocks-panel-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
 .blocks-panel-title {
   margin: 0;
   font-size: 0.95rem;
@@ -2101,6 +2321,21 @@ defineExpose({
 
 .add-block-btn:hover {
   background: rgba(0, 212, 255, 0.28);
+}
+
+.clear-flow-btn {
+  padding: 6px 10px;
+  font-size: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 107, 107, 0.45);
+  background: rgba(255, 107, 107, 0.12);
+  color: #ff8a8a;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.clear-flow-btn:hover {
+  background: rgba(255, 107, 107, 0.22);
 }
 
 .blocks-hint {
@@ -2333,21 +2568,86 @@ defineExpose({
   height: 100%;
 }
 
-.help-tip {
+.flow-bottom-bar {
   position: absolute;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  max-width: min(96vw, 1100px);
+}
+
+.flow-bg-folder-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 12px;
+  padding: 10px 16px;
+  background: rgba(26, 26, 46, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 100%;
+  justify-content: center;
+}
+
+.flow-bg-folder-label {
+  color: rgba(255, 255, 255, 0.88);
+  white-space: nowrap;
+}
+
+.flow-bg-folder-select {
+  min-width: 200px;
+  max-width: min(52vw, 380px);
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.35);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.8rem;
+}
+
+.flow-bg-folder-select:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.flow-bg-refresh-btn {
+  flex-shrink: 0;
+}
+
+.flow-bg-folder-hint {
+  flex-basis: 100%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.72rem;
+}
+
+.flow-bg-folder-err {
+  flex-basis: 100%;
+  text-align: center;
+  color: #ff8a8a;
+  font-size: 0.72rem;
+}
+
+.help-tip {
+  position: relative;
   padding: 8px 16px;
   background: rgba(26, 26, 46, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.6);
-  z-index: 10;
   display: flex;
   align-items: center;
   gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .relayout-btn {

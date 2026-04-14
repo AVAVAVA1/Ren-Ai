@@ -7,6 +7,8 @@ const defaultCharacterData = {
   gender: '',
   appearance: '',
   personality: '',
+  /** 立绘生图时附加在每条正向 prompt 末尾（如画师串、风格词），不经 LLM */
+  image_prompt_extra: '',
   background: '',
   dialogue_examples: '',
   other_settings: '',
@@ -215,6 +217,8 @@ const characterForm = ref({ ...defaultCharacterData })
 
 const chatMessages = ref([])
 const chatInput = ref('')
+const chatMessagesRef = ref(null)
+const chatSending = ref(false)
 
 const RUNNINGHUB_WORKFLOW_STORAGE_KEY = 'renai_runninghub_workflow_id'
 const IMAGE_BACKEND_STORAGE_KEY = 'renai_image_backend'
@@ -225,7 +229,40 @@ const API_BASE_URL = 'http://localhost:8000'
 const runninghubPicLoading = ref(false)
 const removeStandBgLoading = ref(false)
 
-watch(selectedCharacter, (newChar) => {
+/** 立绘：default=内置表情全集；custom=metadata.stand_custom_items */
+const standExpressionMode = ref('default')
+const standCustomRows = ref([{ id: '', description: '' }])
+
+function syncStandUiFromCharacter(char) {
+  const c = char ?? selectedCharacter.value
+  if (!c?.data?.metadata) {
+    standExpressionMode.value = 'default'
+    standCustomRows.value = [{ id: '', description: '' }]
+    return
+  }
+  const m = c.data.metadata
+  standExpressionMode.value = m.stand_expression_mode === 'custom' ? 'custom' : 'default'
+  const items = m.stand_custom_items
+  if (Array.isArray(items) && items.length) {
+    standCustomRows.value = items.map((it) => ({
+      id: String(it.id ?? ''),
+      description: String(it.description ?? '')
+    }))
+  } else {
+    standCustomRows.value = [{ id: '', description: '' }]
+  }
+}
+
+function addStandCustomRow() {
+  standCustomRows.value.push({ id: '', description: '' })
+}
+
+function removeStandCustomRow(index) {
+  if (standCustomRows.value.length <= 1) return
+  standCustomRows.value.splice(index, 1)
+}
+
+watch(selectedCharacter, async (newChar) => {
   if (newChar) {
     characterForm.value = {
       name: newChar.data.name || '',
@@ -233,16 +270,20 @@ watch(selectedCharacter, (newChar) => {
       gender: newChar.data.gender || '',
       appearance: newChar.data.appearance || '',
       personality: newChar.data.personality || '',
+      image_prompt_extra: newChar.data.image_prompt_extra || '',
       background: newChar.data.background || '',
       dialogue_examples: newChar.data.dialogue_examples || '',
       other_settings: newChar.data.other_settings || '',
       metadata: newChar.data.metadata || {}
     }
     selectedImageIndex.value = 0
-    chatMessages.value = []
+    syncStandUiFromCharacter(newChar)
+    await loadCharacterChatHistory()
   } else {
     characterForm.value = { ...defaultCharacterData }
     chatMessages.value = []
+    standExpressionMode.value = 'default'
+    standCustomRows.value = [{ id: '', description: '' }]
   }
 })
 
@@ -304,6 +345,25 @@ async function generateRunninghubCharacterPics() {
     alert('请先填写「外貌描述」或「性格设定」')
     return
   }
+  let stand_custom_items = []
+  if (standExpressionMode.value === 'custom') {
+    stand_custom_items = standCustomRows.value
+      .map((r) => ({
+        id: (r.id || '').trim(),
+        description: (r.description || '').trim()
+      }))
+      .filter((r) => r.id && r.description)
+    if (!stand_custom_items.length) {
+      alert('自定义模式请至少填写一组「id」与「description」')
+      return
+    }
+  }
+  if (!characterForm.value.metadata || typeof characterForm.value.metadata !== 'object') {
+    characterForm.value.metadata = {}
+  }
+  characterForm.value.metadata.stand_expression_mode = standExpressionMode.value
+  characterForm.value.metadata.stand_custom_items =
+    standExpressionMode.value === 'custom' ? stand_custom_items : []
   updateCharacterData()
   runninghubPicLoading.value = true
   try {
@@ -318,7 +378,10 @@ async function generateRunninghubCharacterPics() {
         image_backend: backend,
         comfyui_checkpoint: (localStorage.getItem(COMFYUI_CKPT_STORAGE_KEY) || '').trim(),
         comfyui_workflow: (localStorage.getItem(COMFYUI_WORKFLOW_STORAGE_KEY) || '').trim(),
-        comfyui_size_ratio: (localStorage.getItem(COMFYUI_SIZE_RATIO_STORAGE_KEY) || '').trim()
+        comfyui_size_ratio: (localStorage.getItem(COMFYUI_SIZE_RATIO_STORAGE_KEY) || '').trim(),
+        stand_expression_mode: standExpressionMode.value,
+        stand_custom_items,
+        image_prompt_extra: (characterForm.value.image_prompt_extra || '').trim()
       })
     })
     const raw = await res.text()
@@ -352,12 +415,21 @@ async function applyRemoveStandPicBackgrounds() {
   if (!selectedCharacter.value) return
   updateCharacterData()
   const name = (characterForm.value.name || '').trim()
+  const mode = characterForm.value.metadata?.stand_expression_mode
+  const items = characterForm.value.metadata?.stand_custom_items
+  let stand_expression_ids
+  if (mode === 'custom' && Array.isArray(items) && items.length) {
+    stand_expression_ids = items.map((it) => String(it.id || '').trim()).filter(Boolean)
+  }
   removeStandBgLoading.value = true
   try {
     const res = await fetch(`${API_BASE_URL}/api/image/remove-stand-pic-backgrounds`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ character_name: name })
+      body: JSON.stringify({
+        character_name: name,
+        ...(stand_expression_ids?.length ? { stand_expression_ids } : {})
+      })
     })
     const raw = await res.text()
     let data
@@ -557,6 +629,10 @@ function parseCharacterCard(file) {
           gender: charData.gender || charData.data?.extensions?.gender || '',
           appearance: charData.appearance || charData.data?.description || charData.description || '',
           personality: charData.personality || charData.data?.personality || charData.personality_prompt || '',
+          image_prompt_extra:
+            charData.data?.extensions?.image_prompt_extra ||
+            charData.image_prompt_extra ||
+            '',
           background: charData.background || charData.data?.scenario || charData.backstory || '',
           dialogue_examples: charData.mes_example || charData.data?.mes_example || charData.dialogue_examples || '',
           other_settings: charData.other_settings || '',
@@ -603,7 +679,8 @@ function exportCharacterCard(character) {
       extensions: {
         age: character.data.age,
         gender: character.data.gender,
-        other_settings: character.data.other_settings
+        other_settings: character.data.other_settings,
+        image_prompt_extra: character.data.image_prompt_extra || ''
       }
     }
   }
@@ -770,27 +847,131 @@ function exportAllCharacters() {
   URL.revokeObjectURL(url)
 }
 
-function sendMessage() {
-  if (!chatInput.value.trim() || !selectedCharacter.value) return
-  
-  chatMessages.value.push({
+function scrollChatToBottom() {
+  nextTick(() => {
+    const el = chatMessagesRef.value
+    if (el) {
+      el.scrollTop = el.scrollHeight
+    }
+  })
+}
+
+async function loadCharacterChatHistory() {
+  const char = selectedCharacter.value
+  if (!char) {
+    chatMessages.value = []
+    return
+  }
+  const sid = char.id
+  const nameKey = (char.data?.name || '').trim() || '未命名'
+  try {
+    const res = await fetch(
+      `${API_BASE_URL}/api/character-chat/history?character_name=${encodeURIComponent(nameKey)}`
+    )
+    const rawText = await res.text()
+    let data
+    try {
+      data = JSON.parse(rawText)
+    } catch {
+      data = { detail: rawText }
+    }
+    if (!res.ok) {
+      const msg =
+        typeof data.detail === 'string'
+          ? data.detail
+          : Array.isArray(data.detail)
+            ? data.detail.map((d) => d.msg || d).join('; ')
+            : rawText
+      throw new Error(msg || `HTTP ${res.status}`)
+    }
+    if (selectedCharacterId.value !== sid) return
+    const arr = Array.isArray(data.messages) ? data.messages : []
+    chatMessages.value = arr.map((m) => ({
+      id: generateId(),
+      role: m.role === 'assistant' ? 'assistant' : 'user',
+      content: String(m.content || '')
+    }))
+    scrollChatToBottom()
+  } catch (e) {
+    console.warn('加载人物对话历史失败:', e)
+    if (selectedCharacterId.value === sid) {
+      chatMessages.value = []
+    }
+  }
+}
+
+async function sendMessage() {
+  const text = chatInput.value.trim()
+  if (!text || !selectedCharacter.value || chatSending.value) return
+
+  const sid = selectedCharacter.value.id
+  const userMsg = {
     id: generateId(),
     role: 'user',
-    content: chatInput.value.trim()
-  })
-  
+    content: text
+  }
+  chatMessages.value.push(userMsg)
   chatInput.value = ''
-  
-  setTimeout(() => {
-    const chatContainer = document.querySelector('.chat-messages')
-    if (chatContainer) {
-      chatContainer.scrollTop = chatContainer.scrollHeight
+  scrollChatToBottom()
+
+  chatSending.value = true
+  try {
+    const card = { ...(selectedCharacter.value.data || {}) }
+    const nameKey = (card.name || '').trim() || '未命名'
+    const payloadMsgs = chatMessages.value.map((m) => ({
+      role: m.role,
+      content: m.content
+    }))
+    const res = await fetch(`${API_BASE_URL}/api/character-chat/send`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        character_name: nameKey,
+        card,
+        messages: payloadMsgs
+      })
+    })
+    const rawText = await res.text()
+    let data
+    try {
+      data = JSON.parse(rawText)
+    } catch {
+      data = { detail: rawText }
     }
-  }, 0)
+    if (!res.ok) {
+      const msg =
+        typeof data.detail === 'string'
+          ? data.detail
+          : Array.isArray(data.detail)
+            ? data.detail.map((d) => d.msg || d).join('; ')
+            : rawText
+      throw new Error(msg || `HTTP ${res.status}`)
+    }
+    if (selectedCharacterId.value !== sid) return
+    const list = Array.isArray(data.messages) ? data.messages : []
+    chatMessages.value = list.map((m) => ({
+      id: generateId(),
+      role: m.role === 'assistant' ? 'assistant' : 'user',
+      content: String(m.content || '')
+    }))
+    scrollChatToBottom()
+  } catch (e) {
+    console.error('人物对话发送失败:', e)
+    if (selectedCharacterId.value === sid) {
+      chatMessages.value = chatMessages.value.filter((m) => m.id !== userMsg.id)
+    }
+    alert(e?.message || String(e))
+  } finally {
+    if (selectedCharacterId.value === sid) {
+      chatSending.value = false
+    }
+    scrollChatToBottom()
+  }
 }
 
 function handleKeyDown(event) {
   if (event.key === 'Enter' && !event.shiftKey) {
+    if (chatSending.value) return
     event.preventDefault()
     sendMessage()
   }
@@ -836,52 +1017,68 @@ function handleKeyDown(event) {
     <div class="main-container">
       <template v-if="viewMode === 'chat'">
         <div class="chat-panel">
-          <div v-if="selectedCharacter" class="chat-content">
-            <div class="character-preview">
-              <div class="preview-image-container">
-                <img v-if="firstImage" :src="firstImage.url" :alt="selectedCharacter.data.name" />
-                <div v-else class="no-preview-image">
+          <div v-if="selectedCharacter" class="chat-content chat-layout-split">
+            <aside class="chat-left-rail" aria-label="角色立绘与简介">
+              <div class="rail-portrait">
+                <img
+                  v-if="firstImage"
+                  class="rail-portrait-img"
+                  :src="firstImage.url"
+                  :alt="selectedCharacter.data.name || '角色'"
+                />
+                <div v-else class="no-preview-image rail-placeholder">
                   <span class="no-image-icon">👤</span>
                   <span>{{ selectedCharacter.data.name?.charAt(0) || '?' }}</span>
                 </div>
               </div>
-              <div class="character-info-overlay">
-                <h3>{{ selectedCharacter.data.name || '未命名角色' }}</h3>
-                <p v-if="selectedCharacter.data.personality">{{ selectedCharacter.data.personality.slice(0, 100) }}{{ selectedCharacter.data.personality.length > 100 ? '...' : '' }}</p>
+              <div class="rail-meta">
+                <h3 class="rail-title">{{ selectedCharacter.data.name || '未命名角色' }}</h3>
+                <p v-if="selectedCharacter.data.personality" class="rail-personality">
+                  {{ selectedCharacter.data.personality.slice(0, 220)
+                  }}{{ selectedCharacter.data.personality.length > 220 ? '…' : '' }}
+                </p>
+                <p class="rail-hint">
+                  对话按角色名保存至 <code>public/character_chat</code>；模型侧会注入人物卡为性格设定，长对话自动压缩较早上下文。
+                </p>
               </div>
-            </div>
-            
-            <div class="chat-messages">
-              <div v-if="chatMessages.length === 0" class="empty-chat">
-                <span class="empty-icon">💬</span>
-                <p>开始与 {{ selectedCharacter.data.name || '角色' }} 对话</p>
-              </div>
-              <div
-                v-for="msg in chatMessages"
-                :key="msg.id"
-                :class="['message', msg.role]"
-              >
-                <div class="message-avatar">
-                  <img v-if="msg.role === 'assistant' && firstImage" :src="firstImage.url" />
-                  <span v-else>我</span>
+            </aside>
+
+            <div class="chat-main-column">
+              <div ref="chatMessagesRef" class="chat-messages">
+                <div v-if="chatMessages.length === 0" class="empty-chat">
+                  <span class="empty-icon">💬</span>
+                  <p>开始与 {{ selectedCharacter.data.name || '角色' }} 对话</p>
                 </div>
-                <div class="message-content">
-                  <div class="message-name">{{ msg.role === 'user' ? '我' : selectedCharacter.data.name }}</div>
-                  <div class="message-text">{{ msg.content }}</div>
+                <div
+                  v-for="msg in chatMessages"
+                  :key="msg.id"
+                  :class="['message', msg.role]"
+                >
+                  <div class="message-avatar">
+                    <img v-if="msg.role === 'assistant' && firstImage" :src="firstImage.url" alt="" />
+                    <span v-else>我</span>
+                  </div>
+                  <div class="message-content">
+                    <div class="message-name">{{ msg.role === 'user' ? '我' : selectedCharacter.data.name }}</div>
+                    <div class="message-text">{{ msg.content }}</div>
+                  </div>
                 </div>
               </div>
-            </div>
-            
-            <div class="chat-input-area">
-              <textarea
-                v-model="chatInput"
-                placeholder="输入消息..."
-                @keydown="handleKeyDown"
-                rows="1"
-              ></textarea>
-              <button class="send-btn" @click="sendMessage">
-                <span>发送</span>
-              </button>
+
+              <div v-if="chatSending" class="chat-typing" role="status">正在回复…</div>
+
+              <div class="chat-input-area">
+                <textarea
+                  v-model="chatInput"
+                  placeholder="输入消息…（Enter 发送，Shift+Enter 换行）"
+                  :disabled="chatSending"
+                  @keydown="handleKeyDown"
+                  rows="1"
+                ></textarea>
+                <button class="send-btn" type="button" :disabled="chatSending" @click="sendMessage">
+                  <span>{{ chatSending ? '等待中' : '发送' }}</span>
+                </button>
+              </div>
             </div>
           </div>
           
@@ -992,13 +1189,72 @@ function handleKeyDown(event) {
                   ></textarea>
                 </div>
 
+                <div class="form-group">
+                  <label>自定义生图参数（可选）</label>
+                  <textarea
+                    v-model="characterForm.image_prompt_extra"
+                    @input="updateCharacterData"
+                    placeholder="英文逗号分隔，拼到每条立绘正向 prompt 末尾（如画师、画风、Lora 触发词）；不经大模型改写"
+                    rows="2"
+                  ></textarea>
+                </div>
+
                 <div class="form-group runninghub-pic-block">
                   <label>立绘生成</label>
+                  <div class="stand-mode-options">
+                    <span class="stand-mode-label">表情方案</span>
+                    <label class="stand-mode-radio">
+                      <input v-model="standExpressionMode" type="radio" value="default" />
+                      默认（内置全套表情）
+                    </label>
+                    <label class="stand-mode-radio">
+                      <input v-model="standExpressionMode" type="radio" value="custom" />
+                      自定义（自行填写 id + description）
+                    </label>
+                  </div>
+                  <div v-if="standExpressionMode === 'custom'" class="stand-custom-editor">
+                    <p class="stand-custom-hint">
+                      id：保存为 <code>{id}_1.png</code>；description：与原先内置表情相同，拼在
+                      <code>…, cowboy_shot, &lt;description&gt;</code> 末尾。
+                    </p>
+                    <div
+                      v-for="(row, idx) in standCustomRows"
+                      :key="idx"
+                      class="stand-custom-row"
+                    >
+                      <input
+                        v-model.trim="row.id"
+                        type="text"
+                        class="stand-custom-input"
+                        placeholder="id，如 happy、pose_01"
+                        autocomplete="off"
+                      />
+                      <input
+                        v-model.trim="row.description"
+                        type="text"
+                        class="stand-custom-input"
+                        placeholder="description，如 happy 或英文分词"
+                        autocomplete="off"
+                      />
+                      <button
+                        type="button"
+                        class="stand-custom-remove"
+                        :disabled="standCustomRows.length <= 1"
+                        @click="removeStandCustomRow(idx)"
+                      >
+                        删
+                      </button>
+                    </div>
+                    <button type="button" class="stand-custom-add" @click="addStandCustomRow">
+                      + 添加一组
+                    </button>
+                  </div>
                   <p class="runninghub-pic-hint">
                     在「设置」中选择 RunningHub 或本地 ComfyUI，并按要求填写工作流 ID / Checkpoint。将结合上方外貌与性格生成多套表情图到
                     public/sources/pic（与原先 RunningHub 路径一致）。云端排队较久请勿关页；本地 ComfyUI
                     需已启动且工作流与仓库
-                    public/comfyui/workflow1.json 一致。「去背景」依赖 remove.bg（.env 中 REMOVE_BG_API_KEY）。
+                    public/comfyui/workflow1.json 一致。「去背景」走本地 ComfyUI（默认
+                    public/comfyui/sp_costum_workflow/remove_bg.json，需 RMBG 节点）。
                   </p>
                   <div class="runninghub-pic-actions">
                     <button
@@ -1222,28 +1478,48 @@ function handleKeyDown(event) {
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 0;
 }
 
-.character-preview {
-  position: relative;
-  height: 200px;
+.chat-layout-split {
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.chat-left-rail {
+  width: 268px;
+  min-width: 220px;
+  max-width: min(32vw, 300px);
   flex-shrink: 0;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(15, 15, 26, 0.88);
 }
 
-.preview-image-container {
-  width: 100%;
-  height: 100%;
+.rail-portrait {
+  flex: 1;
+  min-height: 180px;
+  max-height: min(52vh, 520px);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(26, 26, 46, 0.6);
+  padding: 14px 12px;
+  background: rgba(26, 26, 46, 0.55);
 }
 
-.preview-image-container img {
+.rail-portrait-img {
   max-width: 100%;
   max-height: 100%;
+  width: auto;
+  height: auto;
   object-fit: contain;
+  border-radius: 14px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+
+.rail-placeholder {
+  min-height: 160px;
 }
 
 .no-preview-image {
@@ -1256,34 +1532,60 @@ function handleKeyDown(event) {
 }
 
 .no-preview-image .no-image-icon {
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .no-preview-image span:last-child {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 600;
 }
 
-.character-info-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 40px 20px 16px;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+.rail-meta {
+  flex-shrink: 0;
+  padding: 12px 14px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.character-info-overlay h3 {
-  margin: 0 0 4px 0;
-  font-size: 1.25rem;
+.rail-title {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
   color: #fff;
 }
 
-.character-info-overlay p {
+.rail-personality {
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.72);
+  max-height: 7.5em;
+  overflow-y: auto;
+}
+
+.rail-hint {
   margin: 0;
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.68rem;
   line-height: 1.4;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.rail-hint code {
+  font-size: 0.65em;
+  color: rgba(0, 212, 255, 0.85);
+}
+
+.chat-main-column {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.chat-typing {
+  padding: 4px 16px 0;
+  font-size: 0.78rem;
+  color: rgba(0, 212, 255, 0.75);
+  flex-shrink: 0;
 }
 
 .chat-messages {
@@ -1431,9 +1733,15 @@ function handleKeyDown(event) {
   transition: all 0.3s ease;
 }
 
-.send-btn:hover {
+.send-btn:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+}
+
+.send-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .edit-panel {
@@ -1696,6 +2004,101 @@ function handleKeyDown(event) {
   border-radius: 12px;
   border: 1px solid rgba(0, 212, 255, 0.22);
   background: rgba(0, 212, 255, 0.06);
+}
+
+.stand-mode-options {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+  margin-bottom: 12px;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.stand-mode-label {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.stand-mode-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.stand-mode-radio input {
+  width: auto;
+  margin: 0;
+}
+
+.stand-custom-editor {
+  margin-bottom: 14px;
+  padding: 12px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.stand-custom-hint {
+  margin: 0 0 10px 0;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.stand-custom-hint code {
+  font-size: 0.72rem;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.35);
+  color: #a8e6ff;
+}
+
+.stand-custom-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.stand-custom-input {
+  flex: 1;
+  min-width: 120px;
+  padding: 8px 10px;
+  background: rgba(26, 26, 46, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  color: #fff;
+  font-size: 0.88rem;
+}
+
+.stand-custom-remove {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 120, 120, 0.35);
+  background: rgba(80, 20, 20, 0.35);
+  color: #ffb4b4;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.stand-custom-remove:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.stand-custom-add {
+  margin-top: 4px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 212, 255, 0.35);
+  background: rgba(0, 40, 60, 0.4);
+  color: #7ee8ff;
+  font-size: 0.82rem;
+  cursor: pointer;
 }
 
 .runninghub-pic-hint {

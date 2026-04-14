@@ -6,6 +6,11 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator, model_valida
 from app.services import tools
 from app.services.llm_generator import LLMGenerator
 
+_CHARACTER_NAME_LOCK = (
+    "【姓名锁定】若用户数据或大纲中给出了角色的正式姓名，则剧本正文里出现的该角色称呼必须与之一字不差；"
+    "禁止自行翻译（例如英文变中文）、改名、缩写，或用昵称替代正式姓名。"
+)
+
 
 def complete_script(user_input: str, outline, path: str, strict_model: bool = False):
     class ArticleCompleteScript(BaseModel):
@@ -82,11 +87,12 @@ def complete_script(user_input: str, outline, path: str, strict_model: bool = Fa
     
     def format_script_input(user_input, previous_result):
         return (
-            f'用户要求和待修改的剧本：{user_input}'
-            f'根据大纲完成完整剧本的创作或修改剧本，要求根据所给的内容输出作品的完整剧本,'
-            f'并进行合理分段，并保证剧情连贯。要求内容完整充实，分段合理。'
-            f'对不同的分段之间应保证剧情的连贯性。分段要求：如地点变化必须新分一段。'
-            f'同一段中场景地点必须只有一个。以下为原大纲内容{get_outline}'
+            f"用户要求和待修改的剧本：{user_input}"
+            f"根据大纲完成完整剧本的创作或修改剧本，要求根据所给的内容输出作品的完整剧本,"
+            f"并进行合理分段，并保证剧情连贯。要求内容完整充实，分段合理。"
+            f"对不同的分段之间应保证剧情的连贯性。分段要求：如地点变化必须新分一段。"
+            f"同一段中场景地点必须只有一个。以下为原大纲内容{get_outline}\n"
+            f"{_CHARACTER_NAME_LOCK}"
         )
     
     result = generator.generate_with_retry(

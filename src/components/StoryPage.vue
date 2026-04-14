@@ -3,47 +3,30 @@ import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
 
 const emit = defineEmits(['open-flow'])
 
-let _segUidSeq = 0
-function makeSegUid() {
-  _segUidSeq += 1
-  let rnd = ''
-  try {
-    const c = globalThis.crypto
-    if (c && typeof c.randomUUID === 'function') {
-      rnd = c.randomUUID()
-    }
-  } catch {
-    /* ignore */
-  }
-  if (!rnd) {
-    rnd = `${Math.random().toString(36).slice(2)}${Date.now()}`
-  }
-  return `s_${Date.now()}_${_segUidSeq}_${rnd}`
-}
+/** 故事页草稿版本：v1=内联分段；v2=已选角色条 + 独立大纲文本框 */
+const STORY_DRAFT_VERSION = 2
 
-/** 大纲编辑：文本段 + 角色卡（界面仅显示角色名小块，提交时再展开为完整信息） */
-const storySegments = ref([{ type: 'text', uid: makeSegUid(), content: '' }])
+/** 已选角色（与人物卡同步）；提交时按顺序展开为完整角色信息 */
+const storyCast = ref([])
+/** 故事大纲与自由说明（与角色条分离） */
+const outlineDraftText = ref('')
 
 const isGenerating = ref(false)
 const currentStage = ref('')
 const progress = ref(0)
 const strictModel = ref(false)
 
-const editorPlaceholder = `在这里输入故事大纲...
+const editorPlaceholder = `在下方输入故事大纲（上方「已选角色」中的角色会附带完整人物卡信息一并提交）。
 
 可以包含：
 • 故事背景设定
-• 主要角色介绍（点「选择角色」后以角色名小标签显示；生成故事时仍会提交完整角色卡信息）
 • 情节发展脉络
 • 关键转折点
 • 结局走向
 
-点击"生成故事"按钮，系统将自动：
-1. 生成完整大纲
-2. 生成详细剧本
-3. 生成对话剧本
+点击「选择角色」将角色加入上方条；姓名、年龄、性别等以人物卡为准，生成时传给大模型。
 
-最终显示对话剧本结果。`
+点击「生成故事」将依次：生成大纲 → 剧本 → 对话剧本。`
 
 const showCharacterSelector = ref(false)
 const showCharacterJson = ref(false)
@@ -58,47 +41,57 @@ const STORY_DRAFT_STORAGE_KEY = 'renai_story_draft_v1'
 const lastDialogueResults = ref(null)
 const isExportingFlow = ref(false)
 
-const activeTextSegIndex = ref(0)
-const textSelection = ref({ start: 0, end: 0 })
+const outlineTextareaRef = ref(null)
 
-const hasComposerInput = computed(() =>
-  storySegments.value.some(
-    (s) => s.type === 'character' || (s.type === 'text' && s.content.trim())
-  )
+const hasComposerInput = computed(
+  () => storyCast.value.length > 0 || (outlineDraftText.value && outlineDraftText.value.trim().length > 0)
 )
 
-function syncTextCaret(idx, el) {
-  activeTextSegIndex.value = idx
-  if (el && typeof el.selectionStart === 'number') {
-    textSelection.value = {
-      start: el.selectionStart,
-      end: el.selectionEnd
-    }
-  }
-}
-
-function autoGrowTextarea(el) {
-  if (!el) return
-  el.style.height = 'auto'
-  el.style.height = `${Math.max(26, el.scrollHeight)}px`
+function autoGrowOutlineTextarea() {
+  nextTick(() => {
+    const el = outlineTextareaRef.value
+    if (!el) return
+    el.style.height = 'auto'
+    el.style.height = `${Math.max(120, el.scrollHeight)}px`
+  })
 }
 
 function buildUserInputForApi() {
-  return storySegments.value
-    .map((seg) => {
-      if (seg.type === 'text') return seg.content
-      return formatCharacterInfo(seg.character)
-    })
-    .join('')
+  const blocks = storyCast.value.map((c) => formatCharacterInfo(c))
+  const body = (outlineDraftText.value || '').trim()
+  if (body) blocks.push(body)
+  return blocks.join('\n\n')
 }
 
 function setStoryFromApiPlainText(text) {
-  storySegments.value = [{ type: 'text', uid: makeSegUid(), content: text || '' }]
-  activeTextSegIndex.value = 0
-  textSelection.value = { start: 0, end: 0 }
-  nextTick(() => {
-    document.querySelectorAll('.story-seg-text').forEach((el) => autoGrowTextarea(el))
-  })
+  outlineDraftText.value = text || ''
+  nextTick(() => autoGrowOutlineTextarea())
+}
+
+/** 从 v1 内联分段草稿迁移到 v2（已选角色 + 单一大纲框） */
+function migrateDraftV1SegmentsToV2(storySegments) {
+  if (!Array.isArray(storySegments) || storySegments.length === 0) return false
+  const seen = new Set()
+  const cast = []
+  const textParts = []
+  for (const seg of storySegments) {
+    if (seg.type === 'character' && seg.character && seg.character.id != null) {
+      const id = seg.character.id
+      if (!seen.has(id)) {
+        seen.add(id)
+        cast.push({
+          id,
+          data: { ...(seg.character.data || {}) },
+          images: Array.isArray(seg.character.images) ? [...seg.character.images] : []
+        })
+      }
+    } else if (seg.type === 'text') {
+      textParts.push(seg.content || '')
+    }
+  }
+  storyCast.value = cast
+  outlineDraftText.value = textParts.join('\n\n')
+  return true
 }
 
 function loadStoryDraft() {
@@ -106,14 +99,24 @@ function loadStoryDraft() {
     const raw = localStorage.getItem(STORY_DRAFT_STORAGE_KEY)
     if (!raw) return
     const s = JSON.parse(raw)
-    if (s?.v !== 1) return
-    if (Array.isArray(s.storySegments) && s.storySegments.length > 0) {
-      storySegments.value = s.storySegments
+    if (s?.v === STORY_DRAFT_VERSION) {
+      storyCast.value = Array.isArray(s.storyCast) ? s.storyCast : []
+      outlineDraftText.value = typeof s.outlineText === 'string' ? s.outlineText : ''
+    } else if (s?.v === 1) {
+      if (Array.isArray(s.storySegments) && s.storySegments.length > 0) {
+        migrateDraftV1SegmentsToV2(s.storySegments)
+      } else {
+        storyCast.value = []
+        outlineDraftText.value = ''
+      }
+    } else {
+      return
     }
     if (typeof s.strictModel === 'boolean') strictModel.value = s.strictModel
     if (Object.prototype.hasOwnProperty.call(s, 'lastDialogueResults')) {
       lastDialogueResults.value = s.lastDialogueResults
     }
+    nextTick(() => autoGrowOutlineTextarea())
   } catch (e) {
     console.warn('恢复故事草稿失败:', e)
   }
@@ -128,8 +131,9 @@ function persistStoryDraft() {
       localStorage.setItem(
         STORY_DRAFT_STORAGE_KEY,
         JSON.stringify({
-          v: 1,
-          storySegments: JSON.parse(JSON.stringify(storySegments.value)),
+          v: STORY_DRAFT_VERSION,
+          storyCast: JSON.parse(JSON.stringify(storyCast.value)),
+          outlineText: outlineDraftText.value,
           strictModel: strictModel.value,
           lastDialogueResults: lastDialogueResults.value
         })
@@ -140,7 +144,7 @@ function persistStoryDraft() {
   }, 400)
 }
 
-watch([storySegments, strictModel, lastDialogueResults], () => persistStoryDraft(), { deep: true })
+watch([storyCast, outlineDraftText, strictModel, lastDialogueResults], () => persistStoryDraft(), { deep: true })
 
 const CHARACTERS_STORAGE_KEY = 'characters_data'
 
@@ -159,30 +163,22 @@ function loadSavedCharacters() {
   }
 }
 
-/** 将大纲里已插入的角色块与当前人物卡列表对齐（编辑/删除人物卡后同步） */
+/** 将已选角色与当前人物卡列表对齐（编辑/删除人物卡后同步） */
 function syncStoryCharacterRefsFromCards() {
   const list = savedCharacters.value
   const byId = new Map(list.map((c) => [c.id, c]))
-  storySegments.value = storySegments.value.map((seg) => {
-    if (seg.type !== 'character') return seg
-    const cid = seg.character?.id
-    const live = cid != null ? byId.get(cid) : null
+  storyCast.value = storyCast.value.map((slot) => {
+    const live = byId.get(slot.id)
     if (!live) {
       return {
-        ...seg,
-        character: {
-          ...(seg.character || { data: {} }),
-          _missingCard: true
-        }
+        ...slot,
+        _missingCard: true
       }
     }
     return {
-      ...seg,
-      character: {
-        id: live.id,
-        data: { ...(live.data || {}) },
-        images: live.images ? [...live.images] : []
-      }
+      id: live.id,
+      data: { ...(live.data || {}) },
+      images: live.images ? [...live.images] : []
     }
   })
 }
@@ -211,11 +207,10 @@ function onWindowStorage(e) {
 onMounted(() => {
   refreshCharactersFromStorage()
   loadStoryDraft()
+  syncStoryCharacterRefsFromCards()
   window.addEventListener('renai-characters-storage', onRenaiCharactersStorage)
   window.addEventListener('storage', onWindowStorage)
-  nextTick(() => {
-    document.querySelectorAll('.story-seg-text').forEach((el) => autoGrowTextarea(el))
-  })
+  nextTick(() => autoGrowOutlineTextarea())
 })
 
 onUnmounted(() => {
@@ -246,74 +241,22 @@ function closeCharacterJson() {
   selectedCharacterJson.value = null
 }
 
-function insertCharacterInfo(character) {
-  const card = {
+function addCharacterToStoryCast(character) {
+  if (storyCast.value.some((c) => c.id === character.id)) {
+    closeCharacterSelector()
+    return
+  }
+  storyCast.value.push({
     id: character.id,
     data: { ...(character.data || {}) },
     images: character.images ? [...character.images] : []
-  }
-
-  let i = activeTextSegIndex.value
-  if (!storySegments.value[i] || storySegments.value[i].type !== 'text') {
-    i = storySegments.value.findIndex((s) => s.type === 'text')
-    if (i < 0) {
-      storySegments.value.push({ type: 'text', uid: makeSegUid(), content: '' })
-      i = storySegments.value.length - 1
-    }
-  }
-
-  const seg = storySegments.value[i]
-  const start = Math.min(textSelection.value.start, textSelection.value.end)
-  const end = Math.max(textSelection.value.start, textSelection.value.end)
-  const t = seg.content
-  const before = t.slice(0, start)
-  const after = t.slice(end)
-
-  const next = [...storySegments.value]
-  next[i] = { type: 'text', uid: makeSegUid(), content: before }
-  next.splice(i + 1, 0, {
-    type: 'character',
-    uid: makeSegUid(),
-    character: card
   })
-  next.splice(i + 2, 0, { type: 'text', uid: makeSegUid(), content: after })
-  storySegments.value = next
-
   closeCharacterSelector()
-
-  const focusIdx = i + 2
-  nextTick(() => {
-    const ta = document.querySelector(`textarea.story-seg-text[data-seg-index="${focusIdx}"]`)
-    if (ta) {
-      ta.focus()
-      ta.setSelectionRange(0, 0)
-      autoGrowTextarea(ta)
-    }
-    activeTextSegIndex.value = focusIdx
-    textSelection.value = { start: 0, end: 0 }
-    document.querySelectorAll('.story-seg-text').forEach((el) => autoGrowTextarea(el))
-  })
 }
 
-function removeCharacterSegment(index) {
-  const s = storySegments.value
-  if (s[index]?.type !== 'character') return
-  const prev = s[index - 1]
-  const nxt = s[index + 1]
-  const left = prev?.type === 'text' ? prev.content : ''
-  const right = nxt?.type === 'text' ? nxt.content : ''
-  const merged = { type: 'text', uid: makeSegUid(), content: left + right }
-  const before = prev?.type === 'text' ? s.slice(0, index - 1) : s.slice(0, index)
-  const afterStart = nxt?.type === 'text' ? index + 2 : index + 1
-  const rest = s.slice(afterStart)
-  let next = [...before, merged, ...rest]
-  if (next.length === 0) {
-    next = [{ type: 'text', uid: makeSegUid(), content: '' }]
-  }
-  storySegments.value = next
-  nextTick(() => {
-    document.querySelectorAll('.story-seg-text').forEach((el) => autoGrowTextarea(el))
-  })
+function removeCharacterFromCast(index) {
+  if (index < 0 || index >= storyCast.value.length) return
+  storyCast.value.splice(index, 1)
 }
 
 function chipDisplayName(character) {
@@ -322,36 +265,32 @@ function chipDisplayName(character) {
   return name
 }
 
-/** 避免 flex-grow 把「角色前的短文本框」拉满整行导致光标像在中间；仅全文一段或最后一段用满宽以便换行 */
-function textSegmentLayoutClass(idx) {
-  const segs = storySegments.value
-  if (segs[idx]?.type !== 'text') return ''
-  const last = segs.length - 1
-  if (last === 0) return 'story-seg-text--wide'
-  if (idx === last) return 'story-seg-text--wide'
-  return 'story-seg-text--inline'
-}
-
 function formatCharacterInfo(character) {
   const data = character.data || {}
-  let info = `\n【角色：${data.name || '未命名'}】\n`
+  const name = (data.name || '未命名').trim() || '未命名'
+  let info = `【角色】\n`
+  info += `角色姓名（全文须与此逐字一致，禁止翻译、改写或替换称呼）：${name}\n`
   if (character._missingCard) {
-    info += '（注意：该人物卡已从本地删除，以下为插入大纲时保留的信息）\n'
+    info += '（注意：该人物卡已从本地删除，以下为加入故事时的快照）\n'
   }
-  if (data.gender) info += `性别：${data.gender}\n`
-  if (data.age) info += `年龄：${data.age}\n`
-  if (data.appearance) info += `外貌：${data.appearance}\n`
-  if (data.personality) info += `性格：${data.personality}\n`
-  if (data.background) info += `背景：${data.background}\n`
-  
-  info += `\n`
-  return info
+  if (data.age !== undefined && data.age !== null && String(data.age).trim()) {
+    info += `年龄：${String(data.age).trim()}\n`
+  }
+  if (data.gender !== undefined && data.gender !== null && String(data.gender).trim()) {
+    info += `性别：${String(data.gender).trim()}\n`
+  }
+  if (data.appearance) info += `外貌描述：${data.appearance}\n`
+  if (data.personality) info += `性格设定：${data.personality}\n`
+  if (data.background) info += `背景故事：${data.background}\n`
+  if (data.dialogue_examples) info += `对话示例：${data.dialogue_examples}\n`
+  if (data.other_settings) info += `其他设定：${data.other_settings}\n`
+  return info.trimEnd()
 }
 
 async function generateStory() {
   const userInput = buildUserInputForApi()
   if (!userInput.trim()) {
-    alert('请先输入故事大纲')
+    alert('请先选择至少一名角色，或输入故事大纲（也可两者都填）')
     return
   }
 
@@ -368,7 +307,12 @@ async function generateStory() {
       },
       body: JSON.stringify({
         user_input: userInput,
-        strict_model: strictModel.value
+        strict_model: strictModel.value,
+        story_cast: storyCast.value
+          .map((c) => ({
+            character_name: String(c.data?.name || '').trim()
+          }))
+          .filter((x) => x.character_name)
       })
     })
     
@@ -512,49 +456,56 @@ function getCharacterInitial(name) {
       </div>
       
       <div class="editor-container editor-composite-wrap">
-        <p
-          v-if="!hasComposerInput && !isGenerating"
-          class="editor-floating-placeholder"
-        >
-          {{ editorPlaceholder }}
-        </p>
         <div
           class="story-editor story-composite"
           :class="{ 'is-disabled': isGenerating }"
         >
-          <template v-for="(seg, idx) in storySegments" :key="seg.uid">
-            <textarea
-              v-if="seg.type === 'text'"
-              v-model="seg.content"
-              class="story-seg-text"
-              :class="textSegmentLayoutClass(idx)"
-              :data-seg-index="idx"
-              :disabled="isGenerating"
-              rows="1"
-              @focus="syncTextCaret(idx, $event.target)"
-              @click="syncTextCaret(idx, $event.target)"
-              @keyup="syncTextCaret(idx, $event.target)"
-              @select="syncTextCaret(idx, $event.target)"
-              @input="autoGrowTextarea($event.target)"
-            />
-            <span
-              v-else
-              class="char-chip-inline"
-              :class="{ 'char-chip-inline--missing': seg.character?._missingCard }"
-              :title="'提交时将附带完整角色卡信息：' + chipDisplayName(seg.character)"
-            >
-              <span class="char-chip-name">{{ chipDisplayName(seg.character) }}</span>
-              <button
-                type="button"
-                class="char-chip-remove"
-                :disabled="isGenerating"
-                title="移除此角色引用"
-                @click.stop="removeCharacterSegment(idx)"
-              >
-                ×
-              </button>
-            </span>
-          </template>
+          <p
+            v-if="!hasComposerInput && !isGenerating"
+            class="story-empty-hint"
+          >
+            {{ editorPlaceholder }}
+          </p>
+          <div class="story-cast-panel">
+            <div class="story-cast-head">
+              <span class="story-cast-title">已选角色</span>
+              <span class="story-cast-sub">
+                点击下方「选择角色」加入；生成时会按顺序附带姓名、年龄、性别、外貌、性格、背景、对话示例、其他设定
+              </span>
+            </div>
+            <div class="story-cast-chips">
+              <template v-if="storyCast.length">
+                <span
+                  v-for="(c, idx) in storyCast"
+                  :key="c.id"
+                  class="char-chip-inline"
+                  :class="{ 'char-chip-inline--missing': c._missingCard }"
+                  :title="'提交时附带完整人物卡：' + chipDisplayName(c)"
+                >
+                  <span class="char-chip-name">{{ chipDisplayName(c) }}</span>
+                  <button
+                    type="button"
+                    class="char-chip-remove"
+                    :disabled="isGenerating"
+                    title="从本故事移除该角色"
+                    @click.stop="removeCharacterFromCast(idx)"
+                  >
+                    ×
+                  </button>
+                </span>
+              </template>
+              <span v-else class="story-cast-empty">暂无已选角色</span>
+            </div>
+          </div>
+          <textarea
+            ref="outlineTextareaRef"
+            v-model="outlineDraftText"
+            class="story-outline-main"
+            :disabled="isGenerating"
+            rows="6"
+            placeholder="在此编写故事大纲与情节说明（与上方角色条分开；角色名以人物卡为准，模型须逐字使用）"
+            @input="autoGrowOutlineTextarea"
+          />
         </div>
       </div>
     </div>
@@ -591,8 +542,8 @@ function getCharacterInitial(name) {
             <div class="selector-actions">
               <button
                 class="selector-action-btn insert-btn"
-                @click.stop="insertCharacterInfo(char)"
-                title="插入为角色名标签（界面紧凑；生成时提交完整角色信息）"
+                @click.stop="addCharacterToStoryCast(char)"
+                title="加入上方「已选角色」；生成时按顺序提交完整人物卡"
               >
                 <span>📝</span>
               </button>
@@ -782,18 +733,15 @@ function getCharacterInitial(name) {
   box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
 }
 
-.editor-floating-placeholder {
-  position: absolute;
-  top: 24px;
-  left: 28px;
-  right: 28px;
-  margin: 0;
-  pointer-events: none;
+/** 空状态说明：放在文档流内，避免与半透明编辑区叠字 */
+.story-empty-hint {
+  margin: 0 0 14px 0;
+  padding: 0 2px 12px 2px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   white-space: pre-wrap;
-  font-size: 0.95rem;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, 0.28);
-  z-index: 0;
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.38);
   font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
 }
 
@@ -813,11 +761,11 @@ function getCharacterInitial(name) {
   line-height: 1.8;
   font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  /* 用普通文档流而非 flex 换行，避免 flex-basis:100% 等与顺序相关的重排，把角色块「挤」到顶行 */
   display: block;
   white-space: normal;
   position: relative;
-  z-index: 1;
+  /* 避免底层与浮层叠字：空状态提示在内部文档流，面板略加不透明度 */
+  background: rgba(22, 22, 40, 0.92);
 }
 
 .story-editor.story-composite.is-disabled {
@@ -825,48 +773,74 @@ function getCharacterInitial(name) {
   pointer-events: none;
 }
 
-.story-seg-text {
-  box-sizing: border-box;
-  min-height: 26px;
-  padding: 2px 4px;
-  margin: 0;
-  border: none;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.9);
+.story-cast-panel {
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.story-cast-head {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.story-cast-title {
   font-size: 0.95rem;
-  line-height: 1.8;
-  font-family: inherit;
-  resize: none;
-  overflow: hidden;
-  vertical-align: top;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.88);
 }
 
-/* 角色标签前后的短输入：行内块，随内容宽度，不单独占满整行 */
-.story-seg-text--inline {
-  display: inline-block;
-  vertical-align: top;
-  width: auto;
-  min-width: 3rem;
-  max-width: 100%;
-  margin: 2px 2px 2px 0;
-  field-sizing: content;
+.story-cast-sub {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.42);
 }
 
-/* 仅一段大纲，或最后一段续写：块级占满一行，长文换行 */
-.story-seg-text--wide {
+.story-cast-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+}
+
+.story-cast-empty {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.story-outline-main {
+  box-sizing: border-box;
   display: block;
   width: 100%;
-  max-width: 100%;
-  margin: 4px 0;
-  box-sizing: border-box;
+  min-height: 140px;
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  background: rgba(10, 10, 22, 0.45);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  font-family: inherit;
+  resize: vertical;
 }
 
-.story-seg-text:focus {
+.story-outline-main::placeholder {
+  color: rgba(255, 255, 255, 0.28);
+}
+
+.story-outline-main:focus {
   outline: none;
+  border-color: rgba(0, 212, 255, 0.35);
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.08);
 }
 
-.story-seg-text:disabled {
+.story-outline-main:disabled {
   cursor: not-allowed;
+  opacity: 0.75;
 }
 
 .char-chip-inline {

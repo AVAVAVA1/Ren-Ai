@@ -11,7 +11,7 @@ import zipfile
 import tempfile
 import shutil
 import requests
-from typing import List, Optional
+from typing import List, Optional, Tuple
 from urllib.parse import urlparse
 
 # 与 get_running_pic 中用于文件名后缀的表情标识一致
@@ -46,6 +46,30 @@ _STAND_PIC_NUMERIC_SUFFIX = "_1"
 def stand_pic_save_filename(expression: str) -> str:
     tag = sanitize_expression_for_filename(expression)
     return f"{tag}{_STAND_PIC_NUMERIC_SUFFIX}.png"
+
+
+def write_stand_pic_description_txt(
+    save_dir: str,
+    stand_id: str,
+    description: str,
+    *,
+    stand_expression_mode: str = "default",
+) -> None:
+    """
+    与立绘同目录写入描述文件，便于与 PNG 对应：
+    - default：文件名为 {expression}.txt，内容为该 expression；
+    - custom：文件名为 {id}.txt，内容为自定义 description。
+    """
+    tag = sanitize_expression_for_filename(stand_id)
+    path = os.path.join(save_dir, f"{tag}.txt")
+    mode = (stand_expression_mode or "default").strip().lower()
+    if mode == "custom":
+        text = (description or "").strip()
+    else:
+        text = (stand_id or "").strip()
+    os.makedirs(save_dir, exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(text)
 
 
 def list_stand_pic_png_paths(dir_path: str, expr: str) -> List[str]:
@@ -286,12 +310,16 @@ def download_runninghub(
     positive_prompt: list[str],
     save_dir: str,
     expressions: Optional[list[str]] = None,
+    stand_descriptions: Optional[list[str]] = None,
+    stand_expression_mode: str = "default",
 ):
     num = len(positive_prompt)
     if expressions is None:
         expressions = [str(i) for i in range(num)]
     if len(expressions) != num:
         raise ValueError("expressions 与 positive_prompt 长度必须一致")
+    if stand_descriptions is not None and len(stand_descriptions) != num:
+        raise ValueError("stand_descriptions 与 positive_prompt 长度必须一致")
 
     for i in range(num):
         task_id = run_RunningHub(workflowId=workflowId, positive_prompt=positive_prompt[i])
@@ -300,6 +328,12 @@ def download_runninghub(
             continue
 
         save_filename = stand_pic_save_filename(expressions[i])
+        sid = expressions[i]
+        desc = (
+            stand_descriptions[i]
+            if stand_descriptions is not None and i < len(stand_descriptions)
+            else sid
+        )
 
         time.sleep(30)
         while True:
@@ -308,6 +342,12 @@ def download_runninghub(
                 save_dir=save_dir,
                 save_filename=save_filename,
             ):
+                write_stand_pic_description_txt(
+                    save_dir,
+                    sid,
+                    desc,
+                    stand_expression_mode=stand_expression_mode,
+                )
                 break
             time.sleep(10)
 
@@ -369,24 +409,50 @@ def get_running_pic(
     positive_prompt: str,
     character_name: str = "",
     save_dir: Optional[str] = None,
+    stand_items: Optional[List[Tuple[str, str]]] = None,
+    image_prompt_extra: Optional[str] = None,
+    stand_expression_mode: str = "default",
 ):
     """
-    图片保存到 public/sources/pic/{角色名}/，文件名为 {expression}_1.png（expression 来自 EXPRESSION_LS）。
+    图片保存到 public/sources/pic/{角色名}/，文件名为 {id}_1.png。
+    stand_items 为 (id, description) 列表：description 拼入 prompt 末尾（与原先各表情词一致），id 用于文件名。
+    未传 stand_items 时使用内置 EXPRESSION_LS，且 id 与 description 相同。
+    image_prompt_extra 非空时以英文逗号风格附加在每条正向 prompt 末尾（不经 get_art_prompt）。
+    每条立绘成功后会写入同目录 {id}.txt：default 为 expression 文本，custom 为 description。
     """
     base_dir = save_dir if save_dir else default_runninghub_pic_dir()
     safe_char = sanitize_character_name_for_path(character_name)
     save_dir_final = os.path.join(base_dir, safe_char)
     os.makedirs(save_dir_final, exist_ok=True)
 
-    pm = []
-    expression_ls = list(EXPRESSION_LS)
+    items: List[Tuple[str, str]] = (
+        list(stand_items) if stand_items else [(e, e) for e in EXPRESSION_LS]
+    )
+    if not items:
+        raise ValueError("立绘列表为空：请使用默认表情或提供至少一组自定义 id+description")
+
     ex = get_art_prompt(positive_prompt)
-    for expression in expression_ls:
-        pm.append(f"{ex}, cowboy_shot, {expression}")
+    extra = (image_prompt_extra or "").strip()
+    pm: List[str] = []
+    file_ids: List[str] = []
+    desc_list: List[str] = []
+    for stand_id, desc in items:
+        sid = (stand_id or "").strip()
+        d = (desc or "").strip()
+        if not sid or not d:
+            raise ValueError("每项立绘须包含非空的 id 与 description")
+        line = f"{ex}, cowboy_shot, {d}"
+        if extra:
+            line = f"{line}, {extra}"
+        pm.append(line)
+        file_ids.append(sid)
+        desc_list.append(d)
 
     download_runninghub(
         workflowId=workflowId,
         positive_prompt=pm,
         save_dir=save_dir_final,
-        expressions=expression_ls,
+        expressions=file_ids,
+        stand_descriptions=desc_list,
+        stand_expression_mode=stand_expression_mode,
     )

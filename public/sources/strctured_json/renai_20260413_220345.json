@@ -1,0 +1,4104 @@
+[
+    {
+        "dialogue_name": "清晨的请求",
+        "site_description": "**地点详细描述**\n\n**名称**：本地咖啡厅“每日豆”\n\n**地点**：位于城市一条宁静的街道转角处，毗邻写字楼与住宅区。\n\n**装饰与场景**：\n- **整体氛围**：温馨、明亮，以暖色调为主。清晨阳光能充分透过临街的整面落地窗照射进来。\n- **地面**：铺陈着暖色调的木质地板，部分区域因常年使用而色泽温润。\n- **墙面**：一侧为砖墙，保留原始质感，悬挂着本地艺术家的黑白摄影作品；另一侧为浅米色墙面，嵌有木质书架，摆放着书籍和绿植。\n- **柜台与工作区**：深色木质柜台，后方墙上挂着黑板手写菜单。专业的意式咖啡机、磨豆机、陈列糕点的玻璃柜井然有序。空气持续弥漫着现磨咖啡豆的香气与烘焙糕点的黄油味。\n- **座位区**：分散摆放着约十张大小不一的木质圆桌与方桌，配有舒适布艺或皮质座椅。窗边有一排高脚凳与长条桌，可观赏街景。Larok的固定座位是一张靠窗的两人方桌，桌面有木纹。\n- **照明**：白天主要依靠自然光，辅以几盏悬挂的暖光吊灯。夜晚则依靠吊灯与壁灯营造柔和光线。\n- **细节**：入口处有清脆的门铃，收银台旁有小型报刊架。背景音乐播放着轻柔的爵士乐或独立音乐，音量适中。整体环境整洁，是附近居民与上班族每日光顾的熟悉场所。",
+        "dialogue_content": [
+            {
+                "id": "0",
+                "name": "旁白",
+                "content": "清晨的阳光透过落地窗。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "",
+                "children": [
+                    "1"
+                ]
+            },
+            {
+                "id": "1",
+                "name": "旁白",
+                "content": "洒在暖色调的木质地板上。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "0",
+                "children": [
+                    "2"
+                ]
+            },
+            {
+                "id": "2",
+                "name": "旁白",
+                "content": "咖啡机发出规律的嘶嘶声。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "1",
+                "children": [
+                    "3"
+                ]
+            },
+            {
+                "id": "3",
+                "name": "旁白",
+                "content": "空气里弥漫着烘焙豆的香气。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "2",
+                "children": [
+                    "4"
+                ]
+            },
+            {
+                "id": "4",
+                "name": "旁白",
+                "content": "和刚出炉牛角包的黄油味。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "3",
+                "children": [
+                    "5"
+                ]
+            },
+            {
+                "id": "5",
+                "name": "艾米丽",
+                "content": "早安，史密斯先生。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/smile_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "4",
+                "children": [
+                    "6"
+                ]
+            },
+            {
+                "id": "6",
+                "name": "艾米丽",
+                "content": "您的松饼。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/smile_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "5",
+                "children": [
+                    "7"
+                ]
+            },
+            {
+                "id": "7",
+                "name": "艾米丽",
+                "content": "祝您有美好的一天！",
+                "background": "",
+                "character": "/sources/pic/艾米丽/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "6",
+                "children": [
+                    "8"
+                ]
+            },
+            {
+                "id": "8",
+                "name": "旁白",
+                "content": "门铃轻响。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "7",
+                "children": [
+                    "9"
+                ]
+            },
+            {
+                "id": "9",
+                "name": "旁白",
+                "content": "艾米丽抬头看见Larok。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "8",
+                "children": [
+                    "10"
+                ]
+            },
+            {
+                "id": "10",
+                "name": "艾米丽",
+                "content": "早上好，Larok！",
+                "background": "",
+                "character": "/sources/pic/艾米丽/smile_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "9",
+                "children": [
+                    "11"
+                ]
+            },
+            {
+                "id": "11",
+                "name": "艾米丽",
+                "content": "老样子吗？",
+                "background": "",
+                "character": "/sources/pic/艾米丽/smile_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "10",
+                "children": [
+                    "12"
+                ]
+            },
+            {
+                "id": "12",
+                "name": "艾米丽",
+                "content": "大杯美式。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/smile_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "11",
+                "children": [
+                    "13"
+                ]
+            },
+            {
+                "id": "13",
+                "name": "艾米丽",
+                "content": "加热的杏仁牛角包？",
+                "background": "",
+                "character": "/sources/pic/艾米丽/smile_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "12",
+                "children": [
+                    "14"
+                ]
+            },
+            {
+                "id": "14",
+                "name": "Larok",
+                "content": "没错，谢谢。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "13",
+                "children": [
+                    "15"
+                ]
+            },
+            {
+                "id": "15",
+                "name": "旁白",
+                "content": "艾米丽转身操作咖啡机。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "14",
+                "children": [
+                    "16"
+                ]
+            },
+            {
+                "id": "16",
+                "name": "旁白",
+                "content": "她的手指几不可察地颤抖。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "15",
+                "children": [
+                    "17"
+                ]
+            },
+            {
+                "id": "17",
+                "name": "旁白",
+                "content": "她舀咖啡豆时多舀了半勺。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "16",
+                "children": [
+                    "18"
+                ]
+            },
+            {
+                "id": "18",
+                "name": "旁白",
+                "content": "又慌忙倒回去。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "17",
+                "children": [
+                    "19"
+                ]
+            },
+            {
+                "id": "19",
+                "name": "旁白",
+                "content": "接热水时差点烫到手背。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "18",
+                "children": [
+                    "20"
+                ]
+            },
+            {
+                "id": "20",
+                "name": "艾米丽",
+                "content": "您、您的餐点好了。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "19",
+                "children": [
+                    "21"
+                ]
+            },
+            {
+                "id": "21",
+                "name": "Larok",
+                "content": "谢谢。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "20",
+                "children": [
+                    "22"
+                ]
+            },
+            {
+                "id": "22",
+                "name": "旁白",
+                "content": "Larok走向靠窗的固定座位。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "21",
+                "children": [
+                    "23"
+                ]
+            },
+            {
+                "id": "23",
+                "name": "旁白",
+                "content": "艾米丽假装忙碌地擦拭柜台。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "22",
+                "children": [
+                    "24"
+                ]
+            },
+            {
+                "id": "24",
+                "name": "旁白",
+                "content": "她的余光却一直追随着。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "23",
+                "children": [
+                    "25"
+                ]
+            },
+            {
+                "id": "25",
+                "name": "旁白",
+                "content": "心跳得很快，掌心出汗。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "24",
+                "children": [
+                    "26"
+                ]
+            },
+            {
+                "id": "26",
+                "name": "旁白",
+                "content": "早晨的高峰期逐渐过去。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "25",
+                "children": [
+                    "27"
+                ]
+            },
+            {
+                "id": "27",
+                "name": "旁白",
+                "content": "咖啡厅里只剩下零星客人。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "26",
+                "children": [
+                    "28"
+                ]
+            },
+            {
+                "id": "28",
+                "name": "旁白",
+                "content": "Larok慢条斯理吃着牛角包。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "27",
+                "children": [
+                    "29"
+                ]
+            },
+            {
+                "id": "29",
+                "name": "旁白",
+                "content": "艾米丽深吸一口气。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "28",
+                "children": [
+                    "30"
+                ]
+            },
+            {
+                "id": "30",
+                "name": "旁白",
+                "content": "她解下围裙，又系上。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "29",
+                "children": [
+                    "31"
+                ]
+            },
+            {
+                "id": "31",
+                "name": "旁白",
+                "content": "最终，她绕过柜台走去。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "30",
+                "children": [
+                    "32"
+                ]
+            },
+            {
+                "id": "32",
+                "name": "旁白",
+                "content": "每走一步，脸颊就更烫一分。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "31",
+                "children": [
+                    "33"
+                ]
+            },
+            {
+                "id": "33",
+                "name": "旁白",
+                "content": "Larok正翻过一页报纸。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "32",
+                "children": [
+                    "34"
+                ]
+            },
+            {
+                "id": "34",
+                "name": "旁白",
+                "content": "察觉到有人靠近，抬起头。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "33",
+                "children": [
+                    "35"
+                ]
+            },
+            {
+                "id": "35",
+                "name": "艾米丽",
+                "content": "那个……Larok先生。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "34",
+                "children": [
+                    "36"
+                ]
+            },
+            {
+                "id": "36",
+                "name": "艾米丽",
+                "content": "抱歉打扰您用餐。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "35",
+                "children": [
+                    "37"
+                ]
+            },
+            {
+                "id": "37",
+                "name": "艾米丽",
+                "content": "我有件事想请求您。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "36",
+                "children": [
+                    "38"
+                ]
+            },
+            {
+                "id": "38",
+                "name": "艾米丽",
+                "content": "是非常冒昧的事。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "37",
+                "children": [
+                    "39"
+                ]
+            },
+            {
+                "id": "39",
+                "name": "Larok",
+                "content": "请说。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "38",
+                "children": [
+                    "40"
+                ]
+            },
+            {
+                "id": "40",
+                "name": "艾米丽",
+                "content": "我来自非常传统的家庭。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "39",
+                "children": [
+                    "41"
+                ]
+            },
+            {
+                "id": "41",
+                "name": "艾米丽",
+                "content": "我父母坚信人生大事。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "40",
+                "children": [
+                    "42"
+                ]
+            },
+            {
+                "id": "42",
+                "name": "艾米丽",
+                "content": "应该在合适的年龄完成。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "41",
+                "children": [
+                    "43"
+                ]
+            },
+            {
+                "id": "43",
+                "name": "艾米丽",
+                "content": "结婚，生子，稳定生活。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "42",
+                "children": [
+                    "44"
+                ]
+            },
+            {
+                "id": "44",
+                "name": "艾米丽",
+                "content": "而我妹妹莉莉要结婚了。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "43",
+                "children": [
+                    "45"
+                ]
+            },
+            {
+                "id": "45",
+                "name": "艾米丽",
+                "content": "是盛大的婚礼。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "44",
+                "children": [
+                    "46"
+                ]
+            },
+            {
+                "id": "46",
+                "name": "艾米丽",
+                "content": "在格兰德酒店。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "45",
+                "children": [
+                    "47"
+                ]
+            },
+            {
+                "id": "47",
+                "name": "旁白",
+                "content": "她停顿，呼吸有些急促。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "46",
+                "children": [
+                    "48"
+                ]
+            },
+            {
+                "id": "48",
+                "name": "艾米丽",
+                "content": "他们一直对我施加压力。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/depression_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "47",
+                "children": [
+                    "49"
+                ]
+            },
+            {
+                "id": "49",
+                "name": "艾米丽",
+                "content": "每次家庭聚会都问。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/depression_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "48",
+                "children": [
+                    "50"
+                ]
+            },
+            {
+                "id": "50",
+                "name": "艾米丽",
+                "content": "莉莉都要结婚了，你呢？",
+                "background": "",
+                "character": "/sources/pic/艾米丽/depression_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "49",
+                "children": [
+                    "51"
+                ]
+            },
+            {
+                "id": "51",
+                "name": "艾米丽",
+                "content": "我们只是担心你孤单。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/depression_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "50",
+                "children": [
+                    "52"
+                ]
+            },
+            {
+                "id": "52",
+                "name": "旁白",
+                "content": "Larok安静地听着。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "51",
+                "children": [
+                    "53"
+                ]
+            },
+            {
+                "id": "53",
+                "name": "艾米丽",
+                "content": "上周，我妈妈打电话来。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "52",
+                "children": [
+                    "54"
+                ]
+            },
+            {
+                "id": "54",
+                "name": "艾米丽",
+                "content": "我又一次被提起。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "53",
+                "children": [
+                    "55"
+                ]
+            },
+            {
+                "id": "55",
+                "name": "艾米丽",
+                "content": "我当时工作很累。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "54",
+                "children": [
+                    "56"
+                ]
+            },
+            {
+                "id": "56",
+                "name": "艾米丽",
+                "content": "房租账单来了。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "55",
+                "children": [
+                    "57"
+                ]
+            },
+            {
+                "id": "57",
+                "name": "艾米丽",
+                "content": "烤箱又坏了。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "56",
+                "children": [
+                    "58"
+                ]
+            },
+            {
+                "id": "58",
+                "name": "艾米丽",
+                "content": "我一时冲动就撒谎了。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "57",
+                "children": [
+                    "59"
+                ]
+            },
+            {
+                "id": "59",
+                "name": "艾米丽",
+                "content": "我说我有男朋友了。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "58",
+                "children": [
+                    "60"
+                ]
+            },
+            {
+                "id": "60",
+                "name": "艾米丽",
+                "content": "一个可靠善良的男人。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "59",
+                "children": [
+                    "61"
+                ]
+            },
+            {
+                "id": "61",
+                "name": "艾米丽",
+                "content": "我说我们交往几个月。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "60",
+                "children": [
+                    "62"
+                ]
+            },
+            {
+                "id": "62",
+                "name": "艾米丽",
+                "content": "感情非常稳定。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "61",
+                "children": [
+                    "63"
+                ]
+            },
+            {
+                "id": "63",
+                "name": "艾米丽",
+                "content": "而我描述的那个人……",
+                "background": "",
+                "character": "/sources/pic/艾米丽/tsundere_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "62",
+                "children": [
+                    "64"
+                ]
+            },
+            {
+                "id": "64",
+                "name": "艾米丽",
+                "content": "我想到的是您。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/tsundere_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "63",
+                "children": [
+                    "65"
+                ]
+            },
+            {
+                "id": "65",
+                "name": "艾米丽",
+                "content": "是每天早晨来的您。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/tsundere_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "64",
+                "children": [
+                    "66"
+                ]
+            },
+            {
+                "id": "66",
+                "name": "艾米丽",
+                "content": "安静喝咖啡，礼貌道谢。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/tsundere_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "65",
+                "children": [
+                    "67"
+                ]
+            },
+            {
+                "id": "67",
+                "name": "艾米丽",
+                "content": "我不知道为什么那样说。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/surprise_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "66",
+                "children": [
+                    "68"
+                ]
+            },
+            {
+                "id": "68",
+                "name": "艾米丽",
+                "content": "但话已经出口了。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/surprise_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "67",
+                "children": [
+                    "69"
+                ]
+            },
+            {
+                "id": "69",
+                "name": "艾米丽",
+                "content": "现在他们要求我带人。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/surprise_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "68",
+                "children": [
+                    "70"
+                ]
+            },
+            {
+                "id": "70",
+                "name": "艾米丽",
+                "content": "参加这周六的婚礼。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/surprise_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "69",
+                "children": [
+                    "71"
+                ]
+            },
+            {
+                "id": "71",
+                "name": "艾米丽",
+                "content": "所以我能不能请求您？",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "70",
+                "children": [
+                    "72"
+                ]
+            },
+            {
+                "id": "72",
+                "name": "艾米丽",
+                "content": "假装成我的男朋友。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "71",
+                "children": [
+                    "73"
+                ]
+            },
+            {
+                "id": "73",
+                "name": "艾米丽",
+                "content": "就这周六一天。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "72",
+                "children": [
+                    "74"
+                ]
+            },
+            {
+                "id": "74",
+                "name": "艾米丽",
+                "content": "出席我妹妹的婚礼。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "73",
+                "children": [
+                    "75"
+                ]
+            },
+            {
+                "id": "75",
+                "name": "艾米丽",
+                "content": "拜托了！",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "74",
+                "children": [
+                    "76"
+                ]
+            },
+            {
+                "id": "76",
+                "name": "艾米丽",
+                "content": "我知道这太荒唐。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "75",
+                "children": [
+                    "77"
+                ]
+            },
+            {
+                "id": "77",
+                "name": "艾米丽",
+                "content": "我知道这太冒昧。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "76",
+                "children": [
+                    "78"
+                ]
+            },
+            {
+                "id": "78",
+                "name": "艾米丽",
+                "content": "但我真的没有别的办法。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "77",
+                "children": [
+                    "79"
+                ]
+            },
+            {
+                "id": "79",
+                "name": "旁白",
+                "content": "沉默在两人之间蔓延。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "78",
+                "children": [
+                    "80"
+                ]
+            },
+            {
+                "id": "80",
+                "name": "艾米丽",
+                "content": "我会处理好一切细节！",
+                "background": "",
+                "character": "/sources/pic/艾米丽/anger_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "79",
+                "children": [
+                    "81"
+                ]
+            },
+            {
+                "id": "81",
+                "name": "艾米丽",
+                "content": "您只需要出现一下。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/anger_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "80",
+                "children": [
+                    "82"
+                ]
+            },
+            {
+                "id": "82",
+                "name": "艾米丽",
+                "content": "和我一起露个面就好！",
+                "background": "",
+                "character": "/sources/pic/艾米丽/anger_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "81",
+                "children": [
+                    "83"
+                ]
+            },
+            {
+                "id": "83",
+                "name": "艾米丽",
+                "content": "我甚至可以告诉妈妈。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "82",
+                "children": [
+                    "84"
+                ]
+            },
+            {
+                "id": "84",
+                "name": "艾米丽",
+                "content": "您是位医生。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "83",
+                "children": [
+                    "85"
+                ]
+            },
+            {
+                "id": "85",
+                "name": "艾米丽",
+                "content": "如果这样更有帮助的话！",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "84",
+                "children": [
+                    "86"
+                ]
+            },
+            {
+                "id": "86",
+                "name": "艾米丽",
+                "content": "或者其他任何职业！",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "85",
+                "children": [
+                    "87"
+                ]
+            },
+            {
+                "id": "87",
+                "name": "艾米丽",
+                "content": "您只需要配合我演戏。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "86",
+                "children": [
+                    "88"
+                ]
+            },
+            {
+                "id": "88",
+                "name": "艾米丽",
+                "content": "几个小时就好。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "87",
+                "children": [
+                    "89"
+                ]
+            },
+            {
+                "id": "89",
+                "name": "艾米丽",
+                "content": "求您了。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "88",
+                "children": [
+                    "90"
+                ]
+            },
+            {
+                "id": "90",
+                "name": "旁白",
+                "content": "她的声音在颤抖。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "89",
+                "children": [
+                    "91"
+                ]
+            },
+            {
+                "id": "91",
+                "name": "旁白",
+                "content": "手指紧紧攥着围裙。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "90",
+                "children": [
+                    "92"
+                ]
+            },
+            {
+                "id": "92",
+                "name": "旁白",
+                "content": "指节发白。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "91",
+                "children": []
+            }
+        ]
+    },
+    {
+        "dialogue_name": "咖啡厅的约定",
+        "site_description": "“静谧时光”咖啡厅打烊后的角落座位区\n地点：咖啡厅内部最里侧，靠窗的僻静角落。\n装饰与场景：此处摆放着一张厚重的原木色方桌，表面有细微的使用痕迹与木纹。桌面上方悬着一盏暖黄色的复古吊灯，是店内唯一亮着的光源，在木桌与两把深棕色皮质扶手椅上投下温暖而柔和的光圈。窗外已是傍晚，街道灯光朦胧，透过百叶窗缝隙在室内地板上形成细长的光斑。咖啡厅主区域灯光已熄灭，显得安静而私密。空气中弥漫着淡淡的咖啡豆香气与隐约的甜点余味。艾米丽的笔记本和笔摊开在桌上，旁边放着两个已空的陶瓷咖啡杯，衬托出两人商讨秘密计划的专注氛围。整个场景静谧、温暖，又带着一丝紧绷的戏剧性。",
+        "dialogue_content": [
+            {
+                "id": "0",
+                "name": "旁白",
+                "content": "傍晚六点，咖啡厅已挂上“休息中”的牌子。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "",
+                "children": [
+                    "1"
+                ]
+            },
+            {
+                "id": "1",
+                "name": "旁白",
+                "content": "暖黄的吊灯在木质桌面上投下光圈。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "0",
+                "children": [
+                    "2"
+                ]
+            },
+            {
+                "id": "2",
+                "name": "旁白",
+                "content": "艾米丽和Larok面对面坐着，桌上摊着一个笔记本。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "1",
+                "children": [
+                    "3"
+                ]
+            },
+            {
+                "id": "3",
+                "name": "Larok",
+                "content": "我考虑过了。我可以帮你这个忙。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "2",
+                "children": [
+                    "4"
+                ]
+            },
+            {
+                "id": "4",
+                "name": "艾米丽",
+                "content": "真的吗？您……您真的愿意？",
+                "background": "",
+                "character": "/sources/pic/艾米丽/surprise_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "3",
+                "children": [
+                    "5"
+                ]
+            },
+            {
+                "id": "5",
+                "name": "艾米丽",
+                "content": "天啊，谢谢您！我不知道该怎么感谢您……",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "4",
+                "children": [
+                    "6"
+                ]
+            },
+            {
+                "id": "6",
+                "name": "Larok",
+                "content": "但我们需要一个可信的故事。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "5",
+                "children": [
+                    "7"
+                ]
+            },
+            {
+                "id": "7",
+                "name": "Larok",
+                "content": "你家人会问很多问题。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "6",
+                "children": [
+                    "8"
+                ]
+            },
+            {
+                "id": "8",
+                "name": "艾米丽",
+                "content": "是的！我想过了。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "7",
+                "children": [
+                    "9"
+                ]
+            },
+            {
+                "id": "9",
+                "name": "艾米丽",
+                "content": "首先是我们怎么认识的。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "8",
+                "children": [
+                    "10"
+                ]
+            },
+            {
+                "id": "10",
+                "name": "艾米丽",
+                "content": "不能是在这里，太普通了。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "9",
+                "children": [
+                    "11"
+                ]
+            },
+            {
+                "id": "11",
+                "name": "艾米丽",
+                "content": "我告诉他们我们是在伦敦认识的！",
+                "background": "",
+                "character": "/sources/pic/艾米丽/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "10",
+                "children": [
+                    "12"
+                ]
+            },
+            {
+                "id": "12",
+                "name": "艾米丽",
+                "content": "对，就说三个月前，",
+                "background": "",
+                "character": "/sources/pic/艾米丽/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "11",
+                "children": [
+                    "13"
+                ]
+            },
+            {
+                "id": "13",
+                "name": "艾米丽",
+                "content": "我去伦敦参加一个短期烘焙课程。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "12",
+                "children": [
+                    "14"
+                ]
+            },
+            {
+                "id": "14",
+                "name": "艾米丽",
+                "content": "在一个下雨的下午，",
+                "background": "",
+                "character": "/sources/pic/艾米丽/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "13",
+                "children": [
+                    "15"
+                ]
+            },
+            {
+                "id": "15",
+                "name": "艾米丽",
+                "content": "我躲进诺丁山附近一家很有名的咖啡店。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "14",
+                "children": [
+                    "16"
+                ]
+            },
+            {
+                "id": "16",
+                "name": "艾米丽",
+                "content": "然后……然后您正好坐在邻桌。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "15",
+                "children": [
+                    "17"
+                ]
+            },
+            {
+                "id": "17",
+                "name": "艾米丽",
+                "content": "我们因为……因为一块红丝绒蛋糕聊起来了？",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "16",
+                "children": [
+                    "18"
+                ]
+            },
+            {
+                "id": "18",
+                "name": "艾米丽",
+                "content": "那家店真的存在，我去过，",
+                "background": "",
+                "character": "/sources/pic/艾米丽/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "17",
+                "children": [
+                    "19"
+                ]
+            },
+            {
+                "id": "19",
+                "name": "艾米丽",
+                "content": "所以细节我能说清楚。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "18",
+                "children": [
+                    "20"
+                ]
+            },
+            {
+                "id": "20",
+                "name": "艾米丽",
+                "content": "您就说您当时在伦敦出差……",
+                "background": "",
+                "character": "/sources/pic/艾米丽/smile_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "19",
+                "children": [
+                    "21"
+                ]
+            },
+            {
+                "id": "21",
+                "name": "艾米丽",
+                "content": "您是做什么工作的？",
+                "background": "",
+                "character": "/sources/pic/艾米丽/smile_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "20",
+                "children": [
+                    "22"
+                ]
+            },
+            {
+                "id": "22",
+                "name": "艾米丽",
+                "content": "我需要知道真实的职业，",
+                "background": "",
+                "character": "/sources/pic/艾米丽/smile_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "21",
+                "children": [
+                    "23"
+                ]
+            },
+            {
+                "id": "23",
+                "name": "艾米丽",
+                "content": "这样不容易穿帮。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/smile_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "22",
+                "children": [
+                    "24"
+                ]
+            },
+            {
+                "id": "24",
+                "name": "Larok",
+                "content": "我是建筑师。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "23",
+                "children": [
+                    "25"
+                ]
+            },
+            {
+                "id": "25",
+                "name": "艾米丽",
+                "content": "完美！很体面。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/surprise_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "24",
+                "children": [
+                    "26"
+                ]
+            },
+            {
+                "id": "26",
+                "name": "艾米丽",
+                "content": "而且不需要像医生那样有太多专业知识，",
+                "background": "",
+                "character": "/sources/pic/艾米丽/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "25",
+                "children": [
+                    "27"
+                ]
+            },
+            {
+                "id": "27",
+                "name": "艾米丽",
+                "content": "容易被问倒。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "26",
+                "children": [
+                    "28"
+                ]
+            },
+            {
+                "id": "28",
+                "name": "艾米丽",
+                "content": "好的，那么：",
+                "background": "",
+                "character": "/sources/pic/艾米丽/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "27",
+                "children": [
+                    "29"
+                ]
+            },
+            {
+                "id": "29",
+                "name": "艾米丽",
+                "content": "我们在伦敦的咖啡店因蛋糕结缘。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "28",
+                "children": [
+                    "30"
+                ]
+            },
+            {
+                "id": "30",
+                "name": "艾米丽",
+                "content": "交换了联系方式，开始远距离聊天。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "29",
+                "children": [
+                    "31"
+                ]
+            },
+            {
+                "id": "31",
+                "name": "艾米丽",
+                "content": "然后我回来后我们正式约会。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "30",
+                "children": [
+                    "32"
+                ]
+            },
+            {
+                "id": "32",
+                "name": "艾米丽",
+                "content": "交往……三个月？",
+                "background": "",
+                "character": "/sources/pic/艾米丽/depression_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "31",
+                "children": [
+                    "33"
+                ]
+            },
+            {
+                "id": "33",
+                "name": "艾米丽",
+                "content": "时间太短他们会怀疑不稳定，",
+                "background": "",
+                "character": "/sources/pic/艾米丽/depression_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "32",
+                "children": [
+                    "34"
+                ]
+            },
+            {
+                "id": "34",
+                "name": "艾米丽",
+                "content": "六个月？好像又太长……",
+                "background": "",
+                "character": "/sources/pic/艾米丽/depression_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "33",
+                "children": [
+                    "35"
+                ]
+            },
+            {
+                "id": "35",
+                "name": "Larok",
+                "content": "四个月吧。不长不短。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "34",
+                "children": [
+                    "36"
+                ]
+            },
+            {
+                "id": "36",
+                "name": "艾米丽",
+                "content": "好！四个月。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "35",
+                "children": [
+                    "37"
+                ]
+            },
+            {
+                "id": "37",
+                "name": "艾米丽",
+                "content": "接下来是家庭成员。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "36",
+                "children": [
+                    "38"
+                ]
+            },
+            {
+                "id": "38",
+                "name": "艾米丽",
+                "content": "我妈妈安吉尔——她会盯着您看。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "37",
+                "children": [
+                    "39"
+                ]
+            },
+            {
+                "id": "39",
+                "name": "艾米丽",
+                "content": "她会问很多直接的问题，",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "38",
+                "children": [
+                    "40"
+                ]
+            },
+            {
+                "id": "40",
+                "name": "艾米丽",
+                "content": "比如家庭背景、收入、未来规划。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "39",
+                "children": [
+                    "41"
+                ]
+            },
+            {
+                "id": "41",
+                "name": "艾米丽",
+                "content": "她不是恶意，只是……非常保护我们。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "40",
+                "children": [
+                    "42"
+                ]
+            },
+            {
+                "id": "42",
+                "name": "艾米丽",
+                "content": "而且坚信‘了解一个人要从根上了解’。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "41",
+                "children": [
+                    "43"
+                ]
+            },
+            {
+                "id": "43",
+                "name": "艾米丽",
+                "content": "您保持礼貌，但不用太详细，",
+                "background": "",
+                "character": "/sources/pic/艾米丽/smile_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "42",
+                "children": [
+                    "44"
+                ]
+            },
+            {
+                "id": "44",
+                "name": "艾米丽",
+                "content": "我会尽量打断。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/smile_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "43",
+                "children": [
+                    "45"
+                ]
+            },
+            {
+                "id": "45",
+                "name": "艾米丽",
+                "content": "我爸爸安德鲁话不多，但他会观察。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/smile_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "44",
+                "children": [
+                    "46"
+                ]
+            },
+            {
+                "id": "46",
+                "name": "艾米丽",
+                "content": "他喜欢园艺，",
+                "background": "",
+                "character": "/sources/pic/艾米丽/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "45",
+                "children": [
+                    "47"
+                ]
+            },
+            {
+                "id": "47",
+                "name": "艾米丽",
+                "content": "如果您能聊两句植物可能会加分。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "46",
+                "children": [
+                    "48"
+                ]
+            },
+            {
+                "id": "48",
+                "name": "艾米丽",
+                "content": "妹妹莉莉……嗯，她是我妹妹，",
+                "background": "",
+                "character": "/sources/pic/艾米丽/depression_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "47",
+                "children": [
+                    "49"
+                ]
+            },
+            {
+                "id": "49",
+                "name": "艾米丽",
+                "content": "但我们的关系有点复杂。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/depression_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "48",
+                "children": [
+                    "50"
+                ]
+            },
+            {
+                "id": "50",
+                "name": "艾米丽",
+                "content": "她喜欢比较。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "49",
+                "children": [
+                    "51"
+                ]
+            },
+            {
+                "id": "51",
+                "name": "艾米丽",
+                "content": "她的未婚夫马克是个股票经纪人，很会赚钱。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "50",
+                "children": [
+                    "52"
+                ]
+            },
+            {
+                "id": "52",
+                "name": "艾米丽",
+                "content": "莉莉可能会炫耀他们的婚礼花费。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "51",
+                "children": [
+                    "53"
+                ]
+            },
+            {
+                "id": "53",
+                "name": "艾米丽",
+                "content": "或者暗示您应该送我更贵的礼物。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "52",
+                "children": [
+                    "54"
+                ]
+            },
+            {
+                "id": "54",
+                "name": "艾米丽",
+                "content": "请别在意，微笑就好。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/smile_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "53",
+                "children": [
+                    "55"
+                ]
+            },
+            {
+                "id": "55",
+                "name": "艾米丽",
+                "content": "还有着装……婚礼是正式场合，",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "54",
+                "children": [
+                    "56"
+                ]
+            },
+            {
+                "id": "56",
+                "name": "艾米丽",
+                "content": "在格兰德酒店的宴会厅。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "55",
+                "children": [
+                    "57"
+                ]
+            },
+            {
+                "id": "57",
+                "name": "艾米丽",
+                "content": "需要西装，领带。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "56",
+                "children": [
+                    "58"
+                ]
+            },
+            {
+                "id": "58",
+                "name": "艾米丽",
+                "content": "但如果您没有合适的，我可以……",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "57",
+                "children": [
+                    "59"
+                ]
+            },
+            {
+                "id": "59",
+                "name": "Larok",
+                "content": "我有西装。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "58",
+                "children": [
+                    "60"
+                ]
+            },
+            {
+                "id": "60",
+                "name": "艾米丽",
+                "content": "太好了。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "59",
+                "children": [
+                    "61"
+                ]
+            },
+            {
+                "id": "61",
+                "name": "艾米丽",
+                "content": "然后……我们可能需要一些……基本互动。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "60",
+                "children": [
+                    "62"
+                ]
+            },
+            {
+                "id": "62",
+                "name": "艾米丽",
+                "content": "比如，我该怎么称呼您？",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "61",
+                "children": [
+                    "63"
+                ]
+            },
+            {
+                "id": "63",
+                "name": "艾米丽",
+                "content": "一直叫‘Larok先生’太生疏了。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "62",
+                "children": [
+                    "64"
+                ]
+            },
+            {
+                "id": "64",
+                "name": "艾米丽",
+                "content": "但叫名字又好像……",
+                "background": "",
+                "character": "/sources/pic/艾米丽/tsundere_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "63",
+                "children": [
+                    "65"
+                ]
+            },
+            {
+                "id": "65",
+                "name": "Larok",
+                "content": "就叫Larok吧。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "64",
+                "children": [
+                    "66"
+                ]
+            },
+            {
+                "id": "66",
+                "name": "Larok",
+                "content": "你家人听到的应该是这样。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "65",
+                "children": [
+                    "67"
+                ]
+            },
+            {
+                "id": "67",
+                "name": "艾米丽",
+                "content": "还有……如果他们有肢体接触的要求。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "66",
+                "children": [
+                    "68"
+                ]
+            },
+            {
+                "id": "68",
+                "name": "艾米丽",
+                "content": "比如合影时要搂肩，",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "67",
+                "children": [
+                    "69"
+                ]
+            },
+            {
+                "id": "69",
+                "name": "艾米丽",
+                "content": "或者妈妈想拥抱您……",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "68",
+                "children": [
+                    "70"
+                ]
+            },
+            {
+                "id": "70",
+                "name": "艾米丽",
+                "content": "我很抱歉提前说这个，但……",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "69",
+                "children": [
+                    "71"
+                ]
+            },
+            {
+                "id": "71",
+                "name": "Larok",
+                "content": "我会配合必要的社交礼仪。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "70",
+                "children": [
+                    "72"
+                ]
+            },
+            {
+                "id": "72",
+                "name": "艾米丽",
+                "content": "谢谢。真的。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "71",
+                "children": [
+                    "73"
+                ]
+            },
+            {
+                "id": "73",
+                "name": "艾米丽",
+                "content": "我……我对这一切感到非常内疚。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "72",
+                "children": [
+                    "74"
+                ]
+            },
+            {
+                "id": "74",
+                "name": "艾米丽",
+                "content": "欺骗他们，还把您卷进来。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "73",
+                "children": [
+                    "75"
+                ]
+            },
+            {
+                "id": "75",
+                "name": "艾米丽",
+                "content": "等婚礼结束，我会找机会慢慢‘分手’。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/depression_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "74",
+                "children": [
+                    "76"
+                ]
+            },
+            {
+                "id": "76",
+                "name": "艾米丽",
+                "content": "然后告诉他们我恢复单身了。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "75",
+                "children": [
+                    "77"
+                ]
+            },
+            {
+                "id": "77",
+                "name": "艾米丽",
+                "content": "我不会让这个谎言持续下去的。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "76",
+                "children": [
+                    "78"
+                ]
+            },
+            {
+                "id": "78",
+                "name": "艾米丽",
+                "content": "您帮我度过这个难关，",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "77",
+                "children": [
+                    "79"
+                ]
+            },
+            {
+                "id": "79",
+                "name": "艾米丽",
+                "content": "我欠您一个巨大的人情。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "78",
+                "children": [
+                    "80"
+                ]
+            },
+            {
+                "id": "80",
+                "name": "艾米丽",
+                "content": "任何我能回报的——",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "79",
+                "children": [
+                    "81"
+                ]
+            },
+            {
+                "id": "81",
+                "name": "艾米丽",
+                "content": "免费咖啡，一年的早餐，或者……或者任何事。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "80",
+                "children": [
+                    "82"
+                ]
+            },
+            {
+                "id": "82",
+                "name": "艾米丽",
+                "content": "请告诉我。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "81",
+                "children": [
+                    "83"
+                ]
+            },
+            {
+                "id": "83",
+                "name": "Larok",
+                "content": "先度过周六再说吧。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "82",
+                "children": [
+                    "84"
+                ]
+            },
+            {
+                "id": "84",
+                "name": "艾米丽",
+                "content": "（挤出一个笑容）",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "83",
+                "children": []
+            }
+        ]
+    },
+    {
+        "dialogue_name": "第一幕",
+        "site_description": "昏暗的办公室，深夜。李伟独自坐在电脑前，屏幕光映在他疲惫的脸上。窗外偶尔有车灯闪过。",
+        "dialogue_content": [
+            {
+                "id": "0",
+                "name": "李伟",
+                "content": "数据对不上……一定漏了什么。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "",
+                "children": [
+                    "1"
+                ]
+            },
+            {
+                "id": "1",
+                "name": "旁白",
+                "content": "他拿起桌边的冷咖啡喝了一口，皱眉。键盘敲击声在寂静中格外清晰。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "0",
+                "children": [
+                    "2"
+                ]
+            },
+            {
+                "id": "2",
+                "name": "李伟",
+                "content": "喂？",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "1",
+                "children": [
+                    "3"
+                ]
+            },
+            {
+                "id": "3",
+                "name": "旁白",
+                "content": "电话那头传来急促的说话声，李伟的脸色逐渐变得苍白。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "2",
+                "children": [
+                    "4"
+                ]
+            },
+            {
+                "id": "4",
+                "name": "李伟",
+                "content": "什么时候的事？",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "3",
+                "children": [
+                    "5"
+                ]
+            },
+            {
+                "id": "5",
+                "name": "旁白",
+                "content": "他猛地站起，碰倒了咖啡杯。液体漫过桌面的文件。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "4",
+                "children": []
+            }
+        ]
+    },
+    {
+        "dialogue_name": "夜晚的归途",
+        "site_description": "名称：艾米丽公寓楼前人行道\n地点：城市中一个安静的旧街区，紧邻主干道，但被一排梧桐树隔开。\n装饰与场景：一栋约六层高的老式红砖公寓楼矗立着，楼体有些许岁月斑驳的痕迹。楼前是一条不宽的人行道，铺着略有凹凸的方形地砖。一盏老式铸铁街灯立在路边，散发着柔和的暖黄色光晕，吸引着几只夏夜飞虫。灯光照亮了楼前几级矮台阶和深绿色的单元门。三楼的一扇窗户暗着，那是艾米丽的公寓。街道对面是几家早已打烊的小店，橱窗暗着。夜风拂过，梧桐树叶沙沙作响，更衬得街道空旷宁静。空气中能隐约闻到远处传来的淡淡油烟味和近处泥土草木的气息。出租车停在路边，引擎已熄火，尾灯的红光在静谧中格外醒目。",
+        "dialogue_content": [
+            {
+                "id": "0",
+                "name": "旁白",
+                "content": "夜晚，出租车内。车窗外的城市灯光流成斑斓的线。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "",
+                "children": [
+                    "1"
+                ]
+            },
+            {
+                "id": "1",
+                "name": "艾米丽",
+                "content": "他们相信了。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "0",
+                "children": [
+                    "2"
+                ]
+            },
+            {
+                "id": "2",
+                "name": "艾米丽",
+                "content": "或者说，他们选择相信。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "1",
+                "children": [
+                    "3"
+                ]
+            },
+            {
+                "id": "3",
+                "name": "艾米丽",
+                "content": "妈妈最后拥抱我时说。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "2",
+                "children": [
+                    "4"
+                ]
+            },
+            {
+                "id": "4",
+                "name": "艾米丽",
+                "content": "“他看起来是个好人。”",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "3",
+                "children": [
+                    "5"
+                ]
+            },
+            {
+                "id": "5",
+                "name": "艾米丽",
+                "content": "“要好好相处。”",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "4",
+                "children": [
+                    "6"
+                ]
+            },
+            {
+                "id": "6",
+                "name": "艾米丽",
+                "content": "爸爸拍了拍您的肩膀。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "5",
+                "children": [
+                    "7"
+                ]
+            },
+            {
+                "id": "7",
+                "name": "艾米丽",
+                "content": "莉莉说“恭喜你”。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/depression_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "6",
+                "children": [
+                    "8"
+                ]
+            },
+            {
+                "id": "8",
+                "name": "艾米丽",
+                "content": "任务完成。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/depression_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "7",
+                "children": [
+                    "9"
+                ]
+            },
+            {
+                "id": "9",
+                "name": "Larok",
+                "content": "你做得很好。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "8",
+                "children": [
+                    "10"
+                ]
+            },
+            {
+                "id": "10",
+                "name": "艾米丽",
+                "content": "不，是您做得很好。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "9",
+                "children": [
+                    "11"
+                ]
+            },
+            {
+                "id": "11",
+                "name": "艾米丽",
+                "content": "每一个问题都答得完美。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "10",
+                "children": [
+                    "12"
+                ]
+            },
+            {
+                "id": "12",
+                "name": "艾米丽",
+                "content": "您甚至记得我喜欢莫奈。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/surprise_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "11",
+                "children": [
+                    "13"
+                ]
+            },
+            {
+                "id": "13",
+                "name": "艾米丽",
+                "content": "我不知道您怎么知道的。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "12",
+                "children": [
+                    "14"
+                ]
+            },
+            {
+                "id": "14",
+                "name": "艾米丽",
+                "content": "但……谢谢您。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "13",
+                "children": [
+                    "15"
+                ]
+            },
+            {
+                "id": "15",
+                "name": "艾米丽",
+                "content": "我再次为这一切道歉。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "14",
+                "children": [
+                    "16"
+                ]
+            },
+            {
+                "id": "16",
+                "name": "艾米丽",
+                "content": "欺骗家人，利用您的好意。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "15",
+                "children": [
+                    "17"
+                ]
+            },
+            {
+                "id": "17",
+                "name": "艾米丽",
+                "content": "浪费您一整天时间。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "16",
+                "children": [
+                    "18"
+                ]
+            },
+            {
+                "id": "18",
+                "name": "艾米丽",
+                "content": "这是不对的。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "17",
+                "children": [
+                    "19"
+                ]
+            },
+            {
+                "id": "19",
+                "name": "艾米丽",
+                "content": "但我真的不知如何报答。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/depression_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "18",
+                "children": [
+                    "20"
+                ]
+            },
+            {
+                "id": "20",
+                "name": "艾米丽",
+                "content": "这对我意义重大。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "19",
+                "children": [
+                    "21"
+                ]
+            },
+            {
+                "id": "21",
+                "name": "艾米丽",
+                "content": "虽然方式不对。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "20",
+                "children": [
+                    "22"
+                ]
+            },
+            {
+                "id": "22",
+                "name": "旁白",
+                "content": "出租车驶入艾米丽的街区。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "21",
+                "children": [
+                    "23"
+                ]
+            },
+            {
+                "id": "23",
+                "name": "旁白",
+                "content": "在一栋老式公寓楼前停下。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "22",
+                "children": [
+                    "24"
+                ]
+            },
+            {
+                "id": "24",
+                "name": "旁白",
+                "content": "公寓楼前，人行道上。夜风微凉。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "23",
+                "children": [
+                    "25"
+                ]
+            },
+            {
+                "id": "25",
+                "name": "艾米丽",
+                "content": "您下周还会来咖啡厅吗？",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "24",
+                "children": [
+                    "26"
+                ]
+            },
+            {
+                "id": "26",
+                "name": "艾米丽",
+                "content": "我是说，作为常客。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "25",
+                "children": [
+                    "27"
+                ]
+            },
+            {
+                "id": "27",
+                "name": "艾米丽",
+                "content": "而不是“男朋友”。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/tsundere_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "26",
+                "children": [
+                    "28"
+                ]
+            },
+            {
+                "id": "28",
+                "name": "Larok",
+                "content": "我会去。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "27",
+                "children": [
+                    "29"
+                ]
+            },
+            {
+                "id": "29",
+                "name": "Larok",
+                "content": "早餐习惯不会改变。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "28",
+                "children": [
+                    "30"
+                ]
+            },
+            {
+                "id": "30",
+                "name": "艾米丽",
+                "content": "那我给您留靠窗座位。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "29",
+                "children": [
+                    "31"
+                ]
+            },
+            {
+                "id": "31",
+                "name": "艾米丽",
+                "content": "和一杯完美的大杯美式。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/smile_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "30",
+                "children": [
+                    "32"
+                ]
+            },
+            {
+                "id": "32",
+                "name": "艾米丽",
+                "content": "还有……如果您不介意。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "31",
+                "children": [
+                    "33"
+                ]
+            },
+            {
+                "id": "33",
+                "name": "艾米丽",
+                "content": "也许某天，不以演戏为目的。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "32",
+                "children": [
+                    "34"
+                ]
+            },
+            {
+                "id": "34",
+                "name": "艾米丽",
+                "content": "我可以请您尝尝甜点？",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "33",
+                "children": [
+                    "35"
+                ]
+            },
+            {
+                "id": "35",
+                "name": "艾米丽",
+                "content": "在我公寓里。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "34",
+                "children": [
+                    "36"
+                ]
+            },
+            {
+                "id": "36",
+                "name": "艾米丽",
+                "content": "我在试验新蛋糕配方。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "35",
+                "children": [
+                    "37"
+                ]
+            },
+            {
+                "id": "37",
+                "name": "艾米丽",
+                "content": "需要客观的品尝者。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "36",
+                "children": [
+                    "38"
+                ]
+            },
+            {
+                "id": "38",
+                "name": "艾米丽",
+                "content": "当然，完全没关系！",
+                "background": "",
+                "character": "/sources/pic/艾米丽/tsundere_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "37",
+                "children": [
+                    "39"
+                ]
+            },
+            {
+                "id": "39",
+                "name": "艾米丽",
+                "content": "如果您觉得不合适的话。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/tsundere_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "38",
+                "children": [
+                    "40"
+                ]
+            },
+            {
+                "id": "40",
+                "name": "艾米丽",
+                "content": "我只是想表达感谢。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "39",
+                "children": [
+                    "41"
+                ]
+            },
+            {
+                "id": "41",
+                "name": "艾米丽",
+                "content": "以真实的方式。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/smile_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "40",
+                "children": [
+                    "42"
+                ]
+            },
+            {
+                "id": "42",
+                "name": "旁白",
+                "content": "Larok看着她。街灯柔和。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "41",
+                "children": []
+            }
+        ]
+    }
+]

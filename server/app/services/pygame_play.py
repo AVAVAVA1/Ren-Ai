@@ -114,11 +114,19 @@ def _resolve_background_path(project_root: Path, background: str) -> Optional[Pa
 
 def _character_sprite_path(project_root: Path, speaker_name: str, character: str) -> Optional[Path]:
     """
-    立绘路径：public/sources/pic/{角色名}/ 下。
-    - 与 RunningHub / 去背景一致：除 {expr}.png 外，还认 {expr}_1.png、{expr}_2.png 等。
+    立绘路径：
+    - character 为站点路径（/sources/... 或 sources/...）时，直接解析 project_root/public 下文件；
+    - 否则：public/sources/pic/{角色名}/ 下，与 RunningHub / 去背景一致，认 {expr}.png、{expr}_1.png 等。
     """
     ch = (character or "").strip()
     if not ch:
+        return None
+    norm = ch.replace("\\", "/").strip()
+    if norm.startswith("/sources/") or norm.startswith("sources/"):
+        rel = norm.lstrip("/")
+        cand = project_root / "public" / rel
+        if cand.is_file():
+            return cand.resolve()
         return None
     folder = _sanitize_path_segment(speaker_name)
     pic_dir = project_root / "public" / "sources" / "pic" / folder

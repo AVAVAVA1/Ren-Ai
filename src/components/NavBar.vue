@@ -48,7 +48,7 @@ function handleExportClick() {
     <div class="nav-actions">
       <button class="action-btn import-btn" @click="handleImportClick">
         <span class="btn-icon">📁</span>
-        导入JSON
+        追加导入 JSON
       </button>
       <button class="action-btn export-btn" @click="handleExportClick">
         <span class="btn-icon">💾</span>

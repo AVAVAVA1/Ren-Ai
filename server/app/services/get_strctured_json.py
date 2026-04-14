@@ -1,8 +1,32 @@
 from typing import List, Dict, Any, Optional, Tuple
 
 from app.services import tools
+from app.services.dialogue_stand_assets import (
+    NARRATION_CHARACTER_TOKEN,
+    SPIRIT_CHARACTER_TOKEN,
+    SPIRIT_PUBLIC_PATH,
+)
 
-_DEFAULT_EXPRESSION = "微笑"
+_DEFAULT_CHARACTER = SPIRIT_PUBLIC_PATH
+
+
+def _normalize_character_for_flow(raw: Any, speaker_name: str = "") -> str:
+    """
+    dialogue 阶段：旁白 character 应为空；已选角色为 /sources/pic/...；非名单为精灵路径；
+    旧版为英文表情词。此处规整空白与占位符，旁白不因缺省被填成精灵图。
+    """
+    if (speaker_name or "").strip() == "旁白":
+        return ""
+    if raw is None:
+        return _DEFAULT_CHARACTER
+    s = str(raw).strip()
+    if not s:
+        return _DEFAULT_CHARACTER
+    if s == SPIRIT_CHARACTER_TOKEN:
+        return SPIRIT_PUBLIC_PATH
+    if s == NARRATION_CHARACTER_TOKEN:
+        return ""
+    return s
 
 
 def structured_json(
@@ -38,7 +62,10 @@ def structured_json(
                 "name": dialogue.get("name") or "",
                 "content": dialogue.get("dialogue_content") or "",
                 "background": "",
-                "character": dialogue.get("character") or _DEFAULT_EXPRESSION,
+                "character": _normalize_character_for_flow(
+                    dialogue.get("character"),
+                    str(dialogue.get("name") or ""),
+                ),
                 "music": "",
                 "sound": "",
                 "transition": "",

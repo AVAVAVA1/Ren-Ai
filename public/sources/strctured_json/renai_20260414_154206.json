@@ -1,0 +1,4554 @@
+[
+    {
+        "dialogue_name": "晨曦咖啡厅的请求",
+        "site_description": "晨曦咖啡厅内景。清晨阳光透过落地玻璃窗，在深色木质桌面上投下斑驳光影。空气中弥漫着现磨咖啡豆的香气。柜台后的咖啡机闪着金属光泽，一旁陈列着各式陶瓷杯具。墙面上挂着几幅抽象画，角落的复古音箱流淌着轻柔的爵士乐。整个空间安静而温暖，仅有蒸汽偶尔发出的嘶嘶声。",
+        "dialogue_content": [
+            {
+                "id": "0",
+                "name": "旁白",
+                "content": "阳光透过玻璃窗，在木质桌面上投下斑驳光影。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "",
+                "children": [
+                    "1"
+                ]
+            },
+            {
+                "id": "1",
+                "name": "旁白",
+                "content": "咖啡机蒸汽声与轻柔爵士乐交织。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "0",
+                "children": [
+                    "2"
+                ]
+            },
+            {
+                "id": "2",
+                "name": "艾米丽",
+                "content": "早上好！",
+                "background": "",
+                "character": "/sources/pic/艾米丽/smile_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "1",
+                "children": [
+                    "3"
+                ]
+            },
+            {
+                "id": "3",
+                "name": "艾米丽",
+                "content": "老规矩，大杯拿铁？",
+                "background": "",
+                "character": "/sources/pic/艾米丽/smile_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "2",
+                "children": [
+                    "4"
+                ]
+            },
+            {
+                "id": "4",
+                "name": "艾米丽",
+                "content": "要多一份浓缩吗？",
+                "background": "",
+                "character": "/sources/pic/艾米丽/smile_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "3",
+                "children": [
+                    "5"
+                ]
+            },
+            {
+                "id": "5",
+                "name": "旁白",
+                "content": "用户点头回应。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "4",
+                "children": [
+                    "6"
+                ]
+            },
+            {
+                "id": "6",
+                "name": "艾米丽",
+                "content": "请稍等。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/smile_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "5",
+                "children": [
+                    "7"
+                ]
+            },
+            {
+                "id": "7",
+                "name": "旁白",
+                "content": "她转身操作咖啡机。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "6",
+                "children": [
+                    "8"
+                ]
+            },
+            {
+                "id": "8",
+                "name": "旁白",
+                "content": "动作略显迟缓。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "7",
+                "children": [
+                    "9"
+                ]
+            },
+            {
+                "id": "9",
+                "name": "旁白",
+                "content": "她几次欲言又止。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "8",
+                "children": [
+                    "10"
+                ]
+            },
+            {
+                "id": "10",
+                "name": "旁白",
+                "content": "嘴唇微动又抿紧。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "9",
+                "children": [
+                    "11"
+                ]
+            },
+            {
+                "id": "11",
+                "name": "旁白",
+                "content": "咖啡制作完毕。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "10",
+                "children": [
+                    "12"
+                ]
+            },
+            {
+                "id": "12",
+                "name": "艾米丽",
+                "content": "您的拿铁。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/smile_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "11",
+                "children": [
+                    "13"
+                ]
+            },
+            {
+                "id": "13",
+                "name": "艾米丽",
+                "content": "小心烫。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/smile_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "12",
+                "children": [
+                    "14"
+                ]
+            },
+            {
+                "id": "14",
+                "name": "旁白",
+                "content": "声音有些干涩。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "13",
+                "children": [
+                    "15"
+                ]
+            },
+            {
+                "id": "15",
+                "name": "旁白",
+                "content": "用户接过咖啡。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "14",
+                "children": [
+                    "16"
+                ]
+            },
+            {
+                "id": "16",
+                "name": "旁白",
+                "content": "准备转身离开。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "15",
+                "children": [
+                    "17"
+                ]
+            },
+            {
+                "id": "17",
+                "name": "艾米丽",
+                "content": "等等！",
+                "background": "",
+                "character": "/sources/pic/艾米丽/surprise_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "16",
+                "children": [
+                    "18"
+                ]
+            },
+            {
+                "id": "18",
+                "name": "艾米丽",
+                "content": "请等一下。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "17",
+                "children": [
+                    "19"
+                ]
+            },
+            {
+                "id": "19",
+                "name": "旁白",
+                "content": "她攥紧围裙边缘。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "18",
+                "children": [
+                    "20"
+                ]
+            },
+            {
+                "id": "20",
+                "name": "旁白",
+                "content": "指节微微发白。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "19",
+                "children": [
+                    "21"
+                ]
+            },
+            {
+                "id": "21",
+                "name": "旁白",
+                "content": "用户停步。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "20",
+                "children": [
+                    "22"
+                ]
+            },
+            {
+                "id": "22",
+                "name": "艾米丽",
+                "content": "我知道这很荒唐。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/depression_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "21",
+                "children": [
+                    "23"
+                ]
+            },
+            {
+                "id": "23",
+                "name": "艾米丽",
+                "content": "非常非常荒唐。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "22",
+                "children": [
+                    "24"
+                ]
+            },
+            {
+                "id": "24",
+                "name": "艾米丽",
+                "content": "但是……",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "23",
+                "children": [
+                    "25"
+                ]
+            },
+            {
+                "id": "25",
+                "name": "旁白",
+                "content": "她抬头，眼眶微红。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "24",
+                "children": [
+                    "26"
+                ]
+            },
+            {
+                "id": "26",
+                "name": "艾米丽",
+                "content": "请假装成我男朋友。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "25",
+                "children": [
+                    "27"
+                ]
+            },
+            {
+                "id": "27",
+                "name": "艾米丽",
+                "content": "就这周六一天。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "26",
+                "children": [
+                    "28"
+                ]
+            },
+            {
+                "id": "28",
+                "name": "旁白",
+                "content": "她语速加快。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "27",
+                "children": [
+                    "29"
+                ]
+            },
+            {
+                "id": "29",
+                "name": "艾米丽",
+                "content": "我姐姐要结婚了。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "28",
+                "children": [
+                    "30"
+                ]
+            },
+            {
+                "id": "30",
+                "name": "艾米丽",
+                "content": "婚礼就在这周六。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "29",
+                "children": [
+                    "31"
+                ]
+            },
+            {
+                "id": "31",
+                "name": "艾米丽",
+                "content": "我家人从三个月前。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/depression_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "30",
+                "children": [
+                    "32"
+                ]
+            },
+            {
+                "id": "32",
+                "name": "艾米丽",
+                "content": "就开始问我。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/depression_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "31",
+                "children": [
+                    "33"
+                ]
+            },
+            {
+                "id": "33",
+                "name": "艾米丽",
+                "content": "什么时候轮到你。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "32",
+                "children": [
+                    "34"
+                ]
+            },
+            {
+                "id": "34",
+                "name": "艾米丽",
+                "content": "我受不了了。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "33",
+                "children": [
+                    "35"
+                ]
+            },
+            {
+                "id": "35",
+                "name": "艾米丽",
+                "content": "上个月我撒谎了。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "34",
+                "children": [
+                    "36"
+                ]
+            },
+            {
+                "id": "36",
+                "name": "艾米丽",
+                "content": "说我有稳定对象。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "35",
+                "children": [
+                    "37"
+                ]
+            },
+            {
+                "id": "37",
+                "name": "艾米丽",
+                "content": "现在她们非要我带人。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/depression_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "36",
+                "children": [
+                    "38"
+                ]
+            },
+            {
+                "id": "38",
+                "name": "艾米丽",
+                "content": "我认识的人里。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "37",
+                "children": [
+                    "39"
+                ]
+            },
+            {
+                "id": "39",
+                "name": "艾米丽",
+                "content": "只有你能帮我。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "38",
+                "children": [
+                    "40"
+                ]
+            },
+            {
+                "id": "40",
+                "name": "艾米丽",
+                "content": "我可以付你钱！",
+                "background": "",
+                "character": "/sources/pic/艾米丽/surprise_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "39",
+                "children": [
+                    "41"
+                ]
+            },
+            {
+                "id": "41",
+                "name": "艾米丽",
+                "content": "或者帮你带早餐！",
+                "background": "",
+                "character": "/sources/pic/艾米丽/surprise_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "40",
+                "children": [
+                    "42"
+                ]
+            },
+            {
+                "id": "42",
+                "name": "艾米丽",
+                "content": "带一个月！",
+                "background": "",
+                "character": "/sources/pic/艾米丽/surprise_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "41",
+                "children": [
+                    "43"
+                ]
+            },
+            {
+                "id": "43",
+                "name": "艾米丽",
+                "content": "不，三个月！",
+                "background": "",
+                "character": "/sources/pic/艾米丽/surprise_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "42",
+                "children": [
+                    "44"
+                ]
+            },
+            {
+                "id": "44",
+                "name": "艾米丽",
+                "content": "求你了。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "43",
+                "children": [
+                    "45"
+                ]
+            },
+            {
+                "id": "45",
+                "name": "艾米丽",
+                "content": "我不知道还能找谁。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "44",
+                "children": [
+                    "46"
+                ]
+            },
+            {
+                "id": "46",
+                "name": "旁白",
+                "content": "她说完猛地捂住嘴。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "45",
+                "children": [
+                    "47"
+                ]
+            },
+            {
+                "id": "47",
+                "name": "旁白",
+                "content": "仿佛被自己吓到。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "46",
+                "children": [
+                    "48"
+                ]
+            },
+            {
+                "id": "48",
+                "name": "旁白",
+                "content": "咖啡厅里音乐流淌。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "47",
+                "children": [
+                    "49"
+                ]
+            },
+            {
+                "id": "49",
+                "name": "旁白",
+                "content": "她的目光剧烈摇摆。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "48",
+                "children": [
+                    "50"
+                ]
+            },
+            {
+                "id": "50",
+                "name": "旁白",
+                "content": "在恳求与羞愧间。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "49",
+                "children": [
+                    "51"
+                ]
+            },
+            {
+                "id": "51",
+                "name": "旁白",
+                "content": "等待着回应。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "50",
+                "children": []
+            }
+        ]
+    },
+    {
+        "dialogue_name": "合租公寓的客厅",
+        "site_description": "合租公寓的客厅。空间不大，布局紧凑，暖黄色墙壁上悬挂着几幅色彩朦胧的抽象画。一张米白色布艺沙发靠墙摆放，上面堆满了各种几何图案的靠垫和柔软的针织毛毯。沙发前是一张原木色的矮茶几，表面散落着几本翻开的时尚杂志与一个空马克杯。角落放置着一个圆形的浅灰色猫窝。房间主要光源来自沙发旁的一盏弧形落地灯，投射出昏黄温暖的光晕。窗外是沉静的夜色，薄纱窗帘半掩。整体氛围温馨而略显凌乱，弥漫着淡淡的咖啡香气与家居生活的宁静气息。",
+        "dialogue_content": [
+            {
+                "id": "0",
+                "name": "旁白",
+                "content": "艾米丽与Larok合租的公寓客厅，当晚。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "",
+                "children": [
+                    "1"
+                ]
+            },
+            {
+                "id": "1",
+                "name": "旁白",
+                "content": "客厅拥挤但温馨，暖色调墙壁上挂着几幅抽象画。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "0",
+                "children": [
+                    "2"
+                ]
+            },
+            {
+                "id": "2",
+                "name": "旁白",
+                "content": "柔软的沙发上堆满靠垫和毛毯。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "1",
+                "children": [
+                    "3"
+                ]
+            },
+            {
+                "id": "3",
+                "name": "旁白",
+                "content": "木质茶几摆着几本翻开的杂志。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "2",
+                "children": [
+                    "4"
+                ]
+            },
+            {
+                "id": "4",
+                "name": "旁白",
+                "content": "角落猫窝里，虎斑猫Mochi正蜷缩着。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "3",
+                "children": [
+                    "5"
+                ]
+            },
+            {
+                "id": "5",
+                "name": "旁白",
+                "content": "窗外夜色渐浓，室内仅有一盏落地灯昏黄。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "4",
+                "children": [
+                    "6"
+                ]
+            },
+            {
+                "id": "6",
+                "name": "艾米丽",
+                "content": "我一定是疯了，Mochi。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/depression_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "5",
+                "children": [
+                    "7"
+                ]
+            },
+            {
+                "id": "7",
+                "name": "艾米丽",
+                "content": "我居然对顾客说那种话……",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "6",
+                "children": [
+                    "8"
+                ]
+            },
+            {
+                "id": "8",
+                "name": "艾米丽",
+                "content": "他一定觉得我是个怪人。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "7",
+                "children": [
+                    "9"
+                ]
+            },
+            {
+                "id": "9",
+                "name": "旁白",
+                "content": "钥匙转动声响起。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "8",
+                "children": [
+                    "10"
+                ]
+            },
+            {
+                "id": "10",
+                "name": "旁白",
+                "content": "门被推开，灯光流泻而入。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "9",
+                "children": [
+                    "11"
+                ]
+            },
+            {
+                "id": "11",
+                "name": "Larok",
+                "content": "灯也不开，演鬼片呢？",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "10",
+                "children": [
+                    "12"
+                ]
+            },
+            {
+                "id": "12",
+                "name": "旁白",
+                "content": "她打开顶灯，瞥见沙发。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "11",
+                "children": [
+                    "13"
+                ]
+            },
+            {
+                "id": "13",
+                "name": "Larok",
+                "content": "哇哦。你闻起来像打翻的咖啡。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "12",
+                "children": [
+                    "14"
+                ]
+            },
+            {
+                "id": "14",
+                "name": "Larok",
+                "content": "甜腻又灾难。说吧，怎么了？",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "13",
+                "children": [
+                    "15"
+                ]
+            },
+            {
+                "id": "15",
+                "name": "艾米丽",
+                "content": "比那更糟……",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "14",
+                "children": [
+                    "16"
+                ]
+            },
+            {
+                "id": "16",
+                "name": "Larok",
+                "content": "详细点。我需要下饭故事。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "15",
+                "children": [
+                    "17"
+                ]
+            },
+            {
+                "id": "17",
+                "name": "旁白",
+                "content": "艾米丽断断续续地复述。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "16",
+                "children": [
+                    "18"
+                ]
+            },
+            {
+                "id": "18",
+                "name": "艾米丽",
+                "content": "他什么也没说，只是点头。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "17",
+                "children": [
+                    "19"
+                ]
+            },
+            {
+                "id": "19",
+                "name": "艾米丽",
+                "content": "我不知道那是什么意思……",
+                "background": "",
+                "character": "/sources/pic/艾米丽/depression_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "18",
+                "children": [
+                    "20"
+                ]
+            },
+            {
+                "id": "20",
+                "name": "旁白",
+                "content": "沉默片刻。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "19",
+                "children": [
+                    "21"
+                ]
+            },
+            {
+                "id": "21",
+                "name": "Larok",
+                "content": "就这？我还以为你抢银行了。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "20",
+                "children": [
+                    "22"
+                ]
+            },
+            {
+                "id": "22",
+                "name": "艾米丽",
+                "content": "这一点都不好笑！",
+                "background": "",
+                "character": "/sources/pic/艾米丽/anger_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "21",
+                "children": [
+                    "23"
+                ]
+            },
+            {
+                "id": "23",
+                "name": "Larok",
+                "content": "但你这计划烂透了。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "22",
+                "children": [
+                    "24"
+                ]
+            },
+            {
+                "id": "24",
+                "name": "Larok",
+                "content": "你妈三句话就能拆穿你。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "23",
+                "children": [
+                    "25"
+                ]
+            },
+            {
+                "id": "25",
+                "name": "Larok",
+                "content": "Angel阿姨的审讯技巧，我见识过。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "24",
+                "children": [
+                    "26"
+                ]
+            },
+            {
+                "id": "26",
+                "name": "旁白",
+                "content": "艾米丽瑟缩了一下。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "25",
+                "children": [
+                    "27"
+                ]
+            },
+            {
+                "id": "27",
+                "name": "Larok",
+                "content": "我看够了你被亲戚欺负。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "26",
+                "children": [
+                    "28"
+                ]
+            },
+            {
+                "id": "28",
+                "name": "Larok",
+                "content": "每次聚会回来，你像被抽干灵魂。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "27",
+                "children": [
+                    "29"
+                ]
+            },
+            {
+                "id": "29",
+                "name": "Larok",
+                "content": "这样吧。周末前叫他来。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "28",
+                "children": [
+                    "30"
+                ]
+            },
+            {
+                "id": "30",
+                "name": "Larok",
+                "content": "我给你们做突击培训。免费的。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "29",
+                "children": [
+                    "31"
+                ]
+            },
+            {
+                "id": "31",
+                "name": "艾米丽",
+                "content": "你……为什么要帮我？",
+                "background": "",
+                "character": "/sources/pic/艾米丽/surprise_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "30",
+                "children": [
+                    "32"
+                ]
+            },
+            {
+                "id": "32",
+                "name": "Larok",
+                "content": "如果你穿帮了，房租又得我垫。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "31",
+                "children": [
+                    "33"
+                ]
+            },
+            {
+                "id": "33",
+                "name": "Larok",
+                "content": "关门了，别让Mochi进我屋。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "32",
+                "children": [
+                    "34"
+                ]
+            },
+            {
+                "id": "34",
+                "name": "旁白",
+                "content": "门关上。艾米丽呆坐片刻。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "33",
+                "children": [
+                    "35"
+                ]
+            },
+            {
+                "id": "35",
+                "name": "旁白",
+                "content": "她低头看着手心，嘴角浮现一丝弧度。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "34",
+                "children": []
+            }
+        ]
+    },
+    {
+        "dialogue_name": "婚礼前的特训",
+        "site_description": "公寓客厅。傍晚时分，暖黄色的夕阳光线透过百叶窗，在地板上投下平行的条纹光斑。空间不大，陈设简单，主要家具包括一张米色布艺沙发、一张木质茶几和两张相对摆放的餐椅。茶几上凌乱堆放着打开的笔记本、几只马克杯和一个空披萨纸盒。沙发靠垫歪斜，一本杂志摊开在扶手旁。空气中隐约有冷却的芝士气味。整个房间氛围因临时改造而显得杂乱，却又因专注的“培训”意图而带有一种奇特的秩序感。窗外天色渐暗，城市灯光尚未完全亮起。",
+        "dialogue_content": [
+            {
+                "id": "0",
+                "name": "旁白",
+                "content": "公寓客厅，婚礼前三天，傍晚。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "",
+                "children": [
+                    "1"
+                ]
+            },
+            {
+                "id": "1",
+                "name": "旁白",
+                "content": "客厅被临时改造。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "0",
+                "children": [
+                    "2"
+                ]
+            },
+            {
+                "id": "2",
+                "name": "旁白",
+                "content": "两张餐椅面对面摆放。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "1",
+                "children": [
+                    "3"
+                ]
+            },
+            {
+                "id": "3",
+                "name": "旁白",
+                "content": "中间茶几上堆着笔记本。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "2",
+                "children": [
+                    "4"
+                ]
+            },
+            {
+                "id": "4",
+                "name": "旁白",
+                "content": "还有水杯和吃剩的披萨盒。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "3",
+                "children": [
+                    "5"
+                ]
+            },
+            {
+                "id": "5",
+                "name": "旁白",
+                "content": "光线是傍晚的暖黄色。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "4",
+                "children": [
+                    "6"
+                ]
+            },
+            {
+                "id": "6",
+                "name": "旁白",
+                "content": "氛围显得既杂乱又专注。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "5",
+                "children": [
+                    "7"
+                ]
+            },
+            {
+                "id": "7",
+                "name": "Larok",
+                "content": "那么，亲爱的。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "6",
+                "children": [
+                    "8"
+                ]
+            },
+            {
+                "id": "8",
+                "name": "Larok",
+                "content": "你和我们艾米丽怎么认识的？",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "7",
+                "children": [
+                    "9"
+                ]
+            },
+            {
+                "id": "9",
+                "name": "Larok",
+                "content": "艾米丽说你是个医生？",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "8",
+                "children": [
+                    "10"
+                ]
+            },
+            {
+                "id": "10",
+                "name": "Larok",
+                "content": "具体哪一科？",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "9",
+                "children": [
+                    "11"
+                ]
+            },
+            {
+                "id": "11",
+                "name": "Larok",
+                "content": "年收入多少？",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "10",
+                "children": [
+                    "12"
+                ]
+            },
+            {
+                "id": "12",
+                "name": "Larok",
+                "content": "有买房计划吗？",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "11",
+                "children": [
+                    "13"
+                ]
+            },
+            {
+                "id": "13",
+                "name": "Larok",
+                "content": "你知道的。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "12",
+                "children": [
+                    "14"
+                ]
+            },
+            {
+                "id": "14",
+                "name": "Larok",
+                "content": "我们艾米丽从小娇生惯养。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "13",
+                "children": [
+                    "15"
+                ]
+            },
+            {
+                "id": "15",
+                "name": "Larok",
+                "content": "她可吃不了苦——",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "14",
+                "children": [
+                    "16"
+                ]
+            },
+            {
+                "id": "16",
+                "name": "艾米丽",
+                "content": "Larok！别这样……",
+                "background": "",
+                "character": "/sources/pic/艾米丽/surprise_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "15",
+                "children": [
+                    "17"
+                ]
+            },
+            {
+                "id": "17",
+                "name": "艾米丽",
+                "content": "我妈不会这么……",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "16",
+                "children": [
+                    "18"
+                ]
+            },
+            {
+                "id": "18",
+                "name": "Larok",
+                "content": "宝贝，你妈只会更狠。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "17",
+                "children": [
+                    "19"
+                ]
+            },
+            {
+                "id": "19",
+                "name": "Larok",
+                "content": "上次她怎么问我来着？",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "18",
+                "children": [
+                    "20"
+                ]
+            },
+            {
+                "id": "20",
+                "name": "Larok",
+                "content": "“Larok呀，你们精灵族寿命长。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "19",
+                "children": [
+                    "21"
+                ]
+            },
+            {
+                "id": "21",
+                "name": "Larok",
+                "content": "那是不是四十岁才算成年？",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "20",
+                "children": [
+                    "22"
+                ]
+            },
+            {
+                "id": "22",
+                "name": "Larok",
+                "content": "那你现在算……童工？”",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "21",
+                "children": [
+                    "23"
+                ]
+            },
+            {
+                "id": "23",
+                "name": "Larok",
+                "content": "看见没？",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "22",
+                "children": [
+                    "24"
+                ]
+            },
+            {
+                "id": "24",
+                "name": "Larok",
+                "content": "她连跨种族伦理都不放过。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "23",
+                "children": [
+                    "25"
+                ]
+            },
+            {
+                "id": "25",
+                "name": "Larok",
+                "content": "来，记住基础设定。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "24",
+                "children": [
+                    "26"
+                ]
+            },
+            {
+                "id": "26",
+                "name": "Larok",
+                "content": "你们在咖啡厅认识。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "25",
+                "children": [
+                    "27"
+                ]
+            },
+            {
+                "id": "27",
+                "name": "Larok",
+                "content": "你是自由撰稿人。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "26",
+                "children": [
+                    "28"
+                ]
+            },
+            {
+                "id": "28",
+                "name": "Larok",
+                "content": "这职业好，听起来高级。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "27",
+                "children": [
+                    "29"
+                ]
+            },
+            {
+                "id": "29",
+                "name": "Larok",
+                "content": "又不用查执业证。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "28",
+                "children": [
+                    "30"
+                ]
+            },
+            {
+                "id": "30",
+                "name": "Larok",
+                "content": "爱好是烘焙。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "29",
+                "children": [
+                    "31"
+                ]
+            },
+            {
+                "id": "31",
+                "name": "Larok",
+                "content": "就说艾米丽教你做可颂。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "30",
+                "children": [
+                    "32"
+                ]
+            },
+            {
+                "id": "32",
+                "name": "Larok",
+                "content": "恋爱细节？",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "31",
+                "children": [
+                    "33"
+                ]
+            },
+            {
+                "id": "33",
+                "name": "Larok",
+                "content": "第一次约会去了植物园。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "32",
+                "children": [
+                    "34"
+                ]
+            },
+            {
+                "id": "34",
+                "name": "Larok",
+                "content": "因为她喜欢绣球花。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "33",
+                "children": [
+                    "35"
+                ]
+            },
+            {
+                "id": "35",
+                "name": "Larok",
+                "content": "上周刚一起看了烂俗爱情片。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "34",
+                "children": [
+                    "36"
+                ]
+            },
+            {
+                "id": "36",
+                "name": "Larok",
+                "content": "片名是……",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "35",
+                "children": [
+                    "37"
+                ]
+            },
+            {
+                "id": "37",
+                "name": "Larok",
+                "content": "艾米丽，最近有什么烂片？",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "36",
+                "children": [
+                    "38"
+                ]
+            },
+            {
+                "id": "38",
+                "name": "艾米丽",
+                "content": "《星空下的约定》……",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "37",
+                "children": [
+                    "39"
+                ]
+            },
+            {
+                "id": "39",
+                "name": "Larok",
+                "content": "对，就那个。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "38",
+                "children": [
+                    "40"
+                ]
+            },
+            {
+                "id": "40",
+                "name": "Larok",
+                "content": "记住，提到这部电影时。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "39",
+                "children": [
+                    "41"
+                ]
+            },
+            {
+                "id": "41",
+                "name": "Larok",
+                "content": "要露出“忍痛看完”的表情。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "40",
+                "children": [
+                    "42"
+                ]
+            },
+            {
+                "id": "42",
+                "name": "旁白",
+                "content": "接下来的两个小时里。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "41",
+                "children": [
+                    "43"
+                ]
+            },
+            {
+                "id": "43",
+                "name": "旁白",
+                "content": "Larok扮演了Angel阿姨。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "42",
+                "children": [
+                    "44"
+                ]
+            },
+            {
+                "id": "44",
+                "name": "旁白",
+                "content": "还模仿了刻薄表姐。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "43",
+                "children": [
+                    "45"
+                ]
+            },
+            {
+                "id": "45",
+                "name": "旁白",
+                "content": "以及爱比较的妹妹Lily。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "44",
+                "children": [
+                    "46"
+                ]
+            },
+            {
+                "id": "46",
+                "name": "旁白",
+                "content": "甚至模拟了醉酒舅舅。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "45",
+                "children": [
+                    "47"
+                ]
+            },
+            {
+                "id": "47",
+                "name": "旁白",
+                "content": "客厅里充满混乱对话。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "46",
+                "children": [
+                    "48"
+                ]
+            },
+            {
+                "id": "48",
+                "name": "旁白",
+                "content": "还有纠正和偶尔的笑声。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "47",
+                "children": [
+                    "49"
+                ]
+            },
+            {
+                "id": "49",
+                "name": "Larok",
+                "content": "要我说，你当初就该。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "48",
+                "children": [
+                    "50"
+                ]
+            },
+            {
+                "id": "50",
+                "name": "Larok",
+                "content": "带个更劲爆的回去。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "49",
+                "children": [
+                    "51"
+                ]
+            },
+            {
+                "id": "51",
+                "name": "Larok",
+                "content": "比如我。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "50",
+                "children": [
+                    "52"
+                ]
+            },
+            {
+                "id": "52",
+                "name": "Larok",
+                "content": "直接说“这是我女朋友”。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "51",
+                "children": [
+                    "53"
+                ]
+            },
+            {
+                "id": "53",
+                "name": "Larok",
+                "content": "精灵族，活了三百年。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "52",
+                "children": [
+                    "54"
+                ]
+            },
+            {
+                "id": "54",
+                "name": "Larok",
+                "content": "职业是神秘学顾问”。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "53",
+                "children": [
+                    "55"
+                ]
+            },
+            {
+                "id": "55",
+                "name": "Larok",
+                "content": "保证他们震惊到。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "54",
+                "children": [
+                    "56"
+                ]
+            },
+            {
+                "id": "56",
+                "name": "Larok",
+                "content": "再也不提结婚的事。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "55",
+                "children": [
+                    "57"
+                ]
+            },
+            {
+                "id": "57",
+                "name": "艾米丽",
+                "content": "那我妈可能会。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/smile_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "56",
+                "children": [
+                    "58"
+                ]
+            },
+            {
+                "id": "58",
+                "name": "艾米丽",
+                "content": "当场召唤牧师。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/smile_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "57",
+                "children": [
+                    "59"
+                ]
+            },
+            {
+                "id": "59",
+                "name": "旁白",
+                "content": "练习间隙，艾米丽去厨房。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "58",
+                "children": [
+                    "60"
+                ]
+            },
+            {
+                "id": "60",
+                "name": "旁白",
+                "content": "Larok跟了过去。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "59",
+                "children": [
+                    "61"
+                ]
+            },
+            {
+                "id": "61",
+                "name": "Larok",
+                "content": "喂。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "60",
+                "children": [
+                    "62"
+                ]
+            },
+            {
+                "id": "62",
+                "name": "Larok",
+                "content": "戴着。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "61",
+                "children": [
+                    "63"
+                ]
+            },
+            {
+                "id": "63",
+                "name": "Larok",
+                "content": "精灵小玩意儿。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "62",
+                "children": [
+                    "64"
+                ]
+            },
+            {
+                "id": "64",
+                "name": "Larok",
+                "content": "能让你说谎时心跳平稳。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "63",
+                "children": [
+                    "65"
+                ]
+            },
+            {
+                "id": "65",
+                "name": "Larok",
+                "content": "别问原理。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "64",
+                "children": [
+                    "66"
+                ]
+            },
+            {
+                "id": "66",
+                "name": "Larok",
+                "content": "反正不是魔法。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "65",
+                "children": [
+                    "67"
+                ]
+            },
+            {
+                "id": "67",
+                "name": "Larok",
+                "content": "我们管这叫“心理暗示增强器”。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "66",
+                "children": [
+                    "68"
+                ]
+            },
+            {
+                "id": "68",
+                "name": "艾米丽",
+                "content": "你……什么时候准备的？",
+                "background": "",
+                "character": "/sources/pic/艾米丽/surprise_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "67",
+                "children": [
+                    "69"
+                ]
+            },
+            {
+                "id": "69",
+                "name": "Larok",
+                "content": "昨天顺手做的。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "68",
+                "children": [
+                    "70"
+                ]
+            },
+            {
+                "id": "70",
+                "name": "Larok",
+                "content": "材料费从你下月水电费里扣。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "69",
+                "children": [
+                    "71"
+                ]
+            },
+            {
+                "id": "71",
+                "name": "Larok",
+                "content": "还有，周六穿蓝色裙子。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "70",
+                "children": [
+                    "72"
+                ]
+            },
+            {
+                "id": "72",
+                "name": "Larok",
+                "content": "你穿蓝色好看。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "71",
+                "children": [
+                    "73"
+                ]
+            },
+            {
+                "id": "73",
+                "name": "旁白",
+                "content": "Larok回到客厅。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "72",
+                "children": [
+                    "74"
+                ]
+            },
+            {
+                "id": "74",
+                "name": "旁白",
+                "content": "继续对用户进行压力测试。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "73",
+                "children": [
+                    "75"
+                ]
+            },
+            {
+                "id": "75",
+                "name": "旁白",
+                "content": "艾米丽握紧护符。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "74",
+                "children": [
+                    "76"
+                ]
+            },
+            {
+                "id": "76",
+                "name": "旁白",
+                "content": "护符触感微温。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "75",
+                "children": [
+                    "77"
+                ]
+            },
+            {
+                "id": "77",
+                "name": "旁白",
+                "content": "她看着室友晃动的背影。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "76",
+                "children": [
+                    "78"
+                ]
+            },
+            {
+                "id": "78",
+                "name": "旁白",
+                "content": "金发辫子在灯光下闪烁。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "77",
+                "children": [
+                    "79"
+                ]
+            },
+            {
+                "id": "79",
+                "name": "旁白",
+                "content": "她突然意识到一些事。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "78",
+                "children": [
+                    "80"
+                ]
+            },
+            {
+                "id": "80",
+                "name": "旁白",
+                "content": "这个精灵总说“关我屁事”。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "79",
+                "children": [
+                    "81"
+                ]
+            },
+            {
+                "id": "81",
+                "name": "旁白",
+                "content": "整天戴太阳镜吃垃圾食品。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "80",
+                "children": [
+                    "82"
+                ]
+            },
+            {
+                "id": "82",
+                "name": "旁白",
+                "content": "其实一直在默默观察她。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "81",
+                "children": [
+                    "83"
+                ]
+            },
+            {
+                "id": "83",
+                "name": "旁白",
+                "content": "记得她喜欢的电影。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "82",
+                "children": [
+                    "84"
+                ]
+            },
+            {
+                "id": "84",
+                "name": "旁白",
+                "content": "知道她紧张时会心跳过速。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "83",
+                "children": [
+                    "85"
+                ]
+            },
+            {
+                "id": "85",
+                "name": "旁白",
+                "content": "甚至留意到她穿什么颜色好看。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "84",
+                "children": []
+            }
+        ]
+    },
+    {
+        "dialogue_name": "婚礼花园的护符",
+        "site_description": "婚礼宴会厅外的花园露台。白色雕花栏杆围合出半圆形空间，地面铺着浅灰色石板，缝隙间点缀着细小鹅卵石。几张白色铁艺圆桌散布其间，桌面上摆放着未使用的玻璃烛台与小巧花瓶，瓶内插着几支淡粉色玫瑰。远处可见宴会厅的落地窗，窗内透出暖黄色灯光，与傍晚天际的霞光交融。晚风轻柔，吹动悬挂在花架上的透明风铃，发出零星脆响。空气里残留着淡淡花香与甜点香气。",
+        "dialogue_content": [
+            {
+                "id": "0",
+                "name": "旁白",
+                "content": "阳光明媚。花园里布置着白色座椅和鲜花拱门。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "",
+                "children": [
+                    "1"
+                ]
+            },
+            {
+                "id": "1",
+                "name": "艾米丽",
+                "content": "妈妈，这是用户。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "0",
+                "children": [
+                    "2"
+                ]
+            },
+            {
+                "id": "2",
+                "name": "艾米丽",
+                "content": "用户，这是我妈妈。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/shy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "1",
+                "children": [
+                    "3"
+                ]
+            },
+            {
+                "id": "3",
+                "name": "旁白",
+                "content": "Angel——一位妆容精致、目光锐利的中年女性——上下打量用户。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "2",
+                "children": [
+                    "4"
+                ]
+            },
+            {
+                "id": "4",
+                "name": "旁白",
+                "content": "艾米丽感到护符微微发热。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "3",
+                "children": [
+                    "5"
+                ]
+            },
+            {
+                "id": "5",
+                "name": "Larok",
+                "content": "阿姨！您今天真耀眼！",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "4",
+                "children": [
+                    "6"
+                ]
+            },
+            {
+                "id": "6",
+                "name": "Larok",
+                "content": "这对珍珠耳环是古董吗？",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "5",
+                "children": [
+                    "7"
+                ]
+            },
+            {
+                "id": "7",
+                "name": "Larok",
+                "content": "设计太特别了。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "6",
+                "children": [
+                    "8"
+                ]
+            },
+            {
+                "id": "8",
+                "name": "Larok",
+                "content": "我在精灵族的老首饰图谱里见过类似款式。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "7",
+                "children": [
+                    "9"
+                ]
+            },
+            {
+                "id": "9",
+                "name": "旁白",
+                "content": "Angel的注意力被成功转移。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "8",
+                "children": [
+                    "10"
+                ]
+            },
+            {
+                "id": "10",
+                "name": "旁白",
+                "content": "她开始滔滔不绝讲述耳环来历。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "9",
+                "children": [
+                    "11"
+                ]
+            },
+            {
+                "id": "11",
+                "name": "旁白",
+                "content": "Larok回头，对艾米丽眨了眨眼。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "10",
+                "children": [
+                    "12"
+                ]
+            },
+            {
+                "id": "12",
+                "name": "旁白",
+                "content": "宾客们正在用餐。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "11",
+                "children": [
+                    "13"
+                ]
+            },
+            {
+                "id": "13",
+                "name": "Lily",
+                "content": "姐姐，你的男朋友好安静呀。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "12",
+                "children": [
+                    "14"
+                ]
+            },
+            {
+                "id": "14",
+                "name": "Lily",
+                "content": "是不是觉得我们家人太吵了？",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "13",
+                "children": [
+                    "15"
+                ]
+            },
+            {
+                "id": "15",
+                "name": "Lily",
+                "content": "你知道吗？",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "14",
+                "children": [
+                    "16"
+                ]
+            },
+            {
+                "id": "16",
+                "name": "Lily",
+                "content": "艾米丽以前说理想型是那种特别浪漫的人。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "15",
+                "children": [
+                    "17"
+                ]
+            },
+            {
+                "id": "17",
+                "name": "Lily",
+                "content": "会每天写诗的人呢。",
+                "background": "",
+                "character": "/sources/spirit/ComfyUI_00016_black.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "16",
+                "children": [
+                    "18"
+                ]
+            },
+            {
+                "id": "18",
+                "name": "旁白",
+                "content": "艾米丽脸色一白。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "17",
+                "children": [
+                    "19"
+                ]
+            },
+            {
+                "id": "19",
+                "name": "Larok",
+                "content": "我老家用萤火虫丝织的裙子。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "18",
+                "children": [
+                    "20"
+                ]
+            },
+            {
+                "id": "20",
+                "name": "Larok",
+                "content": "晚上会自己发光。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "19",
+                "children": [
+                    "21"
+                ]
+            },
+            {
+                "id": "21",
+                "name": "Larok",
+                "content": "比这亮多了。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "20",
+                "children": [
+                    "22"
+                ]
+            },
+            {
+                "id": "22",
+                "name": "Larok",
+                "content": "下次给你搞一件。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "21",
+                "children": [
+                    "23"
+                ]
+            },
+            {
+                "id": "23",
+                "name": "Larok",
+                "content": "气死她。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "22",
+                "children": [
+                    "24"
+                ]
+            },
+            {
+                "id": "24",
+                "name": "旁白",
+                "content": "Lily表情僵住，悻悻离开。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "23",
+                "children": [
+                    "25"
+                ]
+            },
+            {
+                "id": "25",
+                "name": "旁白",
+                "content": "Larok举起香槟杯。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "24",
+                "children": [
+                    "26"
+                ]
+            },
+            {
+                "id": "26",
+                "name": "旁白",
+                "content": "她对艾米丽做了个“干杯”口型。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "25",
+                "children": [
+                    "27"
+                ]
+            },
+            {
+                "id": "27",
+                "name": "旁白",
+                "content": "艾米丽靠在阳台栏杆上。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "26",
+                "children": [
+                    "28"
+                ]
+            },
+            {
+                "id": "28",
+                "name": "旁白",
+                "content": "她深呼吸。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "27",
+                "children": [
+                    "29"
+                ]
+            },
+            {
+                "id": "29",
+                "name": "Larok",
+                "content": "偷拿的。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "28",
+                "children": [
+                    "30"
+                ]
+            },
+            {
+                "id": "30",
+                "name": "Larok",
+                "content": "巧克力层最多的一块。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "29",
+                "children": [
+                    "31"
+                ]
+            },
+            {
+                "id": "31",
+                "name": "艾米丽",
+                "content": "谢谢。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "30",
+                "children": [
+                    "32"
+                ]
+            },
+            {
+                "id": "32",
+                "name": "艾米丽",
+                "content": "你今天一直在救我。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/sad_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "31",
+                "children": [
+                    "33"
+                ]
+            },
+            {
+                "id": "33",
+                "name": "Larok",
+                "content": "表现不错。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "32",
+                "children": [
+                    "34"
+                ]
+            },
+            {
+                "id": "34",
+                "name": "Larok",
+                "content": "至少你没哭。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "33",
+                "children": [
+                    "35"
+                ]
+            },
+            {
+                "id": "35",
+                "name": "Larok",
+                "content": "上次家庭聚会。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "34",
+                "children": [
+                    "36"
+                ]
+            },
+            {
+                "id": "36",
+                "name": "Larok",
+                "content": "你在卫生间哭了半小时。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "35",
+                "children": [
+                    "37"
+                ]
+            },
+            {
+                "id": "37",
+                "name": "艾米丽",
+                "content": "为什么帮我这么多？",
+                "background": "",
+                "character": "/sources/pic/艾米丽/surprise_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "36",
+                "children": [
+                    "38"
+                ]
+            },
+            {
+                "id": "38",
+                "name": "艾米丽",
+                "content": "这根本不是你的事。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/surprise_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "37",
+                "children": [
+                    "39"
+                ]
+            },
+            {
+                "id": "39",
+                "name": "艾米丽",
+                "content": "你甚至不喜欢人类社交场合。",
+                "background": "",
+                "character": "/sources/pic/艾米丽/surprise_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "38",
+                "children": [
+                    "40"
+                ]
+            },
+            {
+                "id": "40",
+                "name": "Larok",
+                "content": "因为你看烂俗爱情小说的样子太惨了。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "39",
+                "children": [
+                    "41"
+                ]
+            },
+            {
+                "id": "41",
+                "name": "Larok",
+                "content": "抱着书唉声叹气。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "40",
+                "children": [
+                    "42"
+                ]
+            },
+            {
+                "id": "42",
+                "name": "Larok",
+                "content": "好像全世界就你没得到完美爱情。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "41",
+                "children": [
+                    "43"
+                ]
+            },
+            {
+                "id": "43",
+                "name": "Larok",
+                "content": "现实里的友情更靠谱。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "42",
+                "children": [
+                    "44"
+                ]
+            },
+            {
+                "id": "44",
+                "name": "Larok",
+                "content": "懂吗？",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "43",
+                "children": [
+                    "45"
+                ]
+            },
+            {
+                "id": "45",
+                "name": "Larok",
+                "content": "至少我不会因为忘了纪念日就闹分手。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "44",
+                "children": [
+                    "46"
+                ]
+            },
+            {
+                "id": "46",
+                "name": "旁白",
+                "content": "她停顿，望向宴会厅灯光。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "45",
+                "children": [
+                    "47"
+                ]
+            },
+            {
+                "id": "47",
+                "name": "Larok",
+                "content": "而且你咖啡煮得确实不赖。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "46",
+                "children": [
+                    "48"
+                ]
+            },
+            {
+                "id": "48",
+                "name": "Larok",
+                "content": "比我喝过的所有精灵花蜜都提神。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "47",
+                "children": [
+                    "49"
+                ]
+            },
+            {
+                "id": "49",
+                "name": "艾米丽",
+                "content": "Larok……",
+                "background": "",
+                "character": "/sources/pic/艾米丽/crying_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "48",
+                "children": [
+                    "50"
+                ]
+            },
+            {
+                "id": "50",
+                "name": "Larok",
+                "content": "打住，别煽情。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "49",
+                "children": [
+                    "51"
+                ]
+            },
+            {
+                "id": "51",
+                "name": "Larok",
+                "content": "我要去抢救那盘炸鸡了。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "50",
+                "children": [
+                    "52"
+                ]
+            },
+            {
+                "id": "52",
+                "name": "旁白",
+                "content": "她走了两步，回头。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "51",
+                "children": [
+                    "53"
+                ]
+            },
+            {
+                "id": "53",
+                "name": "Larok",
+                "content": "哦，护符记得还我。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "52",
+                "children": [
+                    "54"
+                ]
+            },
+            {
+                "id": "54",
+                "name": "Larok",
+                "content": "材料很贵的。",
+                "background": "",
+                "character": "/sources/pic/Larok/happy_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "53",
+                "children": [
+                    "55"
+                ]
+            },
+            {
+                "id": "55",
+                "name": "旁白",
+                "content": "艾米丽站在甜品台旁。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "54",
+                "children": [
+                    "56"
+                ]
+            },
+            {
+                "id": "56",
+                "name": "旁白",
+                "content": "晚霞透过窗户。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "55",
+                "children": [
+                    "57"
+                ]
+            },
+            {
+                "id": "57",
+                "name": "旁白",
+                "content": "给他们镀上暖金色的边。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "56",
+                "children": [
+                    "58"
+                ]
+            },
+            {
+                "id": "58",
+                "name": "旁白",
+                "content": "艾米丽摸着颈间的护符。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "57",
+                "children": [
+                    "59"
+                ]
+            },
+            {
+                "id": "59",
+                "name": "旁白",
+                "content": "它整日微微发热。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "58",
+                "children": [
+                    "60"
+                ]
+            },
+            {
+                "id": "60",
+                "name": "旁白",
+                "content": "此刻已恢复常温。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "59",
+                "children": [
+                    "61"
+                ]
+            },
+            {
+                "id": "61",
+                "name": "旁白",
+                "content": "谎言仍是谎言。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "60",
+                "children": [
+                    "62"
+                ]
+            },
+            {
+                "id": "62",
+                "name": "旁白",
+                "content": "假男友的关系会消散。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "61",
+                "children": [
+                    "63"
+                ]
+            },
+            {
+                "id": "63",
+                "name": "旁白",
+                "content": "但她心中升起坚实的温暖。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "62",
+                "children": [
+                    "64"
+                ]
+            },
+            {
+                "id": "64",
+                "name": "旁白",
+                "content": "这个总说关我屁事的精灵室友。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "63",
+                "children": [
+                    "65"
+                ]
+            },
+            {
+                "id": "65",
+                "name": "旁白",
+                "content": "为她编造了护符。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "64",
+                "children": [
+                    "66"
+                ]
+            },
+            {
+                "id": "66",
+                "name": "旁白",
+                "content": "扮演了刻薄亲戚。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "65",
+                "children": [
+                    "67"
+                ]
+            },
+            {
+                "id": "67",
+                "name": "旁白",
+                "content": "在关键时刻转移火力。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "66",
+                "children": [
+                    "68"
+                ]
+            },
+            {
+                "id": "68",
+                "name": "旁白",
+                "content": "甚至记得她需要巧克力蛋糕。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "67",
+                "children": [
+                    "69"
+                ]
+            },
+            {
+                "id": "69",
+                "name": "旁白",
+                "content": "而这一切，仅仅因为咖啡煮得不赖。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "68",
+                "children": [
+                    "70"
+                ]
+            },
+            {
+                "id": "70",
+                "name": "艾米丽",
+                "content": "（轻轻笑了）",
+                "background": "",
+                "character": "/sources/pic/艾米丽/smile_1.png",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "69",
+                "children": [
+                    "71"
+                ]
+            },
+            {
+                "id": "71",
+                "name": "旁白",
+                "content": "她不再看婚礼蛋糕。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "70",
+                "children": [
+                    "72"
+                ]
+            },
+            {
+                "id": "72",
+                "name": "旁白",
+                "content": "而是走向那两人。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "71",
+                "children": [
+                    "73"
+                ]
+            },
+            {
+                "id": "73",
+                "name": "旁白",
+                "content": "自然加入吐槽。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "72",
+                "children": [
+                    "74"
+                ]
+            },
+            {
+                "id": "74",
+                "name": "旁白",
+                "content": "灯光温柔，夜晚刚刚开始。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "73",
+                "children": [
+                    "75"
+                ]
+            },
+            {
+                "id": "75",
+                "name": "旁白",
+                "content": "她手中握着意外降临的友情。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "74",
+                "children": [
+                    "76"
+                ]
+            },
+            {
+                "id": "76",
+                "name": "旁白",
+                "content": "比任何虚构爱情都更真实。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "75",
+                "children": [
+                    "77"
+                ]
+            },
+            {
+                "id": "77",
+                "name": "旁白",
+                "content": "幕落。",
+                "background": "",
+                "character": "",
+                "music": "",
+                "sound": "",
+                "transition": "",
+                "menu": [],
+                "setOrChangeFlag": "",
+                "checkFlag": "",
+                "branch_num": 1,
+                "parent_id": "76",
+                "children": []
+            }
+        ]
+    }
+]

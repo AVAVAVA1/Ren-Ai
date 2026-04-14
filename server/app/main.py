@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import outline, script, dialogue, story, runninghub, play
+from app.routers import outline, script, dialogue, story, runninghub, play, character_chat
 
 app = FastAPI(title="Story Generation API")
 
@@ -18,6 +18,7 @@ app.include_router(dialogue.router)
 app.include_router(story.router)
 app.include_router(runninghub.router)
 app.include_router(play.router)
+app.include_router(character_chat.router)
 
 
 @app.get("/")

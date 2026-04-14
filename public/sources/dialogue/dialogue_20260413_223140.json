@@ -1,0 +1,1251 @@
+[
+    {
+        "dialogues": [
+            {
+                "name": "旁白",
+                "dialogue_content": "清晨的阳光透过咖啡厅落地窗。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "在木质桌面上投下温暖光斑。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "咖啡机蒸汽发出嘶鸣声。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "柜台前排着五六人的队伍。",
+                "character": ""
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "您好，这是您的拿铁。",
+                "character": "/sources/pic/艾米丽/smile_1.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "手机在围裙口袋里震动起来。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "屏幕上显示妈妈来电。",
+                "character": ""
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "请稍等，我离开一下。",
+                "character": "/sources/pic/艾米丽/smile_1.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "艾米丽快步走向后厨储物间。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "狭小空间堆着纸箱。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "还有不少咖啡豆袋。",
+                "character": ""
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "妈，我正在上班。",
+                "character": "/sources/pic/艾米丽/depression_1.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "电话那头传来清晰声音。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "语调带着不容置疑。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "周六莉莉婚礼要到了。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "妹妹特意留了并排座位。",
+                "character": ""
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "他应该能来参加。",
+                "character": "/sources/pic/艾米丽/sad_1.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "妈妈声音透出担忧。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "两年都没见过这位马克。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "连照片都没有一张。",
+                "character": ""
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "医院轮班真的很忙。",
+                "character": "/sources/pic/艾米丽/depression_1.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "电话那头传来叹息声。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "要求周六必须带他来。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "电话被挂断了。",
+                "character": ""
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "这该怎么办才好。",
+                "character": "/sources/pic/艾米丽/crying_1.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "呼吸变得微微急促。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "额头抵在冰冷墙壁上。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "停留了整整十秒钟。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "重新戴上职业性微笑。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "推门回到咖啡厅柜台。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "柜台前队伍已经缩短。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "门铃这时轻轻响起。",
+                "character": ""
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "早上好。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "还是老样子对吗？",
+                "character": "/sources/pic/艾米丽/smile_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "双层芝士汉堡套餐。",
+                "character": "/sources/pic/艾米丽/smile_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "可乐不加冰。",
+                "character": "/sources/pic/艾米丽/smile_1.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "你的记性真好。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "艾米丽转身准备餐点。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "手包装时微微发抖。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "将餐盘推向柜台边。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "Larok伸手来接餐盘。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "艾米丽没有松开手。",
+                "character": ""
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "怎么了？",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "艾米丽抬起头又躲开。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "她的脸颊变得涨红。",
+                "character": ""
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "对不起我知道这很疯。",
+                "character": "/sources/pic/艾米丽/shy_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我们甚至不算认识。",
+                "character": "/sources/pic/艾米丽/shy_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "但我妹妹周六结婚。",
+                "character": "/sources/pic/艾米丽/sad_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我妈妈非要见男朋友。",
+                "character": "/sources/pic/艾米丽/sad_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "其实那是我编造的。",
+                "character": "/sources/pic/艾米丽/crying_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "从来没有这样的人。",
+                "character": "/sources/pic/艾米丽/crying_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "如果我一个人去的话。",
+                "character": "/sources/pic/艾米丽/depression_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "妈妈会失望整整一年。",
+                "character": "/sources/pic/艾米丽/depression_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "她那种眼神我受不了。",
+                "character": "/sources/pic/艾米丽/crying_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "话语变得混乱堆积。",
+                "character": "/sources/pic/艾米丽/crying_1.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "Larok静静听着没有打断。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "手指仍搭在餐盘边缘。",
+                "character": ""
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "你能假装我男朋友吗？",
+                "character": "/sources/pic/艾米丽/shy_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "就周六一天几个小时。",
+                "character": "/sources/pic/艾米丽/shy_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我可以说你是医生。",
+                "character": "/sources/pic/艾米丽/shy_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "或者任何职业都可以。",
+                "character": "/sources/pic/艾米丽/shy_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "求你了帮帮我好吗？",
+                "character": "/sources/pic/艾米丽/crying_1.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "空气仿佛突然凝固。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "背景音变得遥远模糊。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "艾米丽不敢抬头等待。",
+                "character": ""
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "周六具体几点开始？",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "艾米丽猛地抬起头来。",
+                "character": ""
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "需要我穿得像医生吗？",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "我有件画荧光骷髅的。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "艾米丽张了张嘴发不出声。",
+                "character": ""
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "刚才只是开玩笑的。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "地点时间和着装要求。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "短信告诉我细节吧。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "她拿起餐盘转身离开。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "走向常坐的靠窗位置。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "仿佛只是普通点单。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "艾米丽站在原地不动。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "双手紧抓围裙边缘。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "窗外Larok戴上太阳镜。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "开始安静地吃汉堡。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "尖耳在发丝间若隐若现。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "场景渐渐淡出结束。",
+                "character": ""
+            }
+        ],
+        "chapter_name": "清晨的请求",
+        "site": "咖啡厅内部，清晨阳光透过大面积落地窗洒入，在深色木质桌面上形成明亮光斑。空气里弥漫着现磨咖啡豆的香气与隐约的烘焙甜味。柜台后方不锈钢咖啡机亮着指示灯，蒸汽管安静悬挂。室内摆放着约十张圆桌与高脚椅，靠窗位置视野开阔可见街道。墙面装饰着复古电影海报与绿植挂架，暖黄色吊灯在未开启状态下静止。地面铺着几何图案瓷砖，靠近门口处有一个小型书架。整体环境整洁明亮，背景播放着轻柔的爵士乐。"
+    },
+    {
+        "dialogues": [
+            {
+                "name": "旁白",
+                "dialogue_content": "两天后的夜晚，公寓客厅里。",
+                "character": ""
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "所以……基础设定。",
+                "character": "/sources/pic/艾米丽/shy_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我们是在伦敦认识的。",
+                "character": "/sources/pic/艾米丽/shy_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "那是一年前的事。",
+                "character": "/sources/pic/艾米丽/shy_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "你在那里做什么呢？",
+                "character": "/sources/pic/艾米丽/shy_1.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "旅行。画画。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "偶尔在街头卖艺。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "好，艺术家身份。",
+                "character": "/sources/pic/艾米丽/smile_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "但对我家人要改说。",
+                "character": "/sources/pic/艾米丽/smile_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "“自由视觉设计师”。",
+                "character": "/sources/pic/艾米丽/smile_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我们在咖啡店相遇。",
+                "character": "/sources/pic/艾米丽/smile_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我差点洒了拿铁。",
+                "character": "/sources/pic/艾米丽/smile_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "洒在你的素描本上。",
+                "character": "/sources/pic/艾米丽/smile_1.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "实际你撞到桌子。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "整杯咖啡倒下去了。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "毁了我三天的手稿。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "真的吗？",
+                "character": "/sources/pic/艾米丽/surprise_1.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "这样更可信。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "愤怒的初遇很戏剧。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "你坚持请吃饭道歉。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "然后发现共同爱好。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "我们都爱糟糕科幻片。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "好。就这样吧。",
+                "character": "/sources/pic/艾米丽/depression_1.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "现在练习肢体语言。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "家人会观察互动。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "Larok站起身走近。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "她向艾米丽伸出手。",
+                "character": ""
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "牵手。情侣不这样。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "不会像谈判代表说话。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "艾米丽迟疑地伸手。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "放在Larok的掌心。",
+                "character": ""
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "太僵硬了。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "想象我们是朋友。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "放松一些。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我没什么朋友。",
+                "character": "/sources/pic/艾米丽/sad_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "会这样牵手。",
+                "character": "/sources/pic/艾米丽/sad_1.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "那就想象抢银行。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "我们是共犯关系。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "信任但准备逃跑。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "艾米丽忍不住笑了。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "她手指力道放松些。",
+                "character": ""
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "好一点。现在称呼。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "你叫我什么？",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "Larok？",
+                "character": "/sources/pic/艾米丽/shy_1.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "太正式。试试昵称。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "Lara？或者Rok？",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "Lara？",
+                "character": "/sources/pic/艾米丽/shy_1.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "可以。我叫你艾米。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "这样自然些。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我家人叫我艾米丽。",
+                "character": "/sources/pic/艾米丽/sad_1.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "但我是你的恋人。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "需要专属称呼。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "Millie怎么样？",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "没人这么叫过我。",
+                "character": "/sources/pic/艾米丽/shy_1.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "现在有了。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "沉默片刻。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "艾米丽轻轻抽回手。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "她转身去拿茶壶。",
+                "character": ""
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "要续茶吗？",
+                "character": "/sources/pic/艾米丽/shy_1.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "谢谢。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "一小时后。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "茶几上多了一盘饼干。",
+                "character": ""
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "这很好吃。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "你自己做的？",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "是的。",
+                "character": "/sources/pic/艾米丽/happy_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我曾想读烘焙学校。",
+                "character": "/sources/pic/艾米丽/happy_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "专业的那种。",
+                "character": "/sources/pic/艾米丽/happy_1.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "为什么没去？",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "妈妈觉得不稳定。",
+                "character": "/sources/pic/艾米丽/sad_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "她希望我读商科。",
+                "character": "/sources/pic/艾米丽/sad_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "找份正经工作。",
+                "character": "/sources/pic/艾米丽/sad_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "咖啡店只是暂时的。",
+                "character": "/sources/pic/艾米丽/sad_1.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "你想清楚了吗？",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "艾米丽沉默不语。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "她看向Larok手臂。",
+                "character": ""
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "你的纹身有含义吗？",
+                "character": "/sources/pic/艾米丽/shy_1.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "这个代表家族徽记。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "这个是我旅行地点。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "这个喝醉后纹的。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "醒来后悔了三个月。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "家族徽记像贵族？",
+                "character": "/sources/pic/艾米丽/surprise_1.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "更接近稀有血统。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "我有点非人类基因。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "比如这尖耳朵。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "还有好视力夜视能力。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "讨厌铁制品轻微过敏。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "吓到了？",
+                "character": "/sources/pic/艾米丽/surprise_1.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "不，只是从没听你说。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我觉得很酷。",
+                "character": "/sources/pic/艾米丽/happy_1.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "Larok露出真实笑容。",
+                "character": ""
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "轮到你了。秘密换秘密。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "你还隐瞒了什么？",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我可能不喜欢男生。",
+                "character": "/sources/pic/艾米丽/crying_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "不“只”喜欢男生。",
+                "character": "/sources/pic/艾米丽/crying_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "从没告诉过任何人。",
+                "character": "/sources/pic/艾米丽/crying_1.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "这是编造男友原因？",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "每次他们问起。",
+                "character": "/sources/pic/艾米丽/crying_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "都像在背叛自己。",
+                "character": "/sources/pic/艾米丽/crying_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "但说出真相更可怕。",
+                "character": "/sources/pic/艾米丽/crying_1.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "我明白。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "空气中紧绷感融化。",
+                "character": ""
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我们再练习介绍吧。",
+                "character": "/sources/pic/艾米丽/shy_1.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "妈妈会问谁求婚。",
+                "character": "/sources/pic/艾米丽/shy_1.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "就说谁先找到蟑螂。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "玩具谁就求婚。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "艾米丽笑出声。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "笑声轻松自然。",
+                "character": ""
+            }
+        ],
+        "chapter_name": "排练",
+        "site": "艾米丽的公寓客厅。米色布艺沙发靠墙摆放，原木茶几置于沙发前。墙上悬挂三幅尺寸相同的抽象画，画作以灰蓝色几何线条构成。茶几表面散落着打开的笔记本、两支中性笔与两个白色瓷杯，杯内残留半满的冷茶。客厅主灯为暖黄色吊灯，光线均匀洒在浅色木地板上。窗帘半掩，窗外是深蓝色夜幕，隐约可见远处楼宇的零星灯火。室内空气安静，仅有空调低微运转声。整体氛围整洁克制，略带疏离感。"
+    },
+    {
+        "dialogues": [
+            {
+                "name": "旁白",
+                "dialogue_content": "昏暗的办公室，深夜。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "李伟独自坐在电脑前，屏幕光映在他疲惫的脸上。窗外偶尔有车灯闪过。",
+                "character": ""
+            },
+            {
+                "name": "李伟",
+                "dialogue_content": "数据对不上……一定漏了什么。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "他拿起桌边的冷咖啡喝了一口，皱眉。键盘敲击声在寂静中格外清晰。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "突然，电话响起。李伟瞥了一眼屏幕，迟疑片刻后接起。",
+                "character": ""
+            },
+            {
+                "name": "李伟",
+                "dialogue_content": "喂？",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "电话那头传来急促的说话声，李伟的脸色逐渐变得苍白。",
+                "character": ""
+            },
+            {
+                "name": "李伟",
+                "dialogue_content": "什么时候的事？",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "他猛地站起，碰倒了咖啡杯。液体漫过桌上的文件。",
+                "character": ""
+            }
+        ],
+        "chapter_name": "第一幕",
+        "site": "昏暗的办公室"
+    },
+    {
+        "dialogues": [
+            {
+                "name": "旁白",
+                "dialogue_content": "深夜街道寂静无声。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "路灯投下昏黄光晕。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "公寓楼影幢幢而立。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "空气中弥漫凉意。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "婚礼喧嚣早已散尽。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "出租车尾灯渐行渐远。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "只余两人驻足楼下。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "气氛微妙而沉默。",
+                "character": ""
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "终于结束了呢。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "今晚真是漫长。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "你觉得累吗？",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我有点不习惯。",
+                "character": "/sources/pic/艾米丽/depression_1.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "还好。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "演戏确实耗神。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "你表现得很自然。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "几乎骗过所有人。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "是吗？",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "可我总觉得心虚。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "尤其是面对亲友。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "他们的祝福很真诚。",
+                "character": "/sources/pic/艾米丽/sad_1.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "别想太多。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "这只是权宜之计。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "我们各取所需。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "合同写得清楚。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我知道。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "但心里还是空落落。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "像偷了别人的快乐。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "这感觉真糟糕。",
+                "character": "/sources/pic/艾米丽/crying_1.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "抬头看看。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "今晚星星很亮。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "至少景色是真的。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "不算全无收获。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "谢谢你安慰我。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "虽然方式很笨拙。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "我该上楼了。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "艾米丽",
+                "dialogue_content": "晚安，Larok。",
+                "character": "/sources/pic/艾米丽/shy_1.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "晚安。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "好好休息。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "明天还要面对媒体。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "Larok",
+                "dialogue_content": "保持状态。",
+                "character": "/sources/spirit/ComfyUI_00016_black.png"
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "艾米丽转身走进楼道。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "声控灯逐层亮起。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "又逐层熄灭。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "Larok在楼下驻足。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "点燃一支烟。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "烟雾融入夜色。",
+                "character": ""
+            },
+            {
+                "name": "旁白",
+                "dialogue_content": "街道重归寂静。",
+                "character": ""
+            }
+        ],
+        "chapter_name": "艾米丽公寓楼下街道",
+        "site": "城市普通住宅区街道，宽约两车道，两侧排列着年代不一的公寓楼，楼高约六至八层。路面为沥青铺就，可见零星落叶。人行道由灰色方砖铺设，边缘设有金属护栏。街角设有一个绿色邮筒，表面略有锈迹。路灯为老式铸铁款式，灯罩呈碗状，发出暖黄色光线，在路面形成一圈圈光斑。电线杆上贴有褪色的海报残片。公寓楼入口为深色玻璃门，门侧有对讲机面板。主要光源来自间隔约二十米的路灯，光线昏暗柔和，楼宇窗户大多黑暗，仅零星几扇透出微弱台灯光。月光被薄云稀释，天空呈深蓝灰色。空气中湿度较高，隐约可见路灯下的光晕。无雨，有轻微雾霭，微风，气温凉爽。街道安静，远处偶有车辆驶过的低鸣，更衬托出近处的寂静。整体氛围疏离而略带忧郁，如同舞台落幕后的空荡剧场。"
+    }
+]

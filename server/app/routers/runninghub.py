@@ -2,7 +2,7 @@ import asyncio
 import copy
 import os
 from datetime import datetime
-from typing import Any, List, Union
+from typing import Any, List, Optional, Tuple, Union
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
@@ -13,6 +13,7 @@ from app.services.comfyui_size_presets import SIZE_PRESETS
 from app.services.comfyui_workflow_mapping import list_comfyui_workflows, safe_workflow_json_path
 from app.services.get_comfyui_pic import get_comfy_char_pics, comfy_generate_flow_backgrounds
 from app.services.get_runninghub_pic import (
+    EXPRESSION_LS,
     default_runninghub_pic_dir,
     get_running_pic,
     sanitize_character_name_for_path,
@@ -21,6 +22,44 @@ from app.services.remove_bg import replace_character_stand_pics_with_removed_bg
 
 # 中性前缀：立绘/背景支持 RunningHub 与本地 ComfyUI（access log 不再误显示为仅 RunningHub）
 router = APIRouter(prefix="/api/image", tags=["image"])
+
+_STAND_CUSTOM_MAX = 60
+
+
+class StandCustomItem(BaseModel):
+    """自定义立绘：id 用于文件名 {id}_1.png，description 拼入 prompt（同原 EXPRESSION_LS 项）。"""
+
+    id: str = Field(..., min_length=1, description="文件名主键，如 happy、pose01")
+    description: str = Field(
+        ...,
+        min_length=1,
+        description="英文/分词等，追加在 …, cowboy_shot, 之后",
+    )
+
+
+def _resolve_stand_items(
+    mode: str,
+    custom_items: List[StandCustomItem],
+) -> List[Tuple[str, str]]:
+    m = (mode or "default").strip().lower()
+    if m != "custom":
+        return [(e, e) for e in EXPRESSION_LS]
+    if not custom_items:
+        raise HTTPException(
+            status_code=400,
+            detail="自定义立绘模式须至少提供一组 stand_custom_items（id + description）",
+        )
+    out: List[Tuple[str, str]] = []
+    for it in custom_items[:_STAND_CUSTOM_MAX]:
+        sid = (it.id or "").strip()
+        desc = (it.description or "").strip()
+        if not sid or not desc:
+            raise HTTPException(
+                status_code=400,
+                detail="stand_custom_items 中每项的 id、description 均不能为空",
+            )
+        out.append((sid, desc))
+    return out
 
 
 class GenerateCharacterPicsBody(BaseModel):
@@ -47,10 +86,26 @@ class GenerateCharacterPicsBody(BaseModel):
         default="",
         description="分辨率预设 ratio 键（如 1.0、0.5）；空则用服务端默认；仅当 mapping 含 size 时生效",
     )
+    stand_expression_mode: str = Field(
+        default="default",
+        description="default=内置表情全集 EXPRESSION_LS；custom=使用 stand_custom_items",
+    )
+    stand_custom_items: List[StandCustomItem] = Field(
+        default_factory=list,
+        description="自定义模式下 (id, description) 列表；id 决定文件名，description 写入 prompt",
+    )
+    image_prompt_extra: str = Field(
+        default="",
+        description="附加到每条立绘正向 prompt 末尾的固定片段（如画师/风格/Lora 触发词）；不经 LLM，英文逗号分隔为宜",
+    )
 
 
 class RemoveStandPicBgBody(BaseModel):
     character_name: str = Field("", description="与立绘目录一致的角色名（同生成立绘时的名称规则）")
+    stand_expression_ids: Optional[List[str]] = Field(
+        default=None,
+        description="仅处理这些 id 对应的立绘 PNG；空则处理内置 EXPRESSION_LS 全套",
+    )
 
 
 class GenerateFlowBackgroundsBody(BaseModel):
@@ -131,6 +186,10 @@ async def generate_character_pics(body: GenerateCharacterPicsBody):
         except (ValueError, FileNotFoundError) as e:
             raise HTTPException(status_code=400, detail=f"无效的 ComfyUI 工作流文件: {e}") from e
 
+    stand_items = _resolve_stand_items(body.stand_expression_mode, body.stand_custom_items)
+    prompt_extra = (body.image_prompt_extra or "").strip() or None
+    stand_mode = (body.stand_expression_mode or "default").strip().lower() or "default"
+
     def _run():
         if backend == "comfyui":
             get_comfy_char_pics(
@@ -140,6 +199,9 @@ async def generate_character_pics(body: GenerateCharacterPicsBody):
                 checkpoint=ckpt,
                 workflow_json=comfy_wf,
                 size_ratio=size_ratio,
+                stand_items=stand_items,
+                image_prompt_extra=prompt_extra,
+                stand_expression_mode=stand_mode,
             )
         else:
             get_running_pic(
@@ -147,6 +209,9 @@ async def generate_character_pics(body: GenerateCharacterPicsBody):
                 positive_prompt=positive_prompt,
                 character_name=char_name,
                 save_dir=base_pic,
+                stand_items=stand_items,
+                image_prompt_extra=prompt_extra,
+                stand_expression_mode=stand_mode,
             )
 
     try:
@@ -158,12 +223,29 @@ async def generate_character_pics(body: GenerateCharacterPicsBody):
     label = "ComfyUI" if backend == "comfyui" else "RunningHub"
     return {
         "success": True,
-        "message": f"已完成 {label} 出图流程，文件已保存到 public/sources/pic/{folder}/",
+        "message": (
+            f"已完成 {label} 出图流程，文件已保存到 public/sources/pic/{folder}/"
+            f"（每张立绘旁有同名 .txt：默认方案为 expression，自定义方案为 description）"
+        ),
         "save_dir": save_dir_out,
         "character_folder": folder,
         "public_base": f"/sources/pic/{folder}/",
         "image_backend": backend,
     }
+
+
+@router.get("/pic-bg-folders")
+async def list_pic_bg_folders():
+    """
+    列出项目 public/pic_bg 下的子目录名（与一键生成背景写入的批次文件夹一致），
+    按名字倒序（时间戳目录 YYYYMMDD_HHmmss 时新批次靠前）。
+    """
+    root = tools.get_project_root() / "public" / "pic_bg"
+    if not root.is_dir():
+        return {"folders": []}
+    names = [p.name for p in root.iterdir() if p.is_dir()]
+    names.sort(reverse=True)
+    return {"folders": names}
 
 
 @router.post("/generate-flow-backgrounds")
@@ -239,14 +321,22 @@ async def generate_flow_backgrounds(body: GenerateFlowBackgroundsBody):
 @router.post("/remove-stand-pic-backgrounds")
 async def remove_stand_pic_backgrounds(body: RemoveStandPicBgBody):
     """
-    对 public/sources/pic/{角色名}/ 下已有表情 PNG 调用 remove.bg 去背景，覆盖原文件；
+    对 public/sources/pic/{角色名}/ 下已有表情 PNG 经本地 ComfyUI（RMBG 工作流）去背景，覆盖原文件；
     返回新的静态 URL 列表，供前端替换该角色的立绘图。
     """
     char_name = (body.character_name or "").strip()
     folder = sanitize_character_name_for_path(char_name)
+    raw_ids = body.stand_expression_ids
+    stand_ids: Optional[List[str]] = None
+    if raw_ids is not None:
+        stand_ids = [x.strip() for x in raw_ids if isinstance(x, str) and x.strip()]
+        if not stand_ids:
+            stand_ids = None
 
     def _run():
-        return replace_character_stand_pics_with_removed_bg(char_name)
+        return replace_character_stand_pics_with_removed_bg(
+            char_name, stand_expression_ids=stand_ids
+        )
 
     try:
         loop = asyncio.get_running_loop()

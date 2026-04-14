@@ -3,8 +3,10 @@
 from __future__ import annotations
 
 import io
+import mimetypes
 import time
 import uuid
+from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 import requests
@@ -53,6 +55,47 @@ class ComfyUiClient:
         if not pid:
             raise RuntimeError(f"ComfyUI /prompt 未返回 prompt_id: {data}")
         return str(pid)
+
+    def upload_image_to_input(
+        self,
+        image_path: str,
+        *,
+        subfolder: str = "",
+        overwrite: bool = True,
+    ) -> str:
+        """
+        将本地图片上传到 ComfyUI input，供 LoadImage 使用。
+        返回 LoadImage.inputs.image 应填写的字符串（根目录为 name；有子目录时为 subfolder/name）。
+        """
+        p = Path(image_path)
+        if not p.is_file():
+            raise FileNotFoundError(image_path)
+        mime, _ = mimetypes.guess_type(str(p))
+        mime = mime or "application/octet-stream"
+        data = {
+            "type": "input",
+            "subfolder": (subfolder or "").strip().replace("\\", "/"),
+            "overwrite": "true" if overwrite else "false",
+        }
+        with open(p, "rb") as fp:
+            files = {"image": (p.name, fp, mime)}
+            resp = requests.post(
+                f"{self.base_url}/upload/image",
+                files=files,
+                data=data,
+                timeout=120,
+            )
+        resp.raise_for_status()
+        body = resp.json()
+        if not isinstance(body, dict):
+            raise RuntimeError(f"ComfyUI upload/image 非 JSON 响应: {resp.text[:500]}")
+        name = body.get("name")
+        if not name:
+            raise RuntimeError(f"ComfyUI upload/image 未返回 name: {body}")
+        sub = str(body.get("subfolder") or "").strip().strip("/\\").replace("\\", "/")
+        if sub:
+            return f"{sub}/{name}".replace("\\", "/")
+        return str(name)
 
     def _history_record(self, prompt_id: str) -> Optional[Dict[str, Any]]:
         try:
@@ -113,9 +156,13 @@ class ComfyUiClient:
         r.raise_for_status()
         return Image.open(io.BytesIO(r.content))
 
-    def process_workflow(self, workflow: Dict[str, Any]) -> List[Image.Image]:
+    def process_workflow(
+        self,
+        workflow: Dict[str, Any],
+        poll_timeout: Optional[float] = None,
+    ) -> List[Image.Image]:
         pid = self.queue_prompt(workflow)
-        outputs = self.wait_for_outputs(pid)
+        outputs = self.wait_for_outputs(pid, timeout=poll_timeout)
         images: List[Image.Image] = []
         for _node_id, node_out in outputs.items():
             if not isinstance(node_out, dict):

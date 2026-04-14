@@ -1,6 +1,6 @@
 """
 使用本地 ComfyUI 出图，与 RunningHub 管线对齐：
-- 立绘：public/sources/pic/{角色名}/{expression}_1.png，提示词逻辑同 get_running_pic（get_art_prompt + cowboy_shot + 表情）
+- 立绘：public/sources/pic/{角色名}/{expression}_1.png 与同目录 {expression}.txt（默认写 expression，自定义写 description）
 - 流程背景：public/pic_bg/{时间戳}/地点{i}.png，提示词逻辑同 get_bg（每条末尾追加「不要出现人物」）
 
 工作流 JSON 与注入槽位由 public/comfyui/*.mapping.json 或 *.txt 描述（见 comfyui_workflow_mapping）。
@@ -14,7 +14,7 @@ import os
 import random
 import time
 from pathlib import Path
-from typing import List, Optional
+from typing import List, Optional, Tuple
 
 from app.services import const
 from app.services.comfyui_client import ComfyUiClient
@@ -34,6 +34,7 @@ from app.services.get_runninghub_pic import (
     get_art_prompt,
     sanitize_character_name_for_path,
     stand_pic_save_filename,
+    write_stand_pic_description_txt,
 )
 
 # 与 workflow1 默认负向一致；可被 run_comfyui_save_one_image 覆盖
@@ -131,17 +132,33 @@ def get_comfy_char_pics(
     base_url: Optional[str] = None,
     workflow_json: Optional[str] = None,
     size_ratio: Optional[str] = None,
+    stand_items: Optional[List[Tuple[str, str]]] = None,
+    image_prompt_extra: Optional[str] = None,
+    stand_expression_mode: str = "default",
 ) -> None:
-    """与 get_running_pic 相同目录与文件名规则，逐表情调用本地 ComfyUI。"""
+    """与 get_running_pic 相同目录与文件名规则；stand_items 为 (id, description)，未传则使用 EXPRESSION_LS；每条出图后写同目录描述 .txt。"""
     base_dir = save_dir if save_dir else default_runninghub_pic_dir()
     safe_char = sanitize_character_name_for_path(character_name)
     save_dir_final = os.path.join(base_dir, safe_char)
     os.makedirs(save_dir_final, exist_ok=True)
 
+    items: List[Tuple[str, str]] = (
+        list(stand_items) if stand_items else [(e, e) for e in EXPRESSION_LS]
+    )
+    if not items:
+        raise ValueError("立绘列表为空")
+
     ex = get_art_prompt(positive_prompt)
-    for expression in EXPRESSION_LS:
-        pm = f"{ex}, cowboy_shot, {expression}"
-        out_path = os.path.join(save_dir_final, stand_pic_save_filename(expression))
+    extra = (image_prompt_extra or "").strip()
+    for stand_id, desc in items:
+        sid = (stand_id or "").strip()
+        d = (desc or "").strip()
+        if not sid or not d:
+            raise ValueError("每项立绘须包含非空的 id 与 description")
+        pm = f"{ex}, cowboy_shot, {d}"
+        if extra:
+            pm = f"{pm}, {extra}"
+        out_path = os.path.join(save_dir_final, stand_pic_save_filename(sid))
         run_comfyui_save_one_image(
             pm,
             out_path,
@@ -149,6 +166,12 @@ def get_comfy_char_pics(
             base_url=base_url,
             workflow_json=workflow_json,
             size_ratio=size_ratio,
+        )
+        write_stand_pic_description_txt(
+            save_dir_final,
+            sid,
+            d,
+            stand_expression_mode=stand_expression_mode,
         )
         # 给 ComfyUI 队列一点时间收尾，避免极短间隔下一条 history 仍指向上一次任务
         time.sleep(0.35)

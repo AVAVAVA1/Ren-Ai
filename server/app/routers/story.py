@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from pathlib import Path
 import sys
 import json
@@ -17,9 +17,19 @@ from app.services import tools
 router = APIRouter(prefix="/api/story", tags=["story"])
 
 
+class StoryCastEntry(BaseModel):
+    """与故事页「已选角色」一致；character_name 须与人物卡姓名一致，用于匹配对话 name 与立绘目录。"""
+
+    character_name: str = Field(..., description="角色姓名（与剧本说话者 name、public/sources/pic 子目录规则一致）")
+
+
 class StoryRequest(BaseModel):
     user_input: str
     strict_model: bool = False
+    story_cast: List[StoryCastEntry] = Field(
+        default_factory=list,
+        description="非空时：仅这些角色由 LLM 从各自立绘目录 .txt stem 选立绘；其余说话者固定通用精灵图",
+    )
 
 
 class ExportStructuredRequest(BaseModel):
@@ -97,11 +107,13 @@ async def generate_story(request: StoryRequest):
             
             yield f"data: {json.dumps({'stage': 'dialogue', 'message': '正在生成对话剧本...', 'progress': 70})}\n\n"
             
+            cast_payload = [e.model_dump() for e in request.story_cast] if request.story_cast else None
             dialogue_result = dialogue(
                 user_input="根据剧本生成对话剧本",
                 script=script_dict,
                 save_path=dialogue_save_path,
-                strict_model=request.strict_model
+                strict_model=request.strict_model,
+                story_cast=cast_payload,
             )
             
             dialogue_output = format_dialogue_output(dialogue_result)
