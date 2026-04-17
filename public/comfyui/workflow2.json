@@ -206,7 +206,7 @@
   },
   "36": {
     "inputs": {
-      "lora_name": "Disney_IZT_ATK_V1_000000750.safetensors",
+      "lora_name": "748cmSDXL.safetensors",
       "strength_model": 1,
       "strength_clip": 1,
       "model": [

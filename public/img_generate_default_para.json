@@ -1,0 +1,10 @@
+{
+  "_info": "默认立绘表情配置：键为立绘文件 stem（如 happy → happy_1.png）；值为并入英文正向提示（与 stand_expression_{键名} 一并写入）。修改保存后由服务端按文件 mtime 自动重载，无需重启。可改用嵌套 \"expressions\": { ... }，或单项为 { \"description\": \"...\" }。以 _ 开头的键会被忽略。",
+  "happy": "Mood: cheerful / upbeat. Pose: skipping, stepping lightly, arms swinging naturally, hair bouncing, open energetic body language.",
+  "crying": "Mood: tearful / distressed. Pose: leaning forward, palm pressing face or eyes, head bowed, shoulders trembling slightly.",
+  "smile": "Mood: gentle / soft smile. Pose: tucking hair behind ear, looking down shyly, gentle hand movement, relaxed shoulders, slight head tilt.",
+  "surprise": "Mood: startled / shocked. Pose: stepping backward, hand rising toward chest, weight shifting back, leaning back, freezing mid-motion.",
+  "shy": "Mood: bashful / flustered. Pose: hands clasped behind back, shifting weight between feet, glancing up then away, fingers fidgeting, body half-turned.",
+  "tsundere": "Mood: prickly / defensive affection. Pose: arms crossed, head turned aside, foot tapping, hip cocked, deliberately looking away.",
+  "anger": "Mood: angry / tense. Pose: gripping strap or cloth, knuckles tightening, standing rigid, chin lifting, shoulders tensing, jaw clenched."
+}

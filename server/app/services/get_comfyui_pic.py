@@ -29,9 +29,9 @@ from app.services.comfyui_workflow_mapping import (
 )
 from app.services.get_bg import _append_no_people_to_prompts
 from app.services.get_runninghub_pic import (
-    EXPRESSION_LS,
     default_runninghub_pic_dir,
     get_art_prompt,
+    load_default_stand_expressions,
     sanitize_character_name_for_path,
     stand_pic_save_filename,
     write_stand_pic_description_txt,
@@ -136,14 +136,14 @@ def get_comfy_char_pics(
     image_prompt_extra: Optional[str] = None,
     stand_expression_mode: str = "default",
 ) -> None:
-    """与 get_running_pic 相同目录与文件名规则；stand_items 为 (id, description)，未传则使用 EXPRESSION_LS；每条出图后写同目录描述 .txt。"""
+    """与 get_running_pic 相同目录与文件名规则；stand_items 为 (id, description)，未传则读 img_generate_default_para.json；每条出图后写同目录描述 .txt。"""
     base_dir = save_dir if save_dir else default_runninghub_pic_dir()
     safe_char = sanitize_character_name_for_path(character_name)
     save_dir_final = os.path.join(base_dir, safe_char)
     os.makedirs(save_dir_final, exist_ok=True)
 
     items: List[Tuple[str, str]] = (
-        list(stand_items) if stand_items else [(e, e) for e in EXPRESSION_LS]
+        list(stand_items) if stand_items else load_default_stand_expressions()
     )
     if not items:
         raise ValueError("立绘列表为空")
@@ -155,7 +155,7 @@ def get_comfy_char_pics(
         d = (desc or "").strip()
         if not sid or not d:
             raise ValueError("每项立绘须包含非空的 id 与 description")
-        pm = f"{ex}, cowboy_shot, {d}"
+        pm = f"{ex}, cowboy_shot, stand_expression_{sid}, {d}"
         if extra:
             pm = f"{pm}, {extra}"
         out_path = os.path.join(save_dir_final, stand_pic_save_filename(sid))

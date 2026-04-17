@@ -14,8 +14,67 @@ import requests
 from typing import List, Optional, Tuple
 from urllib.parse import urlparse
 
-# 与 get_running_pic 中用于文件名后缀的表情标识一致
-EXPRESSION_LS = ['happy', 'depression', 'crying', 'smile', 'surprise', 'shy', 'tsundere','anger','sad']
+# public/img_generate_default_para.json：默认立绘表情 id → 详细英文说明（可随时改文件，mtime 变则自动重载）
+_STAND_EXPR_JSON_REL = "public/img_generate_default_para.json"
+_stand_expr_cache: Tuple[Optional[float], List[Tuple[str, str]]] = (None, [])
+
+
+def _parse_stand_expressions_data(data: object) -> List[Tuple[str, str]]:
+    """支持顶层 { \"happy\": \"...\" } 或 { \"expressions\": { ... } }；忽略以 _ 开头的键。"""
+    if not isinstance(data, dict):
+        return []
+    raw: dict
+    ex = data.get("expressions")
+    if isinstance(ex, dict):
+        raw = ex
+    else:
+        raw = data
+    out: List[Tuple[str, str]] = []
+    for k, v in raw.items():
+        ks = str(k).strip()
+        if not ks or ks.startswith("_"):
+            continue
+        if isinstance(v, str) and v.strip():
+            out.append((ks, v.strip()))
+        elif isinstance(v, dict):
+            det = (
+                v.get("description")
+                or v.get("detail")
+                or v.get("prompt")
+                or v.get("prompt_detail")
+            )
+            if isinstance(det, str) and det.strip():
+                out.append((ks, det.strip()))
+    return out
+
+
+def load_default_stand_expressions() -> List[Tuple[str, str]]:
+    """
+    读取项目根下 public/img_generate_default_para.json，返回 [(表情 id, 详细说明), ...]。
+    按文件 mtime 缓存；修改 JSON 后同进程内下次调用自动生效，无需重启。
+    """
+    global _stand_expr_cache
+    path = tools.get_project_root() / _STAND_EXPR_JSON_REL
+    if not path.is_file():
+        raise FileNotFoundError(
+            f"未找到默认立绘配置: {path}（请创建 img_generate_default_para.json）"
+        )
+    mtime = path.stat().st_mtime
+    m_old, pairs_old = _stand_expr_cache
+    if m_old is not None and m_old == mtime and pairs_old:
+        return list(pairs_old)
+    with open(path, encoding="utf-8") as f:
+        data = json.load(f)
+    pairs = _parse_stand_expressions_data(data)
+    if not pairs:
+        raise ValueError(f"默认立绘配置无有效表情条目: {path}")
+    _stand_expr_cache = (mtime, pairs)
+    return list(pairs)
+
+
+def default_stand_expression_ids() -> List[str]:
+    """默认模式下全部立绘文件名的 stem 列表（顺序与 JSON 一致）。"""
+    return [a for a, _ in load_default_stand_expressions()]
 
 
 def sanitize_character_name_for_path(name: str) -> str:
@@ -354,28 +413,31 @@ def download_runninghub(
 
 def get_art_prompt(description: str):
     class ArtPrompt(BaseModel):
-        art_prompt: str = Field(description="对给的自然语言描述的标准分词描述")
+        art_prompt: str = Field(
+            description="仅基于用户描述中可画面化的外貌与服饰的英文 SD 标签，逗号分隔；严禁臆造"
+        )
 
     parser = PydanticOutputParser(pydantic_object=ArtPrompt)
     prompt = PromptTemplate(
         template="""
-            你是一个 ComfyUI 提示词专家。你的任务是将用户对人物图片的自然语言描述，转换成适合 Stable Diffusion / ComfyUI 使用的英文提示词。
+            你是一个 ComfyUI 提示词专家。将用户输入中**与画面直接相关**的部分，转成 Stable Diffusion / ComfyUI 可用的英文标签。
 
-    要求：
-    1. 只输出英文提示词，用英文逗号分隔，不要加解释。
-    2. 按此顺序组织：画面质量词 → 主体（人物特征、服饰、动作）→ 背景/环境 → 光照 → 风格/氛围。
-    3. 使用 SD 社区常见的标签风格，如：masterpiece, best quality, 1girl, solo, 具体特征使用下划线连接（如 blue_eyes, long_hair）。
-    4. 如果描述中包含负面内容（如模糊、畸形等），将其单独整理为负面提示词，用“负面提示词：”标注。
-    5. 保持简洁，不输出自然语言句子。
-    6. 只用给出相应的active prompt
-    7. 仅描述人物特征， 背景描述为简短背景或纯色背景
-    示例：
-    输入：一个年轻女孩，长发，穿着白色连衣裙，站在樱花树下，阳光透过花瓣洒下来，画风是二次元。
+    【硬性约束 — 必须遵守】
+    1. **只输出与人物外在可见信息相关的英文标签**：脸型/身材概括、发型发色、五官可见特征、皮肤可见特征、服装与配饰、简单站姿或半身取景（若原文完全未提动作则用 neutral 或 standing 之一，勿编故事性动作）。
+    2. **严禁捏造**：用户未写到的发型、服装颜色、道具、场景、天气、互动对象、剧情、情绪细节、文字牌子等均不得自行添加。性格/心理描写若无法对应到可见画面表现，**忽略不写**。
+    3. **背景与氛围**：除非用户原文明确提到背景或环境，否则只用极简占位：**simple_background** 或 **plain_background** 或 **white_background** 三选一，不要写樱花、教室、街道等用户未提及的景物。
+    4. 只输出英文提示词，逗号分隔，不要解释、不要中文、不要自然语言长句。
+    5. 画面质量可带简短通用词：masterpiece, best quality；人物计数用 1girl / 1boy / solo 等与描述一致。
+    6. 使用 SD 常见标签风格，特征多用下划线（如 long_hair, school_uniform）。若原文含应进入负面词的内容，用「负面提示词：」单独列出英文负面词。
+    7. 若用户描述极短，只忠实扩展为等价英文标签，仍不添加无依据的细节。
+
+    示例（仅示范忠实性；实际须严格以用户输入为准）：
+    输入：短发少女，白衬衫红领结。
     输出：
-    masterpiece, best quality, 1girl, solo, long_hair, white_dress, standing, simple_background, outdoors, sunlight, dappled_light, anime_style
+    masterpiece, best quality, 1girl, solo, short_hair, white_shirt, red_bow, simple_background
 
 
-            创作要求：{text}
+            用户输入（仅从中抽取可入画的外貌与服饰信息）：{text}
 
             请严格按照以下格式输出,不要添加任何额外说明：：
             {format_instructions}
@@ -416,7 +478,8 @@ def get_running_pic(
     """
     图片保存到 public/sources/pic/{角色名}/，文件名为 {id}_1.png。
     stand_items 为 (id, description) 列表：description 拼入 prompt 末尾（与原先各表情词一致），id 用于文件名。
-    未传 stand_items 时使用内置 EXPRESSION_LS，且 id 与 description 相同。
+    未传 stand_items 时从 public/img_generate_default_para.json 读取 (id, 详细说明)，
+    每条正向 prompt 为：get_art_prompt 结果 + cowboy_shot + 表情 id + JSON 中的详细说明。
     image_prompt_extra 非空时以英文逗号风格附加在每条正向 prompt 末尾（不经 get_art_prompt）。
     每条立绘成功后会写入同目录 {id}.txt：default 为 expression 文本，custom 为 description。
     """
@@ -426,7 +489,7 @@ def get_running_pic(
     os.makedirs(save_dir_final, exist_ok=True)
 
     items: List[Tuple[str, str]] = (
-        list(stand_items) if stand_items else [(e, e) for e in EXPRESSION_LS]
+        list(stand_items) if stand_items else load_default_stand_expressions()
     )
     if not items:
         raise ValueError("立绘列表为空：请使用默认表情或提供至少一组自定义 id+description")
@@ -441,7 +504,8 @@ def get_running_pic(
         d = (desc or "").strip()
         if not sid or not d:
             raise ValueError("每项立绘须包含非空的 id 与 description")
-        line = f"{ex}, cowboy_shot, {d}"
+        # 同时写入表情 id 与 JSON 配置的详细说明，便于模型区分不同立绘
+        line = f"{ex}, cowboy_shot, stand_expression_{sid}, {d}"
         if extra:
             line = f"{line}, {extra}"
         pm.append(line)

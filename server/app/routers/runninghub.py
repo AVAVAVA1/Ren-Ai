@@ -6,6 +6,7 @@ from typing import Any, List, Optional, Tuple, Union
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
+from starlette.concurrency import run_in_threadpool
 
 from app.services import const, tools
 from app.services.get_bg import get_bg
@@ -13,9 +14,9 @@ from app.services.comfyui_size_presets import SIZE_PRESETS
 from app.services.comfyui_workflow_mapping import list_comfyui_workflows, safe_workflow_json_path
 from app.services.get_comfyui_pic import get_comfy_char_pics, comfy_generate_flow_backgrounds
 from app.services.get_runninghub_pic import (
-    EXPRESSION_LS,
     default_runninghub_pic_dir,
     get_running_pic,
+    load_default_stand_expressions,
     sanitize_character_name_for_path,
 )
 from app.services.remove_bg import replace_character_stand_pics_with_removed_bg
@@ -27,7 +28,7 @@ _STAND_CUSTOM_MAX = 60
 
 
 class StandCustomItem(BaseModel):
-    """自定义立绘：id 用于文件名 {id}_1.png，description 拼入 prompt（同原 EXPRESSION_LS 项）。"""
+    """自定义立绘：id 用于文件名 {id}_1.png，description 拼入 prompt（与默认 JSON 中每条格式相同）。"""
 
     id: str = Field(..., min_length=1, description="文件名主键，如 happy、pose01")
     description: str = Field(
@@ -43,7 +44,7 @@ def _resolve_stand_items(
 ) -> List[Tuple[str, str]]:
     m = (mode or "default").strip().lower()
     if m != "custom":
-        return [(e, e) for e in EXPRESSION_LS]
+        return load_default_stand_expressions()
     if not custom_items:
         raise HTTPException(
             status_code=400,
@@ -88,7 +89,7 @@ class GenerateCharacterPicsBody(BaseModel):
     )
     stand_expression_mode: str = Field(
         default="default",
-        description="default=内置表情全集 EXPRESSION_LS；custom=使用 stand_custom_items",
+        description="default=读取 public/img_generate_default_para.json；custom=使用 stand_custom_items",
     )
     stand_custom_items: List[StandCustomItem] = Field(
         default_factory=list,
@@ -104,7 +105,7 @@ class RemoveStandPicBgBody(BaseModel):
     character_name: str = Field("", description="与立绘目录一致的角色名（同生成立绘时的名称规则）")
     stand_expression_ids: Optional[List[str]] = Field(
         default=None,
-        description="仅处理这些 id 对应的立绘 PNG；空则处理内置 EXPRESSION_LS 全套",
+        description="仅处理这些 id 对应的立绘 PNG；空则按 img_generate_default_para.json 全部 id",
     )
 
 
@@ -215,8 +216,10 @@ async def generate_character_pics(body: GenerateCharacterPicsBody):
             )
 
     try:
-        loop = asyncio.get_running_loop()
-        await loop.run_in_executor(None, _run)
+        # shield：避免客户端断开/中间层超时等导致 await 收到 CancelledError，线程内出图仍尽量跑完
+        await asyncio.shield(run_in_threadpool(_run))
+    except asyncio.CancelledError:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"生成失败: {e!s}") from e
 
@@ -301,8 +304,9 @@ async def generate_flow_backgrounds(body: GenerateFlowBackgroundsBody):
             generated += 1
 
     try:
-        loop = asyncio.get_running_loop()
-        await loop.run_in_executor(None, _run)
+        await asyncio.shield(run_in_threadpool(_run))
+    except asyncio.CancelledError:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"生成背景失败: {e!s}") from e
 
@@ -339,8 +343,9 @@ async def remove_stand_pic_backgrounds(body: RemoveStandPicBgBody):
         )
 
     try:
-        loop = asyncio.get_running_loop()
-        images = await loop.run_in_executor(None, _run)
+        images = await asyncio.shield(run_in_threadpool(_run))
+    except asyncio.CancelledError:
+        raise
     except FileNotFoundError as e:
         raise HTTPException(status_code=404, detail=str(e)) from e
     except ValueError as e:

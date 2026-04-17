@@ -7,8 +7,8 @@ from typing import List, Optional
 from app.services import const, tools
 from app.services.comfyui_client import ComfyUiClient
 from app.services.get_runninghub_pic import (
-    EXPRESSION_LS,
     default_runninghub_pic_dir,
+    default_stand_expression_ids,
     list_stand_pic_png_paths,
     sanitize_character_name_for_path,
 )
@@ -61,7 +61,7 @@ def replace_character_stand_pics_with_removed_bg(
     """
     对 public/sources/pic/{角色名}/ 下立绘 PNG 去背景并覆盖原文件。
     每个表情匹配 happy.png、happy_1.png、happy_2.png 等形式（见 list_stand_pic_png_paths）。
-    stand_expression_ids 非空时仅处理这些 id（与自定义立绘文件名一致）；否则处理内置 EXPRESSION_LS。
+    stand_expression_ids 非空时仅处理这些 id（与自定义立绘文件名一致）；否则处理 img_generate_default_para.json 中的全部 id。
     """
     folder = sanitize_character_name_for_path((character_name or "").strip())
     base = default_runninghub_pic_dir()
@@ -72,10 +72,10 @@ def replace_character_stand_pics_with_removed_bg(
     expr_list = (
         [x.strip() for x in stand_expression_ids if x and str(x).strip()]
         if stand_expression_ids
-        else list(EXPRESSION_LS)
+        else default_stand_expression_ids()
     )
     if not expr_list:
-        expr_list = list(EXPRESSION_LS)
+        expr_list = default_stand_expression_ids()
 
     out: List[dict] = []
     for expr in expr_list:

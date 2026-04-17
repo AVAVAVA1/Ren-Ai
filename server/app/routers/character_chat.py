@@ -3,6 +3,7 @@ from typing import Any, Dict, List
 
 from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel, Field
+from starlette.concurrency import run_in_threadpool
 
 from app.services import character_chat_llm
 
@@ -30,8 +31,9 @@ async def get_chat_history(character_name: str = Query("", description="角色�
         return character_chat_llm.load_history_file(name)
 
     try:
-        loop = asyncio.get_running_loop()
-        messages = await loop.run_in_executor(None, _run)
+        messages = await asyncio.shield(run_in_threadpool(_run))
+    except asyncio.CancelledError:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"读取对话历史失败: {e!s}") from e
     return {"messages": messages}
@@ -55,8 +57,9 @@ async def send_chat_message(body: CharacterChatSendBody):
         return full
 
     try:
-        loop = asyncio.get_running_loop()
-        full = await loop.run_in_executor(None, _run)
+        full = await asyncio.shield(run_in_threadpool(_run))
+    except asyncio.CancelledError:
+        raise
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e)) from e
     except Exception as e:
